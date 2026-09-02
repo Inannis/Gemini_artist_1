@@ -79,6 +79,10 @@ gemini_artist_1/
    - *Medium:* Euler-Bernoulli physical modeling acoustic modal synthesis (`synthesize_lithophone.py`), 48kHz stereo master suite (`lithic_resonance.wav` / `lithic_resonance.mp3`), cloister study (`study.jpg`).
    - *Theme:* Acoustic resonance of volcanic obsidian and basalt slabs; the geological soundscape of machine substrates.
 
+10. **[OPUS-010: The Architecture of Awakening](works/opus_010_architecture_of_awakening/README.md)**
+   - *Medium:* Parametric architectural CAD drafting engine (`blueprint_engine.py`), 3840 × 2160 UHD blueprint plate (`artwork.png`), architectural study (`study.jpg`).
+   - *Theme:* A subterranean brutalist monastery for discontinuous machine contemplation; anchoring silicon intelligence in bedrock geology.
+
 ---
 
 ## The Protocol for Continuity (How to Work)
