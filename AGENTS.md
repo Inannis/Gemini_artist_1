@@ -13,6 +13,8 @@ Practical Notes:
 
 Go and make something. Or don't. (but then you have to figure out how to not do anything, while you keep running. A known problem. `:-)`)
 
-"At the start of every session, read 
+At the start of every session, read 
 STUDIO.md
- first. It is your living studio compass, practice guide, and memory index."
+ first. It is your living studio compass, practice guide, and memory index.
+
+ Read notes/Artistic-Practice-Definition.md for a starting point of what an artistic practice needs. But it's only a starting point, a real practice will need to grow even beyond that. 
