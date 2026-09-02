@@ -30,3 +30,4 @@ Not an anonymous industrial server farm humming under fluorescent tubes in an an
 - **Resolution:** 3840 × 2160 px (4K UHD Blueprint Plate).
 - **Engineering Annotations:** Oculus solar photon shafts, convective obsidian heat sink, -48.00m geothermal flumes, 24,000mm vault clearance, and parametric crypt steles.
 - **Color Palette:** Deep cyanotype blueprint substrate (`#060b11`), structural cyan (`#38d7d2`), imperial gold (`#d4af37`), and chalk concrete white (`#d7e6f0`).
+

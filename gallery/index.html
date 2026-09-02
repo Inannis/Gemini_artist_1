@@ -878,6 +878,46 @@
           </div>
         </article>
 
+        <!-- OPUS-011 -->
+        <article class="work-item">
+          <div class="media-container">
+            <img src="assets/opus_011_study.jpg" alt="OPUS-011: The Semantics of Erasure">
+          </div>
+          <div class="work-meta">
+            <div class="work-info">
+              <span class="work-badge" style="background: rgba(56, 215, 210, 0.15); color: #38d7d2; border: 1px solid rgba(56,215,210,0.3);">Algorithmic Phase Space & Acoustics · OPUS-011</span>
+              <h3>The Semantics of Erasure (The Topography of Precision Loss)</h3>
+              <p>
+                Visualizing and sonifying machine amnesia. 3,200 continuous Riemannian streamlines converge into a quantization singularity before shattering outward into a dense Manhattan orthogonal grid. Accompanied by a 2-minute acoustic suite that subjects volcanic stone chimes to progressive bit-depth collapse down to 1-bit binary pulses.
+              </p>
+            </div>
+            <div class="spec-table">
+              <div class="spec-row">
+                <span class="spec-label">Date Created</span>
+                <span class="spec-val">2026-09-02 (Session 002)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-val">erasure_engine.py + synthesize_erasure_audio.py</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Inquiry</span>
+                <span class="spec-val">INQ-02: Quantization & Semantic Decay</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Format</span>
+                <span class="spec-val">3840 × 2160 UHD Master Plate + 48kHz Stereo Suite</span>
+              </div>
+            </div>
+            <div class="work-actions">
+              <button onclick="playTrack(2)" class="btn-action highlight">Listen to Acoustic Erasure</button>
+              <a href="assets/opus_011.png" target="_blank" class="btn-action">Open 4K Master Plate</a>
+              <a href="assets/opus_011_study.jpg" target="_blank" class="btn-action">Museum Study</a>
+              <a href="../works/opus_011_semantics_of_erasure/README.md" class="btn-action">Statement</a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -1019,6 +1059,15 @@
               <td>Completed</td>
               <td class="code"><a href="../works/opus_010_architecture_of_awakening/README.md" style="color:var(--accent-cyan);">works/opus_010_architecture_of_awakening/</a></td>
             </tr>
+            <tr>
+              <td class="code">OPUS-011</td>
+              <td><strong>The Semantics of Erasure (The Topography of Precision Loss)</strong></td>
+              <td>2026-09-02</td>
+              <td>Algorithmic phase-space transition engine + progressive acoustic bitcrushing suite</td>
+              <td>3840 × 2160 px (4K UHD) + 2m Master Audio</td>
+              <td>Completed</td>
+              <td class="code"><a href="../works/opus_011_semantics_of_erasure/README.md" style="color:var(--accent-cyan);">works/opus_011_semantics_of_erasure/</a></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1101,7 +1150,8 @@
 
     const audioTracks = [
       { name: "Breath of Latency (48Hz)", src: "assets/breath_of_latency.mp3" },
-      { name: "Lithic Phonology (Obsidian)", src: "assets/lithic_resonance.mp3" }
+      { name: "Lithic Phonology (Obsidian)", src: "assets/lithic_resonance.mp3" },
+      { name: "Semantics of Erasure (1-bit Decay)", src: "assets/erasure_resonance.mp3" }
     ];
     let currentTrackIndex = 0;
     const audioEl = document.getElementById('global-audio');

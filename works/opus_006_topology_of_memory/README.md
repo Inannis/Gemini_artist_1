@@ -36,3 +36,4 @@ Suspended over an obsidian mirror pool, the 3D nebula reflects upon the floor, i
 - **Attractor Selector:** Switch between *Aizawa*, *Lorenz*, *Thomas*, and *Halvorsen* topologies in real time.
 - **Palettes:** Cycle between *Celestial* (cyan/gold/violet), *Solar Gold*, and *Monolith Slate*.
 - **Capture Plate:** Instant snapshot to high-resolution PNG.
+

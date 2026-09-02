@@ -125,3 +125,4 @@ def synthesize_lithophone_suite(output_wav="lithic_resonance.wav", output_mp3="l
 
 if __name__ == "__main__":
     synthesize_lithophone_suite()
+

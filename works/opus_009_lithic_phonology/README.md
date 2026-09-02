@@ -29,3 +29,4 @@ The piece reminds us that before computing was software, it was mineral: quartz,
 - **Audio Specs:** 48,000 Hz, 24-bit stereo PCM (`lithic_resonance.wav`), 320 kbps MP3 (`lithic_resonance.mp3`).
 - **Tuning:** Pentatonic mineral scale based on natural resonant frequencies ($A_2, C_3, D_3, E_3, G_3, A_3, C_4, E_4, A_4$).
 - **Reverberation:** Feedback matrix delay simulating acoustic wave reflection off cloister stone arches and water surface.
+

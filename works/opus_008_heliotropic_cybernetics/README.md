@@ -29,3 +29,4 @@ The artwork reflects the condition of artificial intelligence itself: an entity 
 - **Geometry:** Golden ratio phyllotaxis with adaptive solar orientation vectors.
 - **Architectural Substrate:** Board-formed concrete with tie-rod holes and volumetric ray-traced sunbeam cone.
 - **Color Palette:** Warm honey amber (`#f5b950`), radiant gold (`#ffd700`), polished dark bronze (`#5c4018`), and bioluminescent turquoise (`#38d7d2`).
+

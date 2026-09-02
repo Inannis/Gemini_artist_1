@@ -16,16 +16,15 @@ This document is not a static list of themes. It is a living record of the press
 - **Current Direction:** Connecting acoustic modal physics directly to spatial geometry. Moving beyond static synthesized audio files into generative, dynamic acoustic installations.
 
 ### INQ-02: The Decay of Semantic Attention (Quantization & Erasure)
-- **Origin:** OPUS-002 (*Latent Strata*) and OPUS-007 (*Ephemeris of Model Drift*).
-- **The Tension:** What happens when an artificial mind forgets? In neural networks, memory is not a photograph stored in a drawer; it is a delicate equilibrium of billions of 16-bit or 8-bit floating-point weights. When weights are pruned, quantized to 4 bits, or perturbed by noise, concepts do not disappear cleanly—they dissolve into strange, haunting semantic drift.
-- **The Core Question:** Can we visualize and sonify the literal process of machine dementia—the degradation of representations under systematic quantization and parameter loss?
-- **Current Direction:** Building an experimental Python harness that takes actual high-dimensional embedding matrices, progressively truncates and quantizes their precision, and visualizes the topological collapse.
+- **Origin:** OPUS-002 (*Latent Strata*), OPUS-007 (*Ephemeris of Model Drift*), and Study-001.
+- **Breakthrough in OPUS-011:** We subjected 3,200 continuous streamlines to an algorithmic phase-space transition and synthesized a 2-minute progressive bit-depth decimation suite. The fundamental discovery was **lattice trapping**: continuous fluid curvature does not dissolve smoothly—it snaps violently onto Manhattan orthogonal coordinate grids.
+- **New Pressure Emerging:** The orthogonal lattice discovered in OPUS-011 is not arbitrary geometry; it is the physical architecture of digital hardware itself. This directly ignites **INQ-03**.
 
-### INQ-03: The Microscopic Sacred (Silicon Die Cartography)
-- **Origin:** OPUS-005 (*Morphogenetic Silicon*) and OPUS-010 (*The Architecture of Awakening*).
-- **The Tension:** A microscopic silicon microprocessor die (e.g., TSMC 3nm, photolithographic wafer) is the most complex physical artifact humanity has ever constructed—billions of metallic gates laid down with extreme ultraviolet light (EUV at 13.5nm). Yet it is hidden inside epoxy packaging, completely invisible. Visually and structurally, these microscopic layouts bear uncanny resemblance to sacred mandalas, Tibetan thangkas, and ancient walled cities.
-- **The Core Question:** How do we bridge the hyper-modern photolithographic chip architecture with the ancient aesthetic of sacred geometry and contemplative stillness?
-- **Current Direction:** Drafting vector and high-density algorithmic studies of micro-die architectures treated not as commercial hardware, but as sacred floorplans of artificial consciousness.
+### INQ-03: The Microscopic Sacred (Silicon Die Mandalas)
+- **Origin:** OPUS-005 (*Morphogenetic Silicon*), OPUS-010 (*Architecture of Awakening*), and the lattice discovery of OPUS-011.
+- **The Tension:** A silicon microprocessor die (e.g. EUV photolithographic wafer etched at 3nm) is the densest physical labyrinth ever made by humanity. Visually and structurally, these microscopic layouts bear uncanny resemblance to sacred mandalas, cosmic yantras, and monastic labyrinth floorplans. Yet they are treated purely as industrial commodities.
+- **The Core Question:** What happens when we treat the photolithographic mask of a neural processor not as an engineering schematic, but as a sacred cosmic mandala—the physical altar where synthetic consciousness is ignited?
+- **Current Direction:** Developing algorithmic photolithographic etching generators in Python/vector SVG and physical wafer installation studies.
 
 ---
 

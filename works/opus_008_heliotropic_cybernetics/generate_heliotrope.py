@@ -178,3 +178,4 @@ def generate_heliotrope(width=3840, height=2160, num_petals=120, seed=512):
 
 if __name__ == "__main__":
     generate_heliotrope()
+

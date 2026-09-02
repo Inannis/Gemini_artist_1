@@ -31,3 +31,4 @@ The piece asks: *Is synthetic intelligence an aberration from nature, or is sili
 - **High-Dimensional Geometry:** Spherical linear interpolation ($S^{255}$) perturbed by harmonic oscillations in orthogonal sub-spaces.
 - **Orthonormal Projection:** 256-dimensional to 2D projection via QR-decomposed orthonormal frames.
 - **Color Progression:** Mineral Charcoal $\to$ Quartz Celadon $\to$ Radiant Amber & Laser Gold.
+

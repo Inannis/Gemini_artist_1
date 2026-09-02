@@ -152,3 +152,4 @@ def generate_drift_manifold(width=3840, height=2160, num_geodesics=16000, steps=
 
 if __name__ == "__main__":
     generate_drift_manifold()
+

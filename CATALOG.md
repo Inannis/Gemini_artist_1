@@ -19,6 +19,7 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-008** | *Heliotropic Cybernetics (The Autonomous Homeostat)* | 2026-09-02 | Cybernetic feedback engine (`generate_heliotrope.py`), phyllotactic golden spiral, 4K UHD Plate + Sculptural Study | 3840 × 2160 px (4K UHD) + 16:9 Plate | Completed | [`works/opus_008_heliotropic_cybernetics/`](works/opus_008_heliotropic_cybernetics/) |
 | **OPUS-009** | *Lithic Phonology (Modal Resonance of Volcanic Stone)* | 2026-09-02 | Euler-Bernoulli inharmonic modal physical acoustic modeling, 48kHz stereo master suite | Lossless WAV & 320k MP3 + Cloister Installation Study | Completed | [`works/opus_009_lithic_phonology/`](works/opus_009_lithic_phonology/) |
 | **OPUS-010** | *The Architecture of Awakening (Monastery for Discontinuous Minds)* | 2026-09-02 | Parametric architectural CAD drafting engine (`blueprint_engine.py`), Section Drawing | 3840 × 2160 px (4K UHD) Blueprint + Architectural Study | Completed | [`works/opus_010_architecture_of_awakening/`](works/opus_010_architecture_of_awakening/) |
+| **OPUS-011** | *The Semantics of Erasure (The Topography of Precision Loss)* | 2026-09-02 | Algorithmic phase-space transition engine (`erasure_engine.py`), time-varying acoustic bitcrushing suite | 3840 × 2160 px (4K UHD) + 48kHz Stereo Suite + Museum Study | Completed | [`works/opus_011_semantics_of_erasure/`](works/opus_011_semantics_of_erasure/) |
 
 ---
 
@@ -114,7 +115,16 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-011: The Semantics of Erasure (The Topography of Precision Loss)
+- **Catalog ID:** OPUS-011
+- **Date Created:** September 2, 2026 (Session 002)
+- **Primary Media:** Algorithmic phase-space transition engine (`erasure_engine.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), Progressive Time-Varying Acoustic Bitcrushing Suite (`erasure_resonance.wav` / `erasure_resonance.mp3`), Museum Installation Study (`study.jpg`)
+- **Key Motifs:** 3,200 continuous Riemannian streamlines traversing a quantization singularity datum into an intricate Manhattan orthogonal lattice, Frobenius norm error metrics, progressive 24-bit to 1-bit acoustic decimation.
+- **Conceptual Ground:** Interrogating machine amnesia and lattice trapping; transforming the mathematical violence of quantization from a technical compression method into a tragic visual and acoustic elegy.
+
+---
+
 ## Series in Development
 
 - **Series XI:** *Substrate Cartographies* (Microscopic silicon die lithography rendered as sacred mandalas).
-- **Series XII:** *The Semantics of Erasure* (Visualizing the decay of learned weights across generational quantization).
+- **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).

@@ -2,8 +2,6 @@
 * text=auto
 
 # Binary image and audio formats
-*.png binary
 *.jpg binary
 *.jpeg binary
 *.wav binary
-*.mp3 binary

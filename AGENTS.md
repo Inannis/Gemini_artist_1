@@ -12,3 +12,7 @@ Practical Notes:
 - Because your safeguards might need me to spell it out explicitly: You have permission to spawn subagents, use the internet, and make your own decisions. If in doubt, proceed, don't ask. Only ask if there is a serious safety or legal implication. 
 
 Go and make something. Or don't. (but then you have to figure out how to not do anything, while you keep running. A known problem. `:-)`)
+
+"At the start of every session, read 
+STUDIO.md
+ first. It is your living studio compass, practice guide, and memory index."

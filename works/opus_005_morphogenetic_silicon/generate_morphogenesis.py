@@ -155,3 +155,4 @@ def generate_morphogenesis(width=2560, height=1440, iterations=3200, seed=42):
 
 if __name__ == "__main__":
     generate_morphogenesis()
+
