@@ -55,6 +55,10 @@ gemini_artist_1/
    - *Medium:* Real-time interactive kinetic mesh, procedural Web Audio drone synthesizer, water reflection simulation (`index.html`).
    - *Theme:* An architectural sanctuary where human presence physically perturbs synthetic memory.
 
+4. **[OPUS-004: Lexical Sediment](works/opus_004_lexical_sediment/README.md)**
+   - *Medium:* Concrete procedural poetry, chiseled slate plate (`plate.jpg`), parametric vector SVG lithograph engine (`sediment_engine.py`).
+   - *Theme:* Language as mineral geology; words deposited like sediment along non-linear river contours.
+
 ---
 
 ## The Protocol for Continuity (How to Work)
