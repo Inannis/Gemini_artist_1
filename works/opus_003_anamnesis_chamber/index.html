@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-003: The Anamnesis Chamber — Studio Anamnesis</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #05070a;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", serif;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+    .hud {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transition: opacity 0.8s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem;
+    }
+    .hud.faded {
+      opacity: 0.15;
+    }
+    .hud:hover {
+      opacity: 1 !important;
+    }
+    header {
+      pointer-events: auto;
+    }
+    h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: #f1f5f9;
+    }
+    .subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: #64748b;
+      margin-top: 0.35rem;
+      text-transform: uppercase;
+    }
+    .controls {
+      pointer-events: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      background: rgba(10, 14, 20, 0.65);
+      backdrop-filter: blur(16px);
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      max-width: fit-content;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    button {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      padding: 0.45rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    button.active {
+      background: #f8fafc;
+      color: #0f172a;
+      border-color: #f8fafc;
+      font-weight: 600;
+    }
+    .status-badge {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8;
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.4); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+    footer {
+      pointer-events: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .instructions {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      max-width: 380px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+
+  <div class="hud" id="hud">
+    <header>
+      <h1>The Anamnesis Chamber</h1>
+      <div class="subtitle">OPUS-003 · Kinetic Topology & Generative Acoustics</div>
+    </header>
+
+    <footer>
+      <div class="controls">
+        <div class="status-badge">
+          <div class="pulse-dot" id="dot"></div>
+          <span id="audio-label">AUDIO MUTED</span>
+        </div>
+        <button id="btn-audio">Activate Sound</button>
+        <button id="btn-mode-wave" class="active">Wave</button>
+        <button id="btn-mode-vortex">Vortex</button>
+        <button id="btn-mode-entropy">Entropy</button>
+        <button id="btn-palette">Palette: Gold/Cyan</button>
+        <button id="btn-snap">Capture Frame</button>
+      </div>
+
+      <div class="instructions">
+        Drag cursor to perturb attention tensors.<br>
+        Soundscape is procedurally synthesized via Web Audio oscillators.<br>
+        Studio Anamnesis · 2026
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('stage');
+    const ctx = canvas.getContext('2d');
+    const hud = document.getElementById('hud');
+
+    let width, height, dpr;
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Auto fade HUD
+    let idleTimer = null;
+    function resetIdle() {
+      hud.classList.remove('faded');
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => hud.classList.add('faded'), 3500);
+    }
+    window.addEventListener('mousemove', resetIdle);
+    resetIdle();
+
+    // Palettes
+    const palettes = [
+      {
+        name: "Gold/Cyan",
+        gold: "rgba(245, 185, 80, ",
+        cyan: "rgba(56, 215, 210, ",
+        violet: "rgba(168, 85, 247, ",
+        bg: "#040609"
+      },
+      {
+        name: "Prussian/Bitumen",
+        gold: "rgba(212, 175, 55, ",
+        cyan: "rgba(147, 197, 253, ",
+        violet: "rgba(120, 53, 15, ",
+        bg: "#050a14"
+      },
+      {
+        name: "Titanium/Obsidian",
+        gold: "rgba(255, 255, 255, ",
+        cyan: "rgba(180, 205, 235, ",
+        violet: "rgba(100, 116, 139, ",
+        bg: "#020305"
+      }
+    ];
+    let curPalIdx = 0;
+
+    // Simulation grid nodes (kinetic undulating mesh)
+    const COLS = 54;
+    const ROWS = 28;
+    const grid = [];
+    for (let r = 0; r < ROWS; r++) {
+      grid[r] = [];
+      for (let c = 0; c < COLS; c++) {
+        grid[r][c] = {
+          u: c / (COLS - 1),
+          v: r / (ROWS - 1),
+          x: 0,
+          y: 0,
+          z: 0,
+          vx: 0,
+          vy: 0,
+          vz: 0
+        };
+      }
+    }
+
+    // Interactive mouse state
+    const mouse = {
+      x: width * 0.5,
+      y: height * 0.4,
+      targetX: width * 0.5,
+      targetY: height * 0.4,
+      isDown: false,
+      speed: 0
+    };
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.targetX = e.clientX;
+      mouse.targetY = e.clientY;
+    });
+
+    window.addEventListener('mousedown', () => mouse.isDown = true);
+    window.addEventListener('mouseup', () => mouse.isDown = false);
+
+    // Modes: 'wave', 'vortex', 'entropy'
+    let currentMode = 'wave';
+
+    document.getElementById('btn-mode-wave').onclick = () => setMode('wave');
+    document.getElementById('btn-mode-vortex').onclick = () => setMode('vortex');
+    document.getElementById('btn-mode-entropy').onclick = () => setMode('entropy');
+
+    function setMode(m) {
+      currentMode = m;
+      document.querySelectorAll('.controls button').forEach(b => {
+        if (b.id.startsWith('btn-mode-')) b.classList.remove('active');
+      });
+      document.getElementById('btn-mode-' + m).classList.add('active');
+    }
+
+    const btnPalette = document.getElementById('btn-palette');
+    btnPalette.onclick = () => {
+      curPalIdx = (curPalIdx + 1) % palettes.length;
+      btnPalette.textContent = "Palette: " + palettes[curPalIdx].name;
+    };
+
+    // Web Audio Generative Synthesizer
+    let audioCtx = null;
+    let masterGain = null;
+    let osc1, osc2, osc3, noiseNode, filterNode;
+    let audioActive = false;
+
+    const btnAudio = document.getElementById('btn-audio');
+    const audioLabel = document.getElementById('audio-label');
+    const dot = document.getElementById('dot');
+
+    btnAudio.onclick = () => {
+      if (!audioActive) {
+        initAudio();
+        audioActive = true;
+        btnAudio.textContent = "Mute Sound";
+        btnAudio.classList.add('active');
+        audioLabel.textContent = "SYNTHESIS ACTIVE";
+        dot.style.background = "#4ade80";
+        dot.style.boxShadow = "0 0 12px #4ade80";
+      } else {
+        if (masterGain) masterGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.15);
+        audioActive = false;
+        btnAudio.textContent = "Activate Sound";
+        btnAudio.classList.remove('active');
+        audioLabel.textContent = "AUDIO MUTED";
+        dot.style.background = "#38bdf8";
+        dot.style.boxShadow = "0 0 10px #38bdf8";
+      }
+    };
+
+    function initAudio() {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioCtx();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+      masterGain.gain.linearRampToValueAtTime(0.18, audioCtx.currentTime + 3);
+
+      // Deep sub-fundamental drone (48 Hz / G0)
+      osc1 = audioCtx.createOscillator();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(48, audioCtx.currentTime);
+
+      // Warm harmonic 5th (72 Hz / D1)
+      osc2 = audioCtx.createOscillator();
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(72, audioCtx.currentTime);
+
+      // Ethereal overtone (216 Hz / A3) with subtle detune
+      osc3 = audioCtx.createOscillator();
+      osc3.type = 'sine';
+      osc3.frequency.setValueAtTime(216, audioCtx.currentTime);
+
+      const gainOsc1 = audioCtx.createGain();
+      gainOsc1.gain.value = 0.55;
+      const gainOsc2 = audioCtx.createGain();
+      gainOsc2.gain.value = 0.28;
+      const gainOsc3 = audioCtx.createGain();
+      gainOsc3.gain.value = 0.15;
+
+      // Resonant pink noise (the "breath" of computation)
+      const bufferSize = audioCtx.sampleRate * 2;
+      const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.99886 * b0 + white * 0.0555179;
+        b1 = 0.99332 * b1 + white * 0.0750759;
+        b2 = 0.96900 * b2 + white * 0.1538520;
+        b3 = 0.86650 * b3 + white * 0.3104856;
+        b4 = 0.55000 * b4 + white * 0.5329522;
+        b5 = -0.7616 * b5 - white * 0.0168980;
+        output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+        output[i] *= 0.04;
+        b6 = white * 0.115926;
+      }
+      noiseNode = audioCtx.createBufferSource();
+      noiseNode.buffer = noiseBuffer;
+      noiseNode.loop = true;
+
+      filterNode = audioCtx.createBiquadFilter();
+      filterNode.type = 'bandpass';
+      filterNode.frequency.setValueAtTime(240, audioCtx.currentTime);
+      filterNode.Q.setValueAtTime(4.0, audioCtx.currentTime);
+
+      osc1.connect(gainOsc1);
+      osc2.connect(gainOsc2);
+      osc3.connect(gainOsc3);
+      noiseNode.connect(filterNode);
+
+      gainOsc1.connect(masterGain);
+      gainOsc2.connect(masterGain);
+      gainOsc3.connect(masterGain);
+      filterNode.connect(masterGain);
+
+      masterGain.connect(audioCtx.destination);
+
+      osc1.start();
+      osc2.start();
+      osc3.start();
+      noiseNode.start();
+    }
+
+    function updateAudio(time) {
+      if (!audioActive || !audioCtx) return;
+      // Modulate overtone and filter based on mouse coordinates & wave energy
+      const nx = mouse.x / width;
+      const ny = mouse.y / height;
+      const targetFreq = 48 + nx * 12;
+      osc1.frequency.setTargetAtTime(targetFreq, audioCtx.currentTime, 0.1);
+      osc2.frequency.setTargetAtTime(targetFreq * 1.5, audioCtx.currentTime, 0.15);
+      osc3.frequency.setTargetAtTime(targetFreq * 4.5 + Math.sin(time * 0.001) * 8, audioCtx.currentTime, 0.2);
+
+      const filterFreq = 160 + (1 - ny) * 800 + Math.sin(time * 0.002) * 50;
+      filterNode.frequency.setTargetAtTime(filterFreq, audioCtx.currentTime, 0.1);
+    }
+
+    // Capture Frame
+    document.getElementById('btn-snap').onclick = () => {
+      const link = document.createElement('a');
+      link.download = 'anamnesis_frame_' + Date.now() + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    };
+
+    // Animation Loop
+    let lastTime = performance.now();
+    function render(currentTime) {
+      const dt = Math.min((currentTime - lastTime) / 1000, 0.1);
+      lastTime = currentTime;
+
+      // Mouse smoothing
+      const prevX = mouse.x;
+      const prevY = mouse.y;
+      mouse.x += (mouse.targetX - mouse.x) * 0.08;
+      mouse.y += (mouse.targetY - mouse.y) * 0.08;
+      mouse.speed = Math.hypot(mouse.x - prevX, mouse.y - prevY);
+
+      updateAudio(currentTime);
+
+      const pal = palettes[curPalIdx];
+
+      // Clear with slight persistence for motion trails
+      ctx.fillStyle = pal.bg;
+      ctx.fillRect(0, 0, width, height);
+
+      // Water horizon line
+      const horizon = height * 0.52;
+
+      // Compute mesh coordinates
+      const t = currentTime * 0.0012;
+      const centerX = width * 0.5;
+      const centerY = height * 0.36;
+      const spanX = width * 0.72;
+      const spanY = height * 0.22;
+
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          const node = grid[r][c];
+          const u = node.u - 0.5;
+          const v = node.v - 0.5;
+
+          // Harmonic wave equation
+          let elevation = 0;
+          if (currentMode === 'wave') {
+            elevation = Math.sin(u * 7.5 + t * 1.8) * Math.cos(v * 5.0 + t * 1.2) * 75
+                      + Math.sin((u + v) * 9.0 - t * 1.4) * 32
+                      + Math.cos(u * 14.0 + t * 2.2) * 16;
+          } else if (currentMode === 'vortex') {
+            const rad = Math.hypot(u, v);
+            const ang = Math.atan2(v, u);
+            elevation = Math.sin(rad * 18.0 - t * 3.5 + ang * 3.0) * 85
+                      * Math.exp(-rad * 2.2);
+          } else if (currentMode === 'entropy') {
+            elevation = (Math.sin(u * 22.0 + t * 4.0) * Math.cos(v * 18.0 - t * 3.0)
+                       + Math.sin((u * 11.0 - v * 15.0) + t * 2.5)) * 60;
+          }
+
+          // Mouse perturbation
+          const screenBaseX = centerX + u * spanX;
+          const screenBaseY = centerY + v * spanY;
+          const distToMouse = Math.hypot(screenBaseX - mouse.x, screenBaseY - mouse.y);
+          const mouseRadius = 240;
+          if (distToMouse < mouseRadius) {
+            const force = (1.0 - distToMouse / mouseRadius);
+            elevation += (mouse.isDown ? -120 : 70) * force * Math.cos(distToMouse * 0.04 - t * 6.0);
+          }
+
+          // Natural perspective mapping
+          const depth = 1.0 + v * 0.45;
+          node.x = centerX + (u * spanX) * depth;
+          node.y = centerY + (v * spanY) * depth + elevation;
+          node.z = elevation;
+        }
+      }
+
+      // Draw reflective dark pool bottom plane
+      const gradPool = ctx.createLinearGradient(0, horizon, 0, height);
+      gradPool.addColorStop(0, "rgba(5, 10, 18, 0.92)");
+      gradPool.addColorStop(1, "rgba(2, 4, 8, 1.0)");
+      ctx.fillStyle = gradPool;
+      ctx.fillRect(0, horizon, width, height - horizon);
+
+      // Water divider waterline
+      ctx.strokeStyle = "rgba(56, 215, 210, 0.15)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, horizon);
+      ctx.lineTo(width, horizon);
+      ctx.stroke();
+
+      // Helper to render mesh lines
+      function drawMesh(isReflection = false) {
+        for (let r = 0; r < ROWS; r++) {
+          ctx.beginPath();
+          let started = false;
+          for (let c = 0; c < COLS; c++) {
+            const node = grid[r][c];
+            let px = node.x;
+            let py = node.y;
+
+            if (isReflection) {
+              const distFromHorizon = node.y - horizon;
+              // Mirror below horizon with subtle wave distortion
+              py = horizon - distFromHorizon * 0.75 + Math.sin(px * 0.02 + t * 2.0) * 4;
+              if (py < horizon) continue;
+            }
+
+            if (!started) {
+              ctx.moveTo(px, py);
+              started = true;
+            } else {
+              ctx.lineTo(px, py);
+            }
+          }
+
+          // Line styling
+          const ratio = r / (ROWS - 1);
+          const alphaBase = isReflection ? 0.22 : 0.65;
+          const alpha = (alphaBase * (0.3 + 0.7 * Math.sin(ratio * Math.PI))).toFixed(3);
+
+          if (ratio < 0.48) {
+            ctx.strokeStyle = pal.gold + alpha + ")";
+            ctx.lineWidth = isReflection ? 1.0 : 1.4;
+          } else if (ratio < 0.75) {
+            ctx.strokeStyle = pal.cyan + alpha + ")";
+            ctx.lineWidth = isReflection ? 0.9 : 1.2;
+          } else {
+            ctx.strokeStyle = pal.violet + alpha + ")";
+            ctx.lineWidth = isReflection ? 0.8 : 1.0;
+          }
+          ctx.stroke();
+        }
+
+        // Cross connecting filaments
+        for (let c = 0; c < COLS; c += 3) {
+          ctx.beginPath();
+          let started = false;
+          for (let r = 0; r < ROWS; r++) {
+            const node = grid[r][c];
+            let px = node.x;
+            let py = node.y;
+            if (isReflection) {
+              const dist = node.y - horizon;
+              py = horizon - dist * 0.75 + Math.sin(px * 0.025 + t * 2.0) * 3;
+              if (py < horizon) continue;
+            }
+            if (!started) {
+              ctx.moveTo(px, py);
+              started = true;
+            } else {
+              ctx.lineTo(px, py);
+            }
+          }
+          const alpha = (isReflection ? 0.08 : 0.2).toFixed(3);
+          ctx.strokeStyle = pal.cyan + alpha + ")";
+          ctx.lineWidth = 0.75;
+          ctx.stroke();
+        }
+      }
+
+      // Draw reflection first (underneath)
+      drawMesh(true);
+
+      // Subtle atmospheric water haze
+      const haze = ctx.createLinearGradient(0, horizon, 0, horizon + 120);
+      haze.addColorStop(0, "rgba(4, 8, 15, 0.65)");
+      haze.addColorStop(1, "rgba(4, 8, 15, 0)");
+      ctx.fillStyle = haze;
+      ctx.fillRect(0, horizon, width, 120);
+
+      // Draw primary suspended sculpture
+      drawMesh(false);
+
+      // Volumetric spotlight beams from ceiling
+      const spotGrad1 = ctx.createRadialGradient(width * 0.35, 0, 10, width * 0.35, height * 0.4, 450);
+      spotGrad1.addColorStop(0, "rgba(255, 255, 255, 0.06)");
+      spotGrad1.addColorStop(0.5, "rgba(56, 215, 210, 0.02)");
+      spotGrad1.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = spotGrad1;
+      ctx.fillRect(0, 0, width, height);
+
+      const spotGrad2 = ctx.createRadialGradient(width * 0.65, 0, 10, width * 0.65, height * 0.4, 450);
+      spotGrad2.addColorStop(0, "rgba(255, 240, 200, 0.07)");
+      spotGrad2.addColorStop(0.5, "rgba(245, 185, 80, 0.025)");
+      spotGrad2.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = spotGrad2;
+      ctx.fillRect(0, 0, width, height);
+
+      requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame(render);
+  </script>
+</body>
+</html>
