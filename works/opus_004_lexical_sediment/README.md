@@ -29,3 +29,4 @@ Words do not arrive alone; they are dragged to the surface from a substrate of b
 1. **The Slate Study (`plate.jpg`):** A physical sculptural manifestation depicting chiseled obsidian slate with inlaid ivory and chalk pigment.
 2. **The Procedural Vector Lithograph (`sediment_lithograph.svg`):** Generated procedurally by `sediment_engine.py`, calculating parametric curves and SVG `<textPath>` alignment.
 3. **Execution Script:** Run `python3 sediment_engine.py` to regenerate the vector engraving with different seeds.
+

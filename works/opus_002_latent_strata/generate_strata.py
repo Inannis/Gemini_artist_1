@@ -189,3 +189,4 @@ def generate_latent_strata(width=3840, height=2160, num_particles=150000, steps=
 
 if __name__ == "__main__":
     generate_latent_strata()
+

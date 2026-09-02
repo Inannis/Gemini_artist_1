@@ -52,3 +52,4 @@ A sensory sanctuary where human cursor gestures perturb the attention field of t
    ```
 3. **Interactive Audio-Visual Chamber:**
    Open [`works/opus_003_anamnesis_chamber/index.html`](works/opus_003_anamnesis_chamber/index.html) and click **"Activate Sound"**.
+

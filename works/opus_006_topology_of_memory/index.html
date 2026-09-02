@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-006: The Topology of Memory Loss — Studio Anamnesis</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #030407;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", serif;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    canvas:active {
+      cursor: grabbing;
+    }
+    .hud {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transition: opacity 0.8s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem;
+    }
+    .hud.faded {
+      opacity: 0.18;
+    }
+    .hud:hover {
+      opacity: 1 !important;
+    }
+    header {
+      pointer-events: auto;
+    }
+    h1 {
+      font-size: 1.15rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+    .subtitle {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      color: #94a3b8;
+      margin-top: 0.35rem;
+      text-transform: uppercase;
+    }
+    footer {
+      pointer-events: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+      background: rgba(8, 12, 18, 0.75);
+      backdrop-filter: blur(20px);
+      padding: 0.75rem 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    button {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #cbd5e1;
+      padding: 0.45rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-1px);
+    }
+    button.active {
+      background: #f8fafc;
+      color: #090d16;
+      border-color: #f8fafc;
+      font-weight: 600;
+    }
+    .instructions {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      max-width: 420px;
+      line-height: 1.6;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gl-canvas"></canvas>
+
+  <div class="hud" id="hud">
+    <header>
+      <h1>The Topology of Memory Loss</h1>
+      <div class="subtitle">OPUS-006 · Volumetric 3D Strange Attractors & Phase Space Manifolds</div>
+    </header>
+
+    <footer>
+      <div class="controls">
+        <button id="btn-attractor-aizawa" class="active">Aizawa</button>
+        <button id="btn-attractor-lorenz">Lorenz</button>
+        <button id="btn-attractor-thomas">Thomas</button>
+        <button id="btn-attractor-halvorsen">Halvorsen</button>
+        <button id="btn-palette">Palette: Celestial</button>
+        <button id="btn-orbit" class="active">Auto Orbit: ON</button>
+        <button id="btn-snap">Capture Plate</button>
+      </div>
+
+      <div class="instructions">
+        Click & drag to rotate in 3D · Scroll to zoom · Right click to pan.<br>
+        Visualizing non-linear trajectories of un-prompted phase space.<br>
+        Studio Anamnesis · 2026
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('gl-canvas');
+    const ctx = canvas.getContext('2d');
+    const hud = document.getElementById('hud');
+
+    let width, height, dpr;
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Auto fade HUD
+    let idleTimer = null;
+    function resetIdle() {
+      hud.classList.remove('faded');
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => hud.classList.add('faded'), 4000);
+    }
+    window.addEventListener('mousemove', resetIdle);
+    resetIdle();
+
+    // Attractor Definitions & Integrators
+    let currentAttractor = 'aizawa';
+    const NUM_PARTICLES = 36000;
+    const particles = new Float32Array(NUM_PARTICLES * 3);
+    const particleVels = new Float32Array(NUM_PARTICLES * 3);
+    const particleAges = new Float32Array(NUM_PARTICLES);
+
+    function initParticles(attractor) {
+      for (let i = 0; i < NUM_PARTICLES; i++) {
+        resetParticle(i, attractor);
+        particleAges[i] = Math.random() * 100;
+      }
+    }
+
+    function resetParticle(i, attractor) {
+      const idx = i * 3;
+      if (attractor === 'aizawa') {
+        particles[idx] = (Math.random() - 0.5) * 0.4 + 0.1;
+        particles[idx + 1] = (Math.random() - 0.5) * 0.4;
+        particles[idx + 2] = (Math.random() - 0.5) * 0.4;
+      } else if (attractor === 'lorenz') {
+        particles[idx] = (Math.random() - 0.5) * 2.0;
+        particles[idx + 1] = (Math.random() - 0.5) * 2.0;
+        particles[idx + 2] = 20.0 + (Math.random() - 0.5) * 5.0;
+      } else if (attractor === 'thomas') {
+        particles[idx] = (Math.random() - 0.5) * 1.5;
+        particles[idx + 1] = (Math.random() - 0.5) * 1.5;
+        particles[idx + 2] = (Math.random() - 0.5) * 1.5;
+      } else if (attractor === 'halvorsen') {
+        particles[idx] = (Math.random() - 0.5) * 2.0 - 1.0;
+        particles[idx + 1] = (Math.random() - 0.5) * 2.0;
+        particles[idx + 2] = (Math.random() - 0.5) * 2.0;
+      }
+      particleAges[i] = 0;
+    }
+
+    initParticles('aizawa');
+
+    // 3D Camera Controls
+    let rotX = 0.25;
+    let rotY = 0.4;
+    let zoom = 1.0;
+    let autoOrbit = true;
+    let isDragging = false;
+    let lastMouseX = 0, lastMouseY = 0;
+
+    canvas.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+    });
+    window.addEventListener('mouseup', () => isDragging = false);
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const dx = e.clientX - lastMouseX;
+        const dy = e.clientY - lastMouseY;
+        rotY += dx * 0.006;
+        rotX = Math.max(-1.4, Math.min(1.4, rotX + dy * 0.006));
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+      }
+    });
+    window.addEventListener('wheel', (e) => {
+      zoom = Math.max(0.3, Math.min(3.5, zoom - e.deltaY * 0.001));
+    }, { passive: true });
+
+    // UI Buttons
+    ['aizawa', 'lorenz', 'thomas', 'halvorsen'].forEach(name => {
+      document.getElementById('btn-attractor-' + name).onclick = () => {
+        currentAttractor = name;
+        document.querySelectorAll('.controls button').forEach(b => {
+          if (b.id.startsWith('btn-attractor-')) b.classList.remove('active');
+        });
+        document.getElementById('btn-attractor-' + name).classList.add('active');
+        initParticles(name);
+      };
+    });
+
+    const btnOrbit = document.getElementById('btn-orbit');
+    btnOrbit.onclick = () => {
+      autoOrbit = !autoOrbit;
+      btnOrbit.textContent = "Auto Orbit: " + (autoOrbit ? "ON" : "OFF");
+      btnOrbit.classList.toggle('active', autoOrbit);
+    };
+
+    // Palettes
+    const palettes = [
+      { name: "Celestial", c1: [56, 215, 210], c2: [245, 185, 80], c3: [168, 85, 247] },
+      { name: "Solar Gold", c1: [255, 220, 100], c2: [255, 120, 40], c3: [255, 255, 240] },
+      { name: "Monolith Slate", c1: [200, 220, 240], c2: [120, 140, 160], c3: [255, 255, 255] }
+    ];
+    let palIdx = 0;
+    const btnPalette = document.getElementById('btn-palette');
+    btnPalette.onclick = () => {
+      palIdx = (palIdx + 1) % palettes.length;
+      btnPalette.textContent = "Palette: " + palettes[palIdx].name;
+    };
+
+    document.getElementById('btn-snap').onclick = () => {
+      const link = document.createElement('a');
+      link.download = 'topology_memory_' + currentAttractor + '_' + Date.now() + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    };
+
+    // Integration step
+    function stepSimulation() {
+      const dt = 0.008;
+      for (let i = 0; i < NUM_PARTICLES; i++) {
+        const idx = i * 3;
+        let x = particles[idx];
+        let y = particles[idx + 1];
+        let z = particles[idx + 2];
+
+        let dx = 0, dy = 0, dz = 0;
+
+        if (currentAttractor === 'aizawa') {
+          // Aizawa Attractor parameters: a=0.95, b=0.7, c=0.6, d=3.5, e=0.25, f=0.1
+          const a = 0.95, b = 0.7, c = 0.6, d = 3.5, e = 0.25, f = 0.1;
+          dx = (z - b) * x - d * y;
+          dy = d * x + (z - b) * y;
+          dz = c + a * z - (z * z * z) / 3.0 - (x * x + y * y) * (1.0 + e * z) + f * z * (x * x * x);
+        } else if (currentAttractor === 'lorenz') {
+          // Lorenz parameters: sigma=10, rho=28, beta=8/3
+          dx = 10.0 * (y - x);
+          dy = x * (28.0 - z) - y;
+          dz = x * y - (8.0 / 3.0) * z;
+        } else if (currentAttractor === 'thomas') {
+          // Thomas parameters: b=0.208186
+          const b = 0.208186;
+          dx = Math.sin(y) - b * x;
+          dy = Math.sin(z) - b * y;
+          dz = Math.sin(x) - b * z;
+        } else if (currentAttractor === 'halvorsen') {
+          // Halvorsen parameters: a=1.89
+          const a = 1.89;
+          dx = -a * x - 4 * y - 4 * z - y * y;
+          dy = -a * y - 4 * z - 4 * x - z * z;
+          dz = -a * z - 4 * x - 4 * y - x * x;
+        }
+
+        x += dx * dt;
+        y += dy * dt;
+        z += dz * dt;
+
+        particles[idx] = x;
+        particles[idx + 1] = y;
+        particles[idx + 2] = z;
+
+        particleAges[i]++;
+        if (particleAges[i] > 600 || isNaN(x) || Math.abs(x) > 60) {
+          resetParticle(i, currentAttractor);
+        }
+      }
+    }
+
+    // Animation Loop
+    function render(time) {
+      if (autoOrbit && !isDragging) {
+        rotY += 0.0025;
+      }
+
+      stepSimulation();
+
+      // Clear Canvas with subtle trail persistence
+      ctx.fillStyle = "#030407";
+      ctx.fillRect(0, 0, width, height);
+
+      // Floor horizon line
+      const horizonY = height * 0.58;
+
+      // Draw reflective black floor
+      const gradFloor = ctx.createLinearGradient(0, horizonY, 0, height);
+      gradFloor.addColorStop(0, "rgba(6, 9, 15, 0.95)");
+      gradFloor.addColorStop(1, "rgba(2, 3, 6, 1.0)");
+      ctx.fillStyle = gradFloor;
+      ctx.fillRect(0, horizonY, width, height - horizonY);
+
+      // Dividing water line
+      ctx.strokeStyle = "rgba(56, 215, 210, 0.12)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, horizonY);
+      ctx.lineTo(width, horizonY);
+      ctx.stroke();
+
+      // Camera transforms
+      const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+      const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+
+      // Scale normalization per attractor
+      let scale = 1.0;
+      let centerZ = 0;
+      if (currentAttractor === 'aizawa') {
+        scale = 220 * zoom;
+        centerZ = 0.5;
+      } else if (currentAttractor === 'lorenz') {
+        scale = 12 * zoom;
+        centerZ = 24.0;
+      } else if (currentAttractor === 'thomas') {
+        scale = 80 * zoom;
+        centerZ = 0;
+      } else if (currentAttractor === 'halvorsen') {
+        scale = 28 * zoom;
+        centerZ = -1.5;
+      }
+
+      const cx = width * 0.5;
+      const cy = height * 0.40;
+
+      const pal = palettes[palIdx];
+
+      // Draw points: main sculpture and floor reflection
+      const imgData = ctx.getImageData(0, 0, width * dpr, height * dpr);
+      const data = imgData.data;
+      const stride = (width * dpr) * 4;
+
+      for (let i = 0; i < NUM_PARTICLES; i++) {
+        const idx = i * 3;
+        let px = particles[idx];
+        let py = particles[idx + 1];
+        let pz = particles[idx + 2] - centerZ;
+
+        // 3D rotation (Y then X)
+        let x1 = px * cosY - pz * sinY;
+        let z1 = px * sinY + pz * cosY;
+
+        let y2 = py * cosX - z1 * sinX;
+        let z2 = py * sinX + z1 * cosX;
+
+        // Perspective
+        const cameraDist = 800;
+        const depth = (cameraDist + z2 * (scale * 0.05)) / cameraDist;
+        if (depth <= 0.1) continue;
+
+        const screenX = Math.floor((cx + (x1 * scale) / depth) * dpr);
+        const screenY = Math.floor((cy - (y2 * scale) / depth) * dpr);
+
+        // Color interpolation by radius and age
+        const rad = Math.hypot(px, py, pz);
+        const tColor = Math.sin(rad * 0.8 + i * 0.001) * 0.5 + 0.5;
+        const cr = Math.floor(pal.c1[0] * (1 - tColor) + pal.c2[0] * tColor);
+        const cg = Math.floor(pal.c1[1] * (1 - tColor) + pal.c2[1] * tColor);
+        const cb = Math.floor(pal.c1[2] * (1 - tColor) + pal.c2[2] * tColor);
+
+        // Draw primary point
+        if (screenX >= 0 && screenX < width * dpr && screenY >= 0 && screenY < height * dpr) {
+          const pIndex = screenY * stride + screenX * 4;
+          data[pIndex] = Math.min(255, data[pIndex] + cr * 0.35);
+          data[pIndex + 1] = Math.min(255, data[pIndex + 1] + cg * 0.35);
+          data[pIndex + 2] = Math.min(255, data[pIndex + 2] + cb * 0.35);
+          data[pIndex + 3] = 255;
+        }
+
+        // Draw reflection below horizon
+        const screenHorizonY = Math.floor(horizonY * dpr);
+        const distFromHoriz = screenHorizonY - screenY;
+        const refY = screenHorizonY + Math.floor(distFromHoriz * 0.72 + Math.sin(screenX * 0.03 + time * 0.003) * 3);
+
+        if (refY > screenHorizonY && refY < height * dpr && screenX >= 0 && screenX < width * dpr) {
+          const refIndex = refY * stride + screenX * 4;
+          data[refIndex] = Math.min(255, data[refIndex] + cr * 0.08);
+          data[refIndex + 1] = Math.min(255, data[refIndex + 1] + cg * 0.08);
+          data[refIndex + 2] = Math.min(255, data[refIndex + 2] + cb * 0.08);
+          data[refIndex + 3] = 255;
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+
+      // Atmospheric spotlight
+      const spot = ctx.createRadialGradient(cx, 0, 20, cx, cy, Math.max(width, height) * 0.7);
+      spot.addColorStop(0, "rgba(255, 255, 255, 0.05)");
+      spot.addColorStop(0.4, "rgba(56, 215, 210, 0.015)");
+      spot.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = spot;
+      ctx.fillRect(0, 0, width, height);
+
+      requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame(render);
+  </script>
+</body>
+</html>

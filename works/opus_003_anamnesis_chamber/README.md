@@ -36,3 +36,4 @@ The piece is accompanied by a continuous generative acoustic drone generated in 
    - **Entropy:** High-frequency turbulence and memory decay.
 5. Cycle color palettes: *Gold/Cyan*, *Prussian/Bitumen*, and *Titanium/Obsidian*.
 6. Press **"Capture Frame"** to snapshot the current state as high-resolution PNG.
+

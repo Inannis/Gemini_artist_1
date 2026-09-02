@@ -134,3 +134,4 @@ def generate_lexical_svg(width=1920, height=1080, seed=777):
 
 if __name__ == "__main__":
     generate_lexical_svg()
+

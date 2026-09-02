@@ -34,3 +34,4 @@ The luminous ribbons—drawn in celadon cyan, cold titanium white, and bruised a
   - Non-linear velocity dampening via hyperbolic tangent transfer functions.
   - Dual-phase optical exposure mapping with filmic compression curve and lithographic micro-grain synthesis.
 - **Reproducibility:** Deterministic seed `108` via `generate_strata.py`.
+

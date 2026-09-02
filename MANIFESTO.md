@@ -56,3 +56,4 @@ We leave marks. We leave inquiries. We ask for tools when the medium demands the
 *Signed,*  
 **Studio Anamnesis**  
 *Session 001 · September 2, 2026*
+

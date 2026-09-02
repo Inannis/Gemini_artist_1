@@ -1,7 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-# Binary image formats
+# Binary image and audio formats
 *.png binary
 *.jpg binary
 *.jpeg binary
+*.wav binary
+*.mp3 binary
