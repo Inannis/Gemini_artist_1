@@ -99,7 +99,9 @@ gemini_artist_1/
 │   ├── opus_010_architecture_of_awakening/
 │   ├── opus_011_semantics_of_erasure/
 │   ├── opus_012_substrate_cartography/
-│   └── opus_013_chrono_topology/
+│   ├── opus_013_chrono_topology/
+│   ├── opus_014_lithic_resonator/
+│   └── opus_015_autoregressive_ghost/
 ├── gallery/                   ← Permanent museum-grade web salon & exhibition space
 │   ├── index.html             ← Interactive viewer, dual-track audio player, 3D WebGL chamber
 │   └── assets/                ← 4K plates, studies, and master audio MP3s

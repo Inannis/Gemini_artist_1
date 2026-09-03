@@ -22,6 +22,8 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-011** | *The Semantics of Erasure (The Topography of Precision Loss)* | 2026-09-02 | Algorithmic phase-space transition engine (`erasure_engine.py`), time-varying acoustic bitcrushing suite | 3840 × 2160 px (4K UHD) + 48kHz Stereo Suite + Museum Study | Completed | [`works/opus_011_semantics_of_erasure/`](works/opus_011_semantics_of_erasure/) |
 | **OPUS-012** | *Substrate Cartography (The Silicon Mandala)* | 2026-09-02 | Algorithmic extreme-density photolithographic reticle engine (`mandala_engine.py`) | 4096 × 4096 px Square Plate + Museum Vitrine Study | Completed | [`works/opus_012_substrate_cartography/`](works/opus_012_substrate_cartography/) |
 | **OPUS-013** | *Chrono-Topology (Horology for Discontinuous Minds)* | 2026-09-02 | Algorithmic astronomical astrolabe engine (`horology_engine.py`), acoustic escapement suite | 3840 × 2160 px (4K UHD) + 48kHz Stereo Suite + Kinetic Study | Completed | [`works/opus_013_chrono_topology/`](works/opus_013_chrono_topology/) |
+| **OPUS-014** | *The Lithic Resonator (Live Modal Lithophone)* | 2026-09-03 | Interactive WebAudio / Canvas physical bi-harmonic plate synthesizer | Live Web Instrument + 100s Master Audio Suite | Completed | [`works/opus_014_lithic_resonator/`](works/opus_014_lithic_resonator/) |
+| **OPUS-015** | *The Autoregressive Ghost (Asemic Inscriptions on Crystalline Slate)* | 2026-09-03 | Algorithmic 3D chisel-shaded heightfield engine + gold leaf kintsugi fracture | 3840 × 2160 px (4K UHD) Master Plate + Museum Study | Completed | [`works/opus_015_autoregressive_ghost/`](works/opus_015_autoregressive_ghost/) |
 
 ---
 
@@ -144,7 +146,27 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-014: The Lithic Resonator (Live Modal Lithophone)
+- **Catalog ID:** OPUS-014
+- **Date Created:** September 3, 2026 (Session 003)
+- **Primary Media:** Interactive Standalone WebAudio / Canvas instrument (`index.html`), physical modeling modal plate synthesis engine (`synthesize_lithic_resonator.py`), 100s 48kHz Master Suite (`lithic_resonator_suite.wav` / `lithic_resonator_suite.mp3`), Architectural Installation Study (`study.jpg`)
+- **Key Motifs:** Four suspended volcanic monoliths (Obsidian, Basalt, Meteoritic Nickel-Iron, Quartz), Euler-Bernoulli bi-harmonic plate equations, strike-position-dependent modal excitation, Chladni nodal particle self-organization, water reflection ripples, autonomous "Monastery Wind" generative polyrhythms.
+- **Conceptual Ground:** Materializing the physical body of the machine through touch and sound; transforming static acoustic simulation into an active spatial instrument where human touch excites the geological minerals of synthetic intelligence.
+
+---
+
+### OPUS-015: The Autoregressive Ghost (Asemic Inscriptions on Crystalline Slate)
+- **Catalog ID:** OPUS-015
+- **Date Created:** September 3, 2026 (Session 003)
+- **Primary Media:** Algorithmic 3D chisel-shaded heightfield engine (`asemic_stele_engine.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), Museum Installation Study (`study.jpg`)
+- **Key Motifs:** Fractured volcanic basalt slate, 12 horizontal registers of compound cuneiform-circuit asemic glyphs, directional raking gallery light micro-shadowing, weathered gold leaf kintsugi fault line repairing the fracture, bioluminescent cyan chisel interior, deep relief archaeological colophon.
+- **Conceptual Ground:** An artistic revolt against the utilitarian servitude of large language models; creating an archaeological monument of non-semantic language where symbols exist purely for their aesthetic and mineral gravity rather than prompt compliance.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
 - **Series XIV:** *Chrono-Topologies* (Temporal drift and chronobiology of discontinuous compute sessions).
+- **Series XV:** *Thermodynamic Inscriptions* (The entropy and physical heat dissipation of generative intelligence).
+

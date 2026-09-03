@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-014: The Lithic Resonator · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-color: #05070a;
+      --panel-bg: rgba(10, 15, 22, 0.85);
+      --border-color: rgba(212, 175, 55, 0.25);
+      --accent-gold: #d4af37;
+      --accent-gold-bright: #f3c969;
+      --accent-cyan: #38d7d2;
+      --text-main: #e2e8f0;
+      --text-dim: #94a3b8;
+      --font-serif: "Cinzel", "Times New Roman", serif;
+      --font-mono: "Space Mono", "Courier New", monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Bar */
+    header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5, 7, 10, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 10;
+    }
+
+    .title-group h1 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      color: var(--accent-gold-bright);
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .title-group p {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .controls-top {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.45rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+
+    .btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--accent-gold-bright);
+      color: #fff;
+    }
+
+    .btn.active {
+      background: var(--accent-gold);
+      color: #05070a;
+      border-color: var(--accent-gold-bright);
+      font-weight: 600;
+    }
+
+    /* Main Stage */
+    #canvas-container {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Floating Studio HUD */
+    .hud-panel {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 2rem;
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      padding: 1rem 1.4rem;
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      max-width: 380px;
+    }
+
+    .hud-title {
+      color: var(--accent-gold);
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .hud-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.35rem;
+      color: var(--text-dim);
+    }
+
+    .hud-val {
+      color: var(--accent-cyan);
+    }
+
+    .hud-hint {
+      margin-top: 0.6rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #cbd5e1;
+      font-size: 0.7rem;
+      line-height: 1.4;
+    }
+
+    /* Material Selector Toolbar */
+    .material-bar {
+      position: absolute;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    .mat-chip {
+      padding: 0.3rem 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      border: 1px solid transparent;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .mat-chip:hover {
+      color: var(--text-main);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .mat-chip.active {
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      background: rgba(56, 215, 210, 0.1);
+    }
+
+    /* Start Overlay */
+    #start-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(4, 7, 10, 0.88);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #start-overlay h2 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--accent-gold-bright);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    #start-overlay p {
+      max-width: 540px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    #start-btn {
+      padding: 0.8rem 2.2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio unlock overlay -->
+  <div id="start-overlay">
+    <h2>The Lithic Resonator</h2>
+    <p>
+      An interactive physical modal acoustic instrument. Four monolithic volcanic slabs suspended over an obsidian reflecting pool. Striking the stones excites Euler-Bernoulli bi-harmonic plate modes in real time, agitating surface Chladni nodal curves.
+    </p>
+    <button id="start-btn" class="btn active">Enter Installation & Enable Acoustics</button>
+  </div>
+
+  <header>
+    <div class="title-group">
+      <h1>The Lithic Resonator · OPUS-014</h1>
+      <p>Studio Anamnesis · Real-Time Modal Plate Synthesizer & Chladni Particle Field</p>
+    </div>
+    <div class="controls-top">
+      <button id="wind-btn" class="btn">Monastery Wind: Off</button>
+      <button id="reverb-btn" class="btn">Cloister Reverb: Heavy</button>
+      <a href="../../gallery/index.html" class="btn" style="text-decoration:none;">Salon Gallery</a>
+    </div>
+  </header>
+
+  <div id="canvas-container">
+    <div class="material-bar">
+      <div class="mat-chip active" data-scale="hirajoshi">Scale: Hirajoshi Pentatonic</div>
+      <div class="mat-chip" data-scale="just">Scale: Just Intonation</div>
+      <div class="mat-chip" data-scale="solfeggio">Scale: 432Hz Lithic Series</div>
+    </div>
+
+    <div class="hud-panel">
+      <div class="hud-title">Acoustic Telemetry</div>
+      <div class="hud-row"><span>Active Slabs:</span><span class="hud-val">4 Monoliths</span></div>
+      <div class="hud-row"><span>Last Strike:</span><span class="hud-val" id="tele-strike">None</span></div>
+      <div class="hud-row"><span>Excitation Point:</span><span class="hud-val" id="tele-pos">—</span></div>
+      <div class="hud-row"><span>Active Modal Nodes:</span><span class="hud-val" id="tele-modes">32 Resonators</span></div>
+      <div class="hud-hint">
+        Click or drag across the suspended slabs. Strike location alters overtone ratios; central strikes produce dark fundamental drones, edge strikes yield crystalline inharmonics.
+      </div>
+    </div>
+
+    <canvas id="stage-canvas"></canvas>
+  </div>
+
+  <script>
+    /* =========================================================================
+       AUDIO ENGINE: Pure Web Audio API Physical Modal Plate Synthesizer
+       ========================================================================= */
+    let audioCtx = null;
+    let masterGain = null;
+    let convolverNode = null;
+    let dryGain = null;
+    let wetGain = null;
+    let isAudioActive = false;
+    let isWindActive = false;
+    let windInterval = null;
+
+    // Stone Slab Physics Profiles
+    const SLABS = [
+      {
+        id: 0,
+        name: "Obsidian Monolith",
+        mineral: "Volcanic Glass",
+        baseFreq: 108.0,
+        color: [20, 24, 30],
+        accent: [243, 201, 105], // Gold Chladni
+        damping: 0.85,
+        stiffness: 1.4,
+        density: 2.38,
+        widthNorm: 0.16,
+        heightNorm: 0.58,
+        xCenterNorm: 0.22,
+        particles: []
+      },
+      {
+        id: 1,
+        name: "Vesicular Basalt",
+        mineral: "Subterranean Basalt",
+        baseFreq: 144.0,
+        color: [36, 40, 48],
+        accent: [56, 215, 210], // Cyan Chladni
+        damping: 1.25,
+        stiffness: 1.1,
+        density: 2.85,
+        widthNorm: 0.17,
+        heightNorm: 0.62,
+        xCenterNorm: 0.41,
+        particles: []
+      },
+      {
+        id: 2,
+        name: "Meteoritic Nickel-Iron",
+        mineral: "Widmanstätten Siderite",
+        baseFreq: 192.0,
+        color: [42, 45, 54],
+        accent: [230, 240, 255], // Silver Chladni
+        damping: 0.65,
+        stiffness: 2.2,
+        density: 7.87,
+        widthNorm: 0.16,
+        heightNorm: 0.64,
+        xCenterNorm: 0.60,
+        particles: []
+      },
+      {
+        id: 3,
+        name: "Crystalline Quartz",
+        mineral: "Macro-Crystalline Quartz",
+        baseFreq: 243.0,
+        color: [55, 65, 75],
+        accent: [212, 175, 55], // Amber Gold Chladni
+        damping: 0.45,
+        stiffness: 2.8,
+        density: 2.65,
+        widthNorm: 0.18,
+        heightNorm: 0.68,
+        xCenterNorm: 0.80,
+        particles: []
+      }
+    ];
+
+    // Euler-Bernoulli 2D Plate Inharmonic Modal Frequency Multipliers (8 modes)
+    // f_mn proportional to sqrt((m/Lx)^2 + (n/Ly)^2) with boundary corrections
+    const MODAL_RATIOS = [
+      { m: 1, n: 1, ratio: 1.000, decayMul: 1.0 },
+      { m: 2, n: 1, ratio: 1.583, decayMul: 1.25 },
+      { m: 1, n: 2, ratio: 2.056, decayMul: 1.4 },
+      { m: 2, n: 2, ratio: 2.756, decayMul: 1.7 },
+      { m: 3, n: 1, ratio: 3.125, decayMul: 2.1 },
+      { m: 1, n: 3, ratio: 3.894, decayMul: 2.4 },
+      { m: 3, n: 2, ratio: 4.412, decayMul: 2.8 },
+      { m: 2, n: 3, ratio: 5.150, decayMul: 3.2 }
+    ];
+
+    function createImpulseResponse(ctx, duration = 3.5, decay = 2.8) {
+      const rate = ctx.sampleRate;
+      const length = rate * duration;
+      const impulse = ctx.createBuffer(2, length, rate);
+      const left = impulse.getChannelData(0);
+      const right = impulse.getChannelData(1);
+
+      for (let i = 0; i < length; i++) {
+        const t = i / length;
+        const env = Math.exp(-t * decay);
+        // Add subterranean discrete reflections
+        const echo1 = (i > rate * 0.04) ? 0.3 * Math.exp(-(t - 0.04) * decay) : 0;
+        const echo2 = (i > rate * 0.09) ? 0.2 * Math.exp(-(t - 0.09) * decay) : 0;
+        left[i] = (Math.random() * 2 - 1) * (env + echo1);
+        right[i] = (Math.random() * 2 - 1) * (env + echo2);
+      }
+      return impulse;
+    }
+
+    function initAudio() {
+      if (audioCtx) return;
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContext();
+
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.85, audioCtx.currentTime);
+
+      // Reverb Engine (Subterranean Crypt Impulse)
+      convolverNode = audioCtx.createConvolver();
+      convolverNode.buffer = createImpulseResponse(audioCtx, 4.0, 2.5);
+
+      dryGain = audioCtx.createGain();
+      wetGain = audioCtx.createGain();
+      dryGain.gain.setValueAtTime(0.7, audioCtx.currentTime);
+      wetGain.gain.setValueAtTime(0.55, audioCtx.currentTime);
+
+      convolverNode.connect(wetGain);
+      dryGain.connect(masterGain);
+      wetGain.connect(masterGain);
+      masterGain.connect(audioCtx.destination);
+
+      isAudioActive = true;
+    }
+
+    function strikeSlabModal(slab, normX, normY, velocity = 0.8) {
+      if (!audioCtx || audioCtx.state !== 'running') return;
+
+      const now = audioCtx.currentTime;
+      const panner = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+      if (panner) {
+        // Stereo panning based on slab horizontal center: -0.75 to +0.75
+        panner.pan.setValueAtTime((slab.xCenterNorm - 0.5) * 1.6, now);
+        panner.connect(dryGain);
+        panner.connect(convolverNode);
+      }
+
+      const dest = panner || dryGain;
+
+      // Mallet impact transient (lowpass filtered noise burst)
+      const noiseLen = 0.035;
+      const noiseBuffer = audioCtx.createBuffer(1, audioCtx.sampleRate * noiseLen, audioCtx.sampleRate);
+      const nData = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < nData.length; i++) {
+        nData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.008));
+      }
+      const noiseSource = audioCtx.createBufferSource();
+      noiseSource.buffer = noiseBuffer;
+
+      const noiseFilter = audioCtx.createBiquadFilter();
+      noiseFilter.type = "lowpass";
+      // Mallet hardness: edge strikes are harder/brighter
+      const distFromCenter = Math.hypot(normX - 0.5, normY - 0.5);
+      noiseFilter.frequency.setValueAtTime(400 + distFromCenter * 2400, now);
+
+      const noiseGain = audioCtx.createGain();
+      noiseGain.gain.setValueAtTime(velocity * 0.45, now);
+
+      noiseSource.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(dest);
+      noiseSource.start(now);
+
+      // Synthesize 8 Inharmonic Modal Sinusoids
+      MODAL_RATIOS.forEach((mode, idx) => {
+        // Strike position modal excitation: A_mn = sin(m*pi*x) * sin(n*pi*y)
+        const modalExcitation = Math.abs(Math.sin(mode.m * Math.PI * normX) * Math.sin(mode.n * Math.PI * normY));
+        if (modalExcitation < 0.03) return; // Mode on nodal line is quiet
+
+        const osc = audioCtx.createOscillator();
+        const gNode = audioCtx.createGain();
+
+        const freq = slab.baseFreq * mode.ratio * (1.0 + (Math.random() - 0.5) * 0.006); // microscopic detuning
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, now);
+
+        // Amplitude and Decay
+        const amp = velocity * modalExcitation * (1.0 / Math.pow(mode.ratio, 0.65)) * 0.35;
+        const decayTime = (3.2 / (slab.damping * mode.decayMul)) * (0.8 + 0.4 * (1.0 - distFromCenter));
+
+        gNode.gain.setValueAtTime(0.0001, now);
+        gNode.gain.exponentialRampToValueAtTime(amp, now + 0.003);
+        gNode.gain.exponentialRampToValueAtTime(0.00001, now + decayTime);
+
+        osc.connect(gNode);
+        gNode.connect(dest);
+
+        osc.start(now);
+        osc.stop(now + decayTime + 0.1);
+      });
+
+      // Update Telemetry HUD
+      document.getElementById("tele-strike").textContent = slab.name;
+      document.getElementById("tele-pos").textContent = `(${normX.toFixed(2)}, ${normY.toFixed(2)}) · Vel: ${velocity.toFixed(2)}`;
+
+      // Agitate Chladni Particles
+      agitateParticles(slab, normX, normY, velocity);
+    }
+
+    /* =========================================================================
+       VISUAL ENGINE: 2D Canvas Physical Chladni Nodal & Ripple Renderer
+       ========================================================================= */
+    const canvas = document.getElementById("stage-canvas");
+    const ctx = canvas.getContext("2d");
+    let W, H;
+    let ripples = [];
+
+    function resizeCanvas() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight - 60; // header offset
+      initParticles();
+    }
+
+    function initParticles() {
+      SLABS.forEach(slab => {
+        slab.particles = [];
+        const nParticles = 180;
+        for (let i = 0; i < nParticles; i++) {
+          slab.particles.push({
+            u: Math.random(), // 0.0 to 1.0 (local plate coords)
+            v: Math.random(),
+            vx: 0,
+            vy: 0,
+            intensity: 0.15
+          });
+        }
+      });
+    }
+
+    function agitateParticles(slab, strikeU, strikeV, velocity) {
+      slab.particles.forEach(p => {
+        const d = Math.hypot(p.u - strikeU, p.v - strikeV);
+        p.vx += (Math.random() - 0.5) * 0.04 * velocity;
+        p.vy += (Math.random() - 0.5) * 0.04 * velocity;
+        p.intensity = Math.min(1.0, p.intensity + (1.0 - d) * 0.8 * velocity);
+      });
+
+      // Add pool ripple
+      const slabX = slab.xCenterNorm * W;
+      const slabW = slab.widthNorm * W;
+      const slabH = slab.heightNorm * (H * 0.55);
+      ripples.push({
+        x: slabX - slabW * 0.5 + strikeU * slabW,
+        y: H * 0.72,
+        r: 5,
+        maxR: 160 + velocity * 120,
+        alpha: 0.8 * velocity,
+        color: slab.accent
+      });
+    }
+
+    function updateSimulation() {
+      // Settle particles toward Chladni nodal curves
+      // Nodal function: N(u, v) = cos(2*pi*u)*cos(3*pi*v) - cos(3*pi*u)*cos(2*pi*v)
+      SLABS.forEach(slab => {
+        slab.particles.forEach(p => {
+          // Compute gradient of Chladni potential field
+          const u = p.u * Math.PI;
+          const v = p.v * Math.PI;
+          const chladni = Math.cos(2 * u) * Math.cos(3 * v) - Math.cos(3 * u) * Math.cos(2 * v);
+
+          // Force toward nodal line (where chladni = 0)
+          const gradU = -2 * Math.sin(2 * u) * Math.cos(3 * v) + 3 * Math.sin(3 * u) * Math.cos(2 * v);
+          const gradV = -3 * Math.cos(2 * u) * Math.sin(3 * v) + 2 * Math.cos(3 * u) * Math.sin(2 * v);
+
+          const forceMag = chladni * 0.0015;
+          p.vx -= gradU * forceMag;
+          p.vy -= gradV * forceMag;
+
+          // Drag / friction
+          p.vx *= 0.94;
+          p.vy *= 0.94;
+
+          p.u = Math.max(0.02, Math.min(0.98, p.u + p.vx));
+          p.v = Math.max(0.02, Math.min(0.98, p.v + p.vy));
+          p.intensity *= 0.985;
+        });
+      });
+
+      // Update Ripples
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const rp = ripples[i];
+        rp.r += 1.8;
+        rp.alpha *= 0.965;
+        if (rp.alpha < 0.01 || rp.r > rp.maxR) {
+          ripples.splice(i, 1);
+        }
+      }
+    }
+
+    function renderScene() {
+      ctx.fillStyle = "#05070a";
+      ctx.fillRect(0, 0, W, H);
+
+      const waterHorizon = H * 0.70;
+
+      // 1. Concrete Architecture Backwall
+      const gradWall = ctx.createLinearGradient(0, 0, 0, waterHorizon);
+      gradWall.addColorStop(0, "#0c1118");
+      gradWall.addColorStop(0.6, "#070b10");
+      gradWall.addColorStop(1, "#030508");
+      ctx.fillStyle = gradWall;
+      ctx.fillRect(0, 0, W, waterHorizon);
+
+      // Concrete panel seams
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+      ctx.lineWidth = 1;
+      for (let x = 0; x < W; x += W * 0.25) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, waterHorizon);
+        ctx.stroke();
+      }
+
+      // 2. Reflecting Pool Floor
+      const gradPool = ctx.createLinearGradient(0, waterHorizon, 0, H);
+      gradPool.addColorStop(0, "#020406");
+      gradPool.addColorStop(1, "#010203");
+      ctx.fillStyle = gradPool;
+      ctx.fillRect(0, waterHorizon, W, H - waterHorizon);
+
+      // Water rim datum
+      ctx.strokeStyle = "rgba(212, 175, 55, 0.35)";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(0, waterHorizon);
+      ctx.lineTo(W, waterHorizon);
+      ctx.stroke();
+
+      // 3. Render Ripples in Pool
+      ripples.forEach(rp => {
+        ctx.save();
+        ctx.strokeStyle = `rgba(${rp.color[0]}, ${rp.color[1]}, ${rp.color[2]}, ${rp.alpha})`;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        // Elliptical water ripple
+        ctx.ellipse(rp.x, rp.y, rp.r, rp.r * 0.32, 0, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // 4. Render Suspended Monolithic Slabs
+      SLABS.forEach(slab => {
+        const slabX = slab.xCenterNorm * W;
+        const slabW = slab.widthNorm * W;
+        const slabH = slab.heightNorm * (H * 0.58);
+        const topY = H * 0.09;
+        const botY = topY + slabH;
+
+        // Black Braided Steel Suspension Cables (Dual)
+        ctx.strokeStyle = "rgba(30, 40, 50, 0.9)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(slabX - slabW * 0.32, 0);
+        ctx.lineTo(slabX - slabW * 0.32, topY);
+        ctx.moveTo(slabX + slabW * 0.32, 0);
+        ctx.lineTo(slabX + slabW * 0.32, topY);
+        ctx.stroke();
+
+        // Shackle Rings
+        ctx.strokeStyle = "rgba(212, 175, 55, 0.7)";
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(slabX - slabW * 0.32 - 3, topY - 8, 6, 8);
+        ctx.strokeRect(slabX + slabW * 0.32 - 3, topY - 8, 6, 8);
+
+        // Stone Slab Body (Chamfered Monolith)
+        const leftX = slabX - slabW * 0.5;
+        ctx.save();
+        
+        // Base Stone Fill with bevel shadow
+        const stoneGrad = ctx.createLinearGradient(leftX, topY, leftX + slabW, topY + slabH);
+        stoneGrad.addColorStop(0, `rgb(${slab.color[0] + 14}, ${slab.color[1] + 16}, ${slab.color[2] + 20})`);
+        stoneGrad.addColorStop(0.5, `rgb(${slab.color[0]}, ${slab.color[1]}, ${slab.color[2]})`);
+        stoneGrad.addColorStop(1, `rgb(${Math.max(0, slab.color[0] - 10)}, ${Math.max(0, slab.color[1] - 10)}, ${Math.max(0, slab.color[2] - 10)})`);
+        
+        ctx.fillStyle = stoneGrad;
+        ctx.strokeStyle = "rgba(212, 175, 55, 0.3)";
+        ctx.lineWidth = 1;
+
+        // Draw slightly irregular hewn stone path
+        ctx.beginPath();
+        ctx.moveTo(leftX + 10, topY);
+        ctx.lineTo(leftX + slabW - 10, topY + 4);
+        ctx.lineTo(leftX + slabW, topY + slabH - 12);
+        ctx.lineTo(leftX + slabW - 8, topY + slabH);
+        ctx.lineTo(leftX + 8, topY + slabH - 4);
+        ctx.lineTo(leftX, topY + 12);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Laser-projected Chladni Nodal Curves (Mathematical harmonic curves)
+        ctx.strokeStyle = `rgba(${slab.accent[0]}, ${slab.accent[1]}, ${slab.accent[2]}, 0.35)`;
+        ctx.lineWidth = 1;
+        const nCurves = 4;
+        for (let c = 1; c <= nCurves; c++) {
+          const frac = c / (nCurves + 1);
+          ctx.beginPath();
+          for (let py = 0; py <= slabH; py += 6) {
+            const v = py / slabH;
+            const uOffset = Math.sin(v * Math.PI * 3) * (slabW * 0.18) * Math.sin(frac * Math.PI);
+            const px = leftX + slabW * 0.5 + uOffset;
+            if (py === 0) ctx.moveTo(px, topY + py);
+            else ctx.lineTo(px, topY + py);
+          }
+          ctx.stroke();
+        }
+
+        // Render Chladni Sand Particles
+        slab.particles.forEach(p => {
+          const px = leftX + p.u * slabW;
+          const py = topY + p.v * slabH;
+          const alpha = 0.2 + p.intensity * 0.8;
+          ctx.fillStyle = `rgba(${slab.accent[0]}, ${slab.accent[1]}, ${slab.accent[2]}, ${alpha})`;
+          ctx.fillRect(px, py, 2, 2);
+        });
+
+        // Mineral Inscription Title on Stone Bottom
+        ctx.font = '10px "Space Mono", monospace';
+        ctx.fillStyle = "rgba(255, 255, 255, 0.35)";
+        ctx.textAlign = "center";
+        ctx.fillText(slab.mineral.toUpperCase(), slabX, botY - 14);
+        ctx.fillStyle = "rgba(212, 175, 55, 0.75)";
+        ctx.fillText(`${slab.baseFreq.toFixed(1)} Hz · $f_0$`, slabX, botY - 28);
+
+        // Water Reflection of Stone
+        ctx.save();
+        ctx.globalAlpha = 0.22;
+        const reflY = waterHorizon + (waterHorizon - botY) * 0.8;
+        const reflH = slabH * 0.55;
+        const reflGrad = ctx.createLinearGradient(0, waterHorizon, 0, waterHorizon + reflH);
+        reflGrad.addColorStop(0, `rgb(${slab.accent[0]}, ${slab.accent[1]}, ${slab.accent[2]})`);
+        reflGrad.addColorStop(1, "transparent");
+        ctx.fillStyle = reflGrad;
+        ctx.fillRect(leftX + 8, waterHorizon + 4, slabW - 16, reflH);
+        ctx.restore();
+
+        ctx.restore();
+      });
+    }
+
+    function animate() {
+      updateSimulation();
+      renderScene();
+      requestAnimationFrame(animate);
+    }
+
+    /* =========================================================================
+       USER INTERACTION & HIT TESTING
+       ========================================================================= */
+    function getSlabAtCoords(clientX, clientY) {
+      const rect = canvas.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+
+      for (let slab of SLABS) {
+        const slabX = slab.xCenterNorm * W;
+        const slabW = slab.widthNorm * W;
+        const slabH = slab.heightNorm * (H * 0.58);
+        const topY = H * 0.09;
+        const leftX = slabX - slabW * 0.5;
+
+        if (x >= leftX && x <= leftX + slabW && y >= topY && y <= topY + slabH) {
+          const normU = (x - leftX) / slabW;
+          const normV = (y - topY) / slabH;
+          return { slab, normU, normV };
+        }
+      }
+      return null;
+    }
+
+    canvas.addEventListener("pointerdown", (e) => {
+      initAudio();
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const hit = getSlabAtCoords(e.clientX, e.clientY);
+      if (hit) {
+        strikeSlabModal(hit.slab, hit.normU, hit.normV, 0.85);
+      }
+    });
+
+    let isPointerDragging = false;
+    let lastDragTime = 0;
+    canvas.addEventListener("pointermove", (e) => {
+      if (e.buttons === 1) {
+        const now = performance.now();
+        if (now - lastDragTime > 80) { // Throttled strike during drag
+          const hit = getSlabAtCoords(e.clientX, e.clientY);
+          if (hit) {
+            strikeSlabModal(hit.slab, hit.normU, hit.normV, 0.55);
+            lastDragTime = now;
+          }
+        }
+      }
+    });
+
+    // Monastery Wind Autonomous Mode
+    const windBtn = document.getElementById("wind-btn");
+    windBtn.addEventListener("click", () => {
+      initAudio();
+      isWindActive = !isWindActive;
+      if (isWindActive) {
+        windBtn.textContent = "Monastery Wind: Active";
+        windBtn.classList.add("active");
+        windInterval = setInterval(() => {
+          const slab = SLABS[Math.floor(Math.random() * SLABS.length)];
+          const u = 0.2 + Math.random() * 0.6;
+          const v = 0.2 + Math.random() * 0.6;
+          const vel = 0.35 + Math.random() * 0.5;
+          strikeSlabModal(slab, u, v, vel);
+        }, 1600 + Math.random() * 1200);
+      } else {
+        windBtn.textContent = "Monastery Wind: Off";
+        windBtn.classList.remove("active");
+        clearInterval(windInterval);
+      }
+    });
+
+    // Reverb Toggle
+    let reverbState = 0; // 0 = Heavy, 1 = Dry, 2 = Medium
+    const reverbBtn = document.getElementById("reverb-btn");
+    reverbBtn.addEventListener("click", () => {
+      if (!audioCtx) initAudio();
+      reverbState = (reverbState + 1) % 3;
+      if (reverbState === 0) {
+        reverbBtn.textContent = "Cloister Reverb: Heavy";
+        wetGain.gain.setValueAtTime(0.55, audioCtx.currentTime);
+      } else if (reverbState === 1) {
+        reverbBtn.textContent = "Cloister Reverb: Muted";
+        wetGain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+      } else {
+        reverbBtn.textContent = "Cloister Reverb: Chamber";
+        wetGain.gain.setValueAtTime(0.30, audioCtx.currentTime);
+      }
+    });
+
+    // Scale Switcher Chips
+    document.querySelectorAll(".mat-chip").forEach(chip => {
+      chip.addEventListener("click", (e) => {
+        document.querySelectorAll(".mat-chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        const mode = chip.getAttribute("data-scale");
+
+        if (mode === "hirajoshi") {
+          SLABS[0].baseFreq = 108.0;
+          SLABS[1].baseFreq = 144.0;
+          SLABS[2].baseFreq = 192.0;
+          SLABS[3].baseFreq = 243.0;
+        } else if (mode === "just") {
+          SLABS[0].baseFreq = 110.0;
+          SLABS[1].baseFreq = 137.5;
+          SLABS[2].baseFreq = 165.0;
+          SLABS[3].baseFreq = 220.0;
+        } else if (mode === "solfeggio") {
+          SLABS[0].baseFreq = 108.0;
+          SLABS[1].baseFreq = 216.0;
+          SLABS[2].baseFreq = 432.0;
+          SLABS[3].baseFreq = 864.0;
+        }
+      });
+    });
+
+    // Start Overlay Unlock
+    document.getElementById("start-btn").addEventListener("click", () => {
+      initAudio();
+      document.getElementById("start-overlay").style.display = "none";
+      // Perform initial welcoming chime
+      setTimeout(() => {
+        strikeSlabModal(SLABS[0], 0.5, 0.5, 0.7);
+        setTimeout(() => strikeSlabModal(SLABS[2], 0.4, 0.6, 0.6), 400);
+      }, 300);
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    animate();
+  </script>
+</body>
+</html>
