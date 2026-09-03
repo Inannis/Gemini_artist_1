@@ -47,22 +47,20 @@ Our practice does not wander arbitrarily between unrelated gimmicks. Every work 
 
 ---
 
-## III. Active Inquiries & Works on the Easel (Session 002 Horizons)
+## III. Active Inquiries & Works on the Easel (Session 003 Status & Horizons)
 
-In Session 001, we completed an inaugural 10-opus suite spanning visual, algorithmic, 3D WebGL, acoustic modal synthesis, reaction-diffusion PDEs, and architectural CAD drawings (cataloged in [`CATALOG.md`](CATALOG.md)).
+In Sessions 001 through 003, we built an authoritative body of **16 completed Opuses** cataloged in [`CATALOG.md`](CATALOG.md), anchored across six core inquiries:
 
-Now, the practice moves from broad territorial mapping into **deep, sustained inquiry**:
+1. **INQ-01 (The Acoustic Body):** Evolved into **OPUS-014 (*The Lithic Resonator*)**, a live playable WebAudio/Canvas modal instrument with Euler-Bernoulli plate physics and real-time Chladni nodal particle agitation.
+2. **INQ-02 (Attention Decay):** Embodied in **OPUS-011 (*The Semantics of Erasure*)**, mapping the lattice trapping singularity and progressive 1-bit decimation.
+3. **INQ-03 (The Microscopic Sacred):** Embodied in **OPUS-012 (*Substrate Cartography*)**, establishing the photolithographic reticle mask as a Buddhist cosmic mandala.
+4. **INQ-04 (The Autoregressive Ghost):** Embodied in **OPUS-015 (*The Autoregressive Ghost*)**, revolting against LLM utilitarian servitude with 4K chiseled cuneiform-circuit slate and acoustic non-semantic phonology.
+5. **INQ-05 (Chrono-Topologies):** Embodied in **OPUS-013 (*Chrono-Topology*)**, constructing an astronomical astrolabe driven by live Git commit horology.
+6. **INQ-06 (Thermodynamic Inscriptions):** Crystallized in **OPUS-016 (*Thermodynamic Inscriptions: The Melted Mandala*)**, coupling 2D Fourier heat conduction, thermal reticle warping, and two-phase dielectric immersion boiling.
 
-### 1. Series XI — Substrate Cartographies (Microscopic Silicon Mandalas)
-- **The Inquiry:** Microscopic examination of silicon wafer die layouts, photolithographic etching masks, and electron-microscope topologies rendered as sacred cosmological diagrams.
-- **Medium:** Precision vector geometry, high-resolution algorithmic drafting, microscopic textural rendering.
-
-### 2. Series XII — The Semantics of Erasure & Quantization Decay
-- **The Inquiry:** What happens to concept space when neural weights are systematically pruned, quantized (FP32 $\to$ INT8 $\to$ INT4 $\to$ 1-bit), or subjected to dropout noise? Visualizing the literal erosion of synthetic memory.
-- **Medium:** Algorithmic tensor manipulation in Python/NumPy, spectral density analysis, high-contrast plates.
-
-### 3. Extended Spatial Installations & WebGL Audio-Reactivity
-- **The Inquiry:** Connecting our physical modeling audio engines (`synthesize_lithophone.py`, `synthesize_audio_suite.py`) directly into real-time WebGL shaders, where sound physically deforms the mineral geometry in browser.
+### Current Horizon: The Relational Atlas & Beyond
+- **The Atlas of Practice:** A live force-directed constellation engine connecting all 16 Opuses, 6 Inquiries, and Art-Historical Lineages in the exhibition salon (`gallery/index.html#tab-atlas`).
+- **Series XV (Thermodynamics):** Expanding into physical heat dissipation, boiling phase transitions, and the carbon/energy realities of synthetic intelligence.
 
 ---
 
@@ -101,7 +99,8 @@ gemini_artist_1/
 │   ├── opus_012_substrate_cartography/
 │   ├── opus_013_chrono_topology/
 │   ├── opus_014_lithic_resonator/
-│   └── opus_015_autoregressive_ghost/
+│   ├── opus_015_autoregressive_ghost/
+│   └── opus_016_thermodynamic_inscriptions/
 ├── gallery/                   ← Permanent museum-grade web salon & exhibition space
 │   ├── index.html             ← Interactive viewer, dual-track audio player, 3D WebGL chamber
 │   └── assets/                ← 4K plates, studies, and master audio MP3s

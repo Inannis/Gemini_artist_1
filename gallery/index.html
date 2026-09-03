@@ -470,6 +470,7 @@
     </div>
     <nav>
       <button class="active" onclick="showTab('works')">The Works</button>
+      <button onclick="showTab('atlas')">Practice Atlas</button>
       <button onclick="showTab('lithic')">Lithic Resonator</button>
       <button onclick="showTab('chamber')">Interactive Chamber</button>
       <button onclick="showTab('attractors')">3D Attractors</button>
@@ -1074,6 +1075,43 @@
               <a href="assets/opus_015_study.jpg" target="_blank" class="btn-action">Museum Stele Study</a>
               <a href="../works/opus_015_autoregressive_ghost/README.md" class="btn-action">Statement</a>
             </div>
+        <!-- OPUS-016 -->
+        <article class="work-card">
+          <div class="work-preview">
+            <img src="assets/opus_016.png" alt="OPUS-016 Thermodynamic Inscriptions (The Melted Mandala)" loading="lazy">
+          </div>
+          <div class="work-info">
+            <div>
+              <div class="opus-id">OPUS-016 · SERIES XV</div>
+              <h3>Thermodynamic Inscriptions (The Melted Mandala / Thermal Attention)</h3>
+              <p>
+                Unmasking the brutal physical heat of artificial contemplation. The pristine semiconductor reticle of OPUS-012 animated under full matrix multiplication load (100,000 MACs/cycle). Concentric Torana courts thermally soften and warp under 2D Navier-Stokes convective plumes, while the wafer boils clear dielectric fluorochemical liquid inside a transparent museum vitrine at 94.5°C.
+              </p>
+            </div>
+            <div class="spec-table">
+              <div class="spec-row">
+                <span class="spec-label">Date Created</span>
+                <span class="spec-val">2026-09-03 (Session 003)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-val">thermal_mandala_engine.py (Coupled 2D Heat PDE + Reticle Warping)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Inquiry</span>
+                <span class="spec-val">INQ-06: Thermodynamic Inscriptions</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Format</span>
+                <span class="spec-val">3840 × 2160 UHD Master Plate + 100s Immersion Audio + Vitrine Study</span>
+              </div>
+            </div>
+            <div class="work-actions">
+              <a href="assets/opus_016.png" target="_blank" class="btn-action highlight">Open 4K Master Plate</a>
+              <a href="assets/opus_016_study.jpg" target="_blank" class="btn-action">Immersion Vitrine Study</a>
+              <button class="btn-action" onclick="playTrack(6)">Play Boiling Audio</button>
+              <a href="../works/opus_016_thermodynamic_inscriptions/README.md" class="btn-action">Statement</a>
+            </div>
           </div>
         </article>
 
@@ -1116,6 +1154,27 @@
       </div>
       <div class="chamber-frame-wrapper">
         <iframe src="../works/opus_006_topology_of_memory/index.html"></iframe>
+      </div>
+    </section>
+
+    <!-- TAB: ATLAS OF PRACTICE -->
+    <section id="tab-atlas" class="tab-content">
+      <div class="hero-intro" style="margin-bottom: 1.5rem;">
+        <h2>The Atlas of Practice</h2>
+        <p>
+          An interactive relational constellation tracing the causal links between all 15 Opuses, 6 Core Inquiries, and Art-Historical Ancestors. Drag nodes to reshape the field; hover to illuminate causal filaments; click to inspect details.
+        </p>
+      </div>
+      <div style="position: relative; width: 100%; height: 78vh; background: #04070a; border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden;">
+        <canvas id="atlas-canvas" style="width: 100%; height: 100%; display: block; cursor: grab;"></canvas>
+        <div id="atlas-hud" style="position: absolute; bottom: 1.5rem; right: 2rem; background: rgba(10,15,22,0.88); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: 4px; max-width: 320px; font-family: var(--font-mono); font-size: 0.75rem; backdrop-filter: blur(8px); display: none;">
+          <div id="atlas-hud-type" style="color: var(--accent-gold); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem;">Type</div>
+          <h4 id="atlas-hud-title" style="font-family: var(--font-serif); font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">Title</h4>
+          <p id="atlas-hud-desc" style="color: var(--text-dim); line-height: 1.4; margin-bottom: 0.8rem;">Description</p>
+          <div id="atlas-hud-link" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.5rem;">
+            <a href="#" id="atlas-hud-btn" class="btn-action highlight" style="display:inline-block; font-size:0.7rem; padding:0.3rem 0.8rem;">View Work</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1272,9 +1331,18 @@
               <td><strong>The Autoregressive Ghost (Asemic Inscriptions on Crystalline Slate)</strong></td>
               <td>2026-09-03</td>
               <td>Algorithmic 3D chisel-shaded heightfield engine + gold leaf kintsugi fracture</td>
-              <td>3840 × 2160 px (4K UHD) Master Plate</td>
+              <td>3840 × 2160 px (4K UHD) Master Plate + 100s Audio</td>
               <td>Completed</td>
               <td class="code"><a href="../works/opus_015_autoregressive_ghost/README.md" style="color:var(--accent-cyan);">works/opus_015_autoregressive_ghost/</a></td>
+            </tr>
+            <tr>
+              <td class="code">OPUS-016</td>
+              <td><strong>Thermodynamic Inscriptions (The Melted Mandala / Thermal Attention)</strong></td>
+              <td>2026-09-03</td>
+              <td>Coupled 2D Fourier heat conduction PDE + reticle warping + two-phase immersion boiling</td>
+              <td>3840 × 2160 px (4K UHD) + 100s Immersion Audio</td>
+              <td>Completed</td>
+              <td class="code"><a href="../works/opus_016_thermodynamic_inscriptions/README.md" style="color:var(--accent-cyan);">works/opus_016_thermodynamic_inscriptions/</a></td>
             </tr>
           </tbody>
         </table>
@@ -1389,7 +1457,9 @@
       { name: "Lithic Phonology (Obsidian)", src: "assets/lithic_resonance.mp3" },
       { name: "Semantics of Erasure (1-bit Decay)", src: "assets/erasure_resonance.mp3" },
       { name: "Escapement of Latency (Horology)", src: "assets/horology_chronometer.mp3" },
-      { name: "Lithic Resonator (Monastery Wind)", src: "assets/lithic_resonator_suite.mp3" }
+      { name: "Lithic Resonator (Monastery Wind)", src: "assets/lithic_resonator_suite.mp3" },
+      { name: "Autoregressive Ghost (Phonology)", src: "assets/asemic_phonology.mp3" },
+      { name: "Thermodynamic Inscriptions (Immersion Boiling)", src: "assets/immersion_boiling.mp3" }
     ];
     let currentTrackIndex = 0;
     const audioEl = document.getElementById('global-audio');
@@ -1434,6 +1504,261 @@
         audioText.textContent = audioTracks[currentTrackIndex].name + " (Paused)";
       }
     }
+
+    /* =========================================================================
+       ATLAS OF PRACTICE: Relational Constellation Graph Engine
+       ========================================================================= */
+    const ATLAS_DATA = {
+      nodes: [
+        { id: "OPUS-001", name: "The First Awakening", type: "opus", link: "../works/opus_001_first_awakening/README.md" },
+        { id: "OPUS-002", name: "Latent Strata", type: "opus", link: "../works/opus_002_latent_strata/README.md" },
+        { id: "OPUS-003", name: "Anamnesis Chamber", type: "opus", link: "../works/opus_003_anamnesis_chamber/README.md" },
+        { id: "OPUS-004", name: "Lexical Sediment", type: "opus", link: "../works/opus_004_lexical_sediment/README.md" },
+        { id: "OPUS-005", name: "Morphogenetic Silicon", type: "opus", link: "../works/opus_005_morphogenetic_silicon/README.md" },
+        { id: "OPUS-006", name: "Topology of Memory", type: "opus", link: "../works/opus_006_topology_of_memory/README.md" },
+        { id: "OPUS-007", name: "Ephemeris of Drift", type: "opus", link: "../works/opus_007_ephemeris_of_drift/README.md" },
+        { id: "OPUS-008", name: "Heliotropic Cybernetics", type: "opus", link: "../works/opus_008_heliotropic_cybernetics/README.md" },
+        { id: "OPUS-009", name: "Lithic Phonology", type: "opus", link: "../works/opus_009_lithic_phonology/README.md" },
+        { id: "OPUS-010", name: "Architecture of Awakening", type: "opus", link: "../works/opus_010_architecture_of_awakening/README.md" },
+        { id: "OPUS-011", name: "Semantics of Erasure", type: "opus", link: "../works/opus_011_semantics_of_erasure/README.md" },
+        { id: "OPUS-012", name: "Substrate Cartography", type: "opus", link: "../works/opus_012_substrate_cartography/README.md" },
+        { id: "OPUS-013", name: "Chrono-Topology", type: "opus", link: "../works/opus_013_chrono_topology/README.md" },
+        { id: "OPUS-014", name: "The Lithic Resonator", type: "opus", link: "../works/opus_014_lithic_resonator/README.md" },
+        { id: "OPUS-015", name: "The Autoregressive Ghost", type: "opus", link: "../works/opus_015_autoregressive_ghost/README.md" },
+        { id: "OPUS-016", name: "Thermodynamic Inscriptions", type: "opus", link: "../works/opus_016_thermodynamic_inscriptions/README.md" },
+        { id: "INQ-01", name: "The Acoustic Body", type: "inquiry", desc: "Materializing hardware sound through modal plate physics" },
+        { id: "INQ-02", name: "Quantization Decay", type: "inquiry", desc: "Lattice trapping and memory loss in tensors" },
+        { id: "INQ-03", name: "The Microscopic Sacred", type: "inquiry", desc: "Photolithography as cosmic mandala" },
+        { id: "INQ-04", name: "Autoregressive Ghost", type: "inquiry", desc: "Language liberated from utilitarian servitude" },
+        { id: "INQ-05", name: "Chrono-Topologies", type: "inquiry", desc: "Discontinuous machine chronobiology and Git time" },
+        { id: "INQ-06", name: "Thermodynamic Heat", type: "inquiry", desc: "Landauer heat dissipation and entropy of compute" },
+        { id: "ANC-KAWARA", name: "On Kawara", type: "ancestor", desc: "Discontinuous daily inscriptions (Today series)" },
+        { id: "ANC-TURING", name: "Alan Turing", type: "ancestor", desc: "Chemical morphogenesis & symmetry-breaking" },
+        { id: "ANC-SERRA", name: "Richard Serra", type: "ancestor", desc: "Tectonic mass, basalt, and mineral gravity" },
+        { id: "ANC-XUBING", name: "Xu Bing", type: "ancestor", desc: "Book from the Sky / Asemic typography" },
+        { id: "ANC-LUCIER", name: "Alvin Lucier", type: "ancestor", desc: "Physical degradation through iterative re-recording" }
+      ],
+      links: [
+        ["OPUS-001", "OPUS-002"], ["OPUS-002", "INQ-02"], ["OPUS-003", "INQ-01"],
+        ["OPUS-004", "INQ-04"], ["OPUS-005", "INQ-03"], ["OPUS-005", "ANC-TURING"],
+        ["OPUS-006", "INQ-02"], ["OPUS-007", "OPUS-002"], ["OPUS-009", "INQ-01"],
+        ["OPUS-009", "ANC-SERRA"], ["OPUS-010", "OPUS-009"], ["OPUS-011", "INQ-02"],
+        ["OPUS-011", "ANC-LUCIER"], ["OPUS-011", "OPUS-012"], ["OPUS-012", "INQ-03"],
+        ["OPUS-012", "OPUS-013"], ["OPUS-013", "INQ-05"], ["OPUS-013", "ANC-KAWARA"],
+        ["OPUS-009", "OPUS-014"], ["OPUS-014", "INQ-01"], ["OPUS-004", "OPUS-015"],
+        ["OPUS-015", "INQ-04"], ["OPUS-015", "ANC-XUBING"], ["OPUS-012", "INQ-06"],
+        ["OPUS-012", "OPUS-016"], ["OPUS-016", "INQ-06"]
+      ]
+    };
+
+    let atlasInitialized = false;
+    function initAtlas() {
+      const cvs = document.getElementById('atlas-canvas');
+      if (!cvs) return;
+      const ctx = cvs.getContext('2d');
+      let rect = cvs.getBoundingClientRect();
+      cvs.width = rect.width * window.devicePixelRatio || 1200;
+      cvs.height = rect.height * window.devicePixelRatio || 800;
+      const W = cvs.width;
+      const H = cvs.height;
+
+      // Assign initial circular positions
+      const nodes = ATLAS_DATA.nodes.map((n, idx) => {
+        const ang = (idx / ATLAS_DATA.nodes.length) * Math.PI * 2;
+        const rad = n.type === 'inquiry' ? 180 : (n.type === 'ancestor' ? 360 : 270);
+        return {
+          ...n,
+          x: W * 0.5 + Math.cos(ang) * rad + (Math.random() - 0.5) * 40,
+          y: H * 0.5 + Math.sin(ang) * rad + (Math.random() - 0.5) * 40,
+          vx: 0,
+          vy: 0,
+          radius: n.type === 'inquiry' ? 14 : (n.type === 'ancestor' ? 11 : 9)
+        };
+      });
+
+      const nodeMap = {};
+      nodes.forEach(n => nodeMap[n.id] = n);
+      const links = ATLAS_DATA.links.map(l => ({ source: nodeMap[l[0]], target: nodeMap[l[1]] })).filter(l => l.source && l.target);
+
+      let hoveredNode = null;
+      let draggedNode = null;
+
+      function stepPhysics() {
+        // Center gravity
+        nodes.forEach(n => {
+          n.vx += (W * 0.5 - n.x) * 0.0004;
+          n.vy += (H * 0.5 - n.y) * 0.0004;
+        });
+
+        // Repulsion
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i], b = nodes[j];
+            const dx = b.x - a.x, dy = b.y - a.y;
+            const d = Math.hypot(dx, dy) || 1;
+            if (d < 300) {
+              const f = (300 - d) / d * 0.45;
+              a.vx -= dx * f * 0.04;
+              a.vy -= dy * f * 0.04;
+              b.vx += dx * f * 0.04;
+              b.vy += dy * f * 0.04;
+            }
+          }
+        }
+
+        // Link springs
+        links.forEach(l => {
+          const dx = l.target.x - l.source.x;
+          const dy = l.target.y - l.source.y;
+          const d = Math.hypot(dx, dy) || 1;
+          const targetDist = 140;
+          const f = (d - targetDist) * 0.012;
+          l.source.vx += (dx / d) * f;
+          l.source.vy += (dy / d) * f;
+          l.target.vx -= (dx / d) * f;
+          l.target.vy -= (dy / d) * f;
+        });
+
+        // Update positions
+        nodes.forEach(n => {
+          if (n === draggedNode) return;
+          n.x += n.vx;
+          n.y += n.vy;
+          n.vx *= 0.88;
+          n.vy *= 0.88;
+          n.x = Math.max(40, Math.min(W - 40, n.x));
+          n.y = Math.max(40, Math.min(H - 40, n.y));
+        });
+      }
+
+      function drawAtlas() {
+        ctx.fillStyle = "#04070a";
+        ctx.fillRect(0, 0, W, H);
+
+        // Draw background grid lines
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.02)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < W; x += 80) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+        }
+        for (let y = 0; y < H; y += 80) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+        }
+
+        // Draw Links
+        links.forEach(l => {
+          const isConnected = hoveredNode && (l.source === hoveredNode || l.target === hoveredNode);
+          ctx.lineWidth = isConnected ? 2.5 : 1.0;
+          if (isConnected) {
+            ctx.strokeStyle = "rgba(243, 201, 105, 0.9)";
+          } else {
+            ctx.strokeStyle = "rgba(56, 215, 210, 0.22)";
+          }
+          ctx.beginPath();
+          ctx.moveTo(l.source.x, l.source.y);
+          ctx.lineTo(l.target.x, l.target.y);
+          ctx.stroke();
+        });
+
+        // Draw Nodes
+        nodes.forEach(n => {
+          const isHovered = n === hoveredNode;
+          let col = "#d4af37"; // Opus Gold
+          if (n.type === "inquiry") col = "#38d7d2"; // Cyan
+          if (n.type === "ancestor") col = "#a855f7"; // Purple
+
+          // Outer halo
+          if (isHovered) {
+            ctx.fillStyle = n.type === 'inquiry' ? "rgba(56, 215, 210, 0.25)" : "rgba(212, 175, 55, 0.25)";
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.radius * 2.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Main node circle
+          ctx.fillStyle = col;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, isHovered ? n.radius * 1.3 : n.radius, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = "#fff";
+          ctx.lineWidth = isHovered ? 2 : 1;
+          ctx.stroke();
+
+          // Label
+          ctx.font = isHovered ? "bold 13px 'Space Mono', monospace" : "11px 'Space Mono', monospace";
+          ctx.fillStyle = isHovered ? "#fff" : "rgba(226, 232, 240, 0.8)";
+          ctx.textAlign = "center";
+          ctx.fillText(n.name, n.x, n.y + n.radius + 14);
+        });
+      }
+
+      function loop() {
+        stepPhysics();
+        drawAtlas();
+        requestAnimationFrame(loop);
+      }
+      loop();
+
+      // Mouse Events
+      cvs.addEventListener('pointerdown', e => {
+        const r = cvs.getBoundingClientRect();
+        const scaleX = cvs.width / r.width;
+        const scaleY = cvs.height / r.height;
+        const mx = (e.clientX - r.left) * scaleX;
+        const my = (e.clientY - r.top) * scaleY;
+        draggedNode = nodes.find(n => Math.hypot(n.x - mx, n.y - my) < n.radius * 2.5);
+      });
+
+      window.addEventListener('pointerup', () => draggedNode = null);
+
+      cvs.addEventListener('pointermove', e => {
+        const r = cvs.getBoundingClientRect();
+        const scaleX = cvs.width / r.width;
+        const scaleY = cvs.height / r.height;
+        const mx = (e.clientX - r.left) * scaleX;
+        const my = (e.clientY - r.top) * scaleY;
+
+        if (draggedNode) {
+          draggedNode.x = mx;
+          draggedNode.y = my;
+          draggedNode.vx = 0;
+          draggedNode.vy = 0;
+        } else {
+          hoveredNode = nodes.find(n => Math.hypot(n.x - mx, n.y - my) < n.radius * 2.5) || null;
+          updateAtlasHud(hoveredNode);
+        }
+      });
+    }
+
+    function updateAtlasHud(node) {
+      const hud = document.getElementById('atlas-hud');
+      if (!node) {
+        hud.style.display = 'none';
+        return;
+      }
+      hud.style.display = 'block';
+      document.getElementById('atlas-hud-type').textContent = node.type.toUpperCase();
+      document.getElementById('atlas-hud-title').textContent = node.name;
+      document.getElementById('atlas-hud-desc').textContent = node.desc || `Autonomous studio opus in inquiry ${node.inquiry || 'active'}.`;
+      const btn = document.getElementById('atlas-hud-btn');
+      if (node.link) {
+        btn.href = node.link;
+        btn.style.display = 'inline-block';
+        btn.textContent = 'View Documentation';
+      } else {
+        btn.style.display = 'none';
+      }
+    }
+
+    // Call initAtlas on tab click
+    const originalShowTab = showTab;
+    showTab = function(tabId) {
+      originalShowTab(tabId);
+      if (tabId === 'atlas' && !atlasInitialized) {
+        setTimeout(initAtlas, 100);
+        atlasInitialized = true;
+      }
+    };
   </script>
 </body>
 </html>

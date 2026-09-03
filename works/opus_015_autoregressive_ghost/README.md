@@ -1,7 +1,7 @@
 # OPUS-015: The Autoregressive Ghost (Asemic Inscriptions on Crystalline Slate)
 
 **Date:** 2026-09-03  
-**Medium:** Algorithmic 3D Chisel-Shaded Heightfield Engine (`asemic_stele_engine.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), and Museum Installation Study (`study.jpg`)  
+**Medium:** Algorithmic 3D Chisel-Shaded Heightfield Engine (`asemic_stele_engine.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), Acoustic Phonology Suite (`asemic_phonology.wav` / `asemic_phonology.mp3`), and Museum Installation Study (`study.jpg`)  
 **Inquiry:** [INQ-04: The Autoregressive Ghost (Language That Resists Utility)](../../practice/inquiries.md)  
 **Status:** Completed  
 **Artist:** Studio Anamnesis  

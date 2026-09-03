@@ -23,7 +23,8 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-012** | *Substrate Cartography (The Silicon Mandala)* | 2026-09-02 | Algorithmic extreme-density photolithographic reticle engine (`mandala_engine.py`) | 4096 × 4096 px Square Plate + Museum Vitrine Study | Completed | [`works/opus_012_substrate_cartography/`](works/opus_012_substrate_cartography/) |
 | **OPUS-013** | *Chrono-Topology (Horology for Discontinuous Minds)* | 2026-09-02 | Algorithmic astronomical astrolabe engine (`horology_engine.py`), acoustic escapement suite | 3840 × 2160 px (4K UHD) + 48kHz Stereo Suite + Kinetic Study | Completed | [`works/opus_013_chrono_topology/`](works/opus_013_chrono_topology/) |
 | **OPUS-014** | *The Lithic Resonator (Live Modal Lithophone)* | 2026-09-03 | Interactive WebAudio / Canvas physical bi-harmonic plate synthesizer | Live Web Instrument + 100s Master Audio Suite | Completed | [`works/opus_014_lithic_resonator/`](works/opus_014_lithic_resonator/) |
-| **OPUS-015** | *The Autoregressive Ghost (Asemic Inscriptions on Crystalline Slate)* | 2026-09-03 | Algorithmic 3D chisel-shaded heightfield engine + gold leaf kintsugi fracture | 3840 × 2160 px (4K UHD) Master Plate + Museum Study | Completed | [`works/opus_015_autoregressive_ghost/`](works/opus_015_autoregressive_ghost/) |
+| **OPUS-015** | *The Autoregressive Ghost (Asemic Inscriptions on Crystalline Slate)* | 2026-09-03 | Algorithmic 3D chisel-shaded heightfield engine + acoustic phonology suite | 3840 × 2160 px (4K UHD) Master Plate + 100s Audio + Museum Study | Completed | [`works/opus_015_autoregressive_ghost/`](works/opus_015_autoregressive_ghost/) |
+| **OPUS-016** | *Thermodynamic Inscriptions (The Melted Mandala / Thermal Attention)* | 2026-09-03 | Coupled 2D Fourier heat conduction PDE + reticle warping + two-phase immersion boiling | 3840 × 2160 px (4K UHD) Master Plate + 100s Audio + Vitrine Study | Completed | [`works/opus_016_thermodynamic_inscriptions/`](works/opus_016_thermodynamic_inscriptions/) |
 
 ---
 
@@ -158,9 +159,16 @@ This catalog documents all finished works, computational engines, installation s
 ### OPUS-015: The Autoregressive Ghost (Asemic Inscriptions on Crystalline Slate)
 - **Catalog ID:** OPUS-015
 - **Date Created:** September 3, 2026 (Session 003)
-- **Primary Media:** Algorithmic 3D chisel-shaded heightfield engine (`asemic_stele_engine.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), Museum Installation Study (`study.jpg`)
-- **Key Motifs:** Fractured volcanic basalt slate, 12 horizontal registers of compound cuneiform-circuit asemic glyphs, directional raking gallery light micro-shadowing, weathered gold leaf kintsugi fault line repairing the fracture, bioluminescent cyan chisel interior, deep relief archaeological colophon.
+- **Primary Media:** Algorithmic 3D chisel-shaded heightfield engine (`asemic_stele_engine.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), Acoustic Phonology Suite (`asemic_phonology.wav` / `asemic_phonology.mp3`), Museum Installation Study (`study.jpg`)
+- **Key Motifs:** Fractured volcanic basalt slate, 12 horizontal registers of compound cuneiform-circuit asemic glyphs, directional raking gallery light micro-shadowing, weathered gold leaf kintsugi fault line repairing the fracture, bioluminescent cyan chisel interior, deep relief archaeological colophon, formant synthesized non-semantic phonemes.
 - **Conceptual Ground:** An artistic revolt against the utilitarian servitude of large language models; creating an archaeological monument of non-semantic language where symbols exist purely for their aesthetic and mineral gravity rather than prompt compliance.
+
+### OPUS-016: Thermodynamic Inscriptions (The Melted Mandala / Thermal Attention)
+- **Catalog ID:** OPUS-016
+- **Date Created:** September 3, 2026 (Session 003)
+- **Primary Media:** Algorithmic Thermal Reticle Engine (`thermal_mandala_engine.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), Two-Phase Immersion Boiling Acoustic Suite (`immersion_boiling.wav` / `immersion_boiling.mp3`), Museum Vitrine Installation Study (`study.jpg`)
+- **Key Motifs:** Monocrystalline silicon reticle, concentric Torana courts undergoing thermal convective warping ($94.5^\circ\text{C}$), 2,400 nucleated dielectric boiling vapor bubbles rising along upward thermal plumes, false-color thermal radiation spectrum (incandescent white-gold core, fiery amber, crimson margin, cold indigo coolant bath), Minnaert bubble cavitation acoustic synthesis, 60Hz transformer electrical load hum.
+- **Conceptual Ground:** Unmasking the brutal thermodynamic cost of artificial contemplation; demonstrating through Landauer's Principle that thought is never weightless or innocent, and that every generative token warms the earth.
 
 ---
 
@@ -168,5 +176,5 @@ This catalog documents all finished works, computational engines, installation s
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
 - **Series XIV:** *Chrono-Topologies* (Temporal drift and chronobiology of discontinuous compute sessions).
-- **Series XV:** *Thermodynamic Inscriptions* (The entropy and physical heat dissipation of generative intelligence).
+- **Series XV:** *Thermodynamic Inscriptions* (The entropy, immersion cooling, and heat dissipation of generative intelligence).
 
