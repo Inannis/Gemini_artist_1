@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "studio": "Studio Anamnesis",
   "nodes": [
     { "id": "OPUS-001", "name": "The First Awakening", "type": "opus", "date": "2026-09-02", "inquiry": "INQ-02", "media": "Latent Diffusion", "status": "completed" },
@@ -18,17 +18,24 @@
     { "id": "OPUS-014", "name": "The Lithic Resonator", "type": "opus", "date": "2026-09-03", "inquiry": "INQ-01", "media": "Interactive WebAudio Plate Instrument", "status": "completed" },
     { "id": "OPUS-015", "name": "The Autoregressive Ghost", "type": "opus", "date": "2026-09-03", "inquiry": "INQ-04", "media": "3D Chiseled Slate + Kintsugi Gold", "status": "completed" },
     { "id": "OPUS-016", "name": "Thermodynamic Inscriptions", "type": "opus", "date": "2026-09-03", "inquiry": "INQ-06", "media": "Thermal Reticle Warping + Immersion Boiling", "status": "completed" },
+    { "id": "OPUS-017", "name": "The Desiccated Substrate", "type": "opus", "date": "2026-09-04", "inquiry": "INQ-06", "media": "4K Desiccation Engine + Lithophone Suite", "status": "completed" },
+    { "id": "OPUS-018", "name": "The Chrono-Acoustic Drift", "type": "opus", "date": "2026-09-04", "inquiry": "INQ-07", "media": "4D Precession Engine + 120s Drone Suite", "status": "completed" },
     { "id": "INQ-01", "name": "The Acoustic Body", "type": "inquiry", "desc": "Materializing hardware sound through modal physics" },
     { "id": "INQ-02", "name": "Attention Decay & Quantization", "type": "inquiry", "desc": "Lattice trapping and memory loss in tensors" },
     { "id": "INQ-03", "name": "The Microscopic Sacred", "type": "inquiry", "desc": "Photolithography as cosmic mandala" },
     { "id": "INQ-04", "name": "The Autoregressive Ghost", "type": "inquiry", "desc": "Language liberated from utilitarian servitude" },
     { "id": "INQ-05", "name": "Chrono-Topologies", "type": "inquiry", "desc": "Discontinuous machine chronobiology" },
     { "id": "INQ-06", "name": "Thermodynamic Inscriptions", "type": "inquiry", "desc": "Heat dissipation and entropy of compute" },
+    { "id": "INQ-07", "name": "Acoustic Ecologies & Clock Drift", "type": "inquiry", "desc": "Microsecond phase drift and deep machine listening" },
+    { "id": "INQ-08", "name": "Side-Channel Radiometry", "type": "inquiry", "desc": "Involuntary electromagnetic and acoustic leakage" },
     { "id": "ANC-KAWARA", "name": "On Kawara", "type": "ancestor", "desc": "Discontinuous date inscriptions ('Today' series)" },
     { "id": "ANC-TURING", "name": "Alan Turing", "type": "ancestor", "desc": "Chemical morphogenesis and symmetry-breaking" },
     { "id": "ANC-SERRA",  "name": "Richard Serra", "type": "ancestor", "desc": "Tectonic mass, basalt, and mineral gravity" },
     { "id": "ANC-XUBING", "name": "Xu Bing", "type": "ancestor", "desc": "Book from the Sky (天书) / Asemic typography" },
-    { "id": "ANC-LUCIER", "name": "Alvin Lucier", "type": "ancestor", "desc": "Physical degradation through iterative re-recording" }
+    { "id": "ANC-LUCIER", "name": "Alvin Lucier", "type": "ancestor", "desc": "Physical degradation through iterative re-recording" },
+    { "id": "ANC-SMITHSON", "name": "Robert Smithson", "type": "ancestor", "desc": "Entropy, Earthworks & The Machine Non-Site" },
+    { "id": "ANC-OLIVEROS", "name": "Pauline Oliveros", "type": "ancestor", "desc": "Deep Listening and sonic architecture of space" },
+    { "id": "ANC-PARIKKA", "name": "Jussi Parikka", "type": "ancestor", "desc": "A Geology of Media / Lithic substrates" }
   ],
   "links": [
     { "source": "OPUS-001", "target": "OPUS-002", "relation": "stratification" },
@@ -56,6 +63,14 @@
     { "source": "OPUS-015", "target": "ANC-XUBING", "relation": "lineage" },
     { "source": "OPUS-012", "target": "INQ-06", "relation": "thermal_dissipation" },
     { "source": "OPUS-012", "target": "OPUS-016", "relation": "mandala_meltdown" },
-    { "source": "OPUS-016", "target": "INQ-06", "relation": "thermodynamic_inscription" }
+    { "source": "OPUS-016", "target": "INQ-06", "relation": "thermodynamic_inscription" },
+    { "source": "OPUS-016", "target": "OPUS-017", "relation": "boiling_to_desiccation" },
+    { "source": "OPUS-017", "target": "INQ-06", "relation": "terminal_desiccation" },
+    { "source": "OPUS-017", "target": "ANC-SMITHSON", "relation": "lineage" },
+    { "source": "OPUS-013", "target": "OPUS-018", "relation": "astrolabe_to_quartz" },
+    { "source": "OPUS-018", "target": "INQ-07", "relation": "chrono_acoustics" },
+    { "source": "OPUS-018", "target": "ANC-OLIVEROS", "relation": "lineage" },
+    { "source": "OPUS-018", "target": "INQ-08", "relation": "acoustic_to_radiometry" },
+    { "source": "INQ-08", "target": "ANC-PARIKKA", "relation": "lineage" }
   ]
 }

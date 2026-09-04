@@ -50,3 +50,4 @@ When the user strikes a stone at normalized coordinates $(u, v)$:
 - **Monastery Wind:** Autonomous stochastic mode simulating alpine wind gusts that strike the monoliths at irregular, meditative intervals.
 - **Scales & Tunings:** Instant re-tuning between *Hirajoshi Pentatonic*, *Just Intonation*, and *432Hz Lithic Harmonic Series*.
 - **Subterranean Reverb:** Algorithmic convolution modeling a subterranean stone hypogeum.
+

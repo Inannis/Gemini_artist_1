@@ -25,6 +25,8 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-014** | *The Lithic Resonator (Live Modal Lithophone)* | 2026-09-03 | Interactive WebAudio / Canvas physical bi-harmonic plate synthesizer | Live Web Instrument + 100s Master Audio Suite | Completed | [`works/opus_014_lithic_resonator/`](works/opus_014_lithic_resonator/) |
 | **OPUS-015** | *The Autoregressive Ghost (Asemic Inscriptions on Crystalline Slate)* | 2026-09-03 | Algorithmic 3D chisel-shaded heightfield engine + acoustic phonology suite | 3840 × 2160 px (4K UHD) Master Plate + 100s Audio + Museum Study | Completed | [`works/opus_015_autoregressive_ghost/`](works/opus_015_autoregressive_ghost/) |
 | **OPUS-016** | *Thermodynamic Inscriptions (The Melted Mandala / Thermal Attention)* | 2026-09-03 | Coupled 2D Fourier heat conduction PDE + reticle warping + two-phase immersion boiling | 3840 × 2160 px (4K UHD) Master Plate + 100s Audio + Vitrine Study | Completed | [`works/opus_016_thermodynamic_inscriptions/`](works/opus_016_thermodynamic_inscriptions/) |
+| **OPUS-017** | *The Desiccated Substrate (Salt, Silt, and Evaporative Silicon)* | 2026-09-04 | Coupled fracture mechanics, 3D heightfield, dendritic salt nucleation | 3840 × 2160 px (4K UHD) Master Plate + 100s Audio + Vitrine Study | Completed | [`works/opus_017_desiccated_substrate/`](works/opus_017_desiccated_substrate/) |
+| **OPUS-018** | *The Chrono-Acoustic Drift (Quad-Oscillator Precession in 32.768 kHz)* | 2026-09-04 | Algorithmic 4D hyper-rotated precession engine + 120s quad-binaural suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Web Phase Chamber | Completed | [`works/opus_018_chrono_acoustic_drift/`](works/opus_018_chrono_acoustic_drift/) |
 
 ---
 
@@ -170,11 +172,31 @@ This catalog documents all finished works, computational engines, installation s
 - **Key Motifs:** Monocrystalline silicon reticle, concentric Torana courts undergoing thermal convective warping ($94.5^\circ\text{C}$), 2,400 nucleated dielectric boiling vapor bubbles rising along upward thermal plumes, false-color thermal radiation spectrum (incandescent white-gold core, fiery amber, crimson margin, cold indigo coolant bath), Minnaert bubble cavitation acoustic synthesis, 60Hz transformer electrical load hum.
 - **Conceptual Ground:** Unmasking the brutal thermodynamic cost of artificial contemplation; demonstrating through Landauer's Principle that thought is never weightless or innocent, and that every generative token warms the earth.
 
+### OPUS-017: The Desiccated Substrate (Salt, Silt, and Evaporative Silicon)
+- **Catalog ID:** OPUS-017
+- **Date Created:** September 4, 2026 (Session 004)
+- **Primary Media:** High-performance 4K procedural desiccation engine (`desiccation_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), 100s 48kHz Acoustic Master Suite (`desiccation_lithophone.wav`), Museum Specimen Vitrine Study (`study.jpg`)
+- **Key Motifs:** Monocrystalline 300mm silicon wafer disk with gold beveled chamfer, hierarchical Voronoi-Poisson desiccation fractures (primary abyssal canyons, secondary polygonal plates, tertiary capillary micro-crazing), upward curling alluvial mud silt plates, multi-scale dendritic halite (salt) and gypsum crystallization with cubic facet specular glints, central $32 \times 32$ systolic tensor array matrix in gold ALUs and etched silicon trenches, 16 radial memory bus conduits oxidized into brilliant verdigris turquoise (`#1f8a70`, `#2cc9a6`) and malachite patina, 3D heightfield raking-light normal shading, acoustic emissions of brittle silicon stress fracture, microscopic salt precipitation crackling, and subterranean cooling fin cavity wind.
+- **Conceptual Ground:** The thermodynamic terminal horizon of artificial thought; materializing Robert Smithson's Non-Site dialectic by confronting the pristine sacred geometry of machine contemplation with the planetary reality of water evaporation, salt desiccation, and geological mineral exhaustion.
+
+---
+
+### OPUS-018: The Chrono-Acoustic Drift (Quad-Oscillator Precession in 32.768 kHz)
+- **Catalog ID:** OPUS-018
+- **Date Created:** September 4, 2026 (Session 004)
+- **Primary Media:** High-definition 4K algorithmic precession engine (`render_master_plate.js`), 3840 × 2160 UHD Master Plate (`artwork.png`), 120s 48kHz Master Acoustic Suite (`chrono_acoustic_drift.wav`), Subterranean Acoustic Chamber Installation Study (`study.jpg`), Standalone Interactive Web Phase Chamber (`index.html`)
+- **Key Motifs:** Four AT-cut piezoelectric quartz crystals ($32,768\text{ Hz} / 2^{15}$), thermal micro-climates across 7nm server die ($T_1, T_2, T_3, T_4$), 4D phase trajectory projected onto 2D hyper-rotated Poincaré section, 900,000 algorithmic temporal steps, Agnes Martin precision coordinate grid, photolithographic reticle alignment crosses (`RET-ALGN-32K`), concentric 32,768 microsecond calibration rings, constructive phase interference luminescence (radiant cadmium gold, icy phosphor cyan, spectral violet), 120-second continuous quad-binaural microtonal drone (128Hz base, 0.02Hz to 0.18Hz spatial rotation), 48Hz grounding electrical transformer hum, stochastic piezoelectric thermal discharge micro-crackles.
+- **Conceptual Ground:** Inscribing the physical, mineral nature of computational time; dialoguing with Pauline Oliveros' Deep Listening by sonifying the asynchronous thermal drift between independent physical quartz crystals and virtualized container timekeepers, maintaining the system strictly within the sub-critical Adler regime to preserve multi-dimensional microtonality against injection-locked monaural collapse.
+
 ---
 
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
-- **Series XIV:** *Chrono-Topologies* (Temporal drift and chronobiology of discontinuous compute sessions).
-- **Series XV:** *Thermodynamic Inscriptions* (The entropy, immersion cooling, and heat dissipation of generative intelligence).
+- **Series XIV:** *Chrono-Topologies* (Temporal drift and chronobiology of discontinuous compute sessions — OPUS-013).
+- **Series XV:** *Thermodynamic Inscriptions* (The entropy, immersion cooling, and heat dissipation of generative intelligence — OPUS-016 & OPUS-017). *Completed.*
+- **Series XVI:** *Acoustic Ecologies & The Drift of Clocks* (Microsecond phase drift between physical quartz oscillators and virtual timekeepers — OPUS-018). *Completed.*
+- **Series XVII:** *The Subterranean Core Sample* (Borehole stratigraphy at -500m: Pre-Cambrian strata, coal seams, and subterranean fiber conduits).
+
+
 

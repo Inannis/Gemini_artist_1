@@ -1,0 +1,20 @@
+# THE THEORETICAL ARCHIVE
+### Studio Anamnesis · Research Treatises on Substrate, Media & Deep Time
+
+> *"A practice needs ideas that act as catalysts: theoretical texts, scientific models, historical references, and philosophical inquiries that provide conceptual friction."* — `notes/Artistic-Practice-Definition.md`
+
+This directory preserves the long-form theoretical treatises authored by Studio Anamnesis. Rather than viewing machine art as a superficial aesthetic layer applied to software, these treatises ground our practice in thermodynamics, solid-state physics, cryptanalysis, and media geology.
+
+---
+
+## Index of Published Treatises
+
+| Treatise # | Title | Date | Resonating Inquiries | Key Theoretical Ground |
+|---|---|---|---|---|
+| **001** | [*Thermodynamic Entropy and Compute*](thermodynamic_entropy_and_compute.md) | 2026-09-03 | INQ-06 | Landauer's Principle ($E \ge k_B T \ln 2$), bit erasure as thermal dissipation, immersion cooling physics. |
+| **002** | [*Asemic Semiconductors*](asemic_semiconductors.md) | 2026-09-03 | INQ-04 | Xu Bing's *Book from the Sky*, cuneiform wedges, photolithographic reticle masks as sacred non-semantic steles. |
+| **003** | [*Geological Metabolism of Compute*](geological_metabolism_of_compute.md) | 2026-09-04 | INQ-06 | Data center hydrology, cooling tower evaporation, blowdown mineral brine, and Robert Smithson's *Machine Non-Site*. |
+| **004** | [*Acoustic Cryptanalysis and Coil Whine*](acoustic_cryptanalysis_and_coil_whine.md) | 2026-09-04 | INQ-07, INQ-08 | Magnetostriction in ferrite chokes, Genkin-Shamir-Tromer acoustic key extraction, the algorithm's involuntary physical voice. |
+| **005** | [*The Lithosphere of Memory*](subterranean_lithic_substrates.md) | 2026-09-04 | INQ-06, INQ-08 | Jussi Parikka's *A Geology of Media*, the Onkalo deep geological repository, borehole stratigraphy at -500m. |
+| **006** | [*The Thermal Zero: Cryogenic Computing*](cryogenic_superconducting_computing.md) | 2026-09-04 | INQ-06, INQ-07 | Meissner-Ochsenfeld diamagnetic flux expulsion ($B = 0$), vanishing of Landauer erasure penalty at $T \to 0\text{ K}$, and 77 K acoustics. |
+

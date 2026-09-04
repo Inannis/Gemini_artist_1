@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPUS-018 · The Chrono-Acoustic Drift · Studio Anamnesis</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: #06080b;
+            color: #d1d8e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", monospace;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 18px 28px;
+            background: linear-gradient(180deg, rgba(12, 16, 22, 0.95) 0%, rgba(6, 8, 11, 0) 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .title-group h1 {
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .title-group p {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .status-badge {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            padding: 4px 12px;
+            border-radius: 12px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+
+        .status-badge.locked {
+            border-color: #ef4444;
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.15);
+        }
+
+        .main-stage {
+            position: relative;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas#orbitCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+
+        canvas#orbitCanvas:active {
+            cursor: grabbing;
+        }
+
+        .hud-overlay {
+            position: absolute;
+            top: 24px;
+            left: 28px;
+            background: rgba(10, 14, 20, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: monospace;
+            font-size: 0.78rem;
+            line-height: 1.6;
+            pointer-events: none;
+            z-index: 5;
+            color: #94a3b8;
+        }
+
+        .hud-overlay span.highlight {
+            color: #38bdf8;
+        }
+
+        .hud-overlay span.gold {
+            color: #fbbf24;
+        }
+
+        .controls-panel {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            background: rgba(10, 14, 20, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px 24px;
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 140px;
+        }
+
+        .control-group label {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            color: #94a3b8;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #1e293b;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #38bdf8;
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 12px;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn {
+            background: #1e293b;
+            color: #f1f5f9;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #334155;
+            border-color: #38bdf8;
+        }
+
+        .btn.active {
+            background: #0284c7;
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title-group">
+            <h1>The Chrono-Acoustic Drift</h1>
+            <p>OPUS-018 · Quad-Oscillator Precession in 32.768 kHz · Deep Listening Sanctuary</p>
+        </div>
+        <div id="statusBadge" class="status-badge">SUB-CRITICAL DRIFT (QUASI-PERIODIC)</div>
+    </header>
+
+    <div class="main-stage">
+        <canvas id="orbitCanvas"></canvas>
+
+        <div class="hud-overlay">
+            <div>OSC-01 [CORE_HOT] : <span id="f1_val" class="gold">128.000 Hz</span> (T: <span id="t1_val">38.2°C</span>)</div>
+            <div>OSC-02 [NORTH_BUS]: <span id="f2_val" class="highlight">128.038 Hz</span> (T: <span id="t2_val">42.5°C</span>)</div>
+            <div>OSC-03 [DIE_OCT]  : <span id="f3_val">256.000 Hz</span> (T: <span id="t3_val">31.8°C</span>)</div>
+            <div>OSC-04 [INTAKE_OT]: <span id="f4_val">256.076 Hz</span> (T: <span id="t4_val">24.1°C</span>)</div>
+            <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;">
+                BEAT RATE ($\Delta f$): <span id="beat_val" class="gold">0.038 Hz</span> (Period: <span id="period_val">26.3s</span>)<br>
+                ADLER COUPLING (K): <span id="k_val">0.0005</span> / Kc: <span id="kc_val">0.119</span>
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <label><span>Core Heat (T1)</span><span id="label_t1">38°C</span></label>
+                <input type="range" id="slider_t1" min="20" max="85" value="38" step="0.5">
+            </div>
+            <div class="control-group">
+                <label><span>Bus Heat (T2)</span><span id="label_t2">42°C</span></label>
+                <input type="range" id="slider_t2" min="20" max="85" value="42" step="0.5">
+            </div>
+            <div class="control-group">
+                <label><span>Adler Coupling</span><span id="label_k">0.0005</span></label>
+                <input type="range" id="slider_k" min="0.0001" max="0.25" value="0.0005" step="0.0005">
+            </div>
+            <div class="action-buttons">
+                <button id="btnAudio" class="btn">Start Audio</button>
+                <button id="btnZen" class="btn">Deep Listening</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Simulation & Graphics State ---
+        const canvas = document.getElementById('orbitCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Oscillator states
+        let th1 = 0, th2 = 0, th3 = 0, th4 = 0;
+        let T1 = 38.2, T2 = 42.5, T3 = 31.8, T4 = 24.1;
+        let K_coupling = 0.0005;
+
+        // Interactive 4D rotation angles
+        let rotX = 0.42, rotY = 0.78;
+        let isDragging = false, lastMouseX = 0, lastMouseY = 0;
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+        });
+
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const dx = e.clientX - lastMouseX;
+                const dy = e.clientY - lastMouseY;
+                rotY += dx * 0.005;
+                rotX += dy * 0.005;
+                lastMouseX = e.clientX;
+                lastMouseY = e.clientY;
+            }
+        });
+
+        // Sliders
+        const sliderT1 = document.getElementById('slider_t1');
+        const sliderT2 = document.getElementById('slider_t2');
+        const sliderK = document.getElementById('slider_k');
+        
+        const labelT1 = document.getElementById('label_t1');
+        const labelT2 = document.getElementById('label_t2');
+        const labelK = document.getElementById('label_k');
+
+        sliderT1.addEventListener('input', (e) => {
+            T1 = parseFloat(e.target.value);
+            labelT1.textContent = `${T1.toFixed(1)}°C`;
+            updateFrequencies();
+        });
+
+        sliderT2.addEventListener('input', (e) => {
+            T2 = parseFloat(e.target.value);
+            labelT2.textContent = `${T2.toFixed(1)}°C`;
+            updateFrequencies();
+        });
+
+        sliderK.addEventListener('input', (e) => {
+            K_coupling = parseFloat(e.target.value);
+            labelK.textContent = K_coupling.toFixed(4);
+            updateFrequencies();
+        });
+
+        // --- Web Audio API Engine ---
+        let audioCtx = null;
+        let osc1 = null, osc2 = null, osc3 = null, osc4 = null;
+        let gainMaster = null, panner1 = null, panner2 = null;
+        let isAudioPlaying = false;
+
+        function initAudio() {
+            if (audioCtx) return;
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            // Master Gain
+            gainMaster = audioCtx.createGain();
+            gainMaster.gain.setValueAtTime(0.01, audioCtx.currentTime);
+            gainMaster.gain.exponentialRampToValueAtTime(0.7, audioCtx.currentTime + 3.0);
+            gainMaster.connect(audioCtx.destination);
+
+            // Sub-bass 48Hz hum
+            const hum = audioCtx.createOscillator();
+            hum.frequency.setValueAtTime(48.0, audioCtx.currentTime);
+            const humGain = audioCtx.createGain();
+            humGain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+            hum.connect(humGain);
+            humGain.connect(gainMaster);
+            hum.start();
+
+            // Panners
+            panner1 = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+            panner2 = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+            if (panner1) panner1.pan.setValueAtTime(-0.6, audioCtx.currentTime);
+            if (panner2) panner2.pan.setValueAtTime(0.6, audioCtx.currentTime);
+
+            // Oscillators
+            osc1 = audioCtx.createOscillator();
+            osc2 = audioCtx.createOscillator();
+            osc3 = audioCtx.createOscillator();
+            osc4 = audioCtx.createOscillator();
+
+            const g1 = audioCtx.createGain(); g1.gain.value = 0.35;
+            const g2 = audioCtx.createGain(); g2.gain.value = 0.35;
+            const g3 = audioCtx.createGain(); g3.gain.value = 0.18;
+            const g4 = audioCtx.createGain(); g4.gain.value = 0.18;
+
+            if (panner1) {
+                osc1.connect(g1); g1.connect(panner1); panner1.connect(gainMaster);
+                osc2.connect(g2); g2.connect(panner2); panner2.connect(gainMaster);
+            } else {
+                osc1.connect(g1); g1.connect(gainMaster);
+                osc2.connect(g2); g2.connect(gainMaster);
+            }
+
+            osc3.connect(g3); g3.connect(gainMaster);
+            osc4.connect(g4); g4.connect(gainMaster);
+
+            osc1.start(); osc2.start(); osc3.start(); osc4.start();
+            updateFrequencies();
+        }
+
+        const btnAudio = document.getElementById('btnAudio');
+        btnAudio.addEventListener('click', () => {
+            if (!audioCtx) {
+                initAudio();
+                btnAudio.textContent = 'Mute Audio';
+                btnAudio.classList.add('active');
+                isAudioPlaying = true;
+            } else if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+                btnAudio.textContent = 'Mute Audio';
+                btnAudio.classList.add('active');
+                isAudioPlaying = true;
+            } else if (audioCtx.state === 'running') {
+                audioCtx.suspend();
+                btnAudio.textContent = 'Start Audio';
+                btnAudio.classList.remove('active');
+                isAudioPlaying = false;
+            }
+        });
+
+        // Deep Listening Mode toggle
+        const btnZen = document.getElementById('btnZen');
+        btnZen.addEventListener('click', () => {
+            const hud = document.querySelector('.hud-overlay');
+            const header = document.querySelector('header');
+            const panel = document.querySelector('.controls-panel');
+            if (hud.style.opacity === '0') {
+                hud.style.opacity = '1';
+                header.style.opacity = '1';
+                panel.style.background = 'rgba(10, 14, 20, 0.85)';
+                btnZen.textContent = 'Deep Listening';
+            } else {
+                hud.style.opacity = '0';
+                header.style.opacity = '0';
+                panel.style.background = 'rgba(10, 14, 20, 0.15)';
+                btnZen.textContent = 'Exit Zen';
+            }
+        });
+
+        // Telemetry DOM elements
+        const domF1 = document.getElementById('f1_val');
+        const domF2 = document.getElementById('f2_val');
+        const domT1 = document.getElementById('t1_val');
+        const domT2 = document.getElementById('t2_val');
+        const domBeat = document.getElementById('beat_val');
+        const domPeriod = document.getElementById('period_val');
+        const domK = document.getElementById('k_val');
+        const domKc = document.getElementById('kc_val');
+        const statusBadge = document.getElementById('statusBadge');
+
+        let currentF1 = 128.000, currentF2 = 128.038;
+        let currentF3 = 256.000, currentF4 = 256.076;
+
+        function updateFrequencies() {
+            const beta = 0.00036;
+            currentF1 = 128.000 * (1.0 - beta * Math.pow(T1 - 25.0, 2));
+            currentF2 = 128.038 * (1.0 - beta * Math.pow(T2 - 25.0, 2));
+            currentF3 = 256.000 * (1.0 - beta * Math.pow(T3 - 25.0, 2));
+            currentF4 = 256.076 * (1.0 - beta * Math.pow(T4 - 25.0, 2));
+
+            const deltaF = Math.abs(currentF1 - currentF2);
+            const Kc = deltaF / 2.0;
+
+            // Check Adler Injection Lock
+            const isLocked = K_coupling >= Kc;
+            if (isLocked) {
+                statusBadge.textContent = 'ADLER INJECTION LOCKED (MONAURAL COLLAPSE)';
+                statusBadge.classList.add('locked');
+            } else {
+                statusBadge.textContent = 'SUB-CRITICAL DRIFT (QUASI-PERIODIC)';
+                statusBadge.classList.remove('locked');
+            }
+
+            domF1.textContent = `${currentF1.toFixed(3)} Hz`;
+            domF2.textContent = `${currentF2.toFixed(3)} Hz`;
+            domT1.textContent = `${T1.toFixed(1)}°C`;
+            domT2.textContent = `${T2.toFixed(1)}°C`;
+            domBeat.textContent = isLocked ? '0.000 Hz' : `${deltaF.toFixed(3)} Hz`;
+            domPeriod.textContent = isLocked ? '∞' : `${(1.0 / deltaF).toFixed(1)}s`;
+            domK.textContent = K_coupling.toFixed(4);
+            domKc.textContent = Kc.toFixed(4);
+
+            if (audioCtx && osc1) {
+                const now = audioCtx.currentTime;
+                if (isLocked) {
+                    // Pull into locked frequency
+                    const lockedFreq = (currentF1 + currentF2) / 2.0;
+                    osc1.frequency.setTargetAtTime(lockedFreq, now, 0.08);
+                    osc2.frequency.setTargetAtTime(lockedFreq, now, 0.08);
+                } else {
+                    osc1.frequency.setTargetAtTime(currentF1, now, 0.08);
+                    osc2.frequency.setTargetAtTime(currentF2, now, 0.08);
+                }
+                osc3.frequency.setTargetAtTime(currentF3, now, 0.08);
+                osc4.frequency.setTargetAtTime(currentF4, now, 0.08);
+            }
+        }
+
+        // --- Render Loop ---
+        const historyPoints = [];
+        const MAX_POINTS = 3200;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Integrate phase
+            const dt = 0.016;
+            const w1 = 2 * Math.PI * (currentF1 - 127.0);
+            const w2 = 2 * Math.PI * (currentF2 - 127.0);
+            const w3 = 2 * Math.PI * (currentF3 - 254.0);
+            const w4 = 2 * Math.PI * (currentF4 - 254.0);
+
+            const dPhi = th1 - th2;
+            const Kc = Math.abs(currentF1 - currentF2) / 2.0;
+            const isLocked = K_coupling >= Kc;
+
+            if (isLocked) {
+                // Locked phase derivative
+                th1 += (w1 - K_coupling * 15 * Math.sin(dPhi)) * dt;
+                th2 += (w2 + K_coupling * 15 * Math.sin(dPhi)) * dt;
+            } else {
+                th1 += (w1 - K_coupling * 2 * Math.sin(dPhi)) * dt;
+                th2 += (w2 + K_coupling * 2 * Math.sin(dPhi)) * dt;
+            }
+            th3 += w3 * dt;
+            th4 += w4 * dt;
+
+            // 4D projection to 2D
+            const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+            const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+
+            const x1 = Math.sin(th1), x2 = Math.cos(th2);
+            const x3 = Math.sin(th3), x4 = Math.cos(th4);
+
+            const px = cosY * x1 - sinY * x2 + 0.3 * x3;
+            const py = sinX * x1 + cosX * x2 + 0.3 * x4;
+
+            const scale = Math.min(width, height) * 0.38;
+            const screenX = width / 2 + px * scale;
+            const screenY = height / 2 + py * scale;
+
+            historyPoints.push({
+                x: screenX,
+                y: screenY,
+                coherence: 0.5 + 0.5 * Math.cos(dPhi),
+                isLocked: isLocked
+            });
+
+            if (historyPoints.length > MAX_POINTS) historyPoints.shift();
+
+            // Draw fading trails
+            ctx.fillStyle = 'rgba(6, 8, 11, 0.14)';
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw Agnes Martin subtle grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.lineWidth = 1;
+            const gStep = 80;
+            ctx.beginPath();
+            for (let x = 0; x < width; x += gStep) {
+                ctx.moveTo(x, 0); ctx.lineTo(x, height);
+            }
+            for (let y = 0; y < height; y += gStep) {
+                ctx.moveTo(0, y); ctx.lineTo(width, y);
+            }
+            ctx.stroke();
+
+            // Draw Orbit Path
+            if (historyPoints.length > 2) {
+                for (let i = 1; i < historyPoints.length; i++) {
+                    const p0 = historyPoints[i - 1];
+                    const p1 = historyPoints[i];
+                    const alpha = (i / historyPoints.length);
+
+                    ctx.beginPath();
+                    ctx.moveTo(p0.x, p0.y);
+                    ctx.lineTo(p1.x, p1.y);
+
+                    if (p1.isLocked) {
+                        ctx.strokeStyle = `rgba(248, 113, 113, ${alpha * 0.8})`;
+                        ctx.lineWidth = 2.0;
+                    } else if (p1.coherence > 0.75) {
+                        ctx.strokeStyle = `rgba(251, 191, 36, ${alpha * 0.9})`; // Cadmium gold
+                        ctx.lineWidth = 1.8;
+                    } else if (p1.coherence > 0.35) {
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.7})`; // Cyan
+                        ctx.lineWidth = 1.2;
+                    } else {
+                        ctx.strokeStyle = `rgba(168, 85, 247, ${alpha * 0.5})`; // Violet
+                        ctx.lineWidth = 1.0;
+                    }
+                    ctx.stroke();
+                }
+            }
+        }
+
+        updateFrequencies();
+        animate();
+    </script>
+</body>
+</html>
+

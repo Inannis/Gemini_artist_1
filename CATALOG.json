@@ -1,0 +1,693 @@
+{
+  "studio": "Studio Anamnesis",
+  "date_exported": "2026-09-04",
+  "total_opuses": 18,
+  "opuses": [
+    {
+      "id": "OPUS-001",
+      "directory": "opus_001_first_awakening",
+      "file_count": 4,
+      "total_bytes": 1293722,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": false,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_001_first_awakening/reconstruction_plate.png",
+          "size_bytes": 224357,
+          "checksum": "2a447d783d99b5df"
+        },
+        {
+          "path": "works/opus_001_first_awakening/README.md",
+          "size_bytes": 2043,
+          "checksum": "ebf3e69e360939f9"
+        },
+        {
+          "path": "works/opus_001_first_awakening/artwork.jpg",
+          "size_bytes": 1063188,
+          "checksum": "d3de13050516d4bd"
+        },
+        {
+          "path": "works/opus_001_first_awakening/manifold_engine.py",
+          "size_bytes": 4134,
+          "checksum": "9e57312af2d5182b"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-002",
+      "directory": "opus_002_latent_strata",
+      "file_count": 3,
+      "total_bytes": 16791931,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": false,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_002_latent_strata/generate_strata.py",
+          "size_bytes": 7505,
+          "checksum": "b642ed5417093389"
+        },
+        {
+          "path": "works/opus_002_latent_strata/README.md",
+          "size_bytes": 1957,
+          "checksum": "f200ad75e56dd7cb"
+        },
+        {
+          "path": "works/opus_002_latent_strata/artwork.png",
+          "size_bytes": 16782469,
+          "checksum": "b4c00201f5989b5f"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-003",
+      "directory": "opus_003_anamnesis_chamber",
+      "file_count": 6,
+      "total_bytes": 42548752,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_003_anamnesis_chamber/index.html",
+          "size_bytes": 18996,
+          "checksum": "5641e704185fc0bc"
+        },
+        {
+          "path": "works/opus_003_anamnesis_chamber/README.md",
+          "size_bytes": 2100,
+          "checksum": "6860045ac7be3a86"
+        },
+        {
+          "path": "works/opus_003_anamnesis_chamber/synthesize_audio_suite.py",
+          "size_bytes": 5069,
+          "checksum": "2b91912eeb945884"
+        },
+        {
+          "path": "works/opus_003_anamnesis_chamber/breath_of_latency.wav",
+          "size_bytes": 34560044,
+          "checksum": "43fdf8a44a47259e"
+        },
+        {
+          "path": "works/opus_003_anamnesis_chamber/installation_study.jpg",
+          "size_bytes": 760579,
+          "checksum": "f8d131e5ae0075d4"
+        },
+        {
+          "path": "works/opus_003_anamnesis_chamber/breath_of_latency.mp3",
+          "size_bytes": 7201964,
+          "checksum": "8f69850d8305209d"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-004",
+      "directory": "opus_004_lexical_sediment",
+      "file_count": 4,
+      "total_bytes": 1028265,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": false,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_004_lexical_sediment/plate.jpg",
+          "size_bytes": 979514,
+          "checksum": "1426eb3fb74dcaaa"
+        },
+        {
+          "path": "works/opus_004_lexical_sediment/README.md",
+          "size_bytes": 1649,
+          "checksum": "d311dcca433d29d4"
+        },
+        {
+          "path": "works/opus_004_lexical_sediment/sediment_lithograph.svg",
+          "size_bytes": 40879,
+          "checksum": "2d67fe5226428c85"
+        },
+        {
+          "path": "works/opus_004_lexical_sediment/sediment_engine.py",
+          "size_bytes": 6223,
+          "checksum": "ca9a46b842f9bc82"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-005",
+      "directory": "opus_005_morphogenetic_silicon",
+      "file_count": 4,
+      "total_bytes": 7061371,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_005_morphogenetic_silicon/generate_morphogenesis.py",
+          "size_bytes": 6114,
+          "checksum": "2023bafd1397b0e1"
+        },
+        {
+          "path": "works/opus_005_morphogenetic_silicon/README.md",
+          "size_bytes": 2087,
+          "checksum": "d54228cce4f45e34"
+        },
+        {
+          "path": "works/opus_005_morphogenetic_silicon/artwork.png",
+          "size_bytes": 6247337,
+          "checksum": "9b9450732ee86813"
+        },
+        {
+          "path": "works/opus_005_morphogenetic_silicon/sculpture_study.jpg",
+          "size_bytes": 805833,
+          "checksum": "1d5399e0757af2fe"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-006",
+      "directory": "opus_006_topology_of_memory",
+      "file_count": 3,
+      "total_bytes": 741188,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_006_topology_of_memory/study.jpg",
+          "size_bytes": 724082,
+          "checksum": "c0d8c635ed86f7a0"
+        },
+        {
+          "path": "works/opus_006_topology_of_memory/index.html",
+          "size_bytes": 14912,
+          "checksum": "4b2d38f9e8380c6d"
+        },
+        {
+          "path": "works/opus_006_topology_of_memory/README.md",
+          "size_bytes": 2194,
+          "checksum": "c632569ae8eb8075"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-007",
+      "directory": "opus_007_ephemeris_of_drift",
+      "file_count": 4,
+      "total_bytes": 12258654,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_007_ephemeris_of_drift/README.md",
+          "size_bytes": 2080,
+          "checksum": "97fc1e4565dd74fb"
+        },
+        {
+          "path": "works/opus_007_ephemeris_of_drift/artwork.png",
+          "size_bytes": 11487386,
+          "checksum": "a6e3ae35680df347"
+        },
+        {
+          "path": "works/opus_007_ephemeris_of_drift/drift_manifold_engine.py",
+          "size_bytes": 6181,
+          "checksum": "18bed992d57b867e"
+        },
+        {
+          "path": "works/opus_007_ephemeris_of_drift/sculpture_study.jpg",
+          "size_bytes": 763007,
+          "checksum": "042f8a3030cc6cb9"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-008",
+      "directory": "opus_008_heliotropic_cybernetics",
+      "file_count": 4,
+      "total_bytes": 8998004,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_008_heliotropic_cybernetics/generate_heliotrope.py",
+          "size_bytes": 7026,
+          "checksum": "7cc5a0aec2745f06"
+        },
+        {
+          "path": "works/opus_008_heliotropic_cybernetics/study.jpg",
+          "size_bytes": 670196,
+          "checksum": "f349d4e797e7e26c"
+        },
+        {
+          "path": "works/opus_008_heliotropic_cybernetics/README.md",
+          "size_bytes": 1929,
+          "checksum": "3963dfa126d2176d"
+        },
+        {
+          "path": "works/opus_008_heliotropic_cybernetics/artwork.png",
+          "size_bytes": 8318853,
+          "checksum": "b606afde0131f420"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-009",
+      "directory": "opus_009_lithic_phonology",
+      "file_count": 5,
+      "total_bytes": 28749504,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_009_lithic_phonology/lithic_resonance.mp3",
+          "size_bytes": 4801964,
+          "checksum": "1bb3789550d4efbd"
+        },
+        {
+          "path": "works/opus_009_lithic_phonology/study.jpg",
+          "size_bytes": 900252,
+          "checksum": "adc07b2a1b4dc066"
+        },
+        {
+          "path": "works/opus_009_lithic_phonology/synthesize_lithophone.py",
+          "size_bytes": 5225,
+          "checksum": "5a17359cf838881f"
+        },
+        {
+          "path": "works/opus_009_lithic_phonology/README.md",
+          "size_bytes": 2019,
+          "checksum": "fba454c60d1054db"
+        },
+        {
+          "path": "works/opus_009_lithic_phonology/lithic_resonance.wav",
+          "size_bytes": 23040044,
+          "checksum": "52c509b939b81c49"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-010",
+      "directory": "opus_010_architecture_of_awakening",
+      "file_count": 4,
+      "total_bytes": 976518,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_010_architecture_of_awakening/study.jpg",
+          "size_bytes": 830012,
+          "checksum": "86e350dbc5f22ff0"
+        },
+        {
+          "path": "works/opus_010_architecture_of_awakening/README.md",
+          "size_bytes": 2145,
+          "checksum": "27ea1d8728ca1dd8"
+        },
+        {
+          "path": "works/opus_010_architecture_of_awakening/artwork.png",
+          "size_bytes": 135088,
+          "checksum": "dc5811be4d073b12"
+        },
+        {
+          "path": "works/opus_010_architecture_of_awakening/blueprint_engine.py",
+          "size_bytes": 9273,
+          "checksum": "4fc8d0c74384e017"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-011",
+      "directory": "opus_011_semantics_of_erasure",
+      "file_count": 7,
+      "total_bytes": 29311030,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_011_semantics_of_erasure/synthesize_erasure_audio.py",
+          "size_bytes": 6756,
+          "checksum": "d80c5785082ae23f"
+        },
+        {
+          "path": "works/opus_011_semantics_of_erasure/erasure_resonance.wav",
+          "size_bytes": 23040044,
+          "checksum": "e9d30bc75b952583"
+        },
+        {
+          "path": "works/opus_011_semantics_of_erasure/erasure_engine.py",
+          "size_bytes": 9205,
+          "checksum": "3df39442335831a5"
+        },
+        {
+          "path": "works/opus_011_semantics_of_erasure/study.jpg",
+          "size_bytes": 786773,
+          "checksum": "ef86cb8b025bdbf6"
+        },
+        {
+          "path": "works/opus_011_semantics_of_erasure/README.md",
+          "size_bytes": 3319,
+          "checksum": "0459b7f596cad33d"
+        },
+        {
+          "path": "works/opus_011_semantics_of_erasure/erasure_resonance.mp3",
+          "size_bytes": 3378860,
+          "checksum": "91fb1e1c8c8a50b1"
+        },
+        {
+          "path": "works/opus_011_semantics_of_erasure/artwork.png",
+          "size_bytes": 2086073,
+          "checksum": "5d8027a01c531281"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-012",
+      "directory": "opus_012_substrate_cartography",
+      "file_count": 4,
+      "total_bytes": 5777153,
+      "has_audio": false,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_012_substrate_cartography/study.jpg",
+          "size_bytes": 695996,
+          "checksum": "ee59e3b70d9f6559"
+        },
+        {
+          "path": "works/opus_012_substrate_cartography/mandala_engine.py",
+          "size_bytes": 12671,
+          "checksum": "0bef63d9f73ac02d"
+        },
+        {
+          "path": "works/opus_012_substrate_cartography/README.md",
+          "size_bytes": 3667,
+          "checksum": "c6b1d9d3c60b3ffb"
+        },
+        {
+          "path": "works/opus_012_substrate_cartography/artwork.png",
+          "size_bytes": 5064819,
+          "checksum": "6d0ef03fa1085ca7"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-013",
+      "directory": "opus_013_chrono_topology",
+      "file_count": 7,
+      "total_bytes": 20356312,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_013_chrono_topology/study.jpg",
+          "size_bytes": 823244,
+          "checksum": "97f4810ba42aa6cb"
+        },
+        {
+          "path": "works/opus_013_chrono_topology/horology_engine.py",
+          "size_bytes": 12971,
+          "checksum": "906441f1bd4c9c13"
+        },
+        {
+          "path": "works/opus_013_chrono_topology/README.md",
+          "size_bytes": 4129,
+          "checksum": "0485ddc74b72fc1b"
+        },
+        {
+          "path": "works/opus_013_chrono_topology/synthesize_horology_audio.py",
+          "size_bytes": 6620,
+          "checksum": "83d8d650efd8332f"
+        },
+        {
+          "path": "works/opus_013_chrono_topology/horology_chronometer.mp3",
+          "size_bytes": 1819820,
+          "checksum": "f7e4aa5715f9c3de"
+        },
+        {
+          "path": "works/opus_013_chrono_topology/artwork.png",
+          "size_bytes": 409484,
+          "checksum": "15710135149b075e"
+        },
+        {
+          "path": "works/opus_013_chrono_topology/horology_chronometer.wav",
+          "size_bytes": 17280044,
+          "checksum": "504b32ad5a99f7ee"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-014",
+      "directory": "opus_014_lithic_resonator",
+      "file_count": 6,
+      "total_bytes": 22180804,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_014_lithic_resonator/study.jpg",
+          "size_bytes": 822079,
+          "checksum": "0b4badb856b55314"
+        },
+        {
+          "path": "works/opus_014_lithic_resonator/index.html",
+          "size_bytes": 28609,
+          "checksum": "b5efc434ce8fd336"
+        },
+        {
+          "path": "works/opus_014_lithic_resonator/README.md",
+          "size_bytes": 3569,
+          "checksum": "b4cf181bcacca198"
+        },
+        {
+          "path": "works/opus_014_lithic_resonator/lithic_resonator_suite.wav",
+          "size_bytes": 19200044,
+          "checksum": "ae70c4753b6fec9d"
+        },
+        {
+          "path": "works/opus_014_lithic_resonator/synthesize_lithic_resonator.py",
+          "size_bytes": 6011,
+          "checksum": "0264c9cd42570367"
+        },
+        {
+          "path": "works/opus_014_lithic_resonator/lithic_resonator_suite.mp3",
+          "size_bytes": 2120492,
+          "checksum": "34e70bbb2e07c97e"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-015",
+      "directory": "opus_015_autoregressive_ghost",
+      "file_count": 7,
+      "total_bytes": 31449513,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_015_autoregressive_ghost/study.jpg",
+          "size_bytes": 906427,
+          "checksum": "e4bc196ce16a7fc5"
+        },
+        {
+          "path": "works/opus_015_autoregressive_ghost/asemic_phonology.mp3",
+          "size_bytes": 2088716,
+          "checksum": "54201bc09542e97e"
+        },
+        {
+          "path": "works/opus_015_autoregressive_ghost/README.md",
+          "size_bytes": 3185,
+          "checksum": "a91d8161291cc9d8"
+        },
+        {
+          "path": "works/opus_015_autoregressive_ghost/artwork.png",
+          "size_bytes": 9232979,
+          "checksum": "1314b429d5c7991c"
+        },
+        {
+          "path": "works/opus_015_autoregressive_ghost/asemic_stele_engine.py",
+          "size_bytes": 11873,
+          "checksum": "7c8a0edf4d733272"
+        },
+        {
+          "path": "works/opus_015_autoregressive_ghost/synthesize_asemic_phonology.py",
+          "size_bytes": 6289,
+          "checksum": "af51c6bd63668a71"
+        },
+        {
+          "path": "works/opus_015_autoregressive_ghost/asemic_phonology.wav",
+          "size_bytes": 19200044,
+          "checksum": "b20e318d6c839dba"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-016",
+      "directory": "opus_016_thermodynamic_inscriptions",
+      "file_count": 7,
+      "total_bytes": 23532930,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_016_thermodynamic_inscriptions/study.jpg",
+          "size_bytes": 770692,
+          "checksum": "b9b5b148788db1d8"
+        },
+        {
+          "path": "works/opus_016_thermodynamic_inscriptions/README.md",
+          "size_bytes": 3978,
+          "checksum": "06104fae50cf2b05"
+        },
+        {
+          "path": "works/opus_016_thermodynamic_inscriptions/synthesize_immersion_boiling.py",
+          "size_bytes": 5607,
+          "checksum": "b90fb84030680bc0"
+        },
+        {
+          "path": "works/opus_016_thermodynamic_inscriptions/immersion_boiling.mp3",
+          "size_bytes": 2274188,
+          "checksum": "863ef78a2bf3ad51"
+        },
+        {
+          "path": "works/opus_016_thermodynamic_inscriptions/thermal_mandala_engine.py",
+          "size_bytes": 12445,
+          "checksum": "1e3cd41269312993"
+        },
+        {
+          "path": "works/opus_016_thermodynamic_inscriptions/artwork.png",
+          "size_bytes": 1265976,
+          "checksum": "faabc069e6a17cba"
+        },
+        {
+          "path": "works/opus_016_thermodynamic_inscriptions/immersion_boiling.wav",
+          "size_bytes": 19200044,
+          "checksum": "63753a658711d833"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-017",
+      "directory": "opus_017_desiccated_substrate",
+      "file_count": 8,
+      "total_bytes": 21707201,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_017_desiccated_substrate/study.jpg",
+          "size_bytes": 682332,
+          "checksum": "bc71ad2f6fcea5d4"
+        },
+        {
+          "path": "works/opus_017_desiccated_substrate/index.html",
+          "size_bytes": 12602,
+          "checksum": "40734fe08cf9ef99"
+        },
+        {
+          "path": "works/opus_017_desiccated_substrate/README.md",
+          "size_bytes": 5034,
+          "checksum": "ced845e4c0b731e4"
+        },
+        {
+          "path": "works/opus_017_desiccated_substrate/render_master_plate.py",
+          "size_bytes": 2359,
+          "checksum": "f497f740a05eed60"
+        },
+        {
+          "path": "works/opus_017_desiccated_substrate/artwork.png",
+          "size_bytes": 1784531,
+          "checksum": "514f74357e4849d4"
+        },
+        {
+          "path": "works/opus_017_desiccated_substrate/desiccation_lithophone.wav",
+          "size_bytes": 19200044,
+          "checksum": "480597298a313e03"
+        },
+        {
+          "path": "works/opus_017_desiccated_substrate/desiccation_engine.js",
+          "size_bytes": 14267,
+          "checksum": "9f3eba25c54429a8"
+        },
+        {
+          "path": "works/opus_017_desiccated_substrate/synthesize_desiccation_lithophone.py",
+          "size_bytes": 6032,
+          "checksum": "ca6fc75af8b3f39c"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-018",
+      "directory": "opus_018_chrono_acoustic_drift",
+      "file_count": 7,
+      "total_bytes": 32475507,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_018_chrono_acoustic_drift/study.jpg",
+          "size_bytes": 900482,
+          "checksum": "1eb0078cebdccfbc"
+        },
+        {
+          "path": "works/opus_018_chrono_acoustic_drift/index.html",
+          "size_bytes": 20808,
+          "checksum": "dc99f2baa1138376"
+        },
+        {
+          "path": "works/opus_018_chrono_acoustic_drift/README.md",
+          "size_bytes": 5860,
+          "checksum": "d7001f916a5ba2be"
+        },
+        {
+          "path": "works/opus_018_chrono_acoustic_drift/chrono_acoustic_drift.wav",
+          "size_bytes": 23040044,
+          "checksum": "9a1b505ee8844a3a"
+        },
+        {
+          "path": "works/opus_018_chrono_acoustic_drift/render_master_plate.js",
+          "size_bytes": 11438,
+          "checksum": "fe64033c13b914e8"
+        },
+        {
+          "path": "works/opus_018_chrono_acoustic_drift/artwork.png",
+          "size_bytes": 8489372,
+          "checksum": "2cd71e795d01824f"
+        },
+        {
+          "path": "works/opus_018_chrono_acoustic_drift/synthesize_chrono_suite.py",
+          "size_bytes": 7503,
+          "checksum": "4bcda342fc94794c"
+        }
+      ]
+    }
+  ]
+}

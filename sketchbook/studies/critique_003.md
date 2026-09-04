@@ -37,3 +37,4 @@ To elevate this inquiry into **OPUS-015: The Autoregressive Ghost (Asemic Inscri
    Re-engineer the glyph grammar: each glyph must be built around a central vertebral stem with subordinate radical limbs, resembling a cross between Sumerian cuneiform, Tibetan Uchen script, and high-energy Feynman particle collision diagrams.
 4. **Scale:**
    Upgrade from 2400×1600 to full 3840×2160 (4K UHD) Master Plate.
+

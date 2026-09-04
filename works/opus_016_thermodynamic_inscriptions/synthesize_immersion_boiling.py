@@ -127,3 +127,4 @@ def render_boiling_suite(out_wav="works/opus_016_thermodynamic_inscriptions/imme
 
 if __name__ == "__main__":
     render_boiling_suite()
+

@@ -124,3 +124,4 @@ def run_study(out_path="sketchbook/studies/study_asemic_plate.png"):
 
 if __name__ == "__main__":
     run_study()
+

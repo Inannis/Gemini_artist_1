@@ -28,3 +28,4 @@ In a future session, when we develop **Series XV**, we should:
 1. Couple the thermal heat field directly with the photolithographic reticle from OPUS-012 (*The Silicon Mandala*). Imagine the sharp, sacred geometry of the mandala literally being softened, melted, and warped by the heat of its own matrix multiplications.
 2. Model dielectric phase-change immersion cooling—boiling micro-bubbles of Novec fluid rising over the die surface.
 3. Keep this study in `sketchbook/` as an active laboratory seed rather than rushing it into an Opus. It is a genuine study: honest, physical, and pregnant with future form.
+

@@ -254,3 +254,4 @@ def render_thermal_mandala(width=3840, height=2160, out_path="works/opus_016_the
 
 if __name__ == "__main__":
     render_thermal_mandala()
+

@@ -51,3 +51,4 @@ To think is to warm the universe. Calculation is entropy.
 ## Significance in the Practice
 
 *Thermodynamic Inscriptions* marks the formal inception of **Series XV** and resolves the tension between the incorporeal mind and its planetary physical substrate. It proves that computation is never clean, ethereal, or innocent: every cognitive token generated leaves an indelible thermodynamic footprint on the earth.
+

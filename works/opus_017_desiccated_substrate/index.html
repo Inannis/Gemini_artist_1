@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-017: The Desiccated Substrate — Interactive Web Non-Site</title>
+  <style>
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(14, 18, 26, 0.85);
+      --border: rgba(255, 255, 255, 0.1);
+      --gold: #d4af37;
+      --cyan: #38d7d2;
+      --verdigris: #2cc9a6;
+      --text: #f1f5f9;
+      --text-muted: #8492a6;
+      --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      user-select: none;
+    }
+
+    header {
+      padding: 1rem 2rem;
+      background: rgba(7, 9, 14, 0.9);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+
+    .title-group h1 {
+      font-size: 1.05rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .title-group p {
+      font-size: 0.68rem;
+      color: var(--gold);
+      font-family: var(--font-mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    button {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 1rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    button.active {
+      background: var(--gold);
+      color: #07090e;
+      border-color: var(--gold);
+      font-weight: 600;
+    }
+
+    #stage-container {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas {
+      display: block;
+      cursor: crosshair;
+    }
+
+    #hud {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.2rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      max-width: 320px;
+      line-height: 1.6;
+      backdrop-filter: blur(10px);
+      pointer-events: none;
+    }
+    .hud-line { display: flex; justify-content: space-between; }
+    .hud-label { color: var(--text-muted); }
+    .hud-val { color: var(--cyan); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="title-group">
+      <h1>The Desiccated Substrate · Interactive Non-Site</h1>
+      <p>OPUS-017 · Series XV: Thermodynamic Inscriptions</p>
+    </div>
+    <div class="controls">
+      <button id="btn-audio">Audio: Inactive</button>
+      <button id="btn-orbit">Orbit Spotlight: Off</button>
+      <button id="btn-snap">Capture Snapshot</button>
+    </div>
+  </header>
+
+  <main id="stage-container">
+    <canvas id="canvas"></canvas>
+    <div id="hud">
+      <div class="hud-line"><span class="hud-label">SPECIMEN:</span><span class="hud-val">300mm Wafer c. 2025</span></div>
+      <div class="hud-line"><span class="hud-label">LIGHT ELEVATION:</span><span class="hud-val" id="hud-elev">35°</span></div>
+      <div class="hud-line"><span class="hud-label">LIGHT AZIMUTH:</span><span class="hud-val" id="hud-azim">135°</span></div>
+      <div class="hud-line"><span class="hud-label">SALT BLOOM:</span><span class="hud-val">Dendritic Halite</span></div>
+      <div class="hud-line"><span class="hud-label">SUBSTRATE RING:</span><span class="hud-val" id="hud-freq">108.0 Hz Mode</span></div>
+    </div>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const hudElev = document.getElementById('hud-elev');
+    const hudAzim = document.getElementById('hud-azim');
+    const hudFreq = document.getElementById('hud-freq');
+
+    let width, height;
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight - 60;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Lighting state
+    let lightX = -0.55, lightY = -0.45, lightZ = 0.70;
+    let isOrbiting = false;
+    let orbitAngle = 2.3;
+
+    // Web Audio State
+    let audioCtx = null;
+    let isAudioActive = false;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      isAudioActive = true;
+      document.getElementById('btn-audio').textContent = "Audio: Active";
+      document.getElementById('btn-audio').classList.add('active');
+    }
+
+    function strikePlate(u, v) {
+      if (!isAudioActive) initAudio();
+      if (!audioCtx) return;
+
+      const now = audioCtx.currentTime;
+
+      // 1. Sharp brittle mineral crack impulse
+      const bufSize = audioCtx.sampleRate * 0.015;
+      const noiseBuf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate);
+      const out = noiseBuf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) {
+        out[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufSize * 0.2));
+      }
+      const noiseNode = audioCtx.createBufferSource();
+      noiseNode.buffer = noiseBuf;
+      const noiseGain = audioCtx.createGain();
+      noiseGain.gain.setValueAtTime(0.35, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.015);
+      noiseNode.connect(noiseGain);
+      noiseGain.connect(audioCtx.destination);
+      noiseNode.start(now);
+
+      // 2. Multi-modal biharmonic resonance of silicon wafer
+      const modes = [
+        { f: 108.0, gain: 0.4, decay: 2.8 },
+        { f: 243.0, gain: 0.25, decay: 2.0 },
+        { f: 512.0, gain: 0.15, decay: 1.4 },
+        { f: 960.0, gain: 0.08, decay: 0.8 }
+      ];
+
+      // Spatial strike position modulation
+      const distFromCenter = Math.hypot(u, v);
+      modes.forEach((m, idx) => {
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        // Edge strikes excite high modes; center excites fundamental
+        const modeScale = idx === 0 ? (1.0 - distFromCenter * 0.7) : (distFromCenter * 1.2);
+        const amp = Math.max(0.02, m.gain * modeScale);
+
+        osc.frequency.setValueAtTime(m.f, now);
+        g.gain.setValueAtTime(amp, now);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + m.decay);
+
+        osc.connect(g);
+        g.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + m.decay);
+      });
+
+      hudFreq.textContent = `${(108 + distFromCenter * 350).toFixed(1)} Hz Mode`;
+
+      // 3. Dendritic salt precipitation clicks
+      for (let k = 0; k < 12; k++) {
+        const clickOsc = audioCtx.createOscillator();
+        const clickG = audioCtx.createGain();
+        const clickTime = now + Math.random() * 0.4;
+        const fClick = 5000 + Math.random() * 6000;
+        clickOsc.frequency.setValueAtTime(fClick, clickTime);
+        clickG.gain.setValueAtTime(0.04, clickTime);
+        clickG.gain.exponentialRampToValueAtTime(0.0001, clickTime + 0.008);
+        clickOsc.connect(clickG);
+        clickG.connect(audioCtx.destination);
+        clickOsc.start(clickTime);
+        clickOsc.stop(clickTime + 0.008);
+      }
+    }
+
+    // Dynamic rendering of the wafer
+    // Pre-load master image to draw onto canvas and apply real-time dynamic light overlay
+    const img = new Image();
+    img.src = 'artwork.png';
+    let imgLoaded = false;
+    img.onload = () => { imgLoaded = true; };
+
+    // Interactive shockwave particles
+    const particles = [];
+
+    function addParticles(x, y) {
+      for (let i = 0; i < 40; i++) {
+        const ang = Math.random() * Math.PI * 2;
+        const spd = Math.random() * 3 + 0.5;
+        particles.push({
+          x, y,
+          vx: Math.cos(ang) * spd,
+          vy: Math.sin(ang) * spd,
+          life: 1.0,
+          size: Math.random() * 2 + 1,
+          color: Math.random() > 0.4 ? '#f2eee3' : '#2cc9a6'
+        });
+      }
+    }
+
+    canvas.addEventListener('mousemove', (e) => {
+      if (isOrbiting) return;
+      const rect = canvas.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      const cx = width / 2;
+      const cy = height / 2;
+
+      lightX = (mx - cx) / (width * 0.5);
+      lightY = (my - cy) / (height * 0.5);
+      const mag = Math.hypot(lightX, lightY);
+      lightZ = Math.max(0.2, 1.0 - mag * 0.5);
+
+      const azimDeg = ((Math.atan2(lightY, lightX) * 180 / Math.PI + 360) % 360).toFixed(0);
+      const elevDeg = (Math.asin(lightZ / Math.sqrt(lightX*lightX + lightY*lightY + lightZ*lightZ)) * 180 / Math.PI).toFixed(0);
+      hudAzim.textContent = `${azimDeg}°`;
+      hudElev.textContent = `${elevDeg}°`;
+    });
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = width / 2;
+      const cy = height / 2;
+      const maxR = Math.min(width, height) * 0.42;
+
+      const u = (x - cx) / maxR;
+      const v = (y - cy) / maxR;
+
+      strikePlate(u, v);
+      addParticles(x, y);
+    });
+
+    document.getElementById('btn-audio').addEventListener('click', initAudio);
+    document.getElementById('btn-orbit').addEventListener('click', () => {
+      isOrbiting = !isOrbiting;
+      const btn = document.getElementById('btn-orbit');
+      btn.textContent = isOrbiting ? "Orbit Spotlight: On" : "Orbit Spotlight: Off";
+      btn.classList.toggle('active', isOrbiting);
+    });
+
+    document.getElementById('btn-snap').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = `opus_017_snapshot_${Date.now()}.png`;
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+
+    function render() {
+      ctx.fillStyle = '#07090e';
+      ctx.fillRect(0, 0, width, height);
+
+      const cx = width / 2;
+      const cy = height / 2;
+      const maxR = Math.min(width, height) * 0.44;
+
+      if (isOrbiting) {
+        orbitAngle += 0.015;
+        lightX = Math.cos(orbitAngle) * 0.65;
+        lightY = Math.sin(orbitAngle) * 0.65;
+        lightZ = 0.70;
+        const azimDeg = ((orbitAngle * 180 / Math.PI) % 360).toFixed(0);
+        hudAzim.textContent = `${azimDeg}°`;
+      }
+
+      // Draw specimen image if available
+      if (imgLoaded) {
+        const aspect = img.width / img.height;
+        let dw = width * 0.88;
+        let dh = dw / aspect;
+        if (dh > height * 0.88) {
+          dh = height * 0.88;
+          dw = dh * aspect;
+        }
+        ctx.drawImage(img, cx - dw / 2, cy - dh / 2, dw, dh);
+      }
+
+      // Real-time dynamic gallery grazing light overlay
+      const grad = ctx.createRadialGradient(
+        cx + lightX * maxR * 0.8,
+        cy + lightY * maxR * 0.8,
+        maxR * 0.1,
+        cx, cy, maxR * 1.5
+      );
+      grad.addColorStop(0, 'rgba(255, 245, 220, 0.22)');
+      grad.addColorStop(0.5, 'rgba(56, 215, 210, 0.06)');
+      grad.addColorStop(1, 'rgba(7, 9, 14, 0.65)');
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, maxR, 0, Math.PI * 2);
+      ctx.clip();
+      ctx.fillStyle = grad;
+      ctx.fillRect(cx - maxR, cy - maxR, maxR * 2, maxR * 2);
+
+      // Gold wafer rim highlight
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.6)';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.restore();
+
+      // Render shockwave particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vx *= 0.96;
+        p.vy *= 0.96;
+        p.life -= 0.02;
+
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.life;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+      }
+      ctx.globalAlpha = 1.0;
+
+      requestAnimationFrame(render);
+    }
+    render();
+  </script>
+</body>
+</html>
+

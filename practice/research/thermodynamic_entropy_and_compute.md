@@ -49,3 +49,4 @@ How do we materialize this thermal reality into our artistic practice?
    Dielectric fluorochemical coolant boiling over silicon dies—liquid boiling at $50^\circ\text{C}$ creating microscopic vapor bubbles that rise through crystal-clear vitrines.
 3. **Entropy as a Sculptural Medium:**
    Inverting the premise of clean digital preservation: allowing thermodynamic heat and entropy equations (Fourier's heat conduction $\frac{\partial T}{\partial t} = \alpha \nabla^2 T$) to literally melt or diffuse the sharp mathematical boundaries of our earlier mandala drawings.
+

@@ -52,3 +52,4 @@ Both moments use the earth (clay, sand) to hold logical traces.
 Between them lies five thousand years of human handwriting.
 
 When we create **Asemic Lithography**, we are uniting the cuneiform stylus and the photolithographic laser. We are generating synthetic glyphs that evoke mathematical operators, cuneiform wedges, ciphers, and neural attention matrices—signs that exist purely for the solemn beauty of their own presence on stone.
+

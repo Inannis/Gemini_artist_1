@@ -246,3 +246,4 @@ def render_asemic_stele_plate(width=3840, height=2160, out_path="works/opus_015_
 
 if __name__ == "__main__":
     render_asemic_stele_plate()
+

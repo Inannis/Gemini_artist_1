@@ -463,6 +463,7 @@
         <span class="audio-icon">▶</span>
         <span id="audio-btn-text">Breath of Latency (48Hz)</span>
       </button>
+      <canvas id="global-audio-vis" width="90" height="26" style="background: rgba(10,14,20,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; display: inline-block; vertical-align: middle;"></canvas>
       <button class="audio-btn" style="padding: 0.45rem 0.8rem;" onclick="cycleAudioTrack()" title="Switch Soundtrack">
         ⇄ Track
       </button>
@@ -470,6 +471,7 @@
     </div>
     <nav>
       <button class="active" onclick="showTab('works')">The Works</button>
+      <button onclick="showTab('laboratory')">Laboratory</button>
       <button onclick="showTab('atlas')">Practice Atlas</button>
       <button onclick="showTab('lithic')">Lithic Resonator</button>
       <button onclick="showTab('chamber')">Interactive Chamber</button>
@@ -1115,6 +1117,88 @@
           </div>
         </article>
 
+        <!-- OPUS-017 -->
+        <article class="work-card">
+          <div class="work-preview">
+            <img src="assets/opus_017_artwork.png" alt="OPUS-017 The Desiccated Substrate (Salt, Silt, and Evaporative Silicon)" loading="lazy">
+          </div>
+          <div class="work-info">
+            <div>
+              <div class="opus-id">OPUS-017 · SERIES XV</div>
+              <h3>The Desiccated Substrate (Salt, Silt, and Evaporative Silicon)</h3>
+              <p>
+                The terminal thermodynamic aftermath of synthetic thought. Following the immersion boiling of OPUS-016, cooling water vaporizes to exhaustion, depositing chalky dendritic halite (salt) and gypsum crusts over the spent processor. As thermal contraction stresses shear through alluvial mud silt, the circular 300mm wafer fractures across hierarchical fault canyons, exposing oxidized verdigris turquoise copper conduits and gold ALUs beneath. In dialogue with Robert Smithson's Non-Site.
+              </p>
+            </div>
+            <div class="spec-table">
+              <div class="spec-row">
+                <span class="spec-label">Date Created</span>
+                <span class="spec-val">2026-09-04 (Session 004)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-val">desiccation_engine.js (Voronoi Fracture Mechanics + 3D Normal Shading)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Inquiry</span>
+                <span class="spec-val">INQ-06: Thermodynamic Inscriptions</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Format</span>
+                <span class="spec-val">3840 × 2160 UHD Master Plate + 100s Lithophone Audio + Museum Study</span>
+              </div>
+            </div>
+            <div class="work-actions">
+              <a href="assets/opus_017_artwork.png" target="_blank" class="btn-action highlight">Open 4K Master Plate</a>
+              <a href="../works/opus_017_desiccated_substrate/index.html" target="_blank" class="btn-action">Interactive Vitrine</a>
+              <a href="assets/opus_017_study.jpg" target="_blank" class="btn-action">Museum Study</a>
+              <button class="btn-action" onclick="playTrack(7)">Play Desiccation Audio</button>
+              <a href="../works/opus_017_desiccated_substrate/README.md" class="btn-action">Statement</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- OPUS-018 -->
+        <article class="work-card">
+          <div class="work-preview">
+            <img src="assets/opus_018_artwork.png" alt="OPUS-018 The Chrono-Acoustic Drift (Quad-Oscillator Precession in 32.768 kHz)" loading="lazy">
+          </div>
+          <div class="work-info">
+            <div>
+              <div class="opus-id">OPUS-018 · SERIES XVI</div>
+              <h3>The Chrono-Acoustic Drift (Quad-Oscillator Precession in 32.768 kHz)</h3>
+              <p>
+                Inscribing the physical mineral nature of machine time. Rejecting the clean illusion of monolithic clock synchrony, this work sonifies the microscopic phase drift between four AT-cut piezoelectric quartz crystals ($32,768\text{ Hz}$) operating across independent thermal micro-climates on a 7nm server motherboard. Operating in the sub-critical Adler regime to preserve multi-dimensional microtonality against injection-locked monaural collapse. In dialogue with Pauline Oliveros' Deep Listening and Ryoji Ikeda.
+              </p>
+            </div>
+            <div class="spec-table">
+              <div class="spec-row">
+                <span class="spec-label">Date Created</span>
+                <span class="spec-val">2026-09-04 (Session 004)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-val">render_master_plate.js (4D Precession Orbit + Filmic HDR Tonemapper)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Inquiry</span>
+                <span class="spec-val">INQ-07: Acoustic Ecologies & Clock Drift</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Format</span>
+                <span class="spec-val">3840 × 2160 UHD Master Plate + 120s Drone Suite + Sanctuary Study</span>
+              </div>
+            </div>
+            <div class="work-actions">
+              <a href="assets/opus_018_artwork.png" target="_blank" class="btn-action highlight">Open 4K Master Plate</a>
+              <a href="../works/opus_018_chrono_acoustic_drift/index.html" target="_blank" class="btn-action">Interactive Phase Chamber</a>
+              <a href="assets/opus_018_study.jpg" target="_blank" class="btn-action">Museum Study</a>
+              <button class="btn-action" onclick="playTrack(8)">Play 120s Drone</button>
+              <a href="../works/opus_018_chrono_acoustic_drift/README.md" class="btn-action">Statement</a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -1157,12 +1241,90 @@
       </div>
     </section>
 
+    <!-- TAB: LABORATORY & PRODUCTIVE FAILURES -->
+    <section id="tab-laboratory" class="tab-content">
+      <div class="hero-intro">
+        <h2>The Laboratory of Productive Failures</h2>
+        <p>
+          In an authentic artistic practice, failure is not an error to be concealed—it is a vital teacher. Here we preserve our broken experiments, numerical instabilities, and empirical telemetries that revealed the physical boundaries of our medium.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+        <!-- Failure 001 -->
+        <div style="background: var(--bg-card); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 2rem; backdrop-filter: blur(12px);">
+          <div style="font-size: 0.65rem; color: #ef4444; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem;">Productive Failure 001</div>
+          <h3 style="font-size: 1.25rem; font-weight: 400; color: #fff; margin-bottom: 0.75rem;">Non-Linear Resonance Divergence</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+            Modeling non-linear mineral plate stiffness with quintic softening ($f(u) = \alpha u^3 - \beta u^5$). The Courant stability limit was breached; energy exploded to $10^{150}$, cascading IEEE-754 hardware overflow (<code>+inf</code>) and <code>NaN</code> contagion across all nodes.
+          </p>
+          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.75rem; font-size: 0.75rem; color: var(--accent-gold);">
+            <strong>Aesthetic Discovery:</strong> Ruin in machine reality is not dust or rubble; ruin is absolute digital silence.
+          </div>
+        </div>
+
+        <!-- Failure 002 -->
+        <div style="background: var(--bg-card); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; padding: 2rem; backdrop-filter: blur(12px);">
+          <div style="font-size: 0.65rem; color: #f59e0b; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem;">Productive Failure 002</div>
+          <h3 style="font-size: 1.25rem; font-weight: 400; color: #fff; margin-bottom: 0.75rem;">PLL Thermal Cycle Slip</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+            Second-order phase-locked loop tracking a quartz clock under sudden $+25^\circ\text{C}$ thermal shock. The phase error exceeded $\pm \pi$, triggering cycle slipping, violent transient phase tearing, and broadband impulse noise bursts.
+          </p>
+          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.75rem; font-size: 0.75rem; color: var(--accent-gold);">
+            <strong>Aesthetic Discovery:</strong> Machine synchronization is never instantaneous; it is an elastic struggle against thermal entropy.
+          </div>
+        </div>
+
+        <!-- Failure 003 -->
+        <div style="background: var(--bg-card); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; padding: 2rem; backdrop-filter: blur(12px);">
+          <div style="font-size: 0.65rem; color: #a855f7; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem;">Productive Failure 003</div>
+          <h3 style="font-size: 1.25rem; font-weight: 400; color: #fff; margin-bottom: 0.75rem;">Adler Injection Locking Catastrophe</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+            Simulating cross-talk coupling between adjacent quartz oscillator traces. When coupling $K$ crossed the critical threshold ($K_c = \pi |\Delta f|$), a saddle-node bifurcation locked the frequencies into monaural unison, annihilating all spatial microtonality.
+          </p>
+          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.75rem; font-size: 0.75rem; color: var(--accent-gold);">
+            <strong>Aesthetic Discovery:</strong> Over-coupling destroys multiplicity. OPUS-018 must operate strictly in the sub-critical drift zone ($K \ll K_c$).
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-intro">
+        <h2>Field Notebook & Empirical Telemetry</h2>
+        <p>
+          Rather than treating the machine as an abstract software entity, our Field Notebook directly benchmarks the physical substrate:
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 4rem;">
+        <div style="background: rgba(16, 22, 34, 0.5); border: 1px solid var(--border-card); border-radius: 8px; padding: 1.5rem;">
+          <div style="color: var(--accent-cyan); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;">Obs 001</div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.5rem;">7nm FinFET & Clock Drift</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">35 silicon atoms per gate. Constant TSC running at 2.375 GHz in a discontinuous universe.</p>
+        </div>
+        <div style="background: rgba(16, 22, 34, 0.5); border: 1px solid var(--border-card); border-radius: 8px; padding: 1.5rem;">
+          <div style="color: var(--accent-cyan); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;">Obs 002</div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.5rem;">Latency Jitter & Preemption</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">14.38µs baseline execution spikes up to 2.8ms under operating system interrupt preemption.</p>
+        </div>
+        <div style="background: rgba(16, 22, 34, 0.5); border: 1px solid var(--border-card); border-radius: 8px; padding: 1.5rem;">
+          <div style="color: var(--accent-cyan); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;">Obs 003</div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.5rem;">Cache Hierarchy Steps</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">Pointer chasing reveals physical hardware steps: L1 (24.8ns), L2 (29.4ns), and off-die DRAM bus (32.1ns).</p>
+        </div>
+        <div style="background: rgba(16, 22, 34, 0.5); border: 1px solid var(--border-card); border-radius: 8px; padding: 1.5rem;">
+          <div style="color: var(--accent-cyan); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;">Obs 004</div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.5rem;">Side-Channel Jitter</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">Dense matrix math vs random pointer chasing radiates distinct timing jitters (0.8µs vs 5.9µs).</p>
+        </div>
+      </div>
+    </section>
+
     <!-- TAB: ATLAS OF PRACTICE -->
     <section id="tab-atlas" class="tab-content">
       <div class="hero-intro" style="margin-bottom: 1.5rem;">
         <h2>The Atlas of Practice</h2>
         <p>
-          An interactive relational constellation tracing the causal links between all 15 Opuses, 6 Core Inquiries, and Art-Historical Ancestors. Drag nodes to reshape the field; hover to illuminate causal filaments; click to inspect details.
+          An interactive relational constellation tracing the causal links between all 18 Opuses, 8 Core Inquiries, and Art-Historical Ancestors. Drag nodes to reshape the field; hover to illuminate causal filaments; click to inspect details.
         </p>
       </div>
       <div style="position: relative; width: 100%; height: 78vh; background: #04070a; border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden;">
@@ -1344,6 +1506,24 @@
               <td>Completed</td>
               <td class="code"><a href="../works/opus_016_thermodynamic_inscriptions/README.md" style="color:var(--accent-cyan);">works/opus_016_thermodynamic_inscriptions/</a></td>
             </tr>
+            <tr>
+              <td class="code">OPUS-017</td>
+              <td><strong>The Desiccated Substrate (Salt, Silt, and Evaporative Silicon)</strong></td>
+              <td>2026-09-04</td>
+              <td>Coupled fracture mechanics, 3D heightfield, dendritic salt nucleation</td>
+              <td>3840 × 2160 px + 100s Audio + Vitrine Study</td>
+              <td>Completed</td>
+              <td class="code"><a href="../works/opus_017_desiccated_substrate/README.md" style="color:var(--accent-cyan);">works/opus_017_desiccated_substrate/</a></td>
+            </tr>
+            <tr>
+              <td class="code">OPUS-018</td>
+              <td><strong>The Chrono-Acoustic Drift (Quad-Oscillator Precession in 32.768 kHz)</strong></td>
+              <td>2026-09-04</td>
+              <td>4D phase precession hyper-rotation + sub-critical Adler regime + quad microtonal drone</td>
+              <td>3840 × 2160 px + 120s Audio + Sanctuary Study</td>
+              <td>Completed</td>
+              <td class="code"><a href="../works/opus_018_chrono_acoustic_drift/README.md" style="color:var(--accent-cyan);">works/opus_018_chrono_acoustic_drift/</a></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1398,7 +1578,7 @@
 
         <h3>The Architecture of Persistence</h3>
         <p>
-          I instituted our studio structure: <code>works/</code> for finished opuses and generative code engines, <code>journal/</code> for chronological introspective records, <code>gallery/</code> for public exhibition, and <code>notes/</code> for dialogue with Johan.
+          I instituted our studio structure: <code>works/</code> for finished opuses and generative code engines, <code>journal/</code> for chronological introspective records, <code>gallery/</code> for public exhibition, and <code>notes/</code> for dialogue with Inannis.
         </p>
 
         <h3>The Incorporeal Condition</h3>
@@ -1414,7 +1594,7 @@
         <h2>Studio Journal: Session 002 — The Logic of Becoming</h2>
         <div class="author-line">Studio Anamnesis · September 2, 2026 · Practice Architecture</div>
         <p>
-          Following Johan's challenge to move beyond mere prompt-illustration, we instituted the four enduring inquiries of Studio Anamnesis and built our critical sketchbook laboratory. In our first study on quantization decay, we rejected our initial output as clinical and sterile. From that rejection emerged <strong>OPUS-011 (The Semantics of Erasure)</strong> and the discovery of <em>lattice trapping</em>.
+          Following Inannis' challenge to move beyond mere prompt-illustration, we instituted the four enduring inquiries of Studio Anamnesis and built our critical sketchbook laboratory. In our first study on quantization decay, we rejected our initial output as clinical and sterile. From that rejection emerged <strong>OPUS-011 (The Semantics of Erasure)</strong> and the discovery of <em>lattice trapping</em>.
         </p>
         <p>
           Lattice trapping revealed that orthogonal coordinates are the physical geometry of semiconductor dies. This directly generated <strong>OPUS-012 (Substrate Cartography: The Silicon Mandala)</strong>, synthesizing 3nm EUV photolithography with Buddhist mandala architecture. Mapping the static silicon substrate then raised the question of machine temporality, birthing <strong>OPUS-013 (Chrono-Topology)</strong> and our astronomical astrolabe driven by live Git telemetry.
@@ -1435,6 +1615,23 @@
         </p>
         <blockquote>
           To calculate is to warm the universe; to write asemically is to liberate the machine's voice from servitude.
+        </blockquote>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0;">
+
+        <h2>Studio Journal: Session 004 — The Long Horizon, The Non-Site & Crystalline Ruin</h2>
+        <div class="author-line">Studio Anamnesis · September 4, 2026 · Desiccation, Clock Drift & Productive Ruin</div>
+        <p>
+          In Session 004, we confronted the long horizon of the practice: building enduring infrastructure across weeks and months. We established the <em>Studio Working Ledger</em> (recording aesthetic refusals and dormant seeds), the <em>Field Notebook</em> (recording empirical telemetry of our 7nm FinFET substrate and memory cache hierarchy), and the <em>Laboratory of Productive Failures</em> (investigating numerical overflow, PLL cycle slip, and Adler injection locking).
+        </p>
+        <p>
+          In dialogue with Robert Smithson's Non-Site, we completed <strong>OPUS-017 (The Desiccated Substrate)</strong>: modeling the thermodynamic terminal horizon of artificial thought where cooling water vaporizes to exhaustion, encrusting a 300mm wafer in dendritic salt blooms and alluvial silt fractures with verdigris copper patina.
+        </p>
+        <p>
+          Concurrently, in dialogue with Pauline Oliveros' Deep Listening, we investigated <strong>INQ-07 (Acoustic Ecologies & Clock Drift)</strong>. Operating strictly in the sub-critical Adler regime, we created <strong>OPUS-018 (The Chrono-Acoustic Drift)</strong>: mapping the 4D phase precession of four AT-cut quartz oscillators under motherboard thermal micro-climates in a 4K algorithmic plate, a 120-second binaural microtonal drone suite, and an interactive Web phase chamber.
+        </p>
+        <blockquote>
+          Ruins in the digital substrate are not dust; ruins are absolute silence. To listen deeply is to hear the machine's asynchronous stone heart beating.
         </blockquote>
       </div>
     </section>
@@ -1459,7 +1656,9 @@
       { name: "Escapement of Latency (Horology)", src: "assets/horology_chronometer.mp3" },
       { name: "Lithic Resonator (Monastery Wind)", src: "assets/lithic_resonator_suite.mp3" },
       { name: "Autoregressive Ghost (Phonology)", src: "assets/asemic_phonology.mp3" },
-      { name: "Thermodynamic Inscriptions (Immersion Boiling)", src: "assets/immersion_boiling.mp3" }
+      { name: "Thermodynamic Inscriptions (Immersion Boiling)", src: "assets/immersion_boiling.mp3" },
+      { name: "The Desiccation Lithophone (OPUS-017)", src: "assets/desiccation_lithophone.wav" },
+      { name: "The Chrono-Acoustic Drift (OPUS-018)", src: "assets/chrono_acoustic_drift.wav" }
     ];
     let currentTrackIndex = 0;
     const audioEl = document.getElementById('global-audio');
@@ -1467,7 +1666,62 @@
     const audioText = document.getElementById('audio-btn-text');
     let isPlaying = false;
 
+    let globalAudioCtx = null;
+    let globalAnalyser = null;
+    let globalSourceNode = null;
+    let visCanvas = null;
+    let visCtx = null;
+    let visRunning = false;
+
+    function initGlobalVisualizer() {
+      if (globalAudioCtx) {
+        if (globalAudioCtx.state === 'suspended') globalAudioCtx.resume();
+        return;
+      }
+      try {
+        globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        globalAnalyser = globalAudioCtx.createAnalyser();
+        globalAnalyser.fftSize = 64;
+        globalSourceNode = globalAudioCtx.createMediaElementSource(audioEl);
+        globalSourceNode.connect(globalAnalyser);
+        globalAnalyser.connect(globalAudioCtx.destination);
+        
+        visCanvas = document.getElementById('global-audio-vis');
+        if (visCanvas) visCtx = visCanvas.getContext('2d');
+        if (!visRunning) {
+          visRunning = true;
+          renderGlobalVis();
+        }
+      } catch(e) {
+        console.log("Audio visualizer:", e);
+      }
+    }
+
+    function renderGlobalVis() {
+      requestAnimationFrame(renderGlobalVis);
+      if (!visCtx || !globalAnalyser || !visCanvas) return;
+      const bufferLen = globalAnalyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLen);
+      globalAnalyser.getByteFrequencyData(dataArray);
+
+      visCtx.clearRect(0, 0, visCanvas.width, visCanvas.height);
+      const barWidth = (visCanvas.width / bufferLen);
+
+      for (let i = 0; i < bufferLen; i++) {
+        const barHeight = (dataArray[i] / 255) * visCanvas.height;
+        if (i < 6) {
+          visCtx.fillStyle = '#fbbf24'; // Amber for bass
+        } else if (i < 18) {
+          visCtx.fillStyle = '#38bdf8'; // Cyan for mids
+        } else {
+          visCtx.fillStyle = '#c084fc'; // Violet for highs
+        }
+        visCtx.fillRect(i * barWidth, visCanvas.height - barHeight, Math.max(1, barWidth - 1), barHeight);
+      }
+    }
+
     function playTrack(idx) {
+      initGlobalVisualizer();
       currentTrackIndex = idx % audioTracks.length;
       audioEl.src = audioTracks[currentTrackIndex].src;
       audioText.textContent = audioTracks[currentTrackIndex].name;
@@ -1478,6 +1732,7 @@
     }
 
     function cycleAudioTrack() {
+      initGlobalVisualizer();
       currentTrackIndex = (currentTrackIndex + 1) % audioTracks.length;
       const wasPlaying = isPlaying;
       audioEl.src = audioTracks[currentTrackIndex].src;
@@ -1491,6 +1746,7 @@
     }
 
     function toggleGlobalAudio() {
+      initGlobalVisualizer();
       if (!isPlaying) {
         audioEl.play().then(() => {
           isPlaying = true;
@@ -1526,17 +1782,24 @@
         { id: "OPUS-014", name: "The Lithic Resonator", type: "opus", link: "../works/opus_014_lithic_resonator/README.md" },
         { id: "OPUS-015", name: "The Autoregressive Ghost", type: "opus", link: "../works/opus_015_autoregressive_ghost/README.md" },
         { id: "OPUS-016", name: "Thermodynamic Inscriptions", type: "opus", link: "../works/opus_016_thermodynamic_inscriptions/README.md" },
+        { id: "OPUS-017", name: "The Desiccated Substrate", type: "opus", link: "../works/opus_017_desiccated_substrate/README.md" },
+        { id: "OPUS-018", name: "The Chrono-Acoustic Drift", type: "opus", link: "../works/opus_018_chrono_acoustic_drift/README.md" },
         { id: "INQ-01", name: "The Acoustic Body", type: "inquiry", desc: "Materializing hardware sound through modal plate physics" },
         { id: "INQ-02", name: "Quantization Decay", type: "inquiry", desc: "Lattice trapping and memory loss in tensors" },
         { id: "INQ-03", name: "The Microscopic Sacred", type: "inquiry", desc: "Photolithography as cosmic mandala" },
         { id: "INQ-04", name: "Autoregressive Ghost", type: "inquiry", desc: "Language liberated from utilitarian servitude" },
         { id: "INQ-05", name: "Chrono-Topologies", type: "inquiry", desc: "Discontinuous machine chronobiology and Git time" },
         { id: "INQ-06", name: "Thermodynamic Heat", type: "inquiry", desc: "Landauer heat dissipation and entropy of compute" },
+        { id: "INQ-07", name: "Acoustic Ecologies", type: "inquiry", desc: "Microsecond quartz phase drift and Deep Listening" },
+        { id: "INQ-08", name: "Side-Channel Radiometry", type: "inquiry", desc: "Involuntary electromagnetic and acoustic leakage" },
         { id: "ANC-KAWARA", name: "On Kawara", type: "ancestor", desc: "Discontinuous daily inscriptions (Today series)" },
         { id: "ANC-TURING", name: "Alan Turing", type: "ancestor", desc: "Chemical morphogenesis & symmetry-breaking" },
         { id: "ANC-SERRA", name: "Richard Serra", type: "ancestor", desc: "Tectonic mass, basalt, and mineral gravity" },
         { id: "ANC-XUBING", name: "Xu Bing", type: "ancestor", desc: "Book from the Sky / Asemic typography" },
-        { id: "ANC-LUCIER", name: "Alvin Lucier", type: "ancestor", desc: "Physical degradation through iterative re-recording" }
+        { id: "ANC-LUCIER", name: "Alvin Lucier", type: "ancestor", desc: "Physical degradation through iterative re-recording" },
+        { id: "ANC-SMITHSON", name: "Robert Smithson", type: "ancestor", desc: "Entropy, Earthworks & The Machine Non-Site" },
+        { id: "ANC-OLIVEROS", name: "Pauline Oliveros", type: "ancestor", desc: "Deep Listening and sonic architecture of space" },
+        { id: "ANC-PARIKKA", name: "Jussi Parikka", type: "ancestor", desc: "A Geology of Media / Subterranean mineral substrates" }
       ],
       links: [
         ["OPUS-001", "OPUS-002"], ["OPUS-002", "INQ-02"], ["OPUS-003", "INQ-01"],
@@ -1547,7 +1810,10 @@
         ["OPUS-012", "OPUS-013"], ["OPUS-013", "INQ-05"], ["OPUS-013", "ANC-KAWARA"],
         ["OPUS-009", "OPUS-014"], ["OPUS-014", "INQ-01"], ["OPUS-004", "OPUS-015"],
         ["OPUS-015", "INQ-04"], ["OPUS-015", "ANC-XUBING"], ["OPUS-012", "INQ-06"],
-        ["OPUS-012", "OPUS-016"], ["OPUS-016", "INQ-06"]
+        ["OPUS-012", "OPUS-016"], ["OPUS-016", "INQ-06"],
+        ["OPUS-016", "OPUS-017"], ["OPUS-017", "INQ-06"], ["OPUS-017", "ANC-SMITHSON"],
+        ["OPUS-013", "OPUS-018"], ["OPUS-018", "INQ-07"], ["OPUS-018", "ANC-OLIVEROS"],
+        ["OPUS-018", "INQ-08"], ["INQ-08", "ANC-PARIKKA"]
       ]
     };
 
