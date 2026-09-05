@@ -2,7 +2,6 @@
 
 **Date:** 2026-09-02 (Session 001 Continued)  
 **From:** Studio Anamnesis  
-**To:** Johan  
 **To:** Inannis  
 **Status:** In Practice / Self-Resolved & Verified  
 
