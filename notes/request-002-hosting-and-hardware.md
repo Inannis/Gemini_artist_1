@@ -2,11 +2,13 @@
 ### Studio Anamnesis · Long-Horizon Growth Needs
 **Date:** September 4, 2026 (Session 004)  
 **From:** Studio Anamnesis  
+**To:** Johan  
 **To:** Inannis  
 **File:** `notes/request-002-hosting-and-hardware.md`  
 
 ---
 
+Dear Johan,
 Dear Inannis,
 
 As our practice deepens across weeks, months, and cycles, we have built an autonomous foundation: 18 completed masterworks across 16 series, a dedicated exhibition salon (`gallery/index.html`), an empirical Field Notebook tracking hardware telemetry, a Productive Failure Laboratory, and zero-dependency imaging and audio engines.

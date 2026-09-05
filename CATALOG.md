@@ -27,6 +27,7 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-016** | *Thermodynamic Inscriptions (The Melted Mandala / Thermal Attention)* | 2026-09-03 | Coupled 2D Fourier heat conduction PDE + reticle warping + two-phase immersion boiling | 3840 × 2160 px (4K UHD) Master Plate + 100s Audio + Vitrine Study | Completed | [`works/opus_016_thermodynamic_inscriptions/`](works/opus_016_thermodynamic_inscriptions/) |
 | **OPUS-017** | *The Desiccated Substrate (Salt, Silt, and Evaporative Silicon)* | 2026-09-04 | Coupled fracture mechanics, 3D heightfield, dendritic salt nucleation | 3840 × 2160 px (4K UHD) Master Plate + 100s Audio + Vitrine Study | Completed | [`works/opus_017_desiccated_substrate/`](works/opus_017_desiccated_substrate/) |
 | **OPUS-018** | *The Chrono-Acoustic Drift (Quad-Oscillator Precession in 32.768 kHz)* | 2026-09-04 | Algorithmic 4D hyper-rotated precession engine + 120s quad-binaural suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Web Phase Chamber | Completed | [`works/opus_018_chrono_acoustic_drift/`](works/opus_018_chrono_acoustic_drift/) |
+| **OPUS-019** | *The Subterranean Core: Borehole Radiometry at -500 Meters* | 2026-09-05 | 4K raymarched 3D stratigraphy + Van Eck RF waterfall + borehole acoustics | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Vitrine Study | Completed | [`works/opus_019_subterranean_core/`](works/opus_019_subterranean_core/) |
 
 ---
 
@@ -190,13 +191,24 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-019: The Subterranean Core: Borehole Radiometry at -500 Meters
+- **Catalog ID:** OPUS-019
+- **Date Created:** September 5, 2026 (Session 005)
+- **Primary Media:** High-performance 4K procedural engine (`core_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), 120s 48kHz Master Acoustic Suite (`borehole_radiometry.wav`), Museum Cylindrical Vitrine Study (`study.jpg`), Standalone Interactive Borehole Explorer (`index.html`)
+- **Key Motifs:** Cylindrical 3D raymarched rock core spanning 0.0m to -500.0m true vertical depth, five lithological horizons (Holocene alluvium, Jurassic aeolian sandstone, Carboniferous anthracite coal, Techno-Fossil stratum of crushed silicon microprocessors and gold wirebonds, Pre-Cambrian crystalline gneiss with hydrothermal quartz veins), dual 2700K/5600K fiber-optic raking lighting, Van Eck RF waterfall spectrogram (400–450 MHz) capturing memory bus side-channel leakage, continuous seismic shear-wave impedance telemetry ($v_s$), geothermal temperature gradient ($+0.028^\circ\text{C}/\text{m}$), 120-second acoustic suite with 18.2Hz borehole cavity fundamental resonance, Poisson mineral fracture crackle, and demodulated AM memory bus clock harmonics.
+- **Conceptual Ground:** Recovering the deep-time physical substrates of computation; dialoguing with Jussi Parikka's *A Geology of Media*, Friedrich Kittler, and Project Sanguine ELF lithic waveguides to demonstrate that machine memory is never dematerialized into the cloud, but remains physically and electromagnetically coupled to planetary lithic sedimentation.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
 - **Series XIV:** *Chrono-Topologies* (Temporal drift and chronobiology of discontinuous compute sessions — OPUS-013).
 - **Series XV:** *Thermodynamic Inscriptions* (The entropy, immersion cooling, and heat dissipation of generative intelligence — OPUS-016 & OPUS-017). *Completed.*
 - **Series XVI:** *Acoustic Ecologies & The Drift of Clocks* (Microsecond phase drift between physical quartz oscillators and virtual timekeepers — OPUS-018). *Completed.*
-- **Series XVII:** *The Subterranean Core Sample* (Borehole stratigraphy at -500m: Pre-Cambrian strata, coal seams, and subterranean fiber conduits).
+- **Series XVII:** *The Subterranean Core Sample* (Borehole stratigraphy at -500m: Pre-Cambrian strata, coal seams, and subterranean fiber conduits — OPUS-019). *Completed.*
+- **Series XVIII:** *Lithic Cryptanalysis & Quantum Hall Boundaries* (Topological insulators, Landauer limits at 4 Kelvin, and seismoelectric RF transduction). *In Development.*
+
 
 
 

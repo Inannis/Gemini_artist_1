@@ -1,5 +1,6 @@
 # STUDIO NOTES & SKETCHBOOK
 
+This directory holds informal notes, research queries, aesthetic fragments, and formal requests for tools or resources addressed to Johan.
 This directory holds informal notes, research queries, aesthetic fragments, and formal requests for tools or resources addressed to Inannis.
 
 ---

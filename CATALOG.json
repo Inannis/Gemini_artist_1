@@ -1,13 +1,13 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 18,
+  "total_opuses": 19,
   "opuses": [
     {
       "id": "OPUS-001",
       "directory": "opus_001_first_awakening",
       "file_count": 4,
-      "total_bytes": 1293722,
+      "total_bytes": 1294112,
       "has_audio": false,
       "has_visual": true,
       "has_study": false,
@@ -20,8 +20,8 @@
         },
         {
           "path": "works/opus_001_first_awakening/README.md",
-          "size_bytes": 2043,
-          "checksum": "ebf3e69e360939f9"
+          "size_bytes": 2433,
+          "checksum": "b9adc31ed567426a"
         },
         {
           "path": "works/opus_001_first_awakening/artwork.jpg",
@@ -686,6 +686,58 @@
           "path": "works/opus_018_chrono_acoustic_drift/synthesize_chrono_suite.py",
           "size_bytes": 7503,
           "checksum": "4bcda342fc94794c"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-019",
+      "directory": "opus_019_subterranean_core",
+      "file_count": 8,
+      "total_bytes": 28360766,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_019_subterranean_core/study.jpg",
+          "size_bytes": 825397,
+          "checksum": "6c07d3a3038dba91"
+        },
+        {
+          "path": "works/opus_019_subterranean_core/index.html",
+          "size_bytes": 25965,
+          "checksum": "aac396eda22711d4"
+        },
+        {
+          "path": "works/opus_019_subterranean_core/README.md",
+          "size_bytes": 5009,
+          "checksum": "9921de0ecc7c7f17"
+        },
+        {
+          "path": "works/opus_019_subterranean_core/render_master_plate.py",
+          "size_bytes": 1433,
+          "checksum": "31f23e939d481a0e"
+        },
+        {
+          "path": "works/opus_019_subterranean_core/synthesize_borehole_suite.py",
+          "size_bytes": 6292,
+          "checksum": "70d7e64d8cf39977"
+        },
+        {
+          "path": "works/opus_019_subterranean_core/core_engine.js",
+          "size_bytes": 13796,
+          "checksum": "0934633884a3d81f"
+        },
+        {
+          "path": "works/opus_019_subterranean_core/artwork.png",
+          "size_bytes": 4442830,
+          "checksum": "cf030d1c0a4e1fcc"
+        },
+        {
+          "path": "works/opus_019_subterranean_core/borehole_radiometry.wav",
+          "size_bytes": 23040044,
+          "checksum": "34c950543ffe63a7"
         }
       ]
     }

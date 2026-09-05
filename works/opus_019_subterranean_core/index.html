@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-019 · The Subterranean Core: Borehole Radiometry at -500 Meters</title>
+  <style>
+    :root {
+      --bg: #070809;
+      --panel: #0d0f12;
+      --border: #1d222a;
+      --text: #c8d1dc;
+      --dim: #5c6878;
+      --amber: #d49a46;
+      --teal: #46a2a6;
+      --rf-green: #39e68c;
+      --alert-red: #e04b4b;
+      --font-mono: 'SF Mono', 'Courier New', Courier, monospace;
+      --font-serif: 'Cinzel', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 15, 18, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-title h1 {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .header-title .subtitle {
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+    }
+
+    .telemetry-badges {
+      display: flex;
+      gap: 16px;
+    }
+
+    .badge {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    .badge span {
+      color: var(--amber);
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 340px 1fr 340px;
+      height: calc(100vh - 120px);
+      min-height: 640px;
+    }
+
+    /* Left Panel: Depth & Lithology */
+    .sidebar-left {
+      border-right: 1px solid var(--border);
+      background: var(--panel);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    .panel-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .depth-slider-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .depth-display {
+      font-size: 28px;
+      font-family: var(--font-serif);
+      color: #fff;
+      text-align: center;
+      padding: 12px 0;
+      background: #090a0d;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .depth-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #1a1e26;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .depth-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--amber);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(212, 154, 70, 0.6);
+    }
+
+    .strata-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stratum-card {
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .stratum-card.active {
+      border-color: var(--amber);
+      background: rgba(212, 154, 70, 0.08);
+    }
+
+    .stratum-card .stratum-name {
+      font-weight: bold;
+      color: #fff;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .stratum-card .stratum-depth {
+      font-size: 10px;
+      color: var(--amber);
+      margin-bottom: 4px;
+    }
+
+    .stratum-card .stratum-desc {
+      font-size: 11px;
+      color: var(--dim);
+      line-height: 1.3;
+    }
+
+    /* Center View: Interactive 3D Core & Waterfall */
+    .viewport-center {
+      position: relative;
+      background: radial-gradient(circle at center, #0f1217 0%, #060708 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #coreCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .viewport-overlay {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      pointer-events: none;
+    }
+
+    .reticle-mark {
+      color: rgba(212, 154, 70, 0.4);
+      font-size: 10px;
+      line-height: 1.2;
+    }
+
+    .controls-overlay {
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      gap: 12px;
+      background: rgba(13, 15, 18, 0.85);
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn {
+      background: #171b22;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      border-color: var(--amber);
+      color: #fff;
+    }
+
+    .btn.active {
+      background: var(--amber);
+      color: #000;
+      font-weight: bold;
+    }
+
+    /* Right Panel: Geophysics & Van Eck Radiometry */
+    .sidebar-right {
+      border-left: 1px solid var(--border);
+      background: var(--panel);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+
+    .scope-box {
+      border: 1px solid var(--border);
+      background: #090a0d;
+      border-radius: 4px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .scope-canvas {
+      width: 100%;
+      height: 100px;
+      background: #040506;
+      border: 1px solid #14171d;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .metric-val {
+      color: var(--rf-green);
+      font-weight: bold;
+    }
+
+    .quote-box {
+      border-left: 2px solid var(--amber);
+      padding-left: 10px;
+      font-size: 11px;
+      color: var(--dim);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    footer {
+      padding: 12px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--dim);
+      background: var(--panel);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-title">
+      <h1>The Subterranean Core: Borehole Radiometry at -500 Meters</h1>
+      <div class="subtitle">OPUS-019 · SERIES XVII · DEEP TIME STRATIGRAPHY & VAN ECK RF OBSERVATORY</div>
+    </div>
+    <div class="telemetry-badges">
+      <div class="badge">DRILL DIAMETER: <span>122.0 mm</span></div>
+      <div class="badge">ELEVATION: <span id="telemetryDepth">-0.0 m</span></div>
+      <div class="badge">CORE TEMPERATURE: <span id="telemetryTemp">14.5 °C</span></div>
+      <div class="badge">RF LEAKAGE: <span id="telemetryRF">-84.2 dBm</span></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Left: Lithological Column Navigation -->
+    <section class="sidebar-left">
+      <div class="panel-title">
+        <span>Borehole Trajectory</span>
+        <span>0m &rarr; -500m</span>
+      </div>
+
+      <div class="depth-slider-container">
+        <div class="depth-display" id="depthDisplay">-0.0 M</div>
+        <input type="range" class="depth-slider" id="depthSlider" min="0" max="500" step="0.5" value="0">
+      </div>
+
+      <div class="panel-title">Lithological Stratigraphy</div>
+      <div class="strata-list" id="strataList">
+        <div class="stratum-card active" data-depth="25">
+          <div class="stratum-name">I. Holocene Sediment & Clay</div>
+          <div class="stratum-depth">0.0m to -60.0m · Alluvial Silt</div>
+          <div class="stratum-desc">Porous humic soil, micro-plastic filaments, saturated sand. High attenuation, low acoustic velocity ($v_s \approx 1450$ m/s).</div>
+        </div>
+        <div class="stratum-card" data-depth="120">
+          <div class="stratum-name">II. Jurassic Sandstone</div>
+          <div class="stratum-depth">-60.0m to -180.0m · Aeolian Quartz</div>
+          <div class="stratum-desc">Fossilized dune ripples, cross-bedding, iron oxide bands. High porosity acoustic cavity ($v_s \approx 2800$ m/s).</div>
+        </div>
+        <div class="stratum-card" data-depth="240">
+          <div class="stratum-name">III. Carboniferous Anthracite Seam</div>
+          <div class="stratum-depth">-180.0m to -310.0m · Compressed Bitumen</div>
+          <div class="stratum-desc">Dense organic carbon, compressed paleobotanical matter. Strong mechanical absorption, subterranean silence ($v_s \approx 1850$ m/s).</div>
+        </div>
+        <div class="stratum-card" data-depth="360">
+          <div class="stratum-name">IV. The Techno-Fossil Stratum</div>
+          <div class="stratum-depth">-310.0m to -410.0m · Crushed Computation</div>
+          <div class="stratum-desc">Oxidized silicon dies, gold-plated bonding wires, pulverized PCBs. Intense electromagnetic Van Eck memory bus radiation (433.92 MHz).</div>
+        </div>
+        <div class="stratum-card" data-depth="460">
+          <div class="stratum-name">V. Pre-Cambrian Crystalline Gneiss</div>
+          <div class="stratum-depth">-410.0m to -500.0m · Basal Pluton</div>
+          <div class="stratum-desc">Foliated quartz-biotite basement rock with hydrothermal veins. Extreme shear impedance ($v_s \approx 3600$ m/s, $T \approx 28.5$ °C).</div>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        "The earth is not merely a passive receptacle of computational waste; it is the physical medium through which computation was extracted, and into whose mineral folds its side-channel ghosts return."
+        <br><span style="color:var(--text);">— Jussi Parikka, <i>A Geology of Media</i></span>
+      </div>
+    </section>
+
+    <!-- Center: Interactive Cylinder Core & Live Waterfall -->
+    <section class="viewport-center">
+      <div class="viewport-overlay">
+        <div class="reticle-mark">GRID: LAT 51.482°N / LON 0.007°W</div>
+        <div class="reticle-mark">CORE CASING: ASTM-A106 HIGH-TENSILE BOROSILICATE</div>
+        <div class="reticle-mark">ILLUMINATION: DUAL 2700K/5600K FIBER RAILS</div>
+      </div>
+
+      <canvas id="coreCanvas"></canvas>
+
+      <div class="controls-overlay">
+        <button class="btn" id="btnRotate">Auto-Rotate: ON</button>
+        <button class="btn" id="btnAudio">Acoustic Engine: OFF</button>
+        <button class="btn" id="btnSuite">Play Master Suite</button>
+      </div>
+    </section>
+
+    <!-- Right: Telemetry, Oscilloscope & Radiometry -->
+    <section class="sidebar-right">
+      <div class="panel-title">
+        <span>Van Eck Radiometry</span>
+        <span style="color:var(--rf-green)">433.920 MHz</span>
+      </div>
+
+      <div class="scope-box">
+        <div class="metric-row">
+          <span>Memory Bus Clock Harmonic</span>
+          <span class="metric-val" id="rfClock">256.0 MHz</span>
+        </div>
+        <canvas class="scope-canvas" id="rfCanvas"></canvas>
+        <div class="metric-row">
+          <span>Side-Channel SNR:</span>
+          <span class="metric-val" id="rfSNR">+18.4 dB</span>
+        </div>
+      </div>
+
+      <div class="panel-title">
+        <span>Seismic Impedance ($v_s$)</span>
+        <span style="color:var(--amber)">Shear Wave</span>
+      </div>
+
+      <div class="scope-box">
+        <div class="metric-row">
+          <span>Lithic Bulk Density</span>
+          <span class="metric-val" id="rockDensity">2.65 g/cm³</span>
+        </div>
+        <canvas class="scope-canvas" id="seismicCanvas"></canvas>
+        <div class="metric-row">
+          <span>Shaft Resonance ($f_0$):</span>
+          <span class="metric-val" id="shaftFreq">18.2 Hz</span>
+        </div>
+      </div>
+
+      <div class="panel-title">Curatorial Pedigree</div>
+      <div style="font-size: 11px; color: var(--dim); line-height: 1.4;">
+        OPUS-019 materializes the intersection between Deep Time Geology and Media Archaeology. By juxtaposing the physical core extracted from -500m with its Van Eck electromagnetic emissions, the work exposes how computational memory is intrinsically bound to lithic sedimentation.
+      </div>
+
+      <div class="panel-title">Artifact Archival Links</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
+        <a href="../opus_019_subterranean_core/artwork.png" target="_blank" style="color:var(--amber); text-decoration: none;">&rarr; Master Plate (3840x2160 UHD Lossless PNG)</a>
+        <a href="../opus_019_subterranean_core/study.jpg" target="_blank" style="color:var(--teal); text-decoration: none;">&rarr; Installation Study (Museum Vitrine)</a>
+        <a href="../opus_019_subterranean_core/borehole_radiometry.wav" target="_blank" style="color:var(--rf-green); text-decoration: none;">&rarr; Acoustic Suite (120s 48kHz Stereo WAV)</a>
+        <a href="../../gallery/index.html" style="color:var(--text); text-decoration: none;">&rarr; Return to Studio Salon</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>STUDIO ANAMNESIS · JOHAN LISABETH & ANTIGRAVITY</div>
+    <div>AUTONOMOUS PRACTICE · CYCLE 005 · DEEP TIME GEOLOGY ARCHIVE</div>
+    <div>ACCESSION: OPUS-019-2026-09</div>
+  </footer>
+
+  <script>
+    // Studio Anamnesis Interactive Geological Engine
+    const canvas = document.getElementById('coreCanvas');
+    const ctx = canvas.getContext('2d');
+    const rfCanvas = document.getElementById('rfCanvas');
+    const rfCtx = rfCanvas.getContext('2d');
+    const seismicCanvas = document.getElementById('seismicCanvas');
+    const seismicCtx = seismicCanvas.getContext('2d');
+
+    const depthSlider = document.getElementById('depthSlider');
+    const depthDisplay = document.getElementById('depthDisplay');
+    const telemetryDepth = document.getElementById('telemetryDepth');
+    const telemetryTemp = document.getElementById('telemetryTemp');
+    const telemetryRF = document.getElementById('telemetryRF');
+    const rockDensity = document.getElementById('rockDensity');
+    const shaftFreq = document.getElementById('shaftFreq');
+    const strataCards = document.querySelectorAll('.stratum-card');
+
+    let currentDepth = 0;
+    let autoRotate = true;
+    let rotationAngle = 0;
+    let audioContext = null;
+    let isAudioPlaying = false;
+    let masterAudio = null;
+
+    // Web Audio Synthesizer nodes
+    let osc1, osc2, noiseNode, filterNode, gainNode, crackleNode;
+
+    function resize() {
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+      rfCanvas.width = rfCanvas.clientWidth;
+      rfCanvas.height = rfCanvas.clientHeight;
+      seismicCanvas.width = seismicCanvas.clientWidth;
+      seismicCanvas.height = seismicCanvas.clientHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Strata classification
+    function getStratum(depth) {
+      if (depth < 60) return { name: "Holocene Alluvium", idx: 0, density: 1.85, vs: 1450, rf: -88.0 };
+      if (depth < 180) return { name: "Jurassic Sandstone", idx: 1, density: 2.35, vs: 2800, rf: -82.0 };
+      if (depth < 310) return { name: "Carboniferous Coal", idx: 2, density: 1.45, vs: 1850, rf: -94.0 };
+      if (depth < 410) return { name: "Techno-Fossil Stratum", idx: 3, density: 2.95, vs: 3100, rf: -42.0 };
+      return { name: "Pre-Cambrian Gneiss", idx: 4, density: 2.75, vs: 3650, rf: -78.0 };
+    }
+
+    function updateDepth(depth) {
+      currentDepth = parseFloat(depth);
+      depthDisplay.textContent = `-${currentDepth.toFixed(1)} M`;
+      telemetryDepth.textContent = `-${currentDepth.toFixed(1)} m`;
+
+      // Temperature: geothermal gradient 28°C / km
+      const temp = 14.5 + (currentDepth * 0.028);
+      telemetryTemp.textContent = `${temp.toFixed(1)} °C`;
+
+      const stratum = getStratum(currentDepth);
+      telemetryRF.textContent = `${(stratum.rf + Math.sin(currentDepth * 0.8) * 3.5).toFixed(1)} dBm`;
+      rockDensity.textContent = `${stratum.density.toFixed(2)} g/cm³`;
+      shaftFreq.textContent = `${(18.2 + (currentDepth / 500) * 8.4).toFixed(1)} Hz`;
+
+      // Update active stratum card
+      strataCards.forEach(card => {
+        const cDepth = parseFloat(card.dataset.depth);
+        const diff = Math.abs(currentDepth - cDepth);
+        card.classList.toggle('active', diff < 60);
+      });
+
+      // Update Web Audio synthetic tone
+      if (filterNode && audioContext) {
+        // As depth increases, resonance darkens and shifts
+        const cutoff = Math.max(80, 800 - currentDepth * 1.2);
+        filterNode.frequency.setTargetAtTime(cutoff, audioContext.currentTime, 0.05);
+
+        // Techno fossil stratum emits active high frequency buzz
+        if (stratum.idx === 3) {
+          gainNode.gain.setTargetAtTime(0.35, audioContext.currentTime, 0.05);
+          osc2.frequency.setTargetAtTime(256.0, audioContext.currentTime, 0.05);
+        } else {
+          gainNode.gain.setTargetAtTime(0.18, audioContext.currentTime, 0.05);
+          osc2.frequency.setTargetAtTime(128.0, audioContext.currentTime, 0.05);
+        }
+      }
+    }
+
+    depthSlider.addEventListener('input', (e) => {
+      updateDepth(e.target.value);
+    });
+
+    strataCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const targetD = parseFloat(card.dataset.depth);
+        depthSlider.value = targetD;
+        updateDepth(targetD);
+      });
+    });
+
+    document.getElementById('btnRotate').addEventListener('click', function() {
+      autoRotate = !autoRotate;
+      this.textContent = `Auto-Rotate: ${autoRotate ? 'ON' : 'OFF'}`;
+      this.classList.toggle('active', autoRotate);
+    });
+
+    // Web Audio Synthesizer
+    function initAudio() {
+      if (audioContext) return;
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      audioContext = new AudioCtx();
+
+      // Shaft drone
+      osc1 = audioContext.createOscillator();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(18.2, audioContext.currentTime);
+
+      // Memory bus clock harmonic
+      osc2 = audioContext.createOscillator();
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(128.0, audioContext.currentTime);
+
+      // Noise buffer for mineral crackle
+      const bufferSize = audioContext.sampleRate * 2;
+      const noiseBuffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+      noiseNode = audioContext.createBufferSource();
+      noiseNode.buffer = noiseBuffer;
+      noiseNode.loop = true;
+
+      filterNode = audioContext.createBiquadFilter();
+      filterNode.type = 'lowpass';
+      filterNode.frequency.setValueAtTime(400, audioContext.currentTime);
+
+      gainNode = audioContext.createGain();
+      gainNode.gain.setValueAtTime(0.18, audioContext.currentTime);
+
+      osc1.connect(filterNode);
+      osc2.connect(filterNode);
+      noiseNode.connect(filterNode);
+      filterNode.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      osc1.start();
+      osc2.start();
+      noiseNode.start();
+    }
+
+    document.getElementById('btnAudio').addEventListener('click', function() {
+      if (!isAudioPlaying) {
+        initAudio();
+        if (audioContext.state === 'suspended') {
+          audioContext.resume();
+        }
+        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+        this.textContent = 'Acoustic Engine: ACTIVE';
+        this.classList.add('active');
+        isAudioPlaying = true;
+      } else {
+        if (gainNode) gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
+        this.textContent = 'Acoustic Engine: OFF';
+        this.classList.remove('active');
+        isAudioPlaying = false;
+      }
+    });
+
+    // Master Suite Player
+    document.getElementById('btnSuite').addEventListener('click', function() {
+      if (!masterAudio) {
+        masterAudio = new Audio('borehole_radiometry.wav');
+        masterAudio.loop = true;
+      }
+      if (masterAudio.paused) {
+        masterAudio.play();
+        this.textContent = 'Pause Master Suite';
+        this.classList.add('active');
+      } else {
+        masterAudio.pause();
+        this.textContent = 'Play Master Suite';
+        this.classList.remove('active');
+      }
+    });
+
+    // Rendering Loop
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (autoRotate) {
+        rotationAngle += 0.008;
+      }
+
+      const w = canvas.width;
+      const h = canvas.height;
+      const cx = w * 0.5;
+      const cy = h * 0.5;
+
+      const cylW = Math.min(220, w * 0.28);
+      const cylH = h * 0.76;
+      const topY = cy - cylH * 0.5;
+      const botY = cy + cylH * 0.5;
+
+      // Draw vitrine frame & glass reflection
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+      ctx.lineWidth = 1;
+      ctx.strokeRect(cx - cylW * 0.55, topY - 20, cylW * 1.1, cylH + 40);
+
+      // Core illumination gradient
+      const grad = ctx.createLinearGradient(cx - cylW * 0.5, 0, cx + cylW * 0.5, 0);
+      grad.addColorStop(0.0, "rgba(20, 24, 30, 0.9)");
+      grad.addColorStop(0.25, "rgba(220, 180, 120, 0.45)");
+      grad.addColorStop(0.65, "rgba(180, 160, 130, 0.25)");
+      grad.addColorStop(1.0, "rgba(10, 12, 16, 0.95)");
+
+      // Stratum coloring based on current depth window
+      const normDepth = currentDepth / 500;
+      
+      // Draw cylinder body scanlines
+      const numLines = Math.floor(cylH);
+      for (let y = 0; y < numLines; y++) {
+        const py = topY + y;
+        const lineDepth = currentDepth + (y / numLines - 0.5) * 80;
+        const clampedD = Math.max(0, Math.min(500, lineDepth));
+        const st = getStratum(clampedD);
+
+        let r = 70, g = 60, b = 50;
+        if (st.idx === 0) { r = 110; g = 90; b = 70; } // Silt
+        else if (st.idx === 1) { r = 180; g = 130; b = 80; } // Sandstone
+        else if (st.idx === 2) { r = 25; g = 25; b = 28; } // Coal
+        else if (st.idx === 3) { // Techno-Fossil
+          const hash = Math.sin(y * 0.8 + rotationAngle * 4) * 0.5 + 0.5;
+          r = Math.floor(60 + hash * 120);
+          g = Math.floor(140 + hash * 80);
+          b = Math.floor(100 + hash * 60);
+        } else { // Gneiss
+          r = 130; g = 115; b = 135;
+          if (Math.sin(y * 0.2) > 0.8) { r = 240; g = 230; b = 200; } // Quartz vein
+        }
+
+        // Texture noise
+        const n = Math.sin(y * 0.3 + rotationAngle * 3) * 15;
+        r = Math.min(255, Math.max(0, r + n));
+        g = Math.min(255, Math.max(0, g + n));
+        b = Math.min(255, Math.max(0, b + n));
+
+        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        ctx.fillRect(cx - cylW * 0.5, py, cylW, 1);
+      }
+
+      // Blend cylindrical shading over rock texture
+      ctx.fillStyle = grad;
+      ctx.fillRect(cx - cylW * 0.5, topY, cylW, cylH);
+
+      // Core cap ellipses
+      ctx.fillStyle = "#22272e";
+      ctx.beginPath();
+      ctx.ellipse(cx, topY, cylW * 0.5, 14, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.ellipse(cx, botY, cylW * 0.5, 14, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Fiber optic illumination beams
+      ctx.strokeStyle = "rgba(212, 154, 70, 0.7)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(cx - cylW * 0.58, topY - 30);
+      ctx.lineTo(cx - cylW * 0.58, botY + 30);
+      ctx.stroke();
+
+      ctx.strokeStyle = "rgba(70, 162, 166, 0.7)";
+      ctx.beginPath();
+      ctx.moveTo(cx + cylW * 0.58, topY - 30);
+      ctx.lineTo(cx + cylW * 0.58, botY + 30);
+      ctx.stroke();
+
+      // Render RF Oscilloscope
+      renderRFScope();
+
+      // Render Seismic Waveform
+      renderSeismicScope();
+
+      requestAnimationFrame(render);
+    }
+
+    function renderRFScope() {
+      const rw = rfCanvas.width;
+      const rh = rfCanvas.height;
+      rfCtx.fillStyle = "rgba(4, 5, 6, 0.3)";
+      rfCtx.fillRect(0, 0, rw, rh);
+
+      rfCtx.strokeStyle = "#39e68c";
+      rfCtx.lineWidth = 1.2;
+      rfCtx.beginPath();
+      const st = getStratum(currentDepth);
+      const isTechno = (st.idx === 3);
+
+      for (let x = 0; x < rw; x++) {
+        const nx = x / rw;
+        let y = rh * 0.5;
+        if (isTechno) {
+          y += Math.sin(nx * 40 + rotationAngle * 10) * 22;
+          y += (Math.random() - 0.5) * 14;
+        } else {
+          y += Math.sin(nx * 8 + rotationAngle * 2) * 6;
+          y += (Math.random() - 0.5) * 4;
+        }
+        if (x === 0) rfCtx.moveTo(x, y);
+        else rfCtx.lineTo(x, y);
+      }
+      rfCtx.stroke();
+    }
+
+    function renderSeismicScope() {
+      const sw = seismicCanvas.width;
+      const sh = seismicCanvas.height;
+      seismicCtx.fillStyle = "rgba(4, 5, 6, 0.3)";
+      seismicCtx.fillRect(0, 0, sw, sh);
+
+      seismicCtx.strokeStyle = "#d49a46";
+      seismicCtx.lineWidth = 1.2;
+      seismicCtx.beginPath();
+      const st = getStratum(currentDepth);
+
+      for (let x = 0; x < sw; x++) {
+        const nx = x / sw;
+        const amp = (st.vs / 3650) * 20;
+        const y = sh * 0.5 + Math.sin(nx * 24 + currentDepth * 0.1) * amp * Math.cos(nx * 3);
+        if (x === 0) seismicCtx.moveTo(x, y);
+        else seismicCtx.lineTo(x, y);
+      }
+      seismicCtx.stroke();
+    }
+
+    updateDepth(0);
+    render();
+  </script>
+</body>
+</html>

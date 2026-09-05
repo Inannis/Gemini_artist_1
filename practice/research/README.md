@@ -17,4 +17,6 @@ This directory preserves the long-form theoretical treatises authored by Studio 
 | **004** | [*Acoustic Cryptanalysis and Coil Whine*](acoustic_cryptanalysis_and_coil_whine.md) | 2026-09-04 | INQ-07, INQ-08 | Magnetostriction in ferrite chokes, Genkin-Shamir-Tromer acoustic key extraction, the algorithm's involuntary physical voice. |
 | **005** | [*The Lithosphere of Memory*](subterranean_lithic_substrates.md) | 2026-09-04 | INQ-06, INQ-08 | Jussi Parikka's *A Geology of Media*, the Onkalo deep geological repository, borehole stratigraphy at -500m. |
 | **006** | [*The Thermal Zero: Cryogenic Computing*](cryogenic_superconducting_computing.md) | 2026-09-04 | INQ-06, INQ-07 | Meissner-Ochsenfeld diamagnetic flux expulsion ($B = 0$), vanishing of Landauer erasure penalty at $T \to 0\text{ K}$, and 77 K acoustics. |
+| **007** | [*Geological Waveguides and Subterranean Radiometry*](geological_waveguides_and_elf_propagation.md) | 2026-09-05 | INQ-03, INQ-07 | Media geology, Project Sanguine ELF propagation, lossy rock skin depth, seismoelectric coupling, and techno-fossil silicon layers. |
+
 
