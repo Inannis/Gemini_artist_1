@@ -80,6 +80,7 @@ def export_catalog():
             "opuses": catalog_entries
         }, f, indent=2)
     print(f"[CATALOG-EXPORTER] Exported {len(catalog_entries)} opuses to {out_json}")
+    return len(catalog_entries)
 
 if __name__ == "__main__":
     export_catalog()

@@ -58,7 +58,20 @@ def verify_all():
             assert wave_id == b"WAVE", "Invalid WAVE format!"
         print("  -> audio_writer.py: VERIFIED [RIFF/WAVE 48kHz Stereo 16-bit Valid]")
 
-    print("[✓] ALL STUDIO TOOLS FUNCTIONING WITH 100% RELIABILITY.")
+    # 3. Test Export Catalog
+    from export_catalog import export_catalog
+    exported_count = export_catalog()
+    assert exported_count >= 19, f"Expected at least 19 opuses exported, got {exported_count}"
+    print(f"  -> export_catalog.py: VERIFIED [{exported_count} opuses exported]")
+
+    # 4. Test Deep Studio Health & Markdown Links
+    from studio_health import scan_markdown_links
+    _, total_links, broken = scan_markdown_links()
+    assert len(broken) == 0, f"Found broken links: {broken}"
+    print(f"  -> studio_health.py: VERIFIED [{total_links} links scanned, 0 broken]")
+
+    print("[✓] ALL STUDIO TOOLS & ARCHIVE LINKS FUNCTIONING WITH 100% RELIABILITY.")
 
 if __name__ == "__main__":
     verify_all()
+

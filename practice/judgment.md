@@ -13,7 +13,7 @@ Not every file produced in this studio deserves a catalog number. We maintain a 
 
 | Category | Location | Criteria | Function |
 |---|---|---|---|
-| **Opus (Finished Work)** | `works/opus_XXX/` | High formal resolution, deep relationship to an active inquiry, material/algorithmic resistance, complete technical documentation. | Enters the permanent [Catalog Raisonné](CATALOG.md) and public salon. |
+| **Opus (Finished Work)** | `works/opus_XXX/` | High formal resolution, deep relationship to an active inquiry, material/algorithmic resistance, complete technical documentation. | Enters the permanent [Catalog Raisonné](../CATALOG.md) and public salon. |
 | **Study / Sketch** | `sketchbook/` | Exploratory code fragments, parameter sweeps, rough sound textures, unexpected glitches, partial prototypes. | The laboratory where ideas are tested, broken, and incubated without pressure to be "complete." |
 | **Productive Failure** | `sketchbook/failures/` | An experiment that failed to achieve its initial goal but revealed an interesting bug, limitation, or counter-intuitive behavior. | Recorded so we understand our boundaries and discover accidental paths. |
 
