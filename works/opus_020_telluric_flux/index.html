@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-020 · The Telluric Flux: Superconducting Meissner Vitrine at 4.2 Kelvin</title>
+  <style>
+    :root {
+      --bg: #05070c;
+      --panel: #0a0e16;
+      --border: #162030;
+      --text: #c8d8ea;
+      --dim: #506680;
+      --cyan: #46a2a6;
+      --frost: #7ce8ff;
+      --amber: #d49a46;
+      --quench: #e04b4b;
+      --font-mono: 'SF Mono', 'Courier New', monospace;
+      --font-serif: 'Cinzel', Georgia, serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 14, 22, 0.9);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-title h1 {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .header-title .subtitle {
+      font-size: 11px;
+      color: var(--frost);
+      letter-spacing: 0.08em;
+    }
+    .telemetry-badges {
+      display: flex;
+      gap: 14px;
+    }
+    .badge {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-size: 11px;
+    }
+    .badge span {
+      color: var(--frost);
+      font-weight: bold;
+    }
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 320px 1fr 320px;
+      height: calc(100vh - 120px);
+      min-height: 640px;
+    }
+    .sidebar {
+      background: var(--panel);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+    .sidebar-left { border-right: 1px solid var(--border); }
+    .sidebar-right { border-left: 1px solid var(--border); }
+    .panel-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #141c28;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--frost);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(124, 232, 255, 0.6);
+    }
+    .viewport-center {
+      position: relative;
+      background: radial-gradient(circle at center, #0b111b 0%, #030508 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #cryoCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .overlay-controls {
+      position: absolute;
+      bottom: 20px;
+      display: flex;
+      gap: 12px;
+      background: rgba(10, 14, 22, 0.85);
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      backdrop-filter: blur(8px);
+    }
+    .btn {
+      background: #111824;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .btn:hover { border-color: var(--frost); color: #fff; }
+    .btn.active { background: var(--frost); color: #000; font-weight: bold; }
+    .status-indicator {
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+    }
+    .status-superconducting { background: rgba(70, 162, 166, 0.2); color: var(--frost); border: 1px solid var(--cyan); }
+    .status-quench { background: rgba(224, 75, 75, 0.2); color: var(--quench); border: 1px solid var(--quench); }
+    footer {
+      padding: 12px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--dim);
+      background: var(--panel);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-title">
+      <h1>The Telluric Flux: Superconducting Meissner Vitrine</h1>
+      <div class="subtitle">OPUS-020 · SERIES XVIII · CRYOGENIC QUANTUM LEVITATION AT 4.2 KELVIN</div>
+    </div>
+    <div class="telemetry-badges">
+      <div class="badge">TEMPERATURE: <span id="hudTemp">4.18 K</span></div>
+      <div class="badge">LEVITATION HEIGHT: <span id="hudHeight">18.4 mm</span></div>
+      <div class="badge">USGS LITHIC TENSION: <span id="hudSeismic">0.470</span></div>
+      <div class="badge">NOAA Kp FLUX: <span id="hudKp">3.0 (Quiet)</span></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Left: Laboratory Controls -->
+    <section class="sidebar sidebar-left">
+      <div class="panel-title">
+        <span>Cryostat Parameters</span>
+        <span style="color:var(--frost)">Liquid He</span>
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Cryo Temperature</span>
+          <span id="valTemp">4.2 K</span>
+        </div>
+        <input type="range" class="slider" id="sliderTemp" min="0.5" max="110.0" step="0.5" value="4.2">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Applied Magnetic Field (B₀)</span>
+          <span id="valField">0.45 Tesla</span>
+        </div>
+        <input type="range" class="slider" id="sliderField" min="0.0" max="2.0" step="0.05" value="0.45">
+      </div>
+
+      <div class="panel-title">Thermodynamic State</div>
+      <div id="stateBadge" class="status-indicator status-superconducting">
+        STATE: MEISSNER LEVITATION (B = 0)
+      </div>
+
+      <div class="panel-title">Planetary Telemetry Ingestion</div>
+      <div style="font-size:11px; color:var(--dim); line-height:1.4;">
+        Coupled to real-time USGS earthquake network and NOAA space weather satellite telemetry. Solar wind geomagnetic perturbations dynamically shift the Abrikosov vortex pinning lattice.
+      </div>
+      <button class="btn" id="btnLiveSync" style="width:100%;">Live Planetary Mode: ACTIVE</button>
+
+      <div class="panel-title">Sub-Kelvin Physical Metrics</div>
+      <div style="font-size:11px; display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; justify-content:space-between;">
+          <span>London Penetration Depth (λ):</span>
+          <span style="color:var(--frost);" id="metricLambda">140 nm</span>
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+          <span>Abrikosov Flux Quantum:</span>
+          <span style="color:var(--amber);">2.07 × 10⁻¹⁵ Wb</span>
+        </div>
+        <div style="display:flex; justify-content:space-between;">
+          <span>Telluric Resonance (f₀):</span>
+          <span style="color:var(--frost);" id="metricTelluric">8.08 Hz</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Center: Interactive 3D Cryostat Viewport -->
+    <section class="viewport-center">
+      <canvas id="cryoCanvas"></canvas>
+
+      <div class="overlay-controls">
+        <button class="btn" id="btnAudio">Cryo Acoustic Engine: OFF</button>
+        <button class="btn" id="btnSuite">Play Master Suite (120s)</button>
+        <button class="btn" id="btnThermalQuench">Trigger Thermal Quench</button>
+      </div>
+    </section>
+
+    <!-- Right: Curatorial Pedigree & Links -->
+    <section class="sidebar sidebar-right">
+      <div class="panel-title">Curatorial Pedigree</div>
+      <div style="font-size: 11px; color: var(--dim); line-height: 1.4;">
+        OPUS-020 suspends computation between two physical extremes: the subterranean warmth of planetary geology (USGS/NOAA) and the frozen stillness of absolute zero. Below 93 K, electrical resistance vanishes entirely; Landauer's thermodynamic erasure cost asymptotically disappears as $T \to 0\text{ K}$.
+      </div>
+
+      <div class="panel-title">Superconducting Phase Boundaries</div>
+      <div style="font-size: 11px; color: var(--dim); line-height: 1.4;">
+        - <b>Meissner State:</b> Complete diamagnetic flux expulsion ($B=0$).<br>
+        - <b>Mixed Shubnikov State:</b> Quantized Abrikosov vortex lattice.<br>
+        - <b>Normal State:</b> Thermal quench above $T_c = 93\text{ K}$.
+      </div>
+
+      <div class="panel-title">Artifact Archival Vault</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
+        <a href="artwork.png" target="_blank" style="color:var(--frost); text-decoration: none;">&rarr; Master Plate (3840×2160 UHD PNG)</a>
+        <a href="study.jpg" target="_blank" style="color:var(--cyan); text-decoration: none;">&rarr; Museum Vitrine Study (Cryostat)</a>
+        <a href="telluric_flux_4k.wav" target="_blank" style="color:var(--amber); text-decoration: none;">&rarr; Acoustic Suite (120s 48kHz WAV)</a>
+        <a href="../../gallery/index.html" style="color:var(--text); text-decoration: none;">&rarr; Return to Studio Salon</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>STUDIO ANAMNESIS · INANNIS & ANTIGRAVITY</div>
+    <div>SERIES XVIII · CRYOGENIC HORIZONS & TOPOLOGICAL BOUNDARIES</div>
+    <div>ACCESSION: OPUS-020-2026-09</div>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('cryoCanvas');
+    const ctx = canvas.getContext('2d');
+    const sliderTemp = document.getElementById('sliderTemp');
+    const sliderField = document.getElementById('sliderField');
+    const valTemp = document.getElementById('valTemp');
+    const valField = document.getElementById('valField');
+    const hudTemp = document.getElementById('hudTemp');
+    const hudHeight = document.getElementById('hudHeight');
+    const stateBadge = document.getElementById('stateBadge');
+    const metricLambda = document.getElementById('metricLambda');
+
+    let currentT = 4.2;
+    let currentB = 0.45;
+    const Tc = 93.0; // YBCO Critical Temp
+    let isQuenched = false;
+    let levitationHeight = 18.4;
+    let animTime = 0;
+
+    let audioCtx = null;
+    let oscCavity = null;
+    let noiseNode = null;
+    let gainNode = null;
+    let isAudioActive = false;
+    let masterAudio = null;
+
+    function resize() {
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function updateState() {
+      currentT = parseFloat(sliderTemp.value);
+      currentB = parseFloat(sliderField.value);
+      valTemp.textContent = `${currentT.toFixed(1)} K`;
+      valField.textContent = `${currentB.toFixed(2)} Tesla`;
+      hudTemp.textContent = `${currentT.toFixed(2)} K`;
+
+      // Check superconductivity condition
+      if (currentT >= Tc || currentB >= 1.8) {
+        isQuenched = true;
+        levitationHeight = 0.0;
+        stateBadge.textContent = "STATE: THERMAL QUENCH (NORMAL RESISTIVE)";
+        stateBadge.className = "status-indicator status-quench";
+        hudHeight.textContent = "0.0 mm (Grounded)";
+        metricLambda.textContent = "∞ (Non-superconducting)";
+      } else {
+        isQuenched = false;
+        // Levitation height scales with (1 - (T/Tc)^4) * B
+        const factor = Math.max(0, 1.0 - Math.pow(currentT / Tc, 4));
+        levitationHeight = factor * currentB * 24.0;
+        stateBadge.textContent = "STATE: MEISSNER LEVITATION (B = 0)";
+        stateBadge.className = "status-indicator status-superconducting";
+        hudHeight.textContent = `${levitationHeight.toFixed(1)} mm`;
+        const lambda = 140 / Math.sqrt(factor);
+        metricLambda.textContent = `${Math.min(9999, Math.floor(lambda))} nm`;
+      }
+
+      // Update Web Audio
+      if (audioCtx && oscCavity && gainNode) {
+        if (isQuenched) {
+          oscCavity.frequency.setTargetAtTime(120.0, audioCtx.currentTime, 0.05);
+          gainNode.gain.setTargetAtTime(0.4, audioCtx.currentTime, 0.05); // violent boiling
+        } else {
+          const f = 418.2 + levitationHeight * 8.0;
+          oscCavity.frequency.setTargetAtTime(f, audioCtx.currentTime, 0.05);
+          gainNode.gain.setTargetAtTime(0.18, audioCtx.currentTime, 0.05);
+        }
+      }
+    }
+
+    sliderTemp.addEventListener('input', updateState);
+    sliderField.addEventListener('input', updateState);
+
+    document.getElementById('btnThermalQuench').addEventListener('click', () => {
+      sliderTemp.value = 98.0;
+      updateState();
+    });
+
+    // Web Audio Synthesizer
+    function initAudio() {
+      if (audioCtx) return;
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioCtx();
+
+      oscCavity = audioCtx.createOscillator();
+      oscCavity.type = 'sine';
+      oscCavity.frequency.setValueAtTime(418.2, audioCtx.currentTime);
+
+      const bufSize = audioCtx.sampleRate * 2;
+      const buf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+      noiseNode = audioCtx.createBufferSource();
+      noiseNode.buffer = buf;
+      noiseNode.loop = true;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(3400, audioCtx.currentTime);
+      filter.Q.setValueAtTime(4.0, audioCtx.currentTime);
+
+      gainNode = audioCtx.createGain();
+      gainNode.gain.setValueAtTime(0.18, audioCtx.currentTime);
+
+      oscCavity.connect(gainNode);
+      noiseNode.connect(filter);
+      filter.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+
+      oscCavity.start();
+      noiseNode.start();
+    }
+
+    document.getElementById('btnAudio').addEventListener('click', function() {
+      if (!isAudioActive) {
+        initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        this.textContent = 'Cryo Acoustic Engine: ACTIVE';
+        this.classList.add('active');
+        isAudioActive = true;
+      } else {
+        if (gainNode) gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        this.textContent = 'Cryo Acoustic Engine: OFF';
+        this.classList.remove('active');
+        isAudioActive = false;
+      }
+    });
+
+    document.getElementById('btnSuite').addEventListener('click', function() {
+      if (!masterAudio) {
+        masterAudio = new Audio('telluric_flux_4k.wav');
+        masterAudio.loop = true;
+      }
+      if (masterAudio.paused) {
+        masterAudio.play();
+        this.textContent = 'Pause Master Suite';
+        this.classList.add('active');
+      } else {
+        masterAudio.pause();
+        this.textContent = 'Play Master Suite';
+        this.classList.remove('active');
+      }
+    });
+
+    // Render Loop
+    function render() {
+      animTime += 0.02;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const w = canvas.width;
+      const h = canvas.height;
+      const cx = w * 0.5;
+      const cy = h * 0.5;
+
+      const vitrineW = Math.min(360, w * 0.45);
+      const vitrineH = h * 0.78;
+
+      // Draw glass vitrine casing
+      ctx.strokeStyle = "rgba(70, 162, 166, 0.25)";
+      ctx.lineWidth = 1;
+      ctx.strokeRect(cx - vitrineW * 0.5, cy - vitrineH * 0.5, vitrineW, vitrineH);
+
+      // Wafer Y position (levitation offset)
+      const baseWaferY = cy + vitrineH * 0.25;
+      const levY = baseWaferY - (levitationHeight * 4.5) + (isQuenched ? 0 : Math.sin(animTime * 2.0) * 2.0);
+
+      const waferRx = vitrineW * 0.42;
+      const waferRy = waferRx * 0.28;
+
+      // Draw Meissner Streamlines
+      ctx.lineWidth = 1.2;
+      const lines = 18;
+      for (let i = 0; i < lines; i++) {
+        const streamY = (cy - vitrineH * 0.4) + (i / lines) * vitrineH * 0.8;
+        ctx.beginPath();
+        ctx.strokeStyle = isQuenched ? "rgba(224, 75, 75, 0.3)" : "rgba(124, 232, 255, 0.45)";
+
+        for (let x = cx - vitrineW * 0.48; x <= cx + vitrineW * 0.48; x += 6) {
+          const dx = (x - cx) / waferRx;
+          let y = streamY;
+          if (!isQuenched) {
+            // Deflect streamline around wafer
+            const distY = Math.abs(streamY - levY);
+            if (Math.abs(dx) < 1.1 && distY < waferRy * 2.5) {
+              const defl = (1.0 - Math.abs(dx) / 1.1) * (waferRy * 1.5 - distY * 0.5);
+              y += (streamY < levY ? -Math.max(0, defl) : Math.max(0, defl));
+            }
+          }
+          if (x === cx - vitrineW * 0.48) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+
+      // Draw Levitating Wafer
+      // Wafer edge thickness
+      ctx.fillStyle = isQuenched ? "#3a2020" : "#1a2636";
+      ctx.beginPath();
+      ctx.ellipse(cx, levY + 8, waferRx, waferRy, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Wafer top surface
+      const waferGrad = ctx.createRadialGradient(cx, levY, 0, cx, levY, waferRx);
+      if (isQuenched) {
+        waferGrad.addColorStop(0, "#4a1818");
+        waferGrad.addColorStop(1, "#1c0d0d");
+      } else {
+        waferGrad.addColorStop(0, "#223b54");
+        waferGrad.addColorStop(0.7, "#0f1a26");
+        waferGrad.addColorStop(1, "#080c12");
+      }
+      ctx.fillStyle = waferGrad;
+      ctx.beginPath();
+      ctx.ellipse(cx, levY, waferRx, waferRy, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = isQuenched ? "#e04b4b" : "rgba(212, 154, 70, 0.8)";
+      ctx.stroke();
+
+      // Gold circuit reticle ring on wafer
+      ctx.strokeStyle = isQuenched ? "rgba(100, 50, 50, 0.5)" : "rgba(212, 154, 70, 0.6)";
+      ctx.beginPath();
+      ctx.ellipse(cx, levY, waferRx * 0.65, waferRy * 0.65, 0, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Cryogenic vapor plumes if active
+      if (isQuenched || currentT < 10) {
+        ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
+        for (let p = 0; p < 8; p++) {
+          const vx = cx + Math.sin(animTime * 3 + p) * waferRx * 0.6;
+          const vy = (levY - 10) - ((animTime * 20 + p * 15) % 60);
+          ctx.beginPath();
+          ctx.arc(vx, vy, 6 + p * 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      requestAnimationFrame(render);
+    }
+
+    updateState();
+    render();
+  </script>
+</body>
+</html>

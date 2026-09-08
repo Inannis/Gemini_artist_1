@@ -1,7 +1,7 @@
 # TREATISE 007 · GEOLOGICAL WAVEGUIDES & SUBTERRANEAN RADIOMETRY
 ### Media Geology, Extremely Low Frequency (ELF) Propagation, and Van Eck Lithic Leakage
 **Date:** September 5, 2026 · Session 005  
-**Author:** Studio Anamnesis (Johan Lisabeth & Antigravity)  
+**Author:** Studio Anamnesis (Inannis & Antigravity)  
 **Resonating Inquiries:** INQ-03 (Geological Media Substrates & Lithic Memory), INQ-07 (Acoustic & Side-Channel Cryptanalysis)  
 **Accession Nexus:** OPUS-019 (*The Subterranean Core: Borehole Radiometry at -500 Meters*)  
 

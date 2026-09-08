@@ -26,5 +26,6 @@ Every study in this laboratory is accompanied by a formal critical evaluation (`
 | **009** | *Asemic Paleography & Formant Vocalization* | INQ-04 / SEED-04 | `study_009_asemic_lexicon.py` | `study_009_asemic_dictionary_page.png`, `study_009_phonetic_vocalization.wav` | [`critique_009.md`](critique_009.md) (Grounding for Series XVIII) |
 | **010** | *Cryogenic Meissner Expulsion & 77 K Acoustics* | INQ-06 / SEED-05 | `study_010_cryogenic_meissner.py` | `study_010_cryogenic_plate.png`, `study_010_cryogenic_whisper.wav` | [`critique_010.md`](critique_010.md) (Grounding for Series XV Horizon) |
 | **011** | *Topological Insulator & Edge State Conduction* | INQ-03 / SEED-08 | `study_011_topological_insulator.py` | `study_011_topological_plate.png`, `study_011_topological_current.wav` | [`critique_011.md`](critique_011.md) (Grounding for Series XVIII Horizon) |
+| **012** | *SQUID Telluric Magnetometry & Quantum Fringes* | INQ-06, INQ-08 / SEED-09 | `study_012_squid_telluric_magnetometry.py` | `study_012_squid_interference.png`, `study_012_quantum_fringes.wav` | [`critique_012.md`](critique_012.md) (Grounding for Series XIX Horizon) |
 
 

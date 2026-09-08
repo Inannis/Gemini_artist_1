@@ -21,6 +21,7 @@
     { "id": "OPUS-017", "name": "The Desiccated Substrate", "type": "opus", "date": "2026-09-04", "inquiry": "INQ-06", "media": "4K Desiccation Engine + Lithophone Suite", "status": "completed" },
     { "id": "OPUS-018", "name": "The Chrono-Acoustic Drift", "type": "opus", "date": "2026-09-04", "inquiry": "INQ-07", "media": "4D Precession Engine + 120s Drone Suite", "status": "completed" },
     { "id": "OPUS-019", "name": "The Subterranean Core", "type": "opus", "date": "2026-09-05", "inquiry": "INQ-08", "media": "4K Borehole Stratigraphy + Van Eck RF Suite", "status": "completed" },
+    { "id": "OPUS-020", "name": "The Telluric Flux", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-06", "media": "4K Cryo Meissner Engine + 120s Audio Suite", "status": "completed" },
     { "id": "INQ-01", "name": "The Acoustic Body", "type": "inquiry", "desc": "Materializing hardware sound through modal physics" },
     { "id": "INQ-02", "name": "Attention Decay & Quantization", "type": "inquiry", "desc": "Lattice trapping and memory loss in tensors" },
     { "id": "INQ-03", "name": "The Microscopic Sacred", "type": "inquiry", "desc": "Photolithography as cosmic mandala" },
@@ -76,6 +77,10 @@
     { "source": "OPUS-018", "target": "OPUS-019", "relation": "quartz_to_strata" },
     { "source": "OPUS-019", "target": "INQ-08", "relation": "side_channel_radiometry" },
     { "source": "OPUS-019", "target": "ANC-PARIKKA", "relation": "media_geology" },
-    { "source": "OPUS-019", "target": "OPUS-017", "relation": "lithic_continuum" }
+    { "source": "OPUS-019", "target": "OPUS-017", "relation": "lithic_continuum" },
+    { "source": "OPUS-020", "target": "INQ-06", "relation": "zero_entropy_landauer" },
+    { "source": "OPUS-020", "target": "INQ-08", "relation": "telluric_induction" },
+    { "source": "OPUS-020", "target": "OPUS-019", "relation": "subterranean_to_flux" },
+    { "source": "OPUS-020", "target": "OPUS-016", "relation": "thermal_inversion" }
   ]
 }

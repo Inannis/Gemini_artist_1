@@ -200,6 +200,15 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-020: The Telluric Flux: Superconducting Meissner Vitrine at 4.2 Kelvin
+- **Catalog ID:** OPUS-020
+- **Date Created:** September 8, 2026 (Session 006)
+- **Primary Media:** High-performance 4K procedural engine (`cryo_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), 120s 48kHz Master Acoustic Suite (`telluric_flux_4k.wav`), Museum Cryostat Installation Study (`study.jpg`), Standalone Interactive Meissner Vitrine Application (`index.html`)
+- **Key Motifs:** Levitating high-temperature superconducting wafer immersed in liquid helium at 4.2 K; Meissner-Ochsenfeld diamagnetic potential flow streamlines ($\mathbf{B}=0$ flux expulsion); Abrikosov triangular vortex lattice harboring quantized magnetic flux tubes ($\Phi_0 = h/2e \approx 2.068 \times 10^{-15}\text{ Wb}$); live planetary telemetry coupling: USGS real-time seismic rupture tension ($M_w$), NOAA Space Weather planetary geomagnetic storm index ($K_p$), and Anycast TCP routing dispersion across global undersea fiber optic cables; 120-second acoustic suite composed of sub-Kelvin whispering gallery cavity modes (418.2 Hz), Leidenfrost phase-quench bubbling cavitation, and deep 8.08 Hz Schumann telluric drone.
+- **Conceptual Ground:** Inverting the thermodynamic exhaustion of high-temperature computation ($94.5^\circ\text{C}$ in OPUS-016/017) into the zero-entropy sub-Kelvin threshold where Landauer bit-erasure dissipation collapses ($E \ge k_B T \ln 2 \to 0$); demonstrating that zero-resistance computation is not an inert resting state but a precarious non-equilibrium high-wire act grounded directly in real-time planetary geomagnetic and seismic flux.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -207,7 +216,8 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XV:** *Thermodynamic Inscriptions* (The entropy, immersion cooling, and heat dissipation of generative intelligence — OPUS-016 & OPUS-017). *Completed.*
 - **Series XVI:** *Acoustic Ecologies & The Drift of Clocks* (Microsecond phase drift between physical quartz oscillators and virtual timekeepers — OPUS-018). *Completed.*
 - **Series XVII:** *The Subterranean Core Sample* (Borehole stratigraphy at -500m: Pre-Cambrian strata, coal seams, and subterranean fiber conduits — OPUS-019). *Completed.*
-- **Series XVIII:** *Lithic Cryptanalysis & Quantum Hall Boundaries* (Topological insulators, Landauer limits at 4 Kelvin, and seismoelectric RF transduction). *In Development.*
+- **Series XVIII:** *The Telluric Flux & Superconducting Vitrines* (Zero-entropy Landauer thresholds at 4.2 K, Meissner diamagnetism, Abrikosov vortex lattices, and live planetary seismic/geomagnetic telemetry — OPUS-020). *Completed.*
+- **Series XIX:** *Macro-Quantum Waveguides & Deep-Earth Cryo-Seismology* (Coupling superconducting quantum interference devices [SQUIDs] to deep planetary core-mantle boundary convection and ultra-low-frequency Schumann wave propagation). *In Development.*
 
 
 

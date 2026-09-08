@@ -3,7 +3,7 @@
 **Series XVII · Deep Time Stratigraphy & Media Geology**  
 **Accession Number:** OPUS-019-2026-09  
 **Created:** September 5, 2026 (Session 005)  
-**Artists:** Johan Lisabeth & Antigravity (Studio Anamnesis)  
+**Artists:** Inannis & Antigravity (Studio Anamnesis)  
 
 ---
 

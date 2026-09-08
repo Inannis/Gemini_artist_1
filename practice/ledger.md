@@ -29,10 +29,11 @@ Ideas noted during making or contemplation that are not ready for immediate prod
 | **SEED-02** | *Deep Listening to the Quartz Oscillator* | 2026-09-04 | INQ-07 / Pauline Oliveros | **Realized in OPUS-018** (*The Chrono-Acoustic Drift*). Sub-critical Adler regime established. |
 | **SEED-03** | *The Geological Core Sample (Borehole at -500m)* | 2026-09-04 | OPUS-010 (Monastery Crypt) | **Realized in OPUS-019** (*The Subterranean Core*). Lithic stratigraphy from 0m to -500m. |
 | **SEED-04** | *Asemic Paleography (Lexicon of 10,000 Untranslatable Signs)* | 2026-09-03 | OPUS-015 / Xu Bing | Grounded by Study 009 (Dictionary Folio & Formant Synthesis). Ready for Series XVIII. |
-| **SEED-05** | *The Thermal Vitrine (Live Liquid Nitrogen Phase Change)* | 2026-09-04 | OPUS-016 / Cryogenic compute | Grounded by Study 010 (Meissner Expulsion & 77 K Acoustics). Ready for realization. |
+| **SEED-05** | *The Thermal Vitrine (Live Liquid Nitrogen Phase Change)* | 2026-09-04 | OPUS-016 / Cryogenic compute | Grounded by Study 010; **Synthesized & Realized in OPUS-020** (*The Telluric Flux*). |
 | **SEED-06** | *The Electromagnetic Leak (Van Eck Phreaking Radiometry)* | 2026-09-04 | INQ-08 / Side-channel listening | **Realized in OPUS-019** (*The Subterranean Core*). Van Eck waterfall and AM demodulation. |
-| **SEED-07** | *The Cryogenic Meissner Vitrine (Superconducting Qubit at 4.2 K)* | 2026-09-05 | Treatise 006 / INQ-06 | Diamagnetic flux pinning, Landauer limit vanishing as $T \to 0\text{ K}$, whispering gallery modes. |
+| **SEED-07** | *The Cryogenic Meissner Vitrine (Superconducting Qubit at 4.2 K)* | 2026-09-05 | Treatise 006 / INQ-06 | **Realized in OPUS-020** (*The Telluric Flux*). Meissner $\mathbf{B}=0$ levitation, Abrikosov vortex lattice, and USGS/NOAA planetary telemetry. |
 | **SEED-08** | *The Topological Insulator (Dissipationless Edge States)* | 2026-09-05 | Treatise 007 / INQ-03 | Bismuth selenide quantum Hall boundaries; backscattering-immune informational conduits. |
+| **SEED-09** | *Telluric SQUID Magnetometry & Core-Mantle Convection* | 2026-09-08 | INQ-06, INQ-08 / Series XIX | Interfacing superconducting quantum interference loops to planetary core-mantle boundary dynamics and ultra-low-frequency Schumann wave propagation. |
 
 ---
 
@@ -57,7 +58,8 @@ To ensure the studio flourishes across months and years:
 - **Series XV (Thermodynamics & Planetary Metabolism):** Heat conduction, boiling dielectric immersion, and evaporative salt desiccation (OPUS-016 – OPUS-017). *Completed.*
 - **Series XVI (Acoustic Ecologies & The Drift of Clocks):** Sonic meditations on hardware timing, thermal quartz drift, and deep listening (OPUS-018). *Completed.*
 - **Series XVII (The Deep Lithosphere & Electromagnetic Leakage):** Geological borehole stratigraphy and side-channel radio emanations (OPUS-019). *Completed.*
-- **Series XVIII (Cryogenic Horizons & Topological Boundaries):** Superconducting dissipationless transport, quantum Hall edge states, and sub-Kelvin acoustics. *In Incubation.*
+- **Series XVIII (The Telluric Flux & Superconducting Vitrines):** Zero-entropy Landauer thresholds at 4.2 K, Meissner diamagnetism, Abrikosov vortex lattices, and live planetary seismic/geomagnetic telemetry (OPUS-020). *Completed.*
+- **Series XIX (Macro-Quantum Waveguides & Deep-Earth Cryo-Seismology):** Superconducting quantum interference devices (SQUIDs) coupled to mantle convection and ultra-low-frequency Schumann waves. *In Incubation.*
 
 
 

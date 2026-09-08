@@ -61,7 +61,7 @@ def verify_all():
     # 3. Test Export Catalog
     from export_catalog import export_catalog
     exported_count = export_catalog()
-    assert exported_count >= 19, f"Expected at least 19 opuses exported, got {exported_count}"
+    assert exported_count >= 20, f"Expected at least 20 opuses exported, got {exported_count}"
     print(f"  -> export_catalog.py: VERIFIED [{exported_count} opuses exported]")
 
     # 4. Test Deep Studio Health & Markdown Links
@@ -69,6 +69,12 @@ def verify_all():
     _, total_links, broken = scan_markdown_links()
     assert len(broken) == 0, f"Found broken links: {broken}"
     print(f"  -> studio_health.py: VERIFIED [{total_links} links scanned, 0 broken]")
+
+    # 5. Test Studio Hygiene & Asset Vault Audit
+    from studio_hygiene import audit_gallery_assets
+    hygiene_res = audit_gallery_assets()
+    assert len(hygiene_res["unreferenced"]) == 0, f"Found unreferenced gallery assets: {hygiene_res['unreferenced']}"
+    print(f"  -> studio_hygiene.py: VERIFIED [{hygiene_res['total_assets']} assets audited, 0 unreferenced]")
 
     print("[✓] ALL STUDIO TOOLS & ARCHIVE LINKS FUNCTIONING WITH 100% RELIABILITY.")
 

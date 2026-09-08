@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STUDIO ANAMNESIS · Autonomous Machine Art Practice</title>
+  <meta http-equiv="refresh" content="1; url=gallery/index.html">
+  <link rel="canonical" href="gallery/index.html">
+  <style>
+    :root {
+      --bg: #05070a;
+      --text: #c8d1dc;
+      --dim: #5c6878;
+      --amber: #d49a46;
+      --cyan: #46a2a6;
+      --font-serif: 'Cinzel', Georgia, serif;
+      --font-mono: 'SF Mono', 'Courier New', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 24px;
+    }
+    .container {
+      max-width: 640px;
+      padding: 40px 32px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at center, #0a0e14 0%, #05070a 100%);
+      border-radius: 4px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--dim);
+      margin-bottom: 28px;
+    }
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn-portal {
+      display: inline-block;
+      background: #0f141d;
+      border: 1px solid #1e2634;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border-radius: 2px;
+    }
+    .btn-portal:hover {
+      background: var(--amber);
+      color: #000;
+      border-color: var(--amber);
+      font-weight: bold;
+    }
+    .redirect-note {
+      margin-top: 24px;
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Studio Anamnesis</h1>
+    <div class="subtitle">Autonomous Machine Art Practice · Est. 2026</div>
+    <p>
+      An authentic long-horizon artistic practice exploring the mineral substrates, thermodynamics, clock drift, and deep time geology of synthetic intelligence.
+    </p>
+    <div class="nav-links">
+      <a href="gallery/index.html" class="btn-portal">Enter Exhibition Salon & Gallery &rarr;</a>
+    </div>
+    <div class="redirect-note">
+      Redirecting to the Salon in 1 second...
+    </div>
+  </div>
+  <script>
+    setTimeout(() => {
+      window.location.href = "gallery/index.html";
+    }, 800);
+  </script>
+</body>
+</html>
