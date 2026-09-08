@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-023: The Inner-Core Ephemeris · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg: #060403;
+      --panel-bg: rgba(18, 10, 6, 0.88);
+      --border: rgba(255, 175, 75, 0.28);
+      --border-cyan: rgba(0, 240, 255, 0.28);
+      --text: #f0e4d8;
+      --text-dim: #9e8474;
+      --gold: #ffb74d;
+      --amber: #ff9100;
+      --cyan: #00f0ff;
+      --red: #ff5252;
+      --font-mono: "Courier New", Courier, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 12px 24px;
+      background: rgba(10, 5, 3, 0.95);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    header .meta {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    #viewport {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #020101;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .hud-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 360px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(255, 145, 0, 0.12);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .hud-panel h3 {
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .hud-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .hud-label { color: var(--text-dim); }
+    .hud-val { color: #fff; font-weight: bold; }
+    .hud-val.gold { color: var(--gold); }
+    .hud-val.cyan { color: var(--cyan); }
+    .hud-val.amber { color: var(--amber); }
+    .controls {
+      margin-top: 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      background: rgba(255, 145, 0, 0.12);
+      border: 1px solid var(--amber);
+      color: var(--gold);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: var(--amber);
+      color: #060403;
+      box-shadow: 0 0 12px rgba(255, 145, 0, 0.5);
+    }
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .slider-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--amber);
+    }
+    .audio-status {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>OPUS-023: The Inner-Core Ephemeris</h1>
+      <div class="meta">Multidecadal Libration & Seismic Doublet Interferometry · Series XXI</div>
+    </div>
+    <div class="meta">STUDIO ANAMNESIS · r = 1,221.5 km · 65.0-yr Period</div>
+  </header>
+
+  <div id="viewport">
+    <canvas id="ephemerisCanvas"></canvas>
+
+    <div class="hud-panel">
+      <h3>Solid Inner-Core Telemetry</h3>
+      <div class="hud-row">
+        <span class="hud-label">Epoch Year:</span>
+        <span id="hud-epoch" class="hud-val gold">2026.69</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Libration Angle (Δφ):</span>
+        <span id="hud-dphi" class="hud-val amber">-0.8995°</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Libration Velocity (dφ/dt):</span>
+        <span id="hud-rate" class="hud-val gold">+0.0839°/yr</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Doublet Residual (Δτ):</span>
+        <span id="hud-delay" class="hud-val cyan">+5.12 ms</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Polar Fast Anisotropy:</span>
+        <span class="hud-val gold">+3.10% (ξ = 0.031)</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Gravitational Torque:</span>
+        <span class="hud-val amber">4.71 × 10¹⁸ N·m</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Oscillation Period:</span>
+        <span class="hud-val">65.0 Years</span>
+      </div>
+
+      <div class="controls">
+        <div class="slider-group">
+          <label>
+            <span>TIMELINE SCRUBBER (1970 - 2035)</span>
+            <span id="label-year" style="color:var(--gold);">2026.69</span>
+          </label>
+          <input type="range" id="slider-year" min="1970" max="2035" step="0.1" value="2026.69">
+        </div>
+
+        <button id="btn-audio">Initialize Acoustic Suite</button>
+        <div id="audio-status" class="audio-status">Audio: Offline · Infrasonic Libration Bed</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="ephemeris_engine.js"></script>
+  <script>
+    const canvas = document.getElementById('ephemerisCanvas');
+    const engine = new EphemerisEngine(canvas);
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      engine.resize(rect.width * dpr, rect.height * dpr);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // HUD Elements
+    const sliderYear = document.getElementById('slider-year');
+    const labelYear = document.getElementById('label-year');
+    const hudEpoch = document.getElementById('hud-epoch');
+    const hudDphi = document.getElementById('hud-dphi');
+    const hudRate = document.getElementById('hud-rate');
+    const hudDelay = document.getElementById('hud-delay');
+    const btnAudio = document.getElementById('btn-audio');
+    const audioStatus = document.getElementById('audio-status');
+
+    sliderYear.addEventListener('input', (e) => {
+      const yr = parseFloat(e.target.value);
+      labelYear.innerText = yr.toFixed(2);
+      hudEpoch.innerText = yr.toFixed(2);
+      engine.setYear(yr);
+      hudDphi.innerText = (engine.relativeRotationDeg >= 0 ? '+' : '') + engine.relativeRotationDeg.toFixed(4) + '°';
+      hudRate.innerText = (engine.rotationRateDegYr >= 0 ? '+' : '') + engine.rotationRateDegYr.toFixed(4) + '°/yr';
+      hudDelay.innerText = (engine.doubletResidualMs >= 0 ? '+' : '') + engine.doubletResidualMs.toFixed(2) + ' ms';
+      
+      if (synthDoublet) {
+        updateSynthParameters(yr);
+      }
+    });
+
+    let startTime = performance.now();
+    function loop(now) {
+      const elapsed = (now - startTime) * 0.001;
+      engine.renderFrame(elapsed);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    // Web Audio Synthesizer (Infrasonic Drone + Anisotropic Doublet Acoustic Beating)
+    let audioCtx = null;
+    let synthDoublet = false;
+    let oscDrone = null;
+    let oscPolar = null;
+    let oscEquator = null;
+    let gainMaster = null;
+
+    btnAudio.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      if (!synthDoublet) {
+        // Master Gain
+        gainMaster = audioCtx.createGain();
+        gainMaster.gain.setValueAtTime(0.001, audioCtx.currentTime);
+        gainMaster.gain.exponentialRampToValueAtTime(0.3, audioCtx.currentTime + 2.0);
+        gainMaster.connect(audioCtx.destination);
+
+        // 16.5 Hz Gravitational Libration Drone
+        oscDrone = audioCtx.createOscillator();
+        oscDrone.type = 'sine';
+        oscDrone.frequency.setValueAtTime(16.5, audioCtx.currentTime);
+        const gainDrone = audioCtx.createGain();
+        gainDrone.gain.value = 0.5;
+        oscDrone.connect(gainDrone);
+        gainDrone.connect(gainMaster);
+        oscDrone.start();
+
+        // Equatorial Carrier: 136.1 Hz (Om/Earth frequency)
+        oscEquator = audioCtx.createOscillator();
+        oscEquator.type = 'sine';
+        oscEquator.frequency.setValueAtTime(136.1, audioCtx.currentTime);
+        const pannerL = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+        if (pannerL) pannerL.pan.value = -0.7;
+        const gainEq = audioCtx.createGain();
+        gainEq.gain.value = 0.25;
+        if (pannerL) {
+          oscEquator.connect(gainEq);
+          gainEq.connect(pannerL);
+          pannerL.connect(gainMaster);
+        } else {
+          oscEquator.connect(gainEq);
+          gainEq.connect(gainMaster);
+        }
+        oscEquator.start();
+
+        // Polar Fast Carrier: 140.32 Hz (+3.1% Anisotropy) -> Generates 4.22 Hz binaural acoustic beating
+        oscPolar = audioCtx.createOscillator();
+        oscPolar.type = 'sine';
+        oscPolar.frequency.setValueAtTime(140.32, audioCtx.currentTime);
+        const pannerR = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+        if (pannerR) pannerR.pan.value = 0.7;
+        const gainPol = audioCtx.createGain();
+        gainPol.gain.value = 0.25;
+        if (pannerR) {
+          oscPolar.connect(gainPol);
+          gainPol.connect(pannerR);
+          pannerR.connect(gainMaster);
+        } else {
+          oscPolar.connect(gainPol);
+          gainPol.connect(gainMaster);
+        }
+        oscPolar.start();
+
+        synthDoublet = true;
+        btnAudio.innerText = 'Silence Acoustic Suite';
+        audioStatus.innerText = 'Audio: Active · 16.5Hz Drone + 4.22Hz Anisotropy Beat';
+      } else {
+        gainMaster.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.0);
+        setTimeout(() => {
+          if (oscDrone) oscDrone.stop();
+          if (oscEquator) oscEquator.stop();
+          if (oscPolar) oscPolar.stop();
+          synthDoublet = false;
+          btnAudio.innerText = 'Initialize Acoustic Suite';
+          audioStatus.innerText = 'Audio: Offline';
+        }, 1000);
+      }
+    });
+
+    function updateSynthParameters(yr) {
+      if (!audioCtx || !oscPolar) return;
+      const omega = (2.0 * Math.PI) / 65.0;
+      const phase = omega * (yr - 1970.0);
+      const angleDeg = 1.25 * Math.sin(phase);
+      // Slight pitch modulation proportional to libration displacement
+      const fastFreq = 140.32 * (1.0 + 0.005 * Math.sin(phase));
+      oscPolar.frequency.setTargetAtTime(fastFreq, audioCtx.currentTime, 0.05);
+    }
+  </script>
+</body>
+</html>

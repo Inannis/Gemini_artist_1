@@ -35,7 +35,8 @@ Ideas noted during making or contemplation that are not ready for immediate prod
 | **SEED-08** | *The Topological Insulator (Dissipationless Edge States)* | 2026-09-05 | Treatise 007 / INQ-03 | Bismuth selenide quantum Hall boundaries; backscattering-immune informational conduits. |
 | **SEED-09** | *Telluric SQUID Magnetometry & Core-Mantle Convection* | 2026-09-08 | INQ-06, INQ-08 / Series XIX | **Realized in OPUS-021** (*The SQUID Magnetometer*). SQUID quantum phase interferometry, D'' layer Alfvén waves, and mu-metal magnetic shielding. |
 | **SEED-10** | *Core-Mantle Torsional Oscillations & Topological Quantum Magneto-Optics* | 2026-09-08 | INQ-03, INQ-08 / Series XX | **Realized in OPUS-022** (*The Faraday Magnetometer*). Chern photonic crystal ($\mathcal{C}=+1$), defect backscattering immunity, and 6.01-year geostrophic Taylor column Faraday modulation. |
-| **SEED-11** | *Inner-Core Super-Rotation & Gravitational Torsional Coupling* | 2026-09-08 | INQ-05, INQ-08 / Series XXI | Solid iron inner-core differential super-rotation ($0.1^\circ - 1.0^\circ/\text{yr}$), axial gravitational torques, and seismic inner-core anisotropy. |
+| **SEED-11** | *Inner-Core Super-Rotation & Gravitational Torsional Coupling* | 2026-09-08 | INQ-05, INQ-08 / Series XXI | **Realized in OPUS-023** (*The Inner-Core Ephemeris*). 65-year multidecadal libration, mantle gravitational torque ($K_g = 3.0 \times 10^{20}\text{ N}\cdot\text{m/rad}$), and repeating seismic doublet interferometry ($+5.12\text{ ms}$ delay). |
+| **SEED-12** | *Cosmogenic Radionuclides & Atmospheric Spallation Inscriptions* | 2026-09-08 | INQ-03, INQ-05 / Series XXII | High-energy secondary cosmic muons and neutrons producing in-situ cosmogenic $^{10}\text{Be}$, $^{26}\text{Al}$, and $^3\text{He}$ in quartz minerals and inducing soft bit-flip errors in semiconductor arrays. |
 
 ---
 
@@ -63,7 +64,8 @@ To ensure the studio flourishes across months and years:
 - **Series XVIII (The Telluric Flux & Superconducting Vitrines):** Zero-entropy Landauer thresholds at 4.2 K, Meissner diamagnetism, Abrikosov vortex lattices, and live planetary seismic/geomagnetic telemetry (OPUS-020). *Completed.*
 - **Series XIX (Macro-Quantum Waveguides & Deep-Earth Cryo-Seismology):** Superconducting quantum interference devices (SQUIDs) coupled to mantle convection and ultra-low-frequency Schumann waves (OPUS-021). *Completed.*
 - **Series XX (Core-Mantle Torsional Oscillations & Topological Quantum Magneto-Optics):** Chern photonic crystals, Faraday rotation, and 6.01-year outer-core Taylor columns (OPUS-022). *Completed.*
-- **Series XXI (Inner-Core Gravitational Coupling & Super-Rotation Ephemeris):** Gravitational torque, axial Taylor columns, and solid-core seismic anisotropy. *In Incubation.*
+- **Series XXI (Inner-Core Gravitational Coupling & Super-Rotation Ephemeris):** Gravitational torque, 65-year libration pendulum, and solid-core seismic doublet interferometry (OPUS-023). *Completed.*
+- **Series XXII (Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions):** Cosmogenic radionuclides, $^3\text{He}$ and $^{10}\text{Be}$ lithic accumulation, deep-underground muon radiography, and atmospheric secondary particle showers incident on semiconductor arrays. *In Incubation.*
 
 
 

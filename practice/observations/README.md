@@ -17,6 +17,8 @@ Unlike completed opuses, observations are descriptive, empirical, and open-ended
 | **004** | *Side-Channel Instruction Profiles* | 2026-09-04 | Instruction archetypes & bus chatter | Floating-point GEMM vs random pointer indirection radiate distinct timing signatures. |
 | **005** | *Planetary Telemetry & Transduced Geophysics* | 2026-09-08 | USGS seismology, NOAA space weather, fiber jitter | Coupling live crustal tremors and solar plasma flux ($K_p = 3.0$) into procedural art and acoustic resonance. |
 | **006** | *Outer-Core Torsional Waves & Geomagnetic Jerks* | 2026-09-08 | Geostrophic Taylor columns, Alfvén torsional waves | Proving the 6.01-year geodynamo jerk period and Faraday magneto-optic polarization coupling. |
+| **007** | *Solid Inner-Core Super-Rotation & Seismic Doublet Anisotropy* | 2026-09-08 | Solid iron inner core ($r \le 1,221.5\text{ km}$), $\varepsilon$-iron hcp lattice | Calculating the 65-year super-rotation oscillation, polar seismic anisotropy ($+3.1\%$), and PKIKP travel time residuals. |
+
 
 
 

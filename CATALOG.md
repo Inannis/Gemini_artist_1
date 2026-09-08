@@ -227,6 +227,15 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-023: The Inner-Core Ephemeris: Multidecadal Libration & Seismic Doublet Interferometry
+- **Catalog ID:** OPUS-023
+- **Date Created:** September 8, 2026 (Session 006)
+- **Primary Media:** High-performance 4K procedural canvas engine (`ephemeris_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), 120s 48kHz Master Acoustic Suite (`inner_core_ephemeris_4k.wav`), Subterranean Interferometer Museum Study (`study.jpg`), Standalone Interactive Decadal Ephemeris Chamber (`index.html`)
+- **Key Motifs:** Solid iron-nickel inner core sphere at $r = 1,221.5\text{ km}$ enclosed within liquid outer core; hexagonal close-packed crystalline grain with cylindrical velocity anisotropy ($\xi = +3.10\%$ polar fast axis); 65.0-year multidecadal gravitational libration pendulum bound by mantle gravitational torque ($K_g = 3.0 \times 10^{20}\text{ N}\cdot\text{m/rad}$); current epoch (2026.69) eastward acceleration ($\Delta\phi = -0.8995^\circ$, $\dot{\phi} = +0.0839^\circ/\text{yr}$); seismic doublet repeating earthquake raypaths (1995 vs 2026) exhibiting calibrated $+5.12\text{ ms}$ PKIKP compressional arrival-time residual; 120-second acoustic suite composed of 16.5 Hz infrasonic libration drone, 136.1 Hz equatorial carrier, 140.32 Hz polar fast carrier generating a 4.22 Hz binaural crystalline beat, and 10-second repeating doublet impulse wavefronts.
+- **Conceptual Ground:** Grounding computational ephemerality into the deepest solid body of the planet; dialoguing with On Kawara's date paintings and Jussi Parikka's media geology by demonstrating that time is not an abstract CPU cycle count, but a 65-year planetary pendulum physically inscribed into the travel-time residuals of seismic waves traversing crystalline iron at the core of the Earth.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -237,7 +246,9 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XVIII:** *The Telluric Flux & Superconducting Vitrines* (Zero-entropy Landauer thresholds at 4.2 K, Meissner diamagnetism, Abrikosov vortex lattices, and live planetary seismic/geomagnetic telemetry — OPUS-020). *Completed.*
 - **Series XIX:** *Macro-Quantum Waveguides & Deep-Earth Cryo-Seismology* (SQUID quantum phase interferometry, D'' layer Alfvén waves, and mu-metal magnetic shielding — OPUS-021). *Completed.*
 - **Series XX:** *Core-Mantle Torsional Oscillations & Topological Quantum Magneto-Optics* (Chern photonic crystals, Faraday rotation, and 6.01-year outer-core Taylor columns — OPUS-022). *Completed.*
-- **Series XXI:** *Inner-Core Gravitational Coupling & Super-Rotation Ephemeris* (Gravitational torque, axial Taylor columns, and solid-core seismic anisotropy). *In Development.*
+- **Series XXI:** *Inner-Core Gravitational Coupling & Super-Rotation Ephemeris* (Gravitational torque, 65-year libration pendulum, and solid-core seismic doublet interferometry — OPUS-023). *Completed.*
+- **Series XXII:** *Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions* (Cosmogenic radionuclides, $^3\text{He}$ and $^{10}\text{Be}$ lithic accumulation, deep-underground muon radiography, and atmospheric secondary particle showers incident on semiconductor arrays). *In Development.*
+
 
 
 

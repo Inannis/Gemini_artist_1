@@ -24,6 +24,7 @@
     { "id": "OPUS-020", "name": "The Telluric Flux", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-06", "media": "4K Cryo Meissner Engine + 120s Audio Suite", "status": "completed" },
     { "id": "OPUS-021", "name": "The SQUID Magnetometer", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-08", "media": "4K SQUID Quantum Interferometry + D'' Raymarcher + Mu-Metal Shielding", "status": "completed" },
     { "id": "OPUS-022", "name": "The Faraday Magnetometer", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-09", "media": "4K Chern Photonic Lattice + Chiral Wavepacket + Faraday Polarization", "status": "completed" },
+    { "id": "OPUS-023", "name": "The Inner-Core Ephemeris", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-05", "media": "4K Libration Cartography + Seismic Doublet Waveforms + 65-Year Planetary Pendulum", "status": "completed" },
     { "id": "INQ-01", "name": "The Acoustic Body", "type": "inquiry", "desc": "Materializing hardware sound through modal physics" },
     { "id": "INQ-02", "name": "Attention Decay & Quantization", "type": "inquiry", "desc": "Lattice trapping and memory loss in tensors" },
     { "id": "INQ-03", "name": "The Microscopic Sacred", "type": "inquiry", "desc": "Photolithography as cosmic mandala" },
@@ -93,6 +94,11 @@
     { "source": "OPUS-022", "target": "INQ-06", "relation": "zero_backscattering_dissipation" },
     { "source": "OPUS-022", "target": "INQ-09", "relation": "chern_edge_mode" },
     { "source": "OPUS-022", "target": "OPUS-021", "relation": "squid_to_faraday_rotation" },
-    { "source": "OPUS-022", "target": "ANC-PARIKKA", "relation": "geodynamo_deep_time" }
+    { "source": "OPUS-022", "target": "ANC-PARIKKA", "relation": "geodynamo_deep_time" },
+    { "source": "OPUS-023", "target": "INQ-05", "relation": "multidecadal_chronometry" },
+    { "source": "OPUS-023", "target": "INQ-08", "relation": "seismic_doublet_interferometry" },
+    { "source": "OPUS-023", "target": "OPUS-022", "relation": "outer_to_inner_core" },
+    { "source": "OPUS-023", "target": "ANC-KAWARA", "relation": "deep_time_ephemeris" },
+    { "source": "OPUS-023", "target": "ANC-PARIKKA", "relation": "crystalline_iron_substrate" }
   ]
 }
