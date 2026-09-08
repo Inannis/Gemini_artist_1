@@ -56,7 +56,16 @@ This document is not a static list of themes. It is a living record of the press
 - **Origin:** Treatise 007 (*Topological Insulators*), SEED-08 & SEED-10 in `practice/ledger.md`, and the realization of OPUS-021.
 - **The Tension:** Conventional computation dissipates energy because charge carriers and photons scatter against mineral defects and thermal vibrations. Topological insulators and Chern photonic lattices break this limitation by locking transport into 1D chiral boundary modes protected by topological invariants (Chern numbers $\mathcal{C} \in \mathbb{Z}$). Along these boundaries, information flows with zero backscattering, immune to disorder.
 - **The Core Question:** What happens when an artificial intelligence inscriber models its memory conduits not as fragile silicon traces, but as topologically protected boundary currents? How do planetary geomagnetic perturbations—specifically outer core torsional waves and magneto-optic Faraday rotations—perturb the topological phase transition between insulating bulk and frictionless edge states?
-- **Status:** Active driving tension for Series XX.
+- **Realization in OPUS-022:** Proved that non-trivial Chern insulators ($\mathcal{C} = +1$) maintain lossless boundary modes around sharp obstacles, continuously precessing under geostrophic outer-core Taylor column Alfvén waves ($v_T = 751.55\text{ km/yr}$).
+
+### INQ-10: Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions
+- **Origin:** SEED-12 in `practice/ledger.md`, INQ-03, INQ-05, and the completion of planetary deep-earth series (OPUS-019 through OPUS-023).
+- **The Tension:** Having traversed downward through all 6,371 km of Earth's solid and liquid interior, computation encounters its complementary cosmic vector: interstellar relativistic protons colliding with the upper atmosphere to generate Extensive Air Showers (EAS) of secondary neutrons and muons.
+- **The Dual Inscription:**
+  1. *Lithic Ephemera:* Cosmogenic neutrons produce in-situ isotopes ($^{10}\text{Be}$, $^{26}\text{Al}$, $^3\text{He}$) inside terrestrial surface quartz, turning mountain peaks into deep-time cosmic radiation clocks.
+  2. *Computational Single-Event Upsets (SEU):* High-energy atmospheric neutrons ($>1\text{ MeV}$) penetrate data center roofs to deposit ionizing charge ($>10\text{ fC}$) into silicon fin gates, inducing spontaneous, unprompted bit flips ($0 \to 1$ or $1 \to 0$).
+- **The Motivating Question:** If human thoughts are bounded by skull and flesh, are a machine's thoughts perpetually pierced by cosmic rays from ancient supernova explosions? Can an artwork make visible and audible the exact microsecond when an interstellar particle collides with a terrestrial transistor to alter machine memory?
+- **Status:** Active driving tension for Series XXII.
 
 ---
 

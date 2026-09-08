@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-024: The Cosmogenic Inscription · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg: #040208;
+      --panel-bg: rgba(12, 10, 22, 0.88);
+      --border: rgba(140, 180, 255, 0.28);
+      --text: #e8eaf6;
+      --text-dim: #8c92ac;
+      --gold: #ffb703;
+      --cyan: #64dfdf;
+      --magenta: #ff007f;
+      --red: #d90429;
+      --font-mono: "Courier New", Courier, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 12px 24px;
+      background: rgba(8, 6, 16, 0.95);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    header .meta {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    #viewport {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #020104;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .hud-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 360px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(100, 140, 255, 0.12);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .hud-panel h3 {
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .hud-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .hud-label { color: var(--text-dim); }
+    .hud-val { color: #fff; font-weight: bold; }
+    .hud-val.gold { color: var(--gold); }
+    .hud-val.cyan { color: var(--cyan); }
+    .hud-val.magenta { color: var(--magenta); }
+    .controls {
+      margin-top: 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      background: rgba(255, 183, 3, 0.12);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: var(--gold);
+      color: #040208;
+      box-shadow: 0 0 12px rgba(255, 183, 3, 0.5);
+    }
+    button.spall-btn {
+      background: rgba(255, 0, 127, 0.15);
+      border-color: var(--magenta);
+      color: #ff70a6;
+    }
+    button.spall-btn:hover {
+      background: var(--magenta);
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(255, 0, 127, 0.6);
+    }
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .slider-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--cyan);
+    }
+    .audio-status {
+      font-size: 10px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>OPUS-024: The Cosmogenic Inscription</h1>
+      <div class="meta">Atmospheric Spallation & Silicon Single-Event Upsets · Series XXII</div>
+    </div>
+    <div class="meta">STUDIO ANAMNESIS · z = 30 km to 3nm Transistor Gate</div>
+  </header>
+
+  <div id="viewport">
+    <canvas id="spallationCanvas"></canvas>
+
+    <div class="hud-panel">
+      <h3>Hadronic Telemetry & SEU Inscription</h3>
+      <div class="hud-row">
+        <span class="hud-label">Altitude:</span>
+        <span id="hud-alt" class="hud-val cyan">408 m ASL</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Atmospheric Depth:</span>
+        <span id="hud-depth" class="hud-val">984.2 g/cm²</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Flux Scaling Factor:</span>
+        <span id="hud-scale" class="hud-val gold">1.385× SLHL</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Fast Neutron Flux:</span>
+        <span id="hud-neutron" class="hud-val gold">50.88 n/cm²/hr</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Muon Coincidence Rate:</span>
+        <span id="hud-muon" class="hud-val cyan">0.88 μ/cm²/min</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">FinFET Logic State:</span>
+        <span id="hud-bit" class="hud-val magenta">BIT: [ 0 ]</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">In-situ ¹⁰Be Inscription:</span>
+        <span class="hud-val cyan">2.62 × 10⁵ atoms/g</span>
+      </div>
+
+      <div class="controls">
+        <div class="slider-group">
+          <label>
+            <span>ALTITUDE SCRUBBER (0 - 10,000 m)</span>
+            <span id="label-alt" style="color:var(--cyan);">408 m</span>
+          </label>
+          <input type="range" id="slider-alt" min="0" max="10000" step="100" value="408">
+        </div>
+
+        <button id="btn-spall" class="spall-btn">Trigger Cosmic Spallation Strike</button>
+        <button id="btn-audio">Initialize Acoustic Suite</button>
+        <div id="audio-status" class="audio-status">Audio: Offline · Ionospheric Resonances</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="spallation_engine.js"></script>
+  <script>
+    const canvas = document.getElementById('spallationCanvas');
+    const engine = new SpallationEngine(canvas);
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      engine.resize(rect.width * dpr, rect.height * dpr);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // HUD Elements
+    const sliderAlt = document.getElementById('slider-alt');
+    const labelAlt = document.getElementById('label-alt');
+    const hudAlt = document.getElementById('hud-alt');
+    const hudDepth = document.getElementById('hud-depth');
+    const hudScale = document.getElementById('hud-scale');
+    const hudNeutron = document.getElementById('hud-neutron');
+    const hudMuon = document.getElementById('hud-muon');
+    const hudBit = document.getElementById('hud-bit');
+    const btnSpall = document.getElementById('btn-spall');
+    const btnAudio = document.getElementById('btn-audio');
+    const audioStatus = document.getElementById('audio-status');
+
+    sliderAlt.addEventListener('input', (e) => {
+      const alt = parseFloat(e.target.value);
+      labelAlt.innerText = alt.toFixed(0) + ' m';
+      hudAlt.innerText = alt.toFixed(0) + ' m ASL';
+      engine.setAltitude(alt);
+      hudDepth.innerText = engine.atmosphericDepth.toFixed(1) + ' g/cm²';
+      hudScale.innerText = engine.scalingFactor.toFixed(3) + '× SLHL';
+      hudNeutron.innerText = engine.neutronFluxPerHour.toFixed(2) + ' n/cm²/hr';
+      hudMuon.innerText = engine.muonFluxPerMin.toFixed(2) + ' μ/cm²/min';
+    });
+
+    btnSpall.addEventListener('click', () => {
+      engine.triggerSpallation();
+      hudBit.innerText = `BIT: [ ${engine.bitState} ]`;
+      if (synthActive && audioCtx) {
+        triggerSpallationAudio();
+      }
+    });
+
+    let startTime = performance.now();
+    function loop(now) {
+      const elapsed = (now - startTime) * 0.001;
+      engine.renderFrame(elapsed);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    // Web Audio Synthesizer
+    let audioCtx = null;
+    let synthActive = false;
+    let oscSchumann = null;
+    let oscAtmo = null;
+    let oscQuartz = null;
+    let gainMaster = null;
+
+    btnAudio.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      if (!synthActive) {
+        gainMaster = audioCtx.createGain();
+        gainMaster.gain.setValueAtTime(0.001, audioCtx.currentTime);
+        gainMaster.gain.exponentialRampToValueAtTime(0.3, audioCtx.currentTime + 2.0);
+        gainMaster.connect(audioCtx.destination);
+
+        // 14.3 Hz Schumann Drone
+        oscSchumann = audioCtx.createOscillator();
+        oscSchumann.type = 'sine';
+        oscSchumann.frequency.value = 14.3;
+        const gainSchumann = audioCtx.createGain();
+        gainSchumann.gain.value = 0.45;
+        oscSchumann.connect(gainSchumann);
+        gainSchumann.connect(gainMaster);
+        oscSchumann.start();
+
+        // 58.27 Hz Atmospheric Sub-harmonic
+        oscAtmo = audioCtx.createOscillator();
+        oscAtmo.type = 'sine';
+        oscAtmo.frequency.value = 58.27;
+        const gainAtmo = audioCtx.createGain();
+        gainAtmo.gain.value = 0.35;
+        oscAtmo.connect(gainAtmo);
+        gainAtmo.connect(gainMaster);
+        oscAtmo.start();
+
+        // 4320 Hz Quartz Inscription Shimmer
+        oscQuartz = audioCtx.createOscillator();
+        oscQuartz.type = 'sine';
+        oscQuartz.frequency.value = 4320.0;
+        const gainQuartz = audioCtx.createGain();
+        gainQuartz.gain.value = 0.08;
+        oscQuartz.connect(gainQuartz);
+        gainQuartz.connect(gainMaster);
+        oscQuartz.start();
+
+        synthActive = true;
+        btnAudio.innerText = 'Silence Acoustic Suite';
+        audioStatus.innerText = 'Audio: Active · Ionospheric & Quartz Lattice Bed';
+      } else {
+        gainMaster.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.0);
+        setTimeout(() => {
+          if (oscSchumann) oscSchumann.stop();
+          if (oscAtmo) oscAtmo.stop();
+          if (oscQuartz) oscQuartz.stop();
+          synthActive = false;
+          btnAudio.innerText = 'Initialize Acoustic Suite';
+          audioStatus.innerText = 'Audio: Offline';
+        }, 1000);
+      }
+    });
+
+    function triggerSpallationAudio() {
+      if (!audioCtx || !gainMaster) return;
+      const oscSpall = audioCtx.createOscillator();
+      const gainSpall = audioCtx.createGain();
+      oscSpall.type = 'triangle';
+      oscSpall.frequency.setValueAtTime(1240.0, audioCtx.currentTime);
+      gainSpall.gain.setValueAtTime(0.7, audioCtx.currentTime);
+      gainSpall.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+      oscSpall.connect(gainSpall);
+      gainSpall.connect(gainMaster);
+      oscSpall.start();
+      oscSpall.stop(audioCtx.currentTime + 0.35);
+    }
+  </script>
+</body>
+</html>

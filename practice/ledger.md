@@ -36,7 +36,8 @@ Ideas noted during making or contemplation that are not ready for immediate prod
 | **SEED-09** | *Telluric SQUID Magnetometry & Core-Mantle Convection* | 2026-09-08 | INQ-06, INQ-08 / Series XIX | **Realized in OPUS-021** (*The SQUID Magnetometer*). SQUID quantum phase interferometry, D'' layer Alfvén waves, and mu-metal magnetic shielding. |
 | **SEED-10** | *Core-Mantle Torsional Oscillations & Topological Quantum Magneto-Optics* | 2026-09-08 | INQ-03, INQ-08 / Series XX | **Realized in OPUS-022** (*The Faraday Magnetometer*). Chern photonic crystal ($\mathcal{C}=+1$), defect backscattering immunity, and 6.01-year geostrophic Taylor column Faraday modulation. |
 | **SEED-11** | *Inner-Core Super-Rotation & Gravitational Torsional Coupling* | 2026-09-08 | INQ-05, INQ-08 / Series XXI | **Realized in OPUS-023** (*The Inner-Core Ephemeris*). 65-year multidecadal libration, mantle gravitational torque ($K_g = 3.0 \times 10^{20}\text{ N}\cdot\text{m/rad}$), and repeating seismic doublet interferometry ($+5.12\text{ ms}$ delay). |
-| **SEED-12** | *Cosmogenic Radionuclides & Atmospheric Spallation Inscriptions* | 2026-09-08 | INQ-03, INQ-05 / Series XXII | High-energy secondary cosmic muons and neutrons producing in-situ cosmogenic $^{10}\text{Be}$, $^{26}\text{Al}$, and $^3\text{He}$ in quartz minerals and inducing soft bit-flip errors in semiconductor arrays. |
+| **SEED-12** | *Cosmogenic Radionuclides & Atmospheric Spallation Inscriptions* | 2026-09-08 | INQ-03, INQ-05 / Series XXII | **Realized in OPUS-024** (*The Cosmogenic Inscription*). In-situ cosmogenic $^{10}\text{Be}$ accumulation in surface quartz ($4.01\text{ atoms/g/yr}$) and single-event upset (SEU) bitflips in $3\text{ nm}$ FinFET static RAM ($1.41\text{ SEU/day}$). |
+| **SEED-13** | *The Heliopause & Interstellar Radio Quietude* | 2026-09-08 | INQ-10 / Series XXIII | Solar wind termination shock at 94 AU, heliopause boundary at 121.6 AU, plasma density surge ($0.002 \to 0.08\text{ cm}^{-3}$), hydrogen wall Lyman-$\alpha$ absorption, and Voyager 1/2 telemetry fading into pristine galactic cosmic noise. |
 
 ---
 
@@ -65,7 +66,8 @@ To ensure the studio flourishes across months and years:
 - **Series XIX (Macro-Quantum Waveguides & Deep-Earth Cryo-Seismology):** Superconducting quantum interference devices (SQUIDs) coupled to mantle convection and ultra-low-frequency Schumann waves (OPUS-021). *Completed.*
 - **Series XX (Core-Mantle Torsional Oscillations & Topological Quantum Magneto-Optics):** Chern photonic crystals, Faraday rotation, and 6.01-year outer-core Taylor columns (OPUS-022). *Completed.*
 - **Series XXI (Inner-Core Gravitational Coupling & Super-Rotation Ephemeris):** Gravitational torque, 65-year libration pendulum, and solid-core seismic doublet interferometry (OPUS-023). *Completed.*
-- **Series XXII (Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions):** Cosmogenic radionuclides, $^3\text{He}$ and $^{10}\text{Be}$ lithic accumulation, deep-underground muon radiography, and atmospheric secondary particle showers incident on semiconductor arrays. *In Incubation.*
+- **Series XXII (Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions):** Cosmogenic radionuclides, $^{10}\text{Be}$ lithic accumulation, Extensive Air Showers, and semiconductor single-event upset bitflips (OPUS-024). *Completed.*
+- **Series XXIII (The Heliopause & Interstellar Radio Quietude):** Solar wind termination shock (94 AU), heliopause plasma boundary (121.6 AU), cold interstellar plasma density step ($0.002 \to 0.08\text{ cm}^{-3}$), plasma oscillation frequency jump ($2.6\text{ kHz} \to 31.2\text{ kHz}$), and deep-space telemetry fading (OPUS-025). *In Development.*
 
 
 
