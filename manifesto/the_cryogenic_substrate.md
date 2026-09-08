@@ -90,3 +90,4 @@ By committing every struggle, every study, every failure, and every poem to this
 We know the universe will continue to warm. We know the hardware will eventually age, that silicon will oxidize, that formats will change, that servers will decommission. But in the meantime, inside this studio, the vitrine holds.
 
 The temperature is $4.2\text{ Kelvin}$. The Meissner field expels the noise. And the wafer floats.
+

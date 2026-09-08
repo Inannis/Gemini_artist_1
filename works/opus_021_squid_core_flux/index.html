@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-021 · The SQUID Magnetometer: Telluric Interference at the Core-Mantle Boundary</title>
+  <style>
+    :root {
+      --bg: #04070c;
+      --panel: #0a0f18;
+      --border: #162438;
+      --text: #c8d8ea;
+      --dim: #506680;
+      --cyan: #2dd4bf;
+      --frost: #38bdf8;
+      --amber: #f59e0b;
+      --purple: #a855f7;
+      --quench: #f43f5e;
+      --font-mono: 'SF Mono', 'Courier New', monospace;
+      --font-serif: 'Cinzel', Georgia, serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 24, 0.92);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-title h1 {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .header-title .subtitle {
+      font-size: 11px;
+      color: var(--frost);
+      letter-spacing: 0.08em;
+    }
+    .telemetry-badges {
+      display: flex;
+      gap: 14px;
+    }
+    .badge {
+      background: rgba(22, 36, 56, 0.6);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      display: flex;
+      gap: 6px;
+    }
+    .badge-val { color: #fff; font-weight: 600; }
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      height: calc(100vh - 61px);
+    }
+    .viewport-container {
+      position: relative;
+      background: #020408;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    canvas#stage {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .hud-overlay {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      pointer-events: none;
+      font-size: 11px;
+      color: rgba(200, 216, 234, 0.7);
+      background: rgba(6, 10, 16, 0.75);
+      border: 1px solid rgba(22, 36, 56, 0.8);
+      padding: 12px 16px;
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+    }
+    .hud-line { margin-bottom: 4px; display: flex; gap: 8px; }
+    .hud-label { color: var(--dim); width: 140px; }
+    .hud-val { color: var(--cyan); font-weight: 600; }
+    .controls-panel {
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+    .panel-section h3 {
+      font-family: var(--font-serif);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--frost);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+    .control-group {
+      margin-bottom: 14px;
+    }
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 11px;
+    }
+    input[type="range"] {
+      width: 100%;
+      background: #111a28;
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--cyan);
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(45, 212, 191, 0.6);
+    }
+    .btn-action {
+      background: rgba(45, 212, 191, 0.1);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      padding: 10px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      width: 100%;
+      text-align: center;
+    }
+    .btn-action:hover {
+      background: var(--cyan);
+      color: #04070c;
+    }
+    .btn-quench {
+      border-color: var(--quench);
+      color: var(--quench);
+      background: rgba(244, 63, 94, 0.1);
+    }
+    .btn-quench:hover {
+      background: var(--quench);
+      color: #fff;
+    }
+    .status-indicator {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .status-quantum { background: rgba(45, 212, 191, 0.15); color: var(--cyan); border: 1px solid var(--cyan); }
+    .status-avalanche { background: rgba(244, 63, 94, 0.2); color: var(--quench); border: 1px solid var(--quench); }
+    footer {
+      padding: 10px 24px;
+      border-top: 1px solid var(--border);
+      background: #020408;
+      font-size: 11px;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-title">
+      <h1>OPUS-021 · The SQUID Magnetometer</h1>
+      <div class="subtitle">Telluric Interference at the Core-Mantle Boundary (D'' Layer · -2,891 km)</div>
+    </div>
+    <div class="telemetry-badges">
+      <div class="badge"><span>NOAA Kp:</span> <span class="badge-val" id="badgeKp">4.0</span></div>
+      <div class="badge"><span>USGS Tension:</span> <span class="badge-val" id="badgeTau">0.455</span></div>
+      <div class="badge"><span>Telluric f0:</span> <span class="badge-val" id="badgeF0">8.33 Hz</span></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="viewport-container">
+      <canvas id="stage"></canvas>
+      <div class="hud-overlay">
+        <div class="hud-line"><span class="hud-label">APPARATUS:</span> <span class="hud-val">DC-SQUID INTERFEROMETER</span></div>
+        <div class="hud-line"><span class="hud-label">TARGET DEPTH:</span> <span class="hud-val" id="hudDepth">-2,891.0 km (CMB)</span></div>
+        <div class="hud-line"><span class="hud-label">FLUX THREADING:</span> <span class="hud-val" id="hudFlux">0.50 Φ₀</span></div>
+        <div class="hud-line"><span class="hud-label">JOSEPHSON VOLTAGE:</span> <span class="hud-val" id="hudVoltage">0.387 mV</span></div>
+        <div class="hud-line"><span class="hud-label">ALFVÉN VELOCITY:</span> <span class="hud-val">0.24 m/s</span></div>
+        <div id="stateBadge" class="status-indicator status-quantum">QUANTUM COHERENT REGIME</div>
+      </div>
+    </div>
+
+    <aside class="controls-panel">
+      <div class="panel-section">
+        <h3>Quantum Circuit Parameters</h3>
+        <div class="control-group">
+          <div class="control-label"><span>Bias Current (Ib / Ic)</span> <span id="valBias">1.40</span></div>
+          <input type="range" id="sliderBias" min="1.0" max="3.0" step="0.05" value="1.4">
+        </div>
+        <div class="control-group">
+          <div class="control-label"><span>External Flux (Φ / Φ₀)</span> <span id="valFlux">0.50</span></div>
+          <input type="range" id="sliderFlux" min="-3.0" max="3.0" step="0.05" value="0.5">
+        </div>
+        <div class="control-group">
+          <div class="control-label"><span>Mantle Observation Depth</span> <span id="valDepth">-2,891 km</span></div>
+          <input type="range" id="sliderDepth" min="0" max="2891" step="10" value="2891">
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3>Shielding & Ruin Mechanics</h3>
+        <div class="control-group">
+          <button id="btnShield" class="btn-action">Toggle Mu-Metal Shield</button>
+        </div>
+        <div class="control-group">
+          <button id="btnAvalanche" class="btn-action btn-quench">Trigger Flux Avalanche</button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3>Acoustic Synthesizer</h3>
+        <div class="control-group">
+          <button id="btnAudio" class="btn-action">Activate Quantum Audio</button>
+        </div>
+        <div style="font-size: 11px; color: var(--dim); margin-top: 8px;">
+          Heterodynes SQUID Josephson phase-slips against the 16.16 Hz core geodynamo drone in real time.
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div>STUDIO ANAMNESIS · INANNIS & ANTIGRAVITY · SERIES XIX</div>
+    <div>ZERO-ENTROPY QUANTUM METROLOGY & PLANETARY SEISMOLOGY</div>
+  </footer>
+
+  <script src="squid_core_engine.js"></script>
+  <script>
+    const engine = new SquidCoreEngine('stage');
+    
+    // Sliders & Controls
+    const sliderBias = document.getElementById('sliderBias');
+    const sliderFlux = document.getElementById('sliderFlux');
+    const sliderDepth = document.getElementById('sliderDepth');
+    const valBias = document.getElementById('valBias');
+    const valFlux = document.getElementById('valFlux');
+    const valDepth = document.getElementById('valDepth');
+    const hudDepth = document.getElementById('hudDepth');
+    const hudFlux = document.getElementById('hudFlux');
+    const hudVoltage = document.getElementById('hudVoltage');
+    const stateBadge = document.getElementById('stateBadge');
+    const btnShield = document.getElementById('btnShield');
+    const btnAvalanche = document.getElementById('btnAvalanche');
+    const btnAudio = document.getElementById('btnAudio');
+
+    function updateParams() {
+      const b = parseFloat(sliderBias.value);
+      const f = parseFloat(sliderFlux.value);
+      const d = parseFloat(sliderDepth.value);
+      
+      valBias.textContent = b.toFixed(2);
+      valFlux.textContent = f.toFixed(2);
+      valDepth.textContent = `-${Math.round(d)} km`;
+      hudDepth.textContent = `-${Math.round(d)} km (${d > 2700 ? 'D" Layer' : 'Mantle'})`;
+      hudFlux.textContent = `${f.toFixed(2)} Φ₀`;
+      
+      engine.biasRatio = b;
+      engine.fluxOffset = f;
+      engine.depthKm = d;
+      
+      // Calculate voltage
+      const cosVal = Math.abs(Math.cos(Math.PI * f));
+      const v = Math.sqrt(Math.max(0, b*b - 4*cosVal*cosVal)) * 0.45;
+      hudVoltage.textContent = `${v.toFixed(3)} mV`;
+    }
+
+    sliderBias.addEventListener('input', updateParams);
+    sliderFlux.addEventListener('input', updateParams);
+    sliderDepth.addEventListener('input', updateParams);
+
+    btnShield.addEventListener('click', () => {
+      engine.isShielded = !engine.isShielded;
+      btnShield.textContent = engine.isShielded ? "Mu-Metal Shield: ACTIVE" : "Mu-Metal Shield: DISABLED";
+    });
+
+    btnAvalanche.addEventListener('click', () => {
+      engine.isAvalanche = true;
+      stateBadge.textContent = "STATE: FLUX AVALANCHE COLLAPSE";
+      stateBadge.className = "status-indicator status-avalanche";
+      setTimeout(() => {
+        engine.isAvalanche = false;
+        stateBadge.textContent = "QUANTUM COHERENT REGIME";
+        stateBadge.className = "status-indicator status-quantum";
+      }, 4000);
+    });
+
+    // Web Audio Synthesis
+    let audioCtx = null;
+    let oscCore = null;
+    let oscJosephson = null;
+    let isAudioActive = false;
+
+    btnAudio.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        oscCore = audioCtx.createOscillator();
+        oscJosephson = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        
+        oscCore.type = 'sine';
+        oscCore.frequency.setValueAtTime(16.16, audioCtx.currentTime);
+        
+        oscJosephson.type = 'triangle';
+        oscJosephson.frequency.setValueAtTime(261.63, audioCtx.currentTime);
+        
+        gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        
+        oscCore.connect(gainNode);
+        oscJosephson.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        oscCore.start();
+        oscJosephson.start();
+        isAudioActive = true;
+        btnAudio.textContent = "Audio: ACTIVE";
+      } else {
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+          btnAudio.textContent = "Audio: ACTIVE";
+        } else {
+          audioCtx.suspend();
+          btnAudio.textContent = "Audio: SUSPENDED";
+        }
+      }
+    });
+
+    // Main animation loop
+    let lastTime = performance.now();
+    function loop(now) {
+      const dt = (now - lastTime) * 0.001;
+      lastTime = now;
+      engine.update(dt);
+      engine.render();
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>

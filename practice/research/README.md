@@ -19,5 +19,6 @@ This directory preserves the long-form theoretical treatises authored by Studio 
 | **006** | [*The Thermal Zero: Cryogenic Computing*](cryogenic_superconducting_computing.md) | 2026-09-04 | INQ-06, INQ-07 | Meissner-Ochsenfeld diamagnetic flux expulsion ($B = 0$), vanishing of Landauer erasure penalty at $T \to 0\text{ K}$, and 77 K acoustics. |
 | **007** | [*Geological Waveguides and Subterranean Radiometry*](geological_waveguides_and_elf_propagation.md) | 2026-09-05 | INQ-03, INQ-07 | Media geology, Project Sanguine ELF propagation, lossy rock skin depth, seismoelectric coupling, and techno-fossil silicon layers. |
 | **008** | [*Telluric Currents, Meissner Expulsion & Superconducting Quantization*](telluric_currents_and_superconducting_quantization.md) | 2026-09-08 | INQ-06, INQ-08 | Thermodynamic inversion, Landauer erasure limits ($E \ge k_B T \ln 2 \to 0$ at $4.2\text{ K}$), Abrikosov vortex lattices, and USGS/NOAA planetary telemetry coupling. |
+| **009** | [*The Geodynamo, D'' Layer Alfvén Waves & Macro-Quantum Sensing*](geodynamo_alfven_waves_and_squid_interferometry.md) | 2026-09-08 | INQ-06, INQ-08 | Core-mantle boundary convection at 2,900km, Gutenberg discontinuity, hydromagnetic Alfvén waves, and DC-SQUID Josephson phase interferometry. |
 
 

@@ -117,3 +117,4 @@ OPUS-020 does not hide this vulnerability. It places the vitrine on display, inv
 4. Abrikosov, Alexei A. *"On the Magnetic Properties of Superconductors of the Second Group."* Soviet Physics JETP 5 (1957), pp. 1174–1182.
 5. Parikka, Jussi. *A Geology of Media*. University of Minnesota Press, 2015.
 6. Studio Anamnesis. *Productive Failure 005: Josephson Phase-Slippage & Thermal Quench Runaway*. Studio Laboratory Archive, 2026.
+

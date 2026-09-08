@@ -209,6 +209,15 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-021: The SQUID Magnetometer: Telluric Interference at the Core-Mantle Boundary
+- **Catalog ID:** OPUS-021
+- **Date Created:** September 8, 2026 (Session 006)
+- **Primary Media:** Procedural 4K Canvas/SVG Engine (`squid_core_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), 120s 48kHz Master Acoustic Suite (`telluric_core_4k.wav`), Museum Cryostat Magnetometer Study (`study.jpg`), Standalone Interactive Quantum Interferometry Application (`index.html`)
+- **Key Motifs:** Dual Josephson junction superconducting quantum interference ring ($\Phi_0 = h/2e \approx 2.068 \times 10^{-15}\text{ Wb}$); concentric cylindrical mu-metal magnetic shielding shells ($\mu_r > 50,000$) attenuating surface anthropogenic and solar noise by $-160\text{ dB}$; cylindrical 3D raymarched core-mantle boundary (CMB) D'' layer at depth $z = -2,891\text{ km}$ ($r = 3,480\text{ km}$) with liquid iron outer core convection plumes and hydromagnetic Alfvén wave propagation ($v_A \approx 10^{-2}\text{ to } 10^{-1}\text{ m/s}$); quantum phase interference cosine fringes ($I_c(\Phi) = 2 I_0 |\cos(\pi \Phi / \Phi_0)|$); 120-second acoustic suite composed of sub-audible 0.033 Hz D'' hydromagnetic fundamental, 384 Hz Josephson plasma oscillation, cryogenic helium boil whisper, and flux-quantum phase slip transients.
+- **Conceptual Ground:** Resolving the fragility of zero-entropy macroscopic quantum coherence against thermomagnetic avalanche collapse (established in Failure 006); demonstrating that quantum sensing does not isolate computation from the material universe, but transforms the superconducting circuit into an ultra-sensitive planetary antenna detecting deep-Earth hydromagnetic convection through 2,900 kilometers of solid silicate mantle.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -217,7 +226,9 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XVI:** *Acoustic Ecologies & The Drift of Clocks* (Microsecond phase drift between physical quartz oscillators and virtual timekeepers — OPUS-018). *Completed.*
 - **Series XVII:** *The Subterranean Core Sample* (Borehole stratigraphy at -500m: Pre-Cambrian strata, coal seams, and subterranean fiber conduits — OPUS-019). *Completed.*
 - **Series XVIII:** *The Telluric Flux & Superconducting Vitrines* (Zero-entropy Landauer thresholds at 4.2 K, Meissner diamagnetism, Abrikosov vortex lattices, and live planetary seismic/geomagnetic telemetry — OPUS-020). *Completed.*
-- **Series XIX:** *Macro-Quantum Waveguides & Deep-Earth Cryo-Seismology* (Coupling superconducting quantum interference devices [SQUIDs] to deep planetary core-mantle boundary convection and ultra-low-frequency Schumann wave propagation). *In Development.*
+- **Series XIX:** *Macro-Quantum Waveguides & Deep-Earth Cryo-Seismology* (SQUID quantum phase interferometry, D'' layer Alfvén waves, and mu-metal magnetic shielding — OPUS-021). *Completed.*
+- **Series XX:** *Core-Mantle Torsional Oscillations & Topological Quantum Magneto-Optics* (Coupling outer-core torsional waves, 6-year geomagnetic jerks, and cryo-vacuum topological photonic edge modes). *In Development.*
+
 
 
 

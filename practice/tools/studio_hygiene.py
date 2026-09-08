@@ -174,3 +174,4 @@ def run_hygiene_report(clean=False):
 if __name__ == "__main__":
     do_clean = "--clean" in sys.argv
     run_hygiene_report(clean=do_clean)
+

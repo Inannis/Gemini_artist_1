@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 20,
+  "total_opuses": 21,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -745,7 +745,7 @@
       "id": "OPUS-020",
       "directory": "opus_020_telluric_flux",
       "file_count": 8,
-      "total_bytes": 24518462,
+      "total_bytes": 24518474,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -758,23 +758,23 @@
         },
         {
           "path": "works/opus_020_telluric_flux/index.html",
-          "size_bytes": 19012,
-          "checksum": "deae57c9ddfd0445"
+          "size_bytes": 19020,
+          "checksum": "1a692b77394a4363"
         },
         {
           "path": "works/opus_020_telluric_flux/README.md",
-          "size_bytes": 4321,
-          "checksum": "6f2c362624b5dcbb"
+          "size_bytes": 4322,
+          "checksum": "c11fa78d593fb10c"
         },
         {
           "path": "works/opus_020_telluric_flux/render_master_plate.py",
-          "size_bytes": 1660,
-          "checksum": "4aad1c18c5a0bb8c"
+          "size_bytes": 1661,
+          "checksum": "fa8aee76eddcec03"
         },
         {
           "path": "works/opus_020_telluric_flux/cryo_engine.js",
-          "size_bytes": 13214,
-          "checksum": "0eaa4f4a0a843ab8"
+          "size_bytes": 13215,
+          "checksum": "ec5cc682d6938e46"
         },
         {
           "path": "works/opus_020_telluric_flux/artwork.png",
@@ -788,8 +788,60 @@
         },
         {
           "path": "works/opus_020_telluric_flux/synthesize_cryo_suite.py",
-          "size_bytes": 5628,
-          "checksum": "54754d24ca3a5218"
+          "size_bytes": 5629,
+          "checksum": "644b00f04b38947c"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-021",
+      "directory": "opus_021_squid_core_flux",
+      "file_count": 8,
+      "total_bytes": 27081532,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_021_squid_core_flux/study.jpg",
+          "size_bytes": 964922,
+          "checksum": "5bd81788d92686e7"
+        },
+        {
+          "path": "works/opus_021_squid_core_flux/index.html",
+          "size_bytes": 12672,
+          "checksum": "e598f67360663537"
+        },
+        {
+          "path": "works/opus_021_squid_core_flux/synthesize_core_suite.py",
+          "size_bytes": 4283,
+          "checksum": "42c4a76b82395e8c"
+        },
+        {
+          "path": "works/opus_021_squid_core_flux/README.md",
+          "size_bytes": 4947,
+          "checksum": "e3931413f81d78c4"
+        },
+        {
+          "path": "works/opus_021_squid_core_flux/render_master_plate.py",
+          "size_bytes": 8806,
+          "checksum": "b2f987529482499e"
+        },
+        {
+          "path": "works/opus_021_squid_core_flux/artwork.png",
+          "size_bytes": 3040254,
+          "checksum": "6760308ab4cba30f"
+        },
+        {
+          "path": "works/opus_021_squid_core_flux/telluric_core_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "d4a58503248ee8d5"
+        },
+        {
+          "path": "works/opus_021_squid_core_flux/squid_core_engine.js",
+          "size_bytes": 5604,
+          "checksum": "84324bde65c40fab"
         }
       ]
     }

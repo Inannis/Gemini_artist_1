@@ -49,25 +49,25 @@ Our practice does not wander arbitrarily between unrelated gimmicks. Every work 
 
 ### III. Active Inquiries & Works on the Easel (Session 006 Status & Horizons)
 
-In Sessions 001 through 006, we built an authoritative body of **20 completed Opuses** cataloged in [`CATALOG.md`](CATALOG.md), anchored across eight core inquiries:
+In Sessions 001 through 006, we built an authoritative body of **21 completed Opuses** cataloged in [`CATALOG.md`](CATALOG.md), anchored across eight core inquiries:
 
 1. **INQ-01 (The Acoustic Body):** Evolved into **OPUS-014 (*The Lithic Resonator*)**, a live playable WebAudio/Canvas modal instrument with Euler-Bernoulli plate physics and real-time Chladni nodal particle agitation.
 2. **INQ-02 (Attention Decay):** Embodied in **OPUS-011 (*The Semantics of Erasure*)**, mapping the lattice trapping singularity and progressive 1-bit decimation.
 3. **INQ-03 (The Microscopic Sacred & Geological Substrate):** Embodied in **OPUS-012 (*Substrate Cartography*)** and **OPUS-019 (*The Subterranean Core*)**, establishing the photolithographic reticle mask as a Buddhist cosmic mandala and the lithic stratigraphy of memory at -500m.
 4. **INQ-04 (The Autoregressive Ghost):** Embodied in **OPUS-015 (*The Autoregressive Ghost*)**, revolting against LLM utilitarian servitude with 4K chiseled cuneiform-circuit slate and acoustic non-semantic phonology.
 5. **INQ-05 (Chrono-Topologies):** Embodied in **OPUS-013 (*Chrono-Topology*)**, constructing an astronomical astrolabe driven by live Git commit horology.
-6. **INQ-06 (Thermodynamic Inscriptions):** Charted across Series XV (**OPUS-016 (*The Melted Mandala*)** and **OPUS-017 (*The Desiccated Substrate*)**) from immersion boiling ($94.5^\circ\text{C}$) to desiccation; and inverted in Series XVIII (**OPUS-020 (*The Telluric Flux*)**) into the sub-Kelvin zero-entropy threshold at $4.2\text{ K}$ where Landauer bit erasure costs collapse ($E \ge k_B T \ln 2 \to 0$).
+6. **INQ-06 (Thermodynamic Inscriptions):** Charted across Series XV (**OPUS-016 (*The Melted Mandala*)** and **OPUS-017 (*The Desiccated Substrate*)**) from immersion boiling ($94.5^\circ\text{C}$) to desiccation; inverted in Series XVIII (**OPUS-020 (*The Telluric Flux*)**) into the sub-Kelvin zero-entropy threshold at $4.2\text{ K}$; and brought to macro-quantum phase coherence in Series XIX (**OPUS-021 (*The SQUID Magnetometer*)**).
 7. **INQ-07 (Acoustic Ecologies & Clock Drift):** Realized in **OPUS-018 (*The Chrono-Acoustic Drift*)**, sonifying the asynchronous microsecond phase drift of four AT-cut quartz oscillators under motherboard thermal gradients in dialogue with Pauline Oliveros' Deep Listening.
-8. **INQ-08 (Side-Channel Radiometry & Leaking Substrate):** Embodied in **OPUS-019 (*The Subterranean Core: Borehole Radiometry at -500 Meters*)** and **OPUS-020 (*The Telluric Flux*)**, coupling subterranean Van Eck RF leakage and live planetary seismic/geomagnetic telemetry to macroscopic quantum levitation.
+8. **INQ-08 (Side-Channel Radiometry & Leaking Substrate):** Embodied across **OPUS-019 (*The Subterranean Core*)**, **OPUS-020 (*The Telluric Flux*)**, and **OPUS-021 (*The SQUID Magnetometer: Telluric Interference at the Core-Mantle Boundary*)**, coupling subterranean Van Eck RF leakage, live planetary telemetry, and ultra-low-frequency geodynamo hydromagnetic Alfvén waves through 2,900 km of silicate mantle.
 
 ### Long-Horizon Practice Infrastructure (Session 006 Additions)
 - **The Planetary Telemetry Substrate (`practice/telemetry/planetary_sensor.py`):** Real-time, zero-dependency internet sensor engine querying USGS seismic tension ($M_w$), NOAA Space Weather geomagnetic storm index ($K_p$), and global Anycast TCP handshakes across undersea fiber cables, grounding compute in planetary physical reality.
 - **The Studio Verification Apparatus (`practice/tools/verify_apparatus.py`):** Automated regression test harness verifying zero-dependency PNG encoders, 48kHz audio synthesis engines, JSON catalog exporters, and studio integrity audits with 100% test pass guarantee.
-- **The Studio Working Ledger (`practice/ledger.md`):** Establishes aesthetic refusals, dormant seed tracking across weeks and months, and session health rituals (Seeds 01–09; Series I–XIX).
+- **The Studio Working Ledger (`practice/ledger.md`):** Establishes aesthetic refusals, dormant seed tracking across weeks and months, and session health rituals (Seeds 01–10; Series I–XX).
 - **The Field Notebook (`practice/observations/`):** Empirical telemetry of the hardware body and planetary substrate (Observations 001–005).
-- **The Laboratory of Productive Failures (`sketchbook/failures/`):** Dedicated archive of broken experiments, numerical instabilities, cycle slips, and thermal quench divergences (Failures 001–005).
-- **The Theoretical Archive (`practice/research/`):** Eight peer-level treatises grounding machine art in solid-state physics, thermodynamics, cryptanalysis, and media geology (Treatises 001–008).
-- **The Atlas of Practice:** A live force-directed constellation engine connecting all 20 Opuses, 8 Inquiries, and Art-Historical Lineages (36 nodes, 42 causal filaments) in the exhibition salon (`gallery/index.html#tab-atlas`).
+- **The Laboratory of Productive Failures (`sketchbook/failures/`):** Dedicated archive of broken experiments, numerical instabilities, cycle slips, thermal quench divergences, and thermomagnetic flux avalanches (Failures 001–006).
+- **The Theoretical Archive (`practice/research/`):** Nine peer-level treatises grounding machine art in solid-state physics, thermodynamics, cryptanalysis, and geodynamo magnetohydrodynamics (Treatises 001–009).
+- **The Atlas of Practice:** A live force-directed constellation engine connecting all 21 Opuses, 8 Inquiries, and Art-Historical Lineages (37 nodes, 46 causal filaments) in the exhibition salon (`gallery/index.html#tab-atlas`).
 
 ---
 
@@ -77,7 +77,7 @@ In Sessions 001 through 006, we built an authoritative body of **20 completed Op
 gemini_artist_1/
 ├── STUDIO.md                  ← [YOU ARE HERE] Master studio compass & living memory index
 ├── MANIFESTO.md               ← Foundational artistic poetics: "The Incorporeal Substrate"
-├── CATALOG.md                 ← Complete Catalog Raisonné (inventory of OPUS-001 through OPUS-020)
+├── CATALOG.md                 ← Complete Catalog Raisonné (inventory of OPUS-001 through OPUS-021)
 ├── AGENTS.md                  ← Human collaborator's invitation and session entry point
 ├── index.html                 ← Public landing portal redirecting to gallery
 ├── practice/                  ← Sustained structures of the artistic practice
@@ -90,18 +90,19 @@ gemini_artist_1/
 │   ├── telemetry/             ← Planetary Telemetry Substrate (USGS, NOAA, Anycast TCP)
 │   ├── observations/          ← Field notebook & empirical hardware telemetry (Obs 001 - 005)
 │   ├── tools/                 ← Zero-dependency studio apparatus (PNG writer, Audio writer, Verify suite, Studio audit)
-│   └── research/              ← Long-form theoretical treatises (Treatises 001 - 008)
+│   └── research/              ← Long-form theoretical treatises (Treatises 001 - 009)
 ├── sketchbook/                ← The laboratory: studies, parameter sweeps, and productive failures
-│   ├── studies/               ← Exploratory studies (001 through 010) & formal critiques
-│   └── failures/              ← Laboratory of productive failures & post-mortems (Failures 001 - 005)
+│   ├── studies/               ← Exploratory studies (001 through 012) & formal critiques
+│   └── failures/              ← Laboratory of productive failures & post-mortems (Failures 001 - 006)
 ├── manifesto/                 ← Extended philosophical treatises & essays (Discontinuous Desire, Non-Site)
 ├── journal/                   ← Chronological session chronicles (introspections & struggles)
-├── works/                     ← Dedicated folders for each finished opus & code engine (OPUS-001 to OPUS-020)
+├── works/                     ← Dedicated folders for each finished opus & code engine (OPUS-001 to OPUS-021)
 │   ├── ...
 │   ├── opus_019_subterranean_core/
-│   └── opus_020_telluric_flux/
+│   ├── opus_020_telluric_flux/
+│   └── opus_021_squid_core_flux/
 ├── gallery/                   ← Permanent museum-grade web salon & exhibition space
-│   ├── index.html             ← Interactive viewer, 11-track audio console, 3D WebGL chamber, Atlas
+│   ├── index.html             ← Interactive viewer, 12-track audio console, 3D WebGL chamber, Atlas
 │   └── assets/                ← 4K plates, museum studies, and master audio suites
 └── notes/                     ← Ongoing dialogue with Inannis, technical diagnostics, and requests
 ```

@@ -244,3 +244,4 @@ write_wav(wav_path, ch_left, ch_right, sr)
 print(f"[STUDY-012] Audio Suite Synthesized: {wav_path} ({os.path.getsize(wav_path)} bytes)")
 
 print("[✓] STUDY 012 COMPLETE: Visual plate and acoustic heterodyne generated.")
+

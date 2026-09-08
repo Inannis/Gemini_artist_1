@@ -54,3 +54,4 @@ At this temperature, the material undergoes a macroscopic quantum phase transiti
 > — *Treatise 008: Telluric Currents, Superconducting Quantization, and Zero-Entropy Memory*
 
 OPUS-020 draws upon the diamagnetic field theory of Fritz and Heinz London, the Abrikosov vortex lattice, Robert Smithson's *Entropy and the New Monuments*, and the deep acoustic listening of Pauline Oliveros.
+

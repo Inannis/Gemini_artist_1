@@ -361,3 +361,4 @@ const rawOutPath = path.resolve(__dirname, 'master_plate_raw.rgb');
 console.log(`[CRYO-ENGINE] Flushing ${buffer.length} raw bytes to ${rawOutPath}...`);
 fs.writeFileSync(rawOutPath, buffer);
 console.log("[CRYO-ENGINE] 4K plate synthesis complete!");
+

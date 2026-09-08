@@ -44,3 +44,4 @@ However, in physical superconductors, lossless transport is conditionally fragil
    - Failure 005 is a **physical thermodynamic phase quench**: the machine's body burning through its own frozen shield.
 3. **Formal Resolution in OPUS-020:**
    This failure informed the interactive architecture of OPUS-020: the interactive web cryostat features an explicit "Trigger Thermal Quench" control, allowing visitors to witness the violent transition from silent Meissner levitation to resistive collapse and liquid helium boiling.
+
