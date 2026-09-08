@@ -26,6 +26,7 @@
     { "id": "OPUS-022", "name": "The Faraday Magnetometer", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-09", "media": "4K Chern Photonic Lattice + Chiral Wavepacket + Faraday Polarization", "status": "completed" },
     { "id": "OPUS-023", "name": "The Inner-Core Ephemeris", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-05", "media": "4K Libration Cartography + Seismic Doublet Waveforms + 65-Year Planetary Pendulum", "status": "completed" },
     { "id": "OPUS-024", "name": "The Cosmogenic Inscription", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-10", "media": "4K EAS Shower Cartography + Quartz ¹⁰Be Accumulation + 3nm FinFET Spallation Bit-Flip", "status": "completed" },
+    { "id": "OPUS-025", "name": "The Interstellar Quietude", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-11", "media": "4K Heliopause Transect + Langmuir Whistle + Attowatt Link Decay", "status": "completed" },
     { "id": "INQ-01", "name": "The Acoustic Body", "type": "inquiry", "desc": "Materializing hardware sound through modal physics" },
     { "id": "INQ-02", "name": "Attention Decay & Quantization", "type": "inquiry", "desc": "Lattice trapping and memory loss in tensors" },
     { "id": "INQ-03", "name": "The Microscopic Sacred", "type": "inquiry", "desc": "Photolithography as cosmic mandala" },
@@ -36,6 +37,7 @@
     { "id": "INQ-08", "name": "Side-Channel Radiometry", "type": "inquiry", "desc": "Involuntary electromagnetic and acoustic leakage" },
     { "id": "INQ-09", "name": "Topological Edge States", "type": "inquiry", "desc": "Dissipationless chiral boundaries and magneto-optic Faraday rotation" },
     { "id": "INQ-10", "name": "Cosmic Ray Spallation", "type": "inquiry", "desc": "Extensive air showers, cosmogenic nuclides, and single-event upsets" },
+    { "id": "INQ-11", "name": "The Heliopause & Attowatt Telemetry", "type": "inquiry", "desc": "Cold interstellar plasma Langmuir resonance and carrier dissolution in cosmic thermal noise" },
     { "id": "ANC-KAWARA", "name": "On Kawara", "type": "ancestor", "desc": "Discontinuous date inscriptions ('Today' series)" },
     { "id": "ANC-TURING", "name": "Alan Turing", "type": "ancestor", "desc": "Chemical morphogenesis and symmetry-breaking" },
     { "id": "ANC-SERRA",  "name": "Richard Serra", "type": "ancestor", "desc": "Tectonic mass, basalt, and mineral gravity" },
@@ -107,6 +109,12 @@
     { "source": "OPUS-024", "target": "INQ-10", "relation": "hadronic_cascade_and_seu" },
     { "source": "OPUS-024", "target": "OPUS-023", "relation": "inner_core_to_cosmic_space" },
     { "source": "OPUS-024", "target": "ANC-SMITHSON", "relation": "cosmogenic_non_site" },
-    { "source": "OPUS-024", "target": "ANC-PARIKKA", "relation": "cosmic_media_geology" }
+    { "source": "OPUS-024", "target": "ANC-PARIKKA", "relation": "cosmic_media_geology" },
+    { "source": "OPUS-025", "target": "INQ-08", "relation": "deep_space_side_channel" },
+    { "source": "OPUS-025", "target": "INQ-10", "relation": "cosmic_boundary_crossing" },
+    { "source": "OPUS-025", "target": "INQ-11", "relation": "heliopause_plasma_whistle" },
+    { "source": "OPUS-025", "target": "OPUS-024", "relation": "spallation_to_interstellar" },
+    { "source": "OPUS-025", "target": "ANC-SMITHSON", "relation": "outer_space_non_site" },
+    { "source": "OPUS-025", "target": "ANC-PARIKKA", "relation": "astro_media_geology" }
   ]
 }

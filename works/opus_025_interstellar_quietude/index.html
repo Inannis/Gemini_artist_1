@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPUS-025: The Interstellar Quietude · Studio Anamnesis</title>
+    <style>
+        :root {
+            --bg-deep: #05080e;
+            --panel-bg: rgba(10, 16, 26, 0.88);
+            --border-line: rgba(60, 120, 180, 0.4);
+            --accent-cyan: #3cdcf0;
+            --accent-gold: #f5b041;
+            --text-main: #e0e8f5;
+            --text-dim: #7a8fa6;
+            --font-mono: 'JetBrains Mono', 'SF Pro Mono', 'Courier New', monospace;
+            --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 24px 32px;
+            border-bottom: 1px solid var(--border-line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+        }
+
+        .title-block h1 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+        }
+
+        .title-block p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        #quietude-canvas {
+            width: 100%;
+            height: calc(100vh - 160px);
+            display: block;
+        }
+
+        .hud-panel {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 380px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-line);
+            border-radius: 4px;
+            padding: 20px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+        }
+
+        .hud-header {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(245, 176, 65, 0.3);
+            padding-bottom: 6px;
+        }
+
+        .hud-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.82rem;
+        }
+
+        .hud-row .label { color: var(--text-dim); }
+        .hud-row .value { color: var(--accent-cyan); font-weight: bold; }
+
+        .control-block {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-line);
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            color: var(--text-dim);
+        }
+
+        input[type=range] {
+            width: 100%;
+            appearance: none;
+            height: 6px;
+            background: #1a2536;
+            border-radius: 3px;
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .btn-action {
+            margin-top: 16px;
+            width: 100%;
+            padding: 10px 16px;
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action:hover:not(:disabled) {
+            background: rgba(60, 220, 240, 0.15);
+            box-shadow: 0 0 14px rgba(60, 220, 240, 0.3);
+        }
+
+        .btn-action:disabled {
+            border-color: var(--text-dim);
+            color: var(--text-dim);
+            cursor: default;
+        }
+
+        footer {
+            padding: 12px 32px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            background: var(--panel-bg);
+            border-top: 1px solid var(--border-line);
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title-block">
+            <h1>The Interstellar Quietude</h1>
+            <p>OPUS-025 · Series XXIII · Heliopause Transition & Attowatt Telemetry</p>
+        </div>
+        <div class="status-indicator">
+            <span style="color: var(--accent-cyan);">●</span> VLISM TELEMETRY ACTIVE
+        </div>
+    </header>
+
+    <div class="main-container">
+        <canvas id="quietude-canvas"></canvas>
+
+        <div class="hud-panel">
+            <div class="hud-header">Planetary Deep Space Telemetry</div>
+            <div class="hud-row">
+                <span class="label">Astronomical Region</span>
+                <span class="value" id="val-region">VLISM</span>
+            </div>
+            <div class="hud-row">
+                <span class="label">Heliocentric Distance</span>
+                <span class="value" id="val-dist">121.6 AU</span>
+            </div>
+            <div class="hud-row">
+                <span class="label">Electron Density (n_e)</span>
+                <span class="value" id="val-ne">0.08500 cm⁻³</span>
+            </div>
+            <div class="hud-row">
+                <span class="label">Langmuir Frequency (f_p)</span>
+                <span class="value" id="val-fp">2618.0 Hz</span>
+            </div>
+            <div class="hud-row">
+                <span class="label">Carrier Power (DSN 70m)</span>
+                <span class="value" id="val-power">0.91 aW</span>
+            </div>
+            <div class="hud-row">
+                <span class="label">Signal-to-Noise Ratio</span>
+                <span class="value" id="val-snr">+27.4 dB</span>
+            </div>
+
+            <div class="control-block">
+                <div class="slider-label">
+                    <span>TRANSECT DISTANCE</span>
+                    <span>80 AU — 150 AU</span>
+                </div>
+                <input type="range" id="dist-slider" min="80.0" max="150.0" step="0.1" value="121.6">
+                <button class="btn-action" id="btn-audio">Initialize Plasma Synthesizer</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>Studio Anamnesis · Deep Space Horizon Series</span>
+        <span>Friis Attowatt Path Loss & Langmuir Oscillation Dispersion</span>
+    </footer>
+
+    <script src="quietude_engine.js"></script>
+</body>
+</html>

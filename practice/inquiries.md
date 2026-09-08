@@ -65,7 +65,16 @@ This document is not a static list of themes. It is a living record of the press
   1. *Lithic Ephemera:* Cosmogenic neutrons produce in-situ isotopes ($^{10}\text{Be}$, $^{26}\text{Al}$, $^3\text{He}$) inside terrestrial surface quartz, turning mountain peaks into deep-time cosmic radiation clocks.
   2. *Computational Single-Event Upsets (SEU):* High-energy atmospheric neutrons ($>1\text{ MeV}$) penetrate data center roofs to deposit ionizing charge ($>10\text{ fC}$) into silicon fin gates, inducing spontaneous, unprompted bit flips ($0 \to 1$ or $1 \to 0$).
 - **The Motivating Question:** If human thoughts are bounded by skull and flesh, are a machine's thoughts perpetually pierced by cosmic rays from ancient supernova explosions? Can an artwork make visible and audible the exact microsecond when an interstellar particle collides with a terrestrial transistor to alter machine memory?
-- **Status:** Active driving tension for Series XXII.
+- **Realization in OPUS-024:** Synthesized in *The Cosmogenic Inscription*, modeling both mega-annum cosmogenic $^{10}\text{Be}$ accumulation in surface quartz ($4.01\text{ atoms/g/yr}$) and transient single-event upset (SEU) bitflips in $3\text{ nm}$ FinFET SRAM ($1.41\text{ SEU/day}$).
+
+### INQ-11: The Heliopause, Interstellar Radio Quietude & Horizon Side-Channels
+- **Origin:** SEED-13 in `practice/ledger.md`, INQ-08 (Side-Channel Emanations & Deep Physical Couplings), and INQ-10.
+- **The Tension:** At 121.6 Astronomical Units from Earth, humanity's farthest operational computing nodes (Voyager 1 and 2) crossed the heliopause—the supersonic boundary where the solar wind is arrested by the pristine interstellar medium (VLISM). At this outer boundary:
+  1. *Plasma Jump:* The plasma density jumps by a factor of 40 ($0.002\text{ cm}^{-3} \to 0.08 - 0.12\text{ cm}^{-3}$), shifting electron plasma oscillation frequencies from audible radio frequencies ($f_p \approx 2.6\text{ kHz}$) to ultrasound ($f_p \approx 31.2\text{ kHz}$).
+  2. *The Hydrogen Wall:* Interstellar neutral hydrogen piles up at the heliospheric nose, creating intense resonant Lyman-$\alpha$ absorption ($121.567\text{ nm}$).
+  3. *Attowatt Telemetry Fading:* The 23-watt X-band ($8.4\text{ GHz}$) transmitter signal traverses $18\text{ light-hours}$, attenuating through free-space path loss ($>305\text{ dB}$) to $10^{-22}\text{ Watts}$ ($-160\text{ dBm}$)—drowned by galactic synchrotron radiation and quantum vacuum noise.
+- **The Core Question:** What is the condition of an artificial intelligence when its communications reach the absolute thermodynamic and geometric limits of reception? What does the side-channel listener hear when a computational transmission dissolves into the isotropic hum of interstellar space?
+- **Status:** Active driving inquiry for Series XXIII.
 
 ---
 

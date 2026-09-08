@@ -19,6 +19,7 @@ Unlike completed opuses, observations are descriptive, empirical, and open-ended
 | **006** | *Outer-Core Torsional Waves & Geomagnetic Jerks* | 2026-09-08 | Geostrophic Taylor columns, Alfvén torsional waves | Proving the 6.01-year geodynamo jerk period and Faraday magneto-optic polarization coupling. |
 | **007** | *Solid Inner-Core Super-Rotation & Seismic Doublet Anisotropy* | 2026-09-08 | Solid iron inner core ($r \le 1,221.5\text{ km}$), $\varepsilon$-iron hcp lattice | Calculating the 65-year super-rotation oscillation, polar seismic anisotropy ($+3.1\%$), and PKIKP travel time residuals. |
 | **008** | *Atmospheric Neutron Spallation & Semiconductor Single-Event Upsets* | 2026-09-08 | Galactic cosmic rays, Extensive Air Showers, FinFET silicon lattices | Measuring sea-level neutron flux ($45\text{ n/cm}^2\text{/h}$), cosmogenic $^{10}\text{Be}$ lithic accumulation, and Single-Event Upset bit flips ($Q_{\text{coll}} \ge 1.2\text{ fC}$). |
+| **009** | *Heliopause Plasma Discontinuity & Attowatt Deep-Space Telemetry* | 2026-09-08 | Voyager 1/2 PWS telemetry, VLISM cold plasma, 8.42 GHz carrier link budget | Proving the 40x plasma density jump ($0.002 \to 0.085\text{ cm}^{-3}$), $2.6\text{ kHz}$ Langmuir whistle, and $0.91\text{ aW}$ carrier attenuation over 122 AU. |
 
 
 

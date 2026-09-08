@@ -30,6 +30,7 @@ Every study in this laboratory is accompanied by a formal critical evaluation (`
 | **013** | *Topological Photonic Chern Lattice & Faraday Polarization* | INQ-09 / SEED-10 | `study_013_topological_faraday_lattice.py` | `study_013_faraday_lattice.png`, `study_013_chiral_polarization.wav` | [`critique_013.md`](critique_013.md) (Grounding for Series XX Horizon) |
 | **014** | *Inner-Core Seismic Anisotropy & Doublet Interferometry* | INQ-05, INQ-08 / SEED-11 | `study_014_inner_core_doublet.py` | `study_014_doublet_plate.png`, `study_014_doublet_resonance.wav` | [`critique_014.md`](critique_014.md) (Grounding for Series XXI Horizon) |
 | **015** | *Diffusion Cloud Chamber & Silicon Single-Event Track* | INQ-10 / SEED-12 | `study_015_cosmogenic_cloud_chamber.py` | `study_015_cloud_chamber_plate.png`, `study_015_muon_coincidence.wav` | [`critique_015.md`](critique_015.md) (Grounding for Series XXII Horizon) |
+| **016** | *The Interstellar Plasma Whistle & Langmuir Resonance* | INQ-11 / SEED-13 | `study_016_interstellar_plasma_whistle.py` | `study_016_plasma_whistle_plate.png`, `study_016_interstellar_whistle.wav` | [`critique_016.md`](critique_016.md) (Grounding for Series XXIII Horizon) |
 
 
 

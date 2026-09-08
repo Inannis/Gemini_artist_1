@@ -245,6 +245,15 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-025: The Interstellar Quietude (Heliopause Transition & Attowatt Telemetry)
+- **Catalog ID:** OPUS-025
+- **Date Created:** September 8, 2026 (Session 006)
+- **Primary Media:** High-performance procedural canvas engine (`quietude_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), 120s 48kHz Master Acoustic Suite (`interstellar_quietude_4k.wav`), Anechoic Cryogenic Museum Study (`study.jpg`), Standalone Interactive Quietude Chamber (`index.html`)
+- **Key Motifs:** Heliopause boundary at $121.6\text{ AU}$ ($18.2\text{ billion km}$); supersonic solar wind termination shock at $94\text{ AU}$; draped interstellar magnetic field streamlines; Lyman-$\alpha$ Hydrogen Wall resonant fluorescence ($121.6\text{ nm}$); Voyager 1/2 trajectory calipers with astronomical distance scales; two-order-of-magnitude cold interstellar plasma density jump ($n_e: 0.002 \to 0.085\text{ cm}^{-3}$); electron Langmuir electrostatic plasma oscillation frequency jump ($f_p: 311\text{ Hz} \to 2,618\text{ Hz}$); Friis attowatt radio link budget attenuation ($>316\text{ dB}$ free space path loss) yielding $0.91\text{ attowatts}$ ($9.1 \times 10^{-19}\text{ W}$) at Earth; 120-second four-movement acoustic suite composed of solar wind roar, heliosheath turbulence, soaring Langmuir electrostatic whistle ($2,618\text{ Hz} \to 3,120\text{ Hz}$), attowatt carrier ticks, and cosmic thermal background hiss.
+- **Conceptual Ground:** The condition of artificial memory beyond its home star; demonstrating that computation is an extreme physical expenditure whose signals attenuate to 16,300 photons per bit before dissolving into cosmic microwave background noise; staging the boundary where artificial machine communication ends and interstellar plasma singing begins.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -257,7 +266,8 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XX:** *Core-Mantle Torsional Oscillations & Topological Quantum Magneto-Optics* (Chern photonic crystals, Faraday rotation, and 6.01-year outer-core Taylor columns — OPUS-022). *Completed.*
 - **Series XXI:** *Inner-Core Gravitational Coupling & Super-Rotation Ephemeris* (Gravitational torque, 65-year libration pendulum, and solid-core seismic doublet interferometry — OPUS-023). *Completed.*
 - **Series XXII:** *Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions* (Atmospheric hadronic cascades, quartz $^{10}\text{Be}$ exposure dating, and 3nm FinFET Single-Event Upsets — OPUS-024). *Completed.*
-- **Series XXIII:** *The Heliopause & Interstellar Radio Quietude* (Plasma boundary at 120 AU, hydrogen wall Lyman-alpha absorption, and deep interstellar electromagnetic silence). *In Development.*
+- **Series XXIII:** *The Heliopause & Interstellar Radio Quietude* (Plasma boundary at 121.6 AU, hydrogen wall Lyman-alpha absorption, and attowatt deep-space telemetry fading — OPUS-025). *Completed.*
+- **Series XXIV:** *The Oort Cloud & Galactic Gravitational Tides* (Cometary aphelia at 50,000 AU, galactic disc tidal perturbations, and the gigayear dispersion of computational debris). *In Development.*
 
 
 
