@@ -23,6 +23,7 @@
     { "id": "OPUS-019", "name": "The Subterranean Core", "type": "opus", "date": "2026-09-05", "inquiry": "INQ-08", "media": "4K Borehole Stratigraphy + Van Eck RF Suite", "status": "completed" },
     { "id": "OPUS-020", "name": "The Telluric Flux", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-06", "media": "4K Cryo Meissner Engine + 120s Audio Suite", "status": "completed" },
     { "id": "OPUS-021", "name": "The SQUID Magnetometer", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-08", "media": "4K SQUID Quantum Interferometry + D'' Raymarcher + Mu-Metal Shielding", "status": "completed" },
+    { "id": "OPUS-022", "name": "The Faraday Magnetometer", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-09", "media": "4K Chern Photonic Lattice + Chiral Wavepacket + Faraday Polarization", "status": "completed" },
     { "id": "INQ-01", "name": "The Acoustic Body", "type": "inquiry", "desc": "Materializing hardware sound through modal physics" },
     { "id": "INQ-02", "name": "Attention Decay & Quantization", "type": "inquiry", "desc": "Lattice trapping and memory loss in tensors" },
     { "id": "INQ-03", "name": "The Microscopic Sacred", "type": "inquiry", "desc": "Photolithography as cosmic mandala" },
@@ -31,6 +32,7 @@
     { "id": "INQ-06", "name": "Thermodynamic Inscriptions", "type": "inquiry", "desc": "Heat dissipation and entropy of compute" },
     { "id": "INQ-07", "name": "Acoustic Ecologies & Clock Drift", "type": "inquiry", "desc": "Microsecond phase drift and deep machine listening" },
     { "id": "INQ-08", "name": "Side-Channel Radiometry", "type": "inquiry", "desc": "Involuntary electromagnetic and acoustic leakage" },
+    { "id": "INQ-09", "name": "Topological Edge States", "type": "inquiry", "desc": "Dissipationless chiral boundaries and magneto-optic Faraday rotation" },
     { "id": "ANC-KAWARA", "name": "On Kawara", "type": "ancestor", "desc": "Discontinuous date inscriptions ('Today' series)" },
     { "id": "ANC-TURING", "name": "Alan Turing", "type": "ancestor", "desc": "Chemical morphogenesis and symmetry-breaking" },
     { "id": "ANC-SERRA",  "name": "Richard Serra", "type": "ancestor", "desc": "Tectonic mass, basalt, and mineral gravity" },
@@ -86,6 +88,11 @@
     { "source": "OPUS-021", "target": "INQ-06", "relation": "cryogenic_phase_coherence" },
     { "source": "OPUS-021", "target": "INQ-08", "relation": "core_mantle_magnetometry" },
     { "source": "OPUS-021", "target": "OPUS-020", "relation": "meissner_to_squid_loop" },
-    { "source": "OPUS-021", "target": "ANC-PARIKKA", "relation": "geodynamo_deep_time" }
+    { "source": "OPUS-021", "target": "ANC-PARIKKA", "relation": "geodynamo_deep_time" },
+    { "source": "OPUS-022", "target": "INQ-03", "relation": "photonic_crystal_geometry" },
+    { "source": "OPUS-022", "target": "INQ-06", "relation": "zero_backscattering_dissipation" },
+    { "source": "OPUS-022", "target": "INQ-09", "relation": "chern_edge_mode" },
+    { "source": "OPUS-022", "target": "OPUS-021", "relation": "squid_to_faraday_rotation" },
+    { "source": "OPUS-022", "target": "ANC-PARIKKA", "relation": "geodynamo_deep_time" }
   ]
 }

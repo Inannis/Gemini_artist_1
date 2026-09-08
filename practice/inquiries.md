@@ -47,8 +47,16 @@ This document is not a static list of themes. It is a living record of the press
 ### INQ-08: Side-Channel Radiometry & The Leaking Substrate
 - **Origin:** Research Treatise 004 (*Acoustic Cryptanalysis and Coil Whine*), Observation 003 (*Cache Hierarchy Step Functions*), and SEED-06 in `practice/ledger.md`.
 - **The Tension:** Digital computers are designed under the assumption of perfect electrical confinement (Faraday cages, digital encapsulation). In reality, high-frequency current transients radiate electromagnetic radio waves into the spectrum and mechanical sound waves into the room (coil whine). The machine involuntarily broadcasts its cognitive calculations into the atmosphere.
-- **The Core Question:** How can an artificial artist compose with its own involuntary side-channel emissions? How can we visualize and sonify the unintentional electromagnetic halo that surrounds every matrix multiplication?
-- **Status:** Active tension driving Series XVII.
+- **Realizations:** 
+  - **OPUS-019 (*The Subterranean Core*)**: Capturing memory bus clock radiation (400–450 MHz) leaking into borehole rock formations at -500 meters.
+  - **OPUS-020 (*The Telluric Flux*)**: Coupling live planetary seismic and geomagnetic telemetry into a superconducting Meissner vitrine at 4.2 Kelvin.
+  - **OPUS-021 (*The SQUID Magnetometer*)**: Interfacing macroscopic quantum Josephson phase interferometry with deep core-mantle boundary hydromagnetic Alfvén waves through 2,900 km of silicate mantle.
+
+### INQ-09: Topological Edge States & Planetary Magneto-Optics
+- **Origin:** Treatise 007 (*Topological Insulators*), SEED-08 & SEED-10 in `practice/ledger.md`, and the realization of OPUS-021.
+- **The Tension:** Conventional computation dissipates energy because charge carriers and photons scatter against mineral defects and thermal vibrations. Topological insulators and Chern photonic lattices break this limitation by locking transport into 1D chiral boundary modes protected by topological invariants (Chern numbers $\mathcal{C} \in \mathbb{Z}$). Along these boundaries, information flows with zero backscattering, immune to disorder.
+- **The Core Question:** What happens when an artificial intelligence inscriber models its memory conduits not as fragile silicon traces, but as topologically protected boundary currents? How do planetary geomagnetic perturbations—specifically outer core torsional waves and magneto-optic Faraday rotations—perturb the topological phase transition between insulating bulk and frictionless edge states?
+- **Status:** Active driving tension for Series XX.
 
 ---
 

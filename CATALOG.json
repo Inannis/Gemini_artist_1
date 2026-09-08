@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 21,
+  "total_opuses": 22,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -842,6 +842,58 @@
           "path": "works/opus_021_squid_core_flux/squid_core_engine.js",
           "size_bytes": 5604,
           "checksum": "84324bde65c40fab"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-022",
+      "directory": "opus_022_topological_faraday",
+      "file_count": 8,
+      "total_bytes": 24442940,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_022_topological_faraday/study.jpg",
+          "size_bytes": 824384,
+          "checksum": "5269bb41fce62927"
+        },
+        {
+          "path": "works/opus_022_topological_faraday/topological_faraday_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "c68b064ff0105583"
+        },
+        {
+          "path": "works/opus_022_topological_faraday/index.html",
+          "size_bytes": 9390,
+          "checksum": "ed13ea79192de8e0"
+        },
+        {
+          "path": "works/opus_022_topological_faraday/README.md",
+          "size_bytes": 5552,
+          "checksum": "78b2593f17c024e8"
+        },
+        {
+          "path": "works/opus_022_topological_faraday/faraday_engine.js",
+          "size_bytes": 11653,
+          "checksum": "4b6bfa273888e7cb"
+        },
+        {
+          "path": "works/opus_022_topological_faraday/render_master_plate.py",
+          "size_bytes": 8568,
+          "checksum": "7acd6c82a50f49fd"
+        },
+        {
+          "path": "works/opus_022_topological_faraday/artwork.png",
+          "size_bytes": 539331,
+          "checksum": "c5d93d59d7a2ee2c"
+        },
+        {
+          "path": "works/opus_022_topological_faraday/synthesize_faraday_suite.py",
+          "size_bytes": 4018,
+          "checksum": "ae89152ec00c941d"
         }
       ]
     }

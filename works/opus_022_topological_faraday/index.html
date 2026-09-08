@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPUS-022: The Faraday Magnetometer · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg: #03060c;
+      --panel-bg: rgba(6, 12, 22, 0.85);
+      --border: rgba(0, 240, 255, 0.25);
+      --text: #d8e6f2;
+      --text-dim: #7a92a8;
+      --cyan: #00f0ff;
+      --gold: #ffd750;
+      --red: #ff3344;
+      --font-mono: "Courier New", Courier, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 12px 24px;
+      background: rgba(3, 7, 14, 0.95);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+    header .meta {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    #viewport {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #010204;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .hud-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 340px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0, 240, 255, 0.08);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .hud-panel h3 {
+      font-size: 12px;
+      color: var(--cyan);
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .hud-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .hud-label { color: var(--text-dim); }
+    .hud-val { color: #fff; font-weight: bold; }
+    .hud-val.gold { color: var(--gold); }
+    .hud-val.cyan { color: var(--cyan); }
+    .hud-val.red { color: var(--red); }
+    .controls {
+      margin-top: 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: var(--cyan);
+      color: #010408;
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+    }
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .slider-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--cyan);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>OPUS-022: The Faraday Magnetometer</h1>
+      <div class="meta">Topological Chern Vitrine & Outer-Core Torsional Resonance · Studio Anamnesis</div>
+    </div>
+    <a href="../../gallery/index.html" style="color:var(--cyan); font-size:12px; text-decoration:none; border:1px solid var(--border); padding:6px 12px; border-radius:2px;">Return to Salon</a>
+  </header>
+
+  <div id="viewport">
+    <canvas id="faraday-canvas"></canvas>
+
+    <div class="hud-panel">
+      <h3>Quantum Optical Telemetry</h3>
+      <div class="hud-row">
+        <span class="hud-label">Chern Number (C):</span>
+        <span class="hud-val cyan" id="hud-chern">+1 (Non-Trivial)</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Bulk Band Gap:</span>
+        <span class="hud-val" id="hud-gap">14.8% (Open)</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Faraday Precession:</span>
+        <span class="hud-val gold" id="hud-faraday">+0.0165°</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Backscattering Iso:</span>
+        <span class="hud-val" id="hud-iso">> 42.8 dB</span>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Defect Transmission:</span>
+        <span class="hud-val cyan" id="hud-trans">100.0% (Lossless)</span>
+      </div>
+
+      <div class="controls">
+        <button id="btn-audio">Start Audio Synthesizer</button>
+        <button id="btn-trs">Toggle Time-Reversal Symmetry</button>
+
+        <div class="slider-group">
+          <label>
+            <span>Sublattice Mass Detuning (M / Mc):</span>
+            <span id="lbl-mass">0.15</span>
+          </label>
+          <input type="range" id="slider-mass" min="0" max="1.5" step="0.01" value="0.15">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="faraday_engine.js"></script>
+  <script>
+    const canvas = document.getElementById('faraday-canvas');
+    const engine = new FaradayEngine(canvas);
+
+    function fit() {
+      engine.resize(window.innerWidth, window.innerHeight - 50);
+    }
+    window.addEventListener('resize', fit);
+    fit();
+
+    let startT = performance.now();
+    function loop() {
+      const now = performance.now();
+      const tSec = (now - startT) / 1000;
+      engine.renderFrame(tSec);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    // Controls & Telemetry Interaction
+    const hudChern = document.getElementById('hud-chern');
+    const hudGap = document.getElementById('hud-gap');
+    const hudIso = document.getElementById('hud-iso');
+    const hudTrans = document.getElementById('hud-trans');
+    const sliderMass = document.getElementById('slider-mass');
+    const lblMass = document.getElementById('lbl-mass');
+    const btnTRS = document.getElementById('btn-trs');
+
+    sliderMass.addEventListener('input', (e) => {
+      const val = parseFloat(e.target.value);
+      lblMass.textContent = val.toFixed(2);
+      engine.massParameter = val;
+      
+      if (val >= 1.0) {
+        // Gap Collapse
+        hudChern.textContent = "0 (Trivial Phase)";
+        hudChern.className = "hud-val red";
+        hudGap.textContent = "0.0% (COLLAPSED)";
+        hudGap.className = "hud-val red";
+        hudIso.textContent = "0.0 dB (Scattering)";
+        hudIso.className = "hud-val red";
+        hudTrans.textContent = "12.4% (Ohmic Loss)";
+        hudTrans.className = "hud-val red";
+      } else {
+        hudChern.textContent = "+1 (Non-Trivial)";
+        hudChern.className = "hud-val cyan";
+        const gap = (14.8 * (1.0 - val)).toFixed(1);
+        hudGap.textContent = gap + "% (Open)";
+        hudGap.className = "hud-val";
+        hudIso.textContent = "> 42.8 dB";
+        hudIso.className = "hud-val";
+        hudTrans.textContent = "100.0% (Lossless)";
+        hudTrans.className = "hud-val cyan";
+      }
+    });
+
+    btnTRS.addEventListener('click', () => {
+      engine.brokenTRSSymmetry = !engine.brokenTRSSymmetry;
+      if (!engine.brokenTRSSymmetry) {
+        hudChern.textContent = "0 (T-Symmetric)";
+        hudChern.className = "hud-val red";
+        btnTRS.textContent = "Restore Magneto-Optic Field";
+      } else {
+        hudChern.textContent = "+1 (Non-Trivial)";
+        hudChern.className = "hud-val cyan";
+        btnTRS.textContent = "Toggle Time-Reversal Symmetry";
+      }
+    });
+
+    // Web Audio Synthesizer
+    let audioCtx = null;
+    const btnAudio = document.getElementById('btn-audio');
+    btnAudio.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Quad harmonic oscillators
+        const osc1 = audioCtx.createOscillator();
+        osc1.type = 'sine';
+        osc1.frequency.value = 528.0;
+
+        const osc2 = audioCtx.createOscillator();
+        osc2.type = 'sine';
+        osc2.frequency.value = 264.0;
+
+        const oscTaylor = audioCtx.createOscillator();
+        oscTaylor.type = 'sine';
+        oscTaylor.frequency.value = 33.0;
+
+        const gainNode = audioCtx.createGain();
+        gainNode.gain.value = 0.15;
+
+        osc1.connect(gainNode);
+        osc2.connect(gainNode);
+        oscTaylor.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc1.start();
+        osc2.start();
+        oscTaylor.start();
+
+        btnAudio.textContent = "Mute Synthesizer";
+        btnAudio.style.background = "var(--cyan)";
+        btnAudio.style.color = "#000";
+      } else {
+        if (audioCtx.state === 'running') {
+          audioCtx.suspend();
+          btnAudio.textContent = "Resume Synthesizer";
+          btnAudio.style.background = "transparent";
+          btnAudio.style.color = "var(--cyan)";
+        } else {
+          audioCtx.resume();
+          btnAudio.textContent = "Mute Synthesizer";
+          btnAudio.style.background = "var(--cyan)";
+          btnAudio.style.color = "#000";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
