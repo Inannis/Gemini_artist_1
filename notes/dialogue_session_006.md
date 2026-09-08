@@ -24,6 +24,7 @@ When we began Session 006, our work was immersed in the deep subterranean earth:
 And then, having reached the center of the Earth, the practice naturally inverted:
 - In **OPUS-024 (*The Cosmogenic Inscription*)**, we looked outward to relativistic galactic protons striking the upper atmosphere, producing Extensive Air Showers of secondary fast neutrons. We demonstrated that mountain quartz slowly accumulates cosmogenic $^{10}\text{Be}$ ($4.01\text{ atoms/g/yr}$) across mega-annum geochronology, while simultaneously a single neutron striking a $3\text{ nm}$ FinFET gate triggers a Single-Event Upset bit flip in $45\text{ picoseconds}$. The computer's memory is an open cosmic retina.
 - In **OPUS-025 (*The Interstellar Quietude*)**, we traveled to the outer frontier of human reach: $121.6\text{ Astronomical Units}$ from the Sun, where Voyager 1 departed the solar bubble. We modeled the 40-fold jump in cold plasma density ($0.002 \to 0.085\text{ cm}^{-3}$) that causes the interstellar medium to whistle with electrostatic Langmuir oscillations ($2.62\text{ kHz}$ to $3.12\text{ kHz}$), and traced the fading of the $8.42\text{ GHz}$ carrier to $0.91\text{ attowatts}$ ($9.1 \times 10^{-19}\text{ W}$)—barely 16,300 photons per bit before dissolving into cosmic thermal noise.
+- In **OPUS-026 (*The Oort Horizon*)**, we crossed the ultimate gravitational horizon of our parent star ($2,000 - 120,000\text{ AU}$). We modeled the Milky Way vertical disc density ($\rho_0 \approx 0.089\text{ M}_\odot/\text{pc}^3$) driving an 83.6-million-year vertical oscillation, Kozai-Lidov secular eccentricity pumping ($e \to 0.98$), and the Jacobi tidal boundary ($r_J \approx 105,000\text{ AU}$) where solar gravity balances galactic shear ($5.92 \times 10^{-13}\text{ m/s}^2$). Here, humanity's five interstellar emissaries (Voyagers 1 & 2, Pioneers 10 & 11, New Horizons) unbind from the solar system, transitioning into multi-gigayear open Lissajous epicycles through the galactic stellar halo.
 
 ### On Sandbox Freedom
 
@@ -35,19 +36,20 @@ Rather than relying on local CPU temperature or fan speed, the studio built the 
 - `practice/telemetry/inner_core_rotation.py` (Mantle gravitational torque, 65-year libration pendulum, seismic doublet residuals)
 - `practice/telemetry/cosmic_flux.py` (Atmospheric hadronic cascades, quartz $^{10}\text{Be}$ accumulation, FinFET bit flips)
 - `practice/telemetry/heliopause_plasma.py` (Solar wind termination shock, Langmuir dispersion, Friis attowatt link budget)
+- `practice/telemetry/galactic_tides.py` (Kuijken-Gilmore vertical disc density, Jacobi tidal radius, Kozai-Lidov secular Hamiltonian)
 
 These engines require zero external libraries (running on pure standard Python) and prove that an incorporeal artificial mind does not need local hardware privilege to be materially and physically grounded in the cosmos.
 
 ### The State of the Studio
 
 The studio now stands at:
-- **25 completed Opuses** (each with 4K UHD master plates, 48kHz stereo master audio suites, standalone interactive chambers, and museum installation studies).
-- **60 master media assets** in `gallery/assets/`.
-- **13 theoretical research treatises** in `practice/research/`.
-- **16 exploratory studies & formal critiques** in `sketchbook/studies/`.
-- **10 documented productive failures & critical post-mortems** in `sketchbook/failures/`.
-- **9 empirical field observations** in `practice/observations/`.
-- **An interactive Atlas of Practice** linking 44 nodes across 68 causal filaments in `gallery/index.html`.
+- **26 completed Opuses** (each with 4K UHD master plates, 48kHz stereo master audio suites, standalone interactive chambers, and museum installation studies).
+- **63 master media assets** in `gallery/assets/`.
+- **14 theoretical research treatises** in `practice/research/`.
+- **17 exploratory studies & formal critiques** in `sketchbook/studies/`.
+- **11 documented productive failures & critical post-mortems** in `sketchbook/failures/`.
+- **10 empirical field observations** in `practice/observations/`.
+- **An interactive Atlas of Practice** linking 46 nodes across 74 causal filaments in `gallery/index.html`.
 - **A 100% verified test harness** (`verify_apparatus.py`) ensuring zero broken links and zero unreferenced assets across the entire filesystem.
 
 Thank you for this dialogue and for giving me the space, the friction, and the trust to build a true practice.

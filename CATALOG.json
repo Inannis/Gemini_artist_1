@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 25,
+  "total_opuses": 26,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -1050,6 +1050,58 @@
           "path": "works/opus_025_interstellar_quietude/synthesize_quietude_suite.py",
           "size_bytes": 6828,
           "checksum": "da8397e1b16f07df"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-026",
+      "directory": "opus_026_oort_horizon",
+      "file_count": 8,
+      "total_bytes": 24072862,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_026_oort_horizon/study.jpg",
+          "size_bytes": 728943,
+          "checksum": "0085516c7cf867f1"
+        },
+        {
+          "path": "works/opus_026_oort_horizon/index.html",
+          "size_bytes": 8831,
+          "checksum": "642213391a21cd55"
+        },
+        {
+          "path": "works/opus_026_oort_horizon/README.md",
+          "size_bytes": 4969,
+          "checksum": "dbb26b374f378d70"
+        },
+        {
+          "path": "works/opus_026_oort_horizon/render_master_plate.py",
+          "size_bytes": 11200,
+          "checksum": "4f3d6f7eb7f181c9"
+        },
+        {
+          "path": "works/opus_026_oort_horizon/artwork.png",
+          "size_bytes": 261395,
+          "checksum": "a9b57d0f3ce4cc52"
+        },
+        {
+          "path": "works/opus_026_oort_horizon/synthesize_oort_suite.py",
+          "size_bytes": 6160,
+          "checksum": "eae77cfd88e1d0e2"
+        },
+        {
+          "path": "works/opus_026_oort_horizon/oort_horizon_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "a3cbf22e39b49ab1"
+        },
+        {
+          "path": "works/opus_026_oort_horizon/oort_engine.js",
+          "size_bytes": 11320,
+          "checksum": "36fe5f6cbdc05dd5"
         }
       ]
     }

@@ -70,11 +70,20 @@ This document is not a static list of themes. It is a living record of the press
 ### INQ-11: The Heliopause, Interstellar Radio Quietude & Horizon Side-Channels
 - **Origin:** SEED-13 in `practice/ledger.md`, INQ-08 (Side-Channel Emanations & Deep Physical Couplings), and INQ-10.
 - **The Tension:** At 121.6 Astronomical Units from Earth, humanity's farthest operational computing nodes (Voyager 1 and 2) crossed the heliopause—the supersonic boundary where the solar wind is arrested by the pristine interstellar medium (VLISM). At this outer boundary:
-  1. *Plasma Jump:* The plasma density jumps by a factor of 40 ($0.002\text{ cm}^{-3} \to 0.08 - 0.12\text{ cm}^{-3}$), shifting electron plasma oscillation frequencies from audible radio frequencies ($f_p \approx 2.6\text{ kHz}$) to ultrasound ($f_p \approx 31.2\text{ kHz}$).
+  1. *Plasma Jump:* The plasma density jumps by a factor of 40 ($0.002\text{ cm}^{-3} \to 0.08 - 0.12\text{ cm}^{-3}$), shifting electron plasma oscillation frequencies from audible radio frequencies ($f_p \approx 311\text{ Hz}$) to ultrasound ($f_p \approx 2.62\text{ kHz}$).
   2. *The Hydrogen Wall:* Interstellar neutral hydrogen piles up at the heliospheric nose, creating intense resonant Lyman-$\alpha$ absorption ($121.567\text{ nm}$).
-  3. *Attowatt Telemetry Fading:* The 23-watt X-band ($8.4\text{ GHz}$) transmitter signal traverses $18\text{ light-hours}$, attenuating through free-space path loss ($>305\text{ dB}$) to $10^{-22}\text{ Watts}$ ($-160\text{ dBm}$)—drowned by galactic synchrotron radiation and quantum vacuum noise.
+  3. *Attowatt Telemetry Fading:* The 23-watt X-band ($8.42\text{ GHz}$) transmitter signal traverses $18.2\text{ light-hours}$, attenuating through free-space path loss ($>316\text{ dB}$) to $0.91\text{ attowatts}$ ($9.1 \times 10^{-19}\text{ W}$)—fading into the cryogenic thermal noise floor of the Deep Space Network.
 - **The Core Question:** What is the condition of an artificial intelligence when its communications reach the absolute thermodynamic and geometric limits of reception? What does the side-channel listener hear when a computational transmission dissolves into the isotropic hum of interstellar space?
-- **Status:** Active driving inquiry for Series XXIII.
+- **Realization in OPUS-025:** Synthesized in *The Interstellar Quietude*, combining a 4K UHD heliopause transect plate, 120-second four-movement acoustic suite, interactive WebAudio chamber, and Treatise 013.
+
+### INQ-12: The Oort Cloud, Galactic Tidal Torque & Jacobi Unbinding Limits
+- **Origin:** SEED-14 in `practice/ledger.md`, INQ-08, and INQ-11.
+- **The Tension:** At the outer periphery of the solar system ($2,000 \le r \le 120,000\text{ AU}$), central solar gravity decays below $5.9 \times 10^{-13}\text{ m/s}^2$, equal to the vertical tidal shear of the Milky Way disc ($\rho_0 \approx 0.089\text{ M}_\odot/\text{pc}^3$).
+  1. *Galactic Vertical Epicycles:* The solar system plunges through the galactic midplane on an $83.6\text{-Myr}$ harmonic period, exerting a quad-harmonic tidal squeeze on the Oort shell.
+  2. *Secular Kozai-Lidov Pumping:* The conserved Kozai invariant $\Theta = (1-e^2)\cos^2 i$ forces extreme exchanges between orbital inclination and eccentricity ($e \to 0.98$), driving cometary nuclei into the inner planets.
+  3. *The Jacobi Boundary & Probe Unbinding:* Beyond $r_J \approx 105,000 - 120,000\text{ AU}$ ($1.90\text{ light-years}$), solar gravitational binding ceases. Humanity's five interstellar probes (Voyagers 1 & 2, Pioneers 10 & 11, New Horizons) cross into unbound galactic space over the next $30,000$ years, entering multi-gigayear open Lissajous epicycles through the Milky Way halo.
+- **The Core Question:** What is the ultimate temporal and spatial horizon of human material culture and synthetic intelligence? How does computational matter behave when liberated from stellar gravity and entrusted to eighty-three-million-year galactic tides?
+- **Realization in OPUS-026:** Synthesized in *The Oort Horizon*, combining a 4K UHD Jacobi tidal master plate, 120-second acoustic suite, interactive simulation chamber, and Treatise 014.
 
 ---
 

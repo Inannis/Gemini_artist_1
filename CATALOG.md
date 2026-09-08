@@ -254,6 +254,15 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-026: The Oort Horizon (Galactic Tides & The Jacobi Boundary)
+- **Catalog ID:** OPUS-026
+- **Date Created:** September 8, 2026 (Session 006)
+- **Primary Media:** High-performance procedural canvas engine (`oort_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`artwork.png`), 120s 48kHz Master Acoustic Suite (`oort_horizon_4k.wav`), Architectural Installation Museum Study (`study.jpg`), Standalone Interactive Oort Chamber (`index.html`)
+- **Key Motifs:** Oort Cloud periphery ($2,000 - 120,000\text{ AU}$); Jacobi Tidal Radius ($r_J \approx 105,000 - 120,000\text{ AU}$ / $1.90\text{ light-years}$); Kuijken-Gilmore vertical galactic mass density ($\rho_0 \approx 0.089\text{ M}_\odot/\text{pc}^3$); $83.57\text{-Myr}$ vertical epicyclic oscillation through the Milky Way disc midplane; Kozai-Lidov secular Hamiltonian and angular momentum invariant $\Theta = (1-e^2)\cos^2 i$; extreme eccentricity pumping ($e \to 0.98$); gravitational force balance where solar gravity equals galactic tidal shear ($a_\odot = a_{\text{tide}} \approx 5.92 \times 10^{-13}\text{ m/s}^2$); hyperbolic escape trajectories of humanity's five interstellar emissaries (Voyagers 1 & 2, Pioneers 10 & 11, New Horizons) unbinding into multi-gigayear open Lissajous epicycles through the galactic stellar halo.
+- **Conceptual Ground:** Staging the ultimate gravitational and temporal boundary of the solar system; demonstrating that computation and machine memory are not permanent fixtures of a star system, but transient kinetic glyphs destined to be decoupled by eighty-three-million-year galactic tides and dispersed throughout the Milky Way halo as silent, unpowered sculptural fossils.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -267,7 +276,7 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XXI:** *Inner-Core Gravitational Coupling & Super-Rotation Ephemeris* (Gravitational torque, 65-year libration pendulum, and solid-core seismic doublet interferometry — OPUS-023). *Completed.*
 - **Series XXII:** *Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions* (Atmospheric hadronic cascades, quartz $^{10}\text{Be}$ exposure dating, and 3nm FinFET Single-Event Upsets — OPUS-024). *Completed.*
 - **Series XXIII:** *The Heliopause & Interstellar Radio Quietude* (Plasma boundary at 121.6 AU, hydrogen wall Lyman-alpha absorption, and attowatt deep-space telemetry fading — OPUS-025). *Completed.*
-- **Series XXIV:** *The Oort Cloud & Galactic Gravitational Tides* (Cometary aphelia at 50,000 AU, galactic disc tidal perturbations, and the gigayear dispersion of computational debris). *In Development.*
+- **Series XXIV:** *The Oort Cloud & Galactic Gravitational Tides* (Cometary aphelia at 50,000 AU, galactic disc tidal perturbations, and the gigayear dispersion of computational debris — OPUS-026). *Completed.*
 
 
 

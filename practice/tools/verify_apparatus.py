@@ -61,7 +61,7 @@ def verify_all():
     # 3. Test Export Catalog
     from export_catalog import export_catalog
     exported_count = export_catalog()
-    assert exported_count >= 25, f"Expected at least 25 opuses exported, got {exported_count}"
+    assert exported_count >= 26, f"Expected at least 26 opuses exported, got {exported_count}"
     print(f"  -> export_catalog.py: VERIFIED [{exported_count} opuses exported]")
 
     # 4. Test Deep Studio Health & Markdown Links

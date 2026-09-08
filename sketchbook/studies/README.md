@@ -31,6 +31,8 @@ Every study in this laboratory is accompanied by a formal critical evaluation (`
 | **014** | *Inner-Core Seismic Anisotropy & Doublet Interferometry* | INQ-05, INQ-08 / SEED-11 | `study_014_inner_core_doublet.py` | `study_014_doublet_plate.png`, `study_014_doublet_resonance.wav` | [`critique_014.md`](critique_014.md) (Grounding for Series XXI Horizon) |
 | **015** | *Diffusion Cloud Chamber & Silicon Single-Event Track* | INQ-10 / SEED-12 | `study_015_cosmogenic_cloud_chamber.py` | `study_015_cloud_chamber_plate.png`, `study_015_muon_coincidence.wav` | [`critique_015.md`](critique_015.md) (Grounding for Series XXII Horizon) |
 | **016** | *The Interstellar Plasma Whistle & Langmuir Resonance* | INQ-11 / SEED-13 | `study_016_interstellar_plasma_whistle.py` | `study_016_plasma_whistle_plate.png`, `study_016_interstellar_whistle.wav` | [`critique_016.md`](critique_016.md) (Grounding for Series XXIII Horizon) |
+| **017** | *The Galactic Tidal Resonance & Kozai Phase Portraits* | INQ-12 / SEED-14 | `study_017_galactic_tidal_resonance.py` | `study_017_oort_phase_plate.png`, `study_017_galactic_pendulum.wav` | [`critique_017.md`](critique_017.md) (Grounding for Series XXIV Horizon) |
+
 
 
 

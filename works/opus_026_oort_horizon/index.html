@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPUS-026: The Oort Horizon · Studio Anamnesis</title>
+    <style>
+        :root {
+            --bg-deep: #04060c;
+            --panel-bg: rgba(8, 14, 24, 0.90);
+            --border-line: rgba(70, 130, 180, 0.4);
+            --accent-cyan: #28dcf0;
+            --accent-gold: #ffd700;
+            --accent-purple: #b39ddb;
+            --text-main: #e2e8f0;
+            --text-dim: #798e9c;
+            --font-mono: 'JetBrains Mono', 'SF Pro Mono', 'Courier New', monospace;
+            --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 24px 32px;
+            border-bottom: 1px solid var(--border-line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+        }
+
+        .title-block h1 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+        }
+
+        .title-block p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        .viewport-container {
+            flex: 1;
+            position: relative;
+            background: #04060c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas#viewport {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .sidebar {
+            width: 420px;
+            background: var(--panel-bg);
+            border-left: 1px solid var(--border-line);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            backdrop-filter: blur(12px);
+            overflow-y: auto;
+        }
+
+        .panel-section {
+            border: 1px solid rgba(70, 130, 180, 0.25);
+            background: rgba(14, 22, 36, 0.6);
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .panel-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(70, 130, 180, 0.2);
+            padding-bottom: 6px;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            color: var(--text-dim);
+        }
+
+        .metric-val {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .slider-container {
+            margin-top: 12px;
+        }
+
+        .slider-container label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-cyan);
+        }
+
+        .btn {
+            background: rgba(40, 220, 240, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            border-radius: 2px;
+            margin-top: 8px;
+        }
+
+        .btn:hover {
+            background: var(--accent-cyan);
+            color: #04060c;
+        }
+
+        .audio-player-box {
+            margin-top: 8px;
+        }
+
+        audio {
+            width: 100%;
+            height: 36px;
+            margin-top: 8px;
+        }
+
+        footer {
+            padding: 16px 32px;
+            border-top: 1px solid var(--border-line);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            background: var(--panel-bg);
+        }
+
+        a { color: var(--accent-cyan); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title-block">
+            <h1>OPUS-026: The Oort Horizon</h1>
+            <p>Galactic Tides, Secular Kozai Pumping & The Jacobi Boundary (Series XXIV)</p>
+        </div>
+        <div>
+            <a href="../../gallery/index.html">← RETURN TO SALON</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="viewport-container">
+            <canvas id="viewport"></canvas>
+        </div>
+
+        <div class="sidebar">
+            <div class="panel-section">
+                <h3>ASTRONOMICAL TRANSECT</h3>
+                <div class="slider-container">
+                    <label for="slider-dist">HELIOCENTRIC RADIUS (AU)</label>
+                    <input type="range" id="slider-dist" min="1000" max="150000" step="500" value="105000">
+                </div>
+                <div style="margin-top: 12px;">
+                    <div class="metric-row">
+                        <span class="metric-label">Heliocentric Distance:</span>
+                        <span class="metric-val" id="hud-dist">105,000 AU</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Solar Grav. Accel (a_sun):</span>
+                        <span class="metric-val" id="hud-asun">5.92e-13 m/s²</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Galactic Disc Tide (a_tide):</span>
+                        <span class="metric-val" id="hud-atide">5.91e-13 m/s²</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Tidal Ratio (η):</span>
+                        <span class="metric-val" id="hud-ratio">1.000 (EQUILIBRIUM)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Transit Chronology:</span>
+                        <span class="metric-val" id="hud-transit">Voyager 1: 29,412 yr</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>ACOUSTIC SUITE (120S MASTER)</h3>
+                <p style="font-size: 0.78rem; color: var(--text-dim); line-height: 1.4; margin-bottom: 8px;">
+                    Synthesizes the 83.6-Myr vertical galactic pendulum, Kozai harmonic sweep, and unbinding saddle point.
+                </p>
+                <div class="audio-player-box">
+                    <audio controls src="oort_horizon_4k.wav"></audio>
+                </div>
+                <button class="btn" id="btn-audio">ENGAGE LIVE PROCEDURAL ENGINE</button>
+            </div>
+
+            <div class="panel-section">
+                <h3>THEORETICAL APPARATUS</h3>
+                <p style="font-size: 0.78rem; color: var(--text-dim); line-height: 1.5;">
+                    Anchored in <a href="../../practice/research/oort_cloud_dynamics_and_galactic_tidal_dispersion.md">Treatise 014</a>, <a href="../../practice/observations/observation_010_galactic_tides_and_oort_dispersion.md">Observation 010</a>, and <a href="../../sketchbook/studies/critique_017.md">Study 017</a>.
+                </p>
+                <div style="margin-top: 10px; font-size: 0.75rem; color: var(--text-dim);">
+                    <div>• Local Disc Density: 0.089 M☉/pc³</div>
+                    <div>• Jacobi Radius: 105,000 – 120,000 AU</div>
+                    <div>• Kozai Invariant: Θ = (1 - e²) cos²(i)</div>
+                    <div>• Deep Time: Unbound Milky Way Drift</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>STUDIO ANAMNESIS · SERIES XXIV · OPUS-026</span>
+        <span>ZERO DEPENDENCIES · LOSSLESS 4K AUDIO/VISUAL ARCHIVE</span>
+    </footer>
+
+    <script src="oort_engine.js"></script>
+</body>
+</html>

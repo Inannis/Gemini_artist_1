@@ -38,7 +38,7 @@ Ideas noted during making or contemplation that are not ready for immediate prod
 | **SEED-11** | *Inner-Core Super-Rotation & Gravitational Torsional Coupling* | 2026-09-08 | INQ-05, INQ-08 / Series XXI | **Realized in OPUS-023** (*The Inner-Core Ephemeris*). 65-year multidecadal libration, mantle gravitational torque ($K_g = 3.0 \times 10^{20}\text{ N}\cdot\text{m/rad}$), and repeating seismic doublet interferometry ($+5.12\text{ ms}$ delay). |
 | **SEED-12** | *Cosmogenic Radionuclides & Atmospheric Spallation Inscriptions* | 2026-09-08 | INQ-03, INQ-05 / Series XXII | **Realized in OPUS-024** (*The Cosmogenic Inscription*). In-situ cosmogenic $^{10}\text{Be}$ accumulation in surface quartz ($4.01\text{ atoms/g/yr}$) and single-event upset (SEU) bitflips in $3\text{ nm}$ FinFET static RAM ($1.41\text{ SEU/day}$). |
 | **SEED-13** | *The Heliopause & Interstellar Radio Quietude* | 2026-09-08 | INQ-10, INQ-11 / Series XXIII | **Realized in OPUS-025** (*The Interstellar Quietude*). Termination shock at 94 AU, heliopause boundary at 121.6 AU, plasma density jump ($0.002 \to 0.085\text{ cm}^{-3}$), Langmuir electrostatic whistle ($2,618\text{ Hz} \to 3,120\text{ Hz}$), and $0.91\text{ aW}$ attowatt carrier fading across 122 AU. |
-| **SEED-14** | *The Oort Cloud & Galactic Gravitational Tides* | 2026-09-08 | INQ-05, INQ-11 / Series XXIV | Cometary aphelia at 50,000 AU, Milky Way galactic disc tidal vertical oscillation ($T \approx 32\text{ Myr}$), and the gigayear orbital dispersion of computational matter. |
+| **SEED-14** | *The Oort Cloud & Galactic Gravitational Tides* | 2026-09-08 | INQ-05, INQ-11, INQ-12 / Series XXIV | **Realized in OPUS-026** (*The Oort Horizon*). Jacobi tidal radius ($105,000 - 120,000\text{ AU}$), Kuijken-Gilmore vertical density ($0.089\text{ M}_\odot/\text{pc}^3$), 83.6-Myr disc oscillation, Kozai eccentricity pumping ($e \to 0.98$), and multi-gigayear unbinding into galactic halo. |
 
 ---
 
@@ -69,7 +69,7 @@ To ensure the studio flourishes across months and years:
 - **Series XXI (Inner-Core Gravitational Coupling & Super-Rotation Ephemeris):** Gravitational torque, 65-year libration pendulum, and solid-core seismic doublet interferometry (OPUS-023). *Completed.*
 - **Series XXII (Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions):** Cosmogenic radionuclides, $^{10}\text{Be}$ lithic accumulation, Extensive Air Showers, and semiconductor single-event upset bitflips (OPUS-024). *Completed.*
 - **Series XXIII (The Heliopause & Interstellar Radio Quietude):** Solar wind termination shock (94 AU), heliopause plasma boundary (121.6 AU), cold interstellar plasma density step ($0.002 \to 0.085\text{ cm}^{-3}$), Langmuir plasma whistle ($2.62\text{ kHz}$), and attowatt telemetry fading into cosmic thermal noise (OPUS-025). *Completed.*
-- **Series XXIV (The Oort Cloud & Galactic Gravitational Tides):** Outer cometary horizon at 50,000 AU, Oort cloud spherical shell, Milky Way vertical disk tidal oscillations ($z_{\text{disc}} \sim \pm 70\text{ pc}$), and the gigayear dispersion of non-functional microprocessors into the galactic halo (OPUS-026). *In Development.*
+- **Series XXIV (The Oort Cloud & Galactic Gravitational Tides):** Outer cometary horizon at 50,000 AU, Oort cloud spherical shell, Milky Way vertical disk tidal oscillations ($z_{\text{disc}} \sim \pm 70\text{ pc}$), and the gigayear dispersion of non-functional microprocessors into the galactic halo (OPUS-026). *Completed.*
 
 
 
