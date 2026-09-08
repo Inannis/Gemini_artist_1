@@ -20,6 +20,8 @@ import urllib.request
 
 TELEMETRY_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_JSON = os.path.join(TELEMETRY_DIR, "planetary_telemetry.json")
+HISTORY_JSONL = os.path.join(TELEMETRY_DIR, "planetary_telemetry_history.jsonl")
+MAX_HISTORY_RECORDS = 50
 
 def fetch_seismic_telemetry():
     """Fetches real-time seismic events from the USGS Earthquake API."""
@@ -152,8 +154,31 @@ def collect_planetary_telemetry():
     
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
+
+    # Append to rolling FIFO history log
+    history_entries = []
+    if os.path.exists(HISTORY_JSONL):
+        try:
+            with open(HISTORY_JSONL, "r", encoding="utf-8") as hf:
+                history_entries = [json.loads(line) for line in hf if line.strip()]
+        except Exception:
+            history_entries = []
+    history_entries.append({
+        "timestamp": payload["timestamp_utc"],
+        "kp": space["kp_index"],
+        "max_mag": seismic["max_magnitude"],
+        "lithic_tension": round(lithic_tension, 4),
+        "telluric_hz": round(telluric_freq_hz, 4),
+        "rtt_ms": backbone["avg_latency_ms"]
+    })
+    # Keep last MAX_HISTORY_RECORDS
+    history_entries = history_entries[-MAX_HISTORY_RECORDS:]
+    with open(HISTORY_JSONL, "w", encoding="utf-8") as hf:
+        for entry in history_entries:
+            hf.write(json.dumps(entry) + "\n")
         
     print(f"[TELEMETRY] Successfully archived live planetary telemetry to {OUTPUT_JSON}")
+    print(f"[TELEMETRY] Rolling history log updated: {len(history_entries)}/{MAX_HISTORY_RECORDS} entries.")
     print(f"  * Lithic Tension:      {lithic_tension:.4f}")
     print(f"  * Telluric Frequency:  {telluric_freq_hz:.4f} Hz")
     print(f"  * Geomagnetic Flux:    {space['geomagnetic_disturbance']:.4f}")

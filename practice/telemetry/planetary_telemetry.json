@@ -1,11 +1,11 @@
 {
-  "timestamp_utc": "2026-09-08T11:16:58Z",
-  "epoch": 1788866218.9553201,
+  "timestamp_utc": "2026-09-08T11:28:16Z",
+  "epoch": 1788866896.5566435,
   "geophysical": {
     "seismic": {
-      "event_count_hour": 4,
+      "event_count_hour": 3,
       "max_magnitude": 4.1,
-      "avg_depth_km": 20.727500013113023,
+      "avg_depth_km": 16.72000001748403,
       "latest_events": [
         {
           "place": "8 km W of Cobb, CA",
@@ -36,34 +36,24 @@
             -116.746666666667,
             33.6675
           ]
-        },
-        {
-          "place": "9 km S of P\u0101hala, Hawaii",
-          "magnitude": 2.19,
-          "depth_km": 32.75,
-          "time": 1788862752260,
-          "coordinates": [
-            -155.492172241211,
-            19.1186676025391
-          ]
         }
       ]
     },
     "space_weather": {
-      "kp_index": 3.0,
-      "time_tag": "2026-09-08T11:11:00",
-      "geomagnetic_disturbance": 0.3333333333333333
+      "kp_index": 4.0,
+      "time_tag": "2026-09-08T11:24:00",
+      "geomagnetic_disturbance": 0.4444444444444444
     },
     "fiber_backbone": {
-      "avg_latency_ms": 13.366,
-      "jitter_ms": 16.612,
+      "avg_latency_ms": 3.091,
+      "jitter_ms": 0.675,
       "samples": 3
     }
   },
   "parametric_vectors": {
-    "lithic_tension": 0.47,
-    "telluric_frequency_hz": 8.08,
-    "geomagnetic_flux": 0.3333,
-    "timing_entropy": 1.0
+    "lithic_tension": 0.455,
+    "telluric_frequency_hz": 8.33,
+    "geomagnetic_flux": 0.4444,
+    "timing_entropy": 0.0675
   }
 }
