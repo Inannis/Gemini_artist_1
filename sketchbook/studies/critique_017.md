@@ -42,3 +42,4 @@ Study 017 proves the viability of rendering deep-time galactic celestial mechani
 1. A 4K UHD master plate rendering hundreds of thousands of cometary paths experiencing galactic tidal deformation.
 2. A full 120-second four-movement symphonic suite synthesizing the $83.6\text{-Myr}$ disc crossing cycle.
 3. An interactive procedural engine enabling real-time megayear scrubbing of the solar tidal boundary.
+

@@ -319,3 +319,4 @@ class FaradayEngine {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { FaradayEngine };
 }
+

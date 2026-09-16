@@ -31,3 +31,4 @@ In Series XXIV, we investigated the long-term megayear dynamical evolution of co
 - **The Limit of the Solar System:** The edge of a stellar system is not a wall, but an open gravitational watershed. Beyond $100,000\text{ AU}$, nothing belongs to the star.
 - **The Fate of Artificial Memory:** A microprocessor launched into deep space does not orbit forever. Over megayears, the Milky Way strips the debris from the Sun, scattering human computing artifacts into independent orbits around the galactic supermassive black hole.
 - **Elevation to OPUS-026:** OPUS-026 will celebrate this exact threshold—the transition from the bounded solar ephemeris to the unbounded galactic tidal pendulum.
+

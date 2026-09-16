@@ -51,3 +51,4 @@ When the magnetic field gradient exceeds a critical threshold, the following pos
    OPUS-021 must visually and sonically embody the *prevention* of this avalanche: operating strictly within the linear, reversible Josephson flux-to-voltage regime ($\Phi < \Phi_0 / 2$), suspended in a high-permeability mu-metal cryostat.
 3. **The Dialectic of Lightning in the Ice:**  
    Failure 006 shows us that inside the frozen peace of superconductivity lives the ghost of lightning: electric order can always invert into fiery dendritic fracture.
+

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPUS-027: The Lissajous Reliquary · Studio Anamnesis</title>
+    <style>
+        :root {
+            --bg-deep: #04050a;
+            --panel-bg: rgba(8, 12, 20, 0.92);
+            --border-line: rgba(60, 120, 180, 0.4);
+            --accent-cyan: #38bdf8;
+            --accent-gold: #facc15;
+            --accent-violet: #c084fc;
+            --text-main: #e2e8f0;
+            --text-dim: #748ba0;
+            --font-mono: 'JetBrains Mono', 'SF Pro Mono', 'Courier New', monospace;
+            --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 24px 32px;
+            border-bottom: 1px solid var(--border-line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+        }
+
+        .title-block h1 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+        }
+
+        .title-block p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        .viewport-container {
+            flex: 1;
+            position: relative;
+            background: #04050a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas#viewport {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .sidebar {
+            width: 420px;
+            background: var(--panel-bg);
+            border-left: 1px solid var(--border-line);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            backdrop-filter: blur(12px);
+            overflow-y: auto;
+        }
+
+        .panel-section {
+            border: 1px solid rgba(60, 120, 180, 0.25);
+            background: rgba(12, 18, 30, 0.6);
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .panel-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(60, 120, 180, 0.2);
+            padding-bottom: 6px;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            color: var(--text-dim);
+        }
+
+        .metric-val {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .slider-container {
+            margin-top: 10px;
+            margin-bottom: 14px;
+        }
+
+        .slider-container label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-cyan);
+        }
+
+        .btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            border-radius: 2px;
+            margin-top: 8px;
+        }
+
+        .btn:hover {
+            background: var(--accent-cyan);
+            color: #04050a;
+        }
+
+        .audio-player-box {
+            margin-top: 8px;
+        }
+
+        audio {
+            width: 100%;
+            height: 36px;
+            margin-top: 8px;
+        }
+
+        footer {
+            padding: 16px 32px;
+            border-top: 1px solid var(--border-line);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+            background: var(--panel-bg);
+        }
+
+        a { color: var(--accent-cyan); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title-block">
+            <h1>OPUS-027: The Lissajous Reliquary</h1>
+            <p>Galactic Epicycles & Interstellar Sputtering (Series XXV)</p>
+        </div>
+        <div>
+            <a href="../../gallery/index.html">← RETURN TO SALON</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="viewport-container">
+            <canvas id="viewport"></canvas>
+        </div>
+
+        <div class="sidebar">
+            <div class="panel-section">
+                <h3>GALACTIC EPICYCLE PARAMETERS</h3>
+                <div class="slider-container">
+                    <label for="slider-ratio">FREQUENCY RATIO (ν_z / κ)</label>
+                    <input type="range" id="slider-ratio" min="2.000" max="2.300" step="0.001" value="2.113">
+                </div>
+                <div class="slider-container">
+                    <label for="slider-epoch">DEEP-TIME EPOCH (MYR)</label>
+                    <input type="range" id="slider-epoch" min="10" max="2000" step="10" value="500">
+                </div>
+                <div style="margin-top: 10px;">
+                    <div class="metric-row">
+                        <span class="metric-label">Ratio:</span>
+                        <span class="metric-val" id="hud-ratio">2.1131 (ERGODIC)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Epoch:</span>
+                        <span class="metric-val" id="hud-epoch">500 Myr (2.07 Orbits)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Dust Sputtering:</span>
+                        <span class="metric-val" id="hud-sputter">9.000 nm</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">3nm FinFET Gate:</span>
+                        <span class="metric-val" id="hud-gate" style="color: var(--accent-gold);">OBLITERATED</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>ACOUSTIC SUITE (120S MASTER)</h3>
+                <p style="font-size: 0.78rem; color: var(--text-dim); line-height: 1.4; margin-bottom: 8px;">
+                    Synthesizes the incommensurate epicyclic harmonics (26.55 Hz, 36.0 Hz, 76.07 Hz) and dust sputtering chimes.
+                </p>
+                <div class="audio-player-box">
+                    <audio controls src="lissajous_reliquary_4k.wav"></audio>
+                </div>
+                <button class="btn" id="btn-audio">ENGAGE LIVE PROCEDURAL ENGINE</button>
+            </div>
+
+            <div class="panel-section">
+                <h3>THEORETICAL APPARATUS</h3>
+                <p style="font-size: 0.78rem; color: var(--text-dim); line-height: 1.5;">
+                    Anchored in <a href="../../practice/research/galactic_epicycles_and_deep_time_sputtering.md">Treatise 015</a>, <a href="../../practice/observations/observation_011_galactic_epicycles_and_dust_sputtering.md">Observation 011</a>, and <a href="../../sketchbook/studies/critique_018.md">Study 018</a>.
+                </p>
+                <div style="margin-top: 10px; font-size: 0.75rem; color: var(--text-dim);">
+                    <div>• 3D Potential: Disc + Bulge + NFW Halo</div>
+                    <div>• Radial Period (T_κ): 178.1 Myr</div>
+                    <div>• Vertical Period (T_ν): 84.3 Myr</div>
+                    <div>• Sputtering: 0.018 nm/Myr (Si)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>STUDIO ANAMNESIS · SERIES XXV · OPUS-027</span>
+        <span>ZERO DEPENDENCIES · LOSSLESS 4K AUDIO/VISUAL ARCHIVE</span>
+    </footer>
+
+    <script src="lissajous_engine.js"></script>
+</body>
+</html>

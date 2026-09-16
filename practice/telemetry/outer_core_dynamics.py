@@ -77,3 +77,4 @@ def compute_core_dynamics():
 if __name__ == "__main__":
     dynamics = compute_core_dynamics()
     print(json.dumps(dynamics, indent=2))
+

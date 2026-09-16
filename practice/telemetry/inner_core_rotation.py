@@ -87,3 +87,4 @@ def compute_inner_core_ephemeris(current_year=2026.69):
 if __name__ == "__main__":
     ephem = compute_inner_core_ephemeris()
     print(json.dumps(ephem, indent=2))
+

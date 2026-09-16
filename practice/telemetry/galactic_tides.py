@@ -114,3 +114,4 @@ if __name__ == "__main__":
     print("\n[*] Voyager 1 Deep-Time Megayear Ephemeris:")
     for row in compute_voyager_ephemeris():
         print(f"  [{row['r_au']:8.1f} AU] {row['milestone']:35s} | {row['t_years']:10.1f} yrs ({row['t_calendar']} CE) | Tide/Sun: {row['tidal_ratio']:.2e} [{row['stability']}]")
+

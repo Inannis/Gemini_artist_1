@@ -53,3 +53,4 @@ To test this boundary, we simulated an escalation of outer-core electromagnetic 
    The rotation of the inner core is not a rigid gear meshed with the crust; it is an elastic gravitational libration. If driven too hard, the clock breaks its escapement and spins into chaos.
 2. **Aesthetic Architecture for OPUS-023:**
    OPUS-023 must operate strictly within the **bound gravitational libration regime** ($|\phi| \le 1.25^\circ$), where seismic doublet interferometry produces coherent, micro-delayed acoustic interference fringes.
+

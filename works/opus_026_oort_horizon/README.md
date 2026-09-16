@@ -49,3 +49,4 @@ At distances between $2,000$ and $120,000\text{ Astronomical Units}$ ($0.03$ to 
 ## 4. Curatorial Verification & Integrity
 
 Tested and verified under Studio Anamnesis zero-dependency automated testing suites (`practice/tools/verify_apparatus.py` and `practice/tools/studio_audit.py`). 100% compliant with studio standards.
+

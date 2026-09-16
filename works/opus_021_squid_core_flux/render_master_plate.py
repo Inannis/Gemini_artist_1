@@ -207,3 +207,4 @@ out_dir = os.path.dirname(os.path.abspath(__file__))
 plate_path = os.path.join(out_dir, "artwork.png")
 write_png(plate_path, W, H, buf, has_alpha=False)
 print(f"[✓] OPUS-021 4K Master Plate Inscribed: {plate_path} ({os.path.getsize(plate_path)} bytes)")
+

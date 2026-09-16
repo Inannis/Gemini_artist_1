@@ -121,3 +121,4 @@ if __name__ == "__main__":
     print(f"Cosmogenic ¹⁰Be Inscription (Quartz, 50 kyr exposure):")
     print(f"Concentration:            {be10['current_concentration_atoms_g']:.2e} atoms/g(SiO₂)")
     print("=" * 65)
+

@@ -73,3 +73,4 @@ To launch the interactive chamber:
 # Serve locally or open in browser
 open works/opus_024_cosmogenic_inscription/index.html
 ```
+

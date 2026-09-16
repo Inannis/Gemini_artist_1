@@ -58,3 +58,4 @@ A **DC-SQUID (Superconducting Quantum Interference Device)**—consisting of a n
 | **Flux Quantum** | $\Phi_0 = h/2e \approx 2.067833848 \times 10^{-15}\text{ Wb}$ |
 | **Cryogenic Temperature** | $4.2\text{ K}$ (Liquid Helium) |
 | **Shielding** | High-permeability Mu-Metal ($> 50,000\ \mu_r$) |
+

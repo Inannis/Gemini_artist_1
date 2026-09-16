@@ -107,3 +107,4 @@ out_dir = os.path.dirname(os.path.abspath(__file__))
 wav_path = os.path.join(out_dir, "telluric_core_4k.wav")
 write_wav(wav_path, ch_left, ch_right, sr)
 print(f"[✓] OPUS-021 Master Audio Suite Synthesized: {wav_path} ({os.path.getsize(wav_path)} bytes)")
+

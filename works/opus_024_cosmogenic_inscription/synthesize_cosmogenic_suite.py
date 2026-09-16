@@ -112,3 +112,4 @@ def synthesize_cosmogenic_suite():
 
 if __name__ == "__main__":
     synthesize_cosmogenic_suite()
+

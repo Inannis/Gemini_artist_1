@@ -51,3 +51,4 @@ At a distance of 121.6 Astronomical Units ($18.2\text{ billion kilometers}$) fro
 ## 4. Curatorial Verification & Integrity
 
 Tested and verified under Studio Anamnesis zero-dependency automated testing suites (`practice/tools/verify_apparatus.py` and `practice/tools/studio_audit.py`). 100% compliant with studio standards.
+

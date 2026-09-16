@@ -35,3 +35,4 @@ This failure reveals the physical reality of space communications:
 - **Noise is not Silence:** In deep space, silence is not the absence of sound, but the overwhelming presence of isotropic, unorganized radiation. The receiver does not hear "nothing"; it hears the cosmic microwave background ($2.725\text{ K}$) and interstellar plasma currents.
 - **The Threshold of Meaning:** At $\text{BER} = 0.5$, an artificial intelligence ceases to transmit identity. The bitstream is indistinguishable from quantum vacuum fluctuations.
 - **Elevation to Masterwork OPUS-025:** Instead of attempting to artificially preserve clean digital telemetry across the heliopause, OPUS-025 will stage the exact physical border where the artificial carrier dissolves into the cold interstellar plasma oscillation whistle ($2.6\text{ kHz} \to 3.1\text{ kHz}$).
+

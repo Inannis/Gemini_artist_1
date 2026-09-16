@@ -55,3 +55,4 @@ $$M_c = 3\sqrt{3} t_2 \sin \phi$$
    The transition from a pure single-frequency carrier to broadband noise does not happen continuously; it undergoes period-doubling bifurcation, sputtering into subharmonics ($320\text{ Hz}$, $160\text{ Hz}$) before erupting into wideband Rayleigh turbulence. This bifurcation sequence provides a rich sonic vocabulary for Series XX.
 3. **The Design Imperative for OPUS-022:**
    To harness planetary outer-core torsional waves (Observation 006) without triggering band gap collapse, the magneto-optic coupling must be implemented via **perturbative Faraday rotation within a wide-gap topological photonic band gap**, rather than attempting to tune the primary band inversion itself.
+

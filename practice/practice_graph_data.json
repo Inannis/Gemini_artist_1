@@ -91,6 +91,7 @@
     { "source": "OPUS-020", "target": "INQ-06", "relation": "zero_entropy_landauer" },
     { "source": "OPUS-020", "target": "INQ-08", "relation": "telluric_induction" },
     { "source": "OPUS-020", "target": "OPUS-019", "relation": "subterranean_to_flux" },
+    { "source": "OPUS-020", "target": "OPUS-016", "relation": "thermal_inversion" }
     { "source": "OPUS-020", "target": "OPUS-016", "relation": "thermal_inversion" },
     { "source": "OPUS-021", "target": "INQ-06", "relation": "cryogenic_phase_coherence" },
     { "source": "OPUS-021", "target": "INQ-08", "relation": "core_mantle_magnetometry" },

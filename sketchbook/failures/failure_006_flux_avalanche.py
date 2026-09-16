@@ -230,3 +230,4 @@ write_wav(wav_path, ch_l, ch_r, sr)
 print(f"[FAILURE-006] Acoustic Ruin Inscribed: {wav_path} ({os.path.getsize(wav_path)} bytes)")
 
 print("[✓] FAILURE 006 SIMULATION COMPLETE.")
+

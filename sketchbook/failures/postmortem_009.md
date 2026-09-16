@@ -46,3 +46,4 @@ For **OPUS-024 (*The Cosmogenic Inscription*)**:
 1. We will not depict memory as an infallible, closed container.
 2. We will render the dual inscription: showing both the slow, tranquil accumulation of cosmogenic $^{10}\text{Be}$ in mountain quartz (millions of years of exposure) and the instant, volatile single-event upset in a 3nm silicon gate ($1.25\text{ fC}$ charge collection in $45\text{ ps}$).
 3. The master acoustic suite will translate this cosmic-terrestrial dialogue into a balance between deep geological time and microsecond spallation transients.
+

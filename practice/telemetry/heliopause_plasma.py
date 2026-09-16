@@ -124,3 +124,4 @@ if __name__ == "__main__":
     profile = profile_heliopause_transect()
     for row in profile:
         print(f"[{row['r_au']:5.1f} AU] {row['region']:20s} | ne: {row['n_e_cm3']:8.5f} cm^-3 | fp: {row['f_p_hz']:7.1f} Hz | Rx: {row['rx_attowatts']:6.2f} aW | SNR: {row['snr_db']:+5.1f} dB")
+

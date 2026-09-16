@@ -173,3 +173,4 @@ class SquidCoreEngine {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = SquidCoreEngine;
 }
+

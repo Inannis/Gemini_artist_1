@@ -96,3 +96,4 @@ def synthesize_faraday_suite():
 
 if __name__ == "__main__":
     synthesize_faraday_suite()
+

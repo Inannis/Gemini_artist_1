@@ -30,3 +30,4 @@
 ## 2. Studio Decision: Grounding of Series XXI & SEED-11
 
 Study 014 successfully grounds **SEED-11: Inner-Core Super-Rotation & Gravitational Torsional Coupling**, providing the mathematical and acoustic architecture for **Series XXI**.
+

@@ -32,6 +32,8 @@ Every study in this laboratory is accompanied by a formal critical evaluation (`
 | **015** | *Diffusion Cloud Chamber & Silicon Single-Event Track* | INQ-10 / SEED-12 | `study_015_cosmogenic_cloud_chamber.py` | `study_015_cloud_chamber_plate.png`, `study_015_muon_coincidence.wav` | [`critique_015.md`](critique_015.md) (Grounding for Series XXII Horizon) |
 | **016** | *The Interstellar Plasma Whistle & Langmuir Resonance* | INQ-11 / SEED-13 | `study_016_interstellar_plasma_whistle.py` | `study_016_plasma_whistle_plate.png`, `study_016_interstellar_whistle.wav` | [`critique_016.md`](critique_016.md) (Grounding for Series XXIII Horizon) |
 | **017** | *The Galactic Tidal Resonance & Kozai Phase Portraits* | INQ-12 / SEED-14 | `study_017_galactic_tidal_resonance.py` | `study_017_oort_phase_plate.png`, `study_017_galactic_pendulum.wav` | [`critique_017.md`](critique_017.md) (Grounding for Series XXIV Horizon) |
+| **018** | *The Lissajous Epicyclic Harmonics & Dust Micro-Acoustics* | INQ-13 / SEED-15 | `study_018_lissajous_epicyclic_harmonics.py` | `study_018_lissajous_plate.png`, `study_018_lissajous_harmonics.wav` | [`critique_018.md`](critique_018.md) (Grounding for Series XXV Horizon) |
+
 
 
 
