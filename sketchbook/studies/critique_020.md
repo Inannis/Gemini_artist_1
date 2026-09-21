@@ -42,3 +42,4 @@ Study 020 was staged to evaluate the visual and sonic behavior of electromagneti
    - *Movement IV: The Gibbons-Hawking Vacuum & Eternal Quietude* (1:35 - 2:00)
 3. **Interactive Simulation Chamber:**
    Develop `works/opus_029_causal_horizon/index.html` allowing real-time modulation of the Hubble expansion parameter ($H$), visual inspection of causal diamond boundaries, and Web Audio API synthesis.
+

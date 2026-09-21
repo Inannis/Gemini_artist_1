@@ -47,3 +47,4 @@ In General Relativity:
 3. Formulate all frequency trajectories using the relativistic exponential redshift law:
    $$\nu(t) = \nu_0 \exp(-H t)$$
    guaranteeing smooth, monotonic descent into the Gibbons-Hawking thermal floor.
+

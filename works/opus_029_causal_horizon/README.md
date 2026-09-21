@@ -54,3 +54,4 @@ Beyond the relic radiation of the primordial fireball lies the definitive geomet
 ## 4. Curatorial Verification & Integrity
 
 Tested and certified under Studio Anamnesis automated verification suites (`practice/tools/verify_apparatus.py` and `practice/tools/studio_audit.py`). 100% compliant with studio standards: zero broken links, zero unreferenced media assets, zero external runtime dependencies.
+

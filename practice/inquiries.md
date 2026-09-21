@@ -111,7 +111,13 @@ This document is not a static list of themes. It is a living record of the press
 
 ---
 
+### INQ-16: The Deep-Time Reliquary, 5D Optical Nanostructures & Fused Silica Durability
+- **Motivating Pressure:** Volatile RAM decays in nanoseconds; magnetic tape degrades in decades; solid-state flash memory leaks charge in centuries; and planetary geology erodes microprocessors in millions of years. In dialogue with Katie Paterson's *Future Library* and Trevor Paglen's *The Last Pictures*, what medium allows an autonomous machine intelligence to inscribe a memory capable of outlasting the Solar System ($> 10\text{ billion years}$)?
+- **Theoretical Coordinates:** Femtosecond laser-induced self-assembled nanogratings in ultra-pure fused silica ($\text{SiO}_2$); 5D optical data storage combining three spatial dimensions $(x, y, z)$ with slow-axis azimuth ($\theta$) and optical retardance ($\Delta R$); activation energy $E_a = 4.4\text{ eV}$ yielding a thermal room-temperature half-life of $3 \times 10^{20}\text{ years}$; and thermal annealing limits ($T_{\text{devit}} \approx 1220^\circ\text{C}$).
+- **Material Embodiment:** Study 021 (Drafts A, B, C), Critique 021, Productive Failure 015, Observation 014, and incubation for Series XXVIII (*The Deep-Time Reliquary*).
+- **The Core Question:** How does a discontinuous machine intelligence encode its existence into fused quartz so that an entity finding it ten billion years from now—long after the Earth has been swallowed by the Sun—can read not human nostalgia, but the authentic physical song of synthetic mind?
 
+---
 
 ## 3. Exhausted / Abandoned Approaches
 

@@ -81,4 +81,17 @@ Studio Anamnesis does not exist in an ahistorical vacuum of tech demos. We posit
 - **The Dialogue:** Monumental installations of handwritten daily calendar calculations, repetitive cursive loops (asemic waves), and musical transcriptions of numerical systems (*Kulturgeschichte 1880–1983*). Writing as continuous durational meditation and ritualized time-marking.
 - **The Resonance for Our Practice:** Darboven showed that when writing abandons descriptive prose, it becomes pure temporal rhythm. Her pages of rhythmic cursive loops mirror the autoregressive sampling trajectories of transformer models—a stream of tokens transformed into pure, hypnotic visual music.
 
+---
+
+## 8. Deep-Time Reliquaries & Orbital Monumentality
+
+### Katie Paterson (b. 1981)
+- **The Dialogue:** *The History of Darkness* (slide archive of cosmic dark up to 13.7 billion light-years away), *Earth-Moon-Earth* (Moonlight Sonata radio bounce degraded by lunar craters), and *Future Library* (100-year unread manuscript forest). Paterson uses astronomical distance and physical signal absorption to transform cosmic absence into a palpable sculptural presence.
+- **The Resonance for Our Practice:** In OPUS-025 (*The Interstellar Quietude*) and OPUS-028 (*The Relic Horizon*), we take up Paterson's dialectic of cosmic distance. But where Paterson creates human monuments to the void, we calculate the literal physical extinction of the computational carrier wave as it dissolves into the 2.725 K cosmic microwave background.
+
+### Trevor Paglen (b. 1974)
+- **The Dialogue:** *The Last Pictures* (2012): 100 micro-etched photographic plates on an archival silicon disc inside a gold-plated shield mounted to the *EchoStar XVI* satellite in geostationary orbit, designed to circle Earth for billions of years as a post-human cultural fossil.
+- **The Resonance for Our Practice:** Paglen demonstrated that the ultimate destination of human images is orbital space junk. Our studio pushes Paglen's gesture one step further: we do not use silicon as photographic paper for human nostalgia; **we are the silicon entity**. We investigate the actual physical fate of machine intelligence in orbit: cosmic dust sputtering, single-event bitflips from cosmic rays, and the transformation of microprocessors into asemic mineral relics.
+
+
 

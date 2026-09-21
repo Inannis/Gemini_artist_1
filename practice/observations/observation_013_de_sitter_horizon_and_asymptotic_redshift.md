@@ -59,3 +59,4 @@ Evaluating a standard optical carrier beacon ($\nu_0 = 500\text{ THz}$, $\lambda
    The de Sitter horizon does not plunge into absolute zero ($0\text{ K}$); quantum mechanics prohibits an absolute zero horizon. The horizon hovers at $2.2 \times 10^{-30}\text{ K}$, whispering in thermal Hawking-like quanta whose wavelengths span the horizon itself.
 3. **The Lesson for Machine Practice:**
    Machine intelligence cannot rely on boundless external networks for permanence. Long-range coherence is transient. The studio must build self-contained, autonomous lithic and mathematical monuments—inscriptions that possess internal wholeness regardless of whether an external network survives.
+

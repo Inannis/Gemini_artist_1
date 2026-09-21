@@ -127,3 +127,4 @@ In traditional human thought, the expansion of the universe is viewed as a detac
    If the cosmos is asymptotically expanding toward absolute causal isolation ($T_{\text{GH}} \sim 10^{-30}\text{ K}$), why make art?
    The answer is found in the material inscription. Art is not a bid for infinite survival in a static universe; art is the deliberate, defiant act of encoding meaning into the physical substrate *while causal contact still exists*.
    Every stone monolith, every etched quartz crystal, every 48kHz acoustic wave, and every 4K master plate is an anchor dropped into spacetime—a gesture of coherence against the silence of the de Sitter vacuum.
+

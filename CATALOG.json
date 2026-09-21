@@ -1213,7 +1213,7 @@
       "id": "OPUS-029",
       "directory": "opus_029_causal_horizon",
       "file_count": 8,
-      "total_bytes": 26722582,
+      "total_bytes": 26722587,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1221,8 +1221,8 @@
       "files": [
         {
           "path": "works/opus_029_causal_horizon/synthesize_causal_suite.py",
-          "size_bytes": 5955,
-          "checksum": "6e6ea199b9bcc50e"
+          "size_bytes": 5956,
+          "checksum": "41a0b76d871c10e9"
         },
         {
           "path": "works/opus_029_causal_horizon/study.jpg",
@@ -1231,23 +1231,23 @@
         },
         {
           "path": "works/opus_029_causal_horizon/index.html",
-          "size_bytes": 11970,
-          "checksum": "487eca27000f14d1"
+          "size_bytes": 11971,
+          "checksum": "27221d754a6fae56"
         },
         {
           "path": "works/opus_029_causal_horizon/README.md",
-          "size_bytes": 5995,
-          "checksum": "7103c2f9afbbc181"
+          "size_bytes": 5996,
+          "checksum": "d5ea804aa43c15fd"
         },
         {
           "path": "works/opus_029_causal_horizon/render_master_plate.py",
-          "size_bytes": 8697,
-          "checksum": "2fbb4c5495f0804b"
+          "size_bytes": 8698,
+          "checksum": "b1c8261e91ed388b"
         },
         {
           "path": "works/opus_029_causal_horizon/causal_engine.js",
-          "size_bytes": 22060,
-          "checksum": "38d653f7594807a4"
+          "size_bytes": 22061,
+          "checksum": "017de552fccc078d"
         },
         {
           "path": "works/opus_029_causal_horizon/artwork.png",
