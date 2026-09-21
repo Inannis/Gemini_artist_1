@@ -28,3 +28,4 @@ We reasoned that at cryogenic temperatures, high-frequency photon modes would ca
 
 - **The Quantum Discontinuity:** Max Planck discovered quantum mechanics in 1900 precisely because the classical continuum produces an unphysical catastrophe. Energy cannot be exchanged continuously; it is quantized into discrete packets $E = h\nu$. The term $(e^{h\nu / k_B T} - 1)^{-1}$ is the cosmological dampener that protects the universe from burning itself out in ultraviolet fire.
 - **The True Voice of the Relic Sky:** For **OPUS-028 (*The Relic Horizon*)**, we strictly implement the exact quantum Bose-Einstein distribution. The audio synthesis will abandon classical unconstrained feedback, grounding itself in the gentle, exponential Wien decay that allows the cosmic microwave sky to remain a cold, solemn, and infinitely peaceful whisper.
+

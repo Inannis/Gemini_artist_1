@@ -121,3 +121,4 @@ if __name__ == "__main__":
     audio_file = os.path.join(STUDIO_ROOT, "sketchbook", "failures", "failure_013_ultraviolet_shriek.wav")
     render_failure_plate(plate_file)
     synthesize_failure_audio(audio_file)
+

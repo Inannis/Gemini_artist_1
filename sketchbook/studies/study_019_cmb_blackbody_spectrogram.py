@@ -215,3 +215,4 @@ if __name__ == "__main__":
     audio_file = os.path.join(STUDIO_ROOT, "sketchbook", "studies", "study_019_cmb_blackbody_drone.wav")
     render_study_plate(plate_file)
     synthesize_study_audio(audio_file)
+

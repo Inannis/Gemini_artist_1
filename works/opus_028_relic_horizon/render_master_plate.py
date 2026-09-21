@@ -272,3 +272,4 @@ if __name__ == "__main__":
     import shutil
     shutil.copyfile(target_plate, gallery_plate)
     print(f"[OPUS-028] Synchronized to gallery vault: {gallery_plate}")
+

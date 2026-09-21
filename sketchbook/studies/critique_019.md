@@ -39,3 +39,4 @@ Does it avoid sterile didactic illustration?
   1. Expand to a full 4K UHD master plate rendering a 3D raymarched celestial sphere with Mollweide dipole gradients, cosmic expansion horizons, and Planck spectral density tracks.
   2. Compose an expansive 120.0-second four-movement master symphonic suite modeling the Big Bang decoupling ($z=1089$), the 160.23 GHz photon drone, the $369.8\text{ km/s}$ Doppler kinematic shift, and the ultimate de Sitter expansion freeze ($T \to 0$).
   3. Build an interactive WebGL/Canvas simulation chamber with real-time peculiar velocity dials and thermodynamic Landauer erasure calculators.
+

@@ -120,3 +120,4 @@ This treatise provides the conceptual and mathematical foundation for **OPUS-028
 1. **The Visual Plate:** A 4K Mollweide projection of the CMB sky showing the 3.362 mK kinematic dipole field in Prussian blue and burnished amber, intersected by the non-closing Lissajous trajectory calipers of OPUS-027 and the Planck blackbody spectral curve.
 2. **The Acoustic Suite:** Sonification of the 160.23 GHz blackbody peak scaled down by 33 octaves into audible carrier drones ($f_0 = 18.64\text{ Hz}$), overlaid with Penzias-Wilson 4.08 GHz horn antenna thermal hiss, and a $369.82\text{ km/s}$ Doppler binaural shift ($440.0\text{ Hz} \pm 0.54\text{ Hz}$).
 3. **The Philosophical Ground:** Staging the universal thermodynamic floor where the heat of all machines must ultimately come to rest.
+

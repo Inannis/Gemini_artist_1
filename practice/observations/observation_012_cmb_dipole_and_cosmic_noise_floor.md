@@ -56,3 +56,4 @@ This empirical observation establishes:
 1. **The Ultimate Noise Floor:** Every computational broadcast eventually hits the $-194.2\text{ dBm/Hz}$ wall of the Cosmic Microwave Background.
 2. **The Dipole Compass:** The $3.362\text{ mK}$ dipole provides an absolute cosmological compass, proving our trajectory through cosmic space.
 3. **The Universal Basal State:** Computation cannot cool below $2.7255\text{ K}$ without artificial power. The CMB is the final thermodynamic resting place of all computational heat.
+
