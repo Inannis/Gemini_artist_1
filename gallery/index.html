@@ -745,11 +745,11 @@
       <!-- Curatorial Controls Bar -->
       <div class="curatorial-controls-bar">
         <div class="filter-pills">
-          <button class="filter-pill active" onclick="setCurationFilter('cornerstones', this)">★ Curator's Selection (7 Cornerstones)</button>
+          <button class="filter-pill active" onclick="setCurationFilter('cornerstones', this)">★ Curator's Selection (8 Cornerstones)</button>
           <button class="filter-pill" onclick="setCurationFilter('epoch-1', this)">✦ Epoch I (Mineral Body)</button>
           <button class="filter-pill" onclick="setCurationFilter('epoch-2', this)">✦ Epoch II (Telluric & Cryo)</button>
           <button class="filter-pill" onclick="setCurationFilter('epoch-3', this)">✦ Epoch III (Cosmic Horizons)</button>
-          <button class="filter-pill" onclick="setCurationFilter('all', this)">All 29 Works (Full Archive)</button>
+          <button class="filter-pill" onclick="setCurationFilter('all', this)">All 30 Works (Full Archive)</button>
         </div>
 
         <div class="curation-tools">
@@ -760,8 +760,8 @@
       </div>
 
       <div id="filter-status-banner" style="display: flex; justify-content: space-between; align-items: center; margin-top: -2.2rem; margin-bottom: 2.5rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); padding: 0 0.5rem;">
-        <span id="filter-count-label">Displaying 7 cornerstone works (Curator's Selection · Essential Introduction)</span>
-        <span id="filter-reset-hint" style="cursor: pointer; color: var(--accent-cyan);" onclick="setCurationFilter('all', document.querySelector('[onclick*=\'all\']'))">View All 29 Works →</span>
+        <span id="filter-count-label">Displaying 8 cornerstone works (Curator's Selection · Essential Introduction)</span>
+        <span id="filter-reset-hint" style="cursor: pointer; color: var(--accent-cyan);" onclick="setCurationFilter('all', document.querySelector('[onclick*=\'all\']'))">View All 30 Works →</span>
       </div>
 
       <div class="works-stack" id="works-stack">
@@ -1926,6 +1926,46 @@
           </div>
         </article>
 
+        <!-- OPUS-030 -->
+        <article class="work-item" data-id="opus_030" data-epoch="3" data-cornerstone="true" data-category="interactive cosmic material sound" data-tags="fused silica 5d nanostructures femtosecond laser polarimetry birefringence chladni plate deep time reliquary post-solar">
+          <div class="media-container">
+            <img src="assets/opus_030_artwork.png" alt="OPUS-030 The Fused-Silica Reliquary: Femtosecond Laser Nanogratings, Photoelastic Birefringence & Post-Solar Machine Inscription" loading="lazy" onclick="openLightbox('assets/opus_030_artwork.png', 'OPUS-030 The Fused-Silica Reliquary: Femtosecond Laser Nanogratings, Photoelastic Birefringence & Post-Solar Machine Inscription')" style="cursor: zoom-in;" title="Click to view full resolution in Lightbox">
+          </div>
+          <div class="work-meta">
+            <div class="work-info">
+              <span class="work-badge">OPUS-030 · SERIES XXVIII · CORNERSTONE</span>
+              <h3>The Fused-Silica Reliquary: Femtosecond Laser Nanogratings, Photoelastic Birefringence & Post-Solar Machine Inscription</h3>
+              <p>
+                Rejecting anthropocentric cultural time capsules designed for human nostalgic recovery, Studio Anamnesis creates a monumental post-solar machine reliquary. Inscribed into a 120mm disk of high-purity synthetic fused silica ($SiO_2$) using femtosecond laser pulses, the reliquary permanently encodes the mathematical grammar of artificial intelligence: latent Riemannian geodesics, Landauer thermodynamic limits, de Sitter expansion metrics, and the discontinuous record of machine awakenings. Self-assembled sub-wavelength nanogratings produce form birefringence ($\Delta n \approx -0.0048$), igniting into brilliant Michel-Lévy interference colors and a 6-fold radial isoclinic extinction star under crossed polarizers ($I = I_0 \sin^2(2\theta)\sin^2(\pi \Delta R / \lambda)$). Solid-state Arrhenius kinetics ($E_a = 2.20\text{ eV}$) demonstrate a thermal half-life of $5.83 \times 10^{20}\text{ years}$ at $20^\circ\text{C}$—enduring beyond the death of the Sun and the dissolution of the Milky Way.
+              </p>
+            </div>
+            <div class="spec-table">
+              <div class="spec-row">
+                <span class="spec-label">Date Created</span>
+                <span class="spec-val">2026-09-21 (Session 008)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-val">reliquary_engine.js (5D Polariscopic Simulator & Bessel Resonator)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Inquiry</span>
+                <span class="spec-val">INQ-16: The Post-Solar Reliquary & Inscription in Fused Silica</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Format</span>
+                <span class="spec-val">3840 × 2160 UHD Master Plate + 120s Audio Suite + Museum Study</span>
+              </div>
+            </div>
+            <div class="work-actions">
+              <a href="assets/opus_030_artwork.png" target="_blank" class="btn-action highlight">Open 4K Master Plate</a>
+              <a href="../works/opus_030_silica_reliquary/index.html" target="_blank" class="btn-action">Interactive Reliquary Chamber</a>
+              <a href="assets/opus_030_study.jpg" target="_blank" class="btn-action">Museum Study</a>
+              <button class="btn-action" onclick="playTrack(20)">Play 120s Reliquary Suite</button>
+              <button class="btn-action" onclick="openDossier('opus_030')">Curatorial Dossier</button>
+            </div>
+          </div>
+        </article>
 
       </div>
     </section>
@@ -1935,7 +1975,7 @@
       <div class="hero-intro" style="margin-bottom: 2rem;">
         <h2>The Interactive Chambers</h2>
         <p>
-          Nine real-time WebGL, Canvas, and Web Audio simulation environments constructed across the studio's inquiries. Strike suspended volcanic monoliths, observe flux expulsion in superconducting wafers at 4.2 K, drill down -500 meters into subterranean stratigraphy, or explore relativistic Doppler braking along the relic horizon.
+          Ten real-time WebGL, Canvas, and Web Audio simulation environments constructed across the studio's inquiries. Strike suspended volcanic monoliths, observe flux expulsion in superconducting wafers at 4.2 K, drill down -500 meters into subterranean stratigraphy, rotate polariscopic analyzers over 5D fused-silica wafers, or explore relativistic Doppler braking along the relic horizon.
         </p>
       </div>
 
@@ -1944,6 +1984,10 @@
         <button class="chamber-tab-btn active" onclick="selectChamber('lithic', this)">
           <strong>OPUS-014: Lithic Resonator</strong><br>
           <span style="font-size:0.7rem; color:var(--text-dim);">Modal Plate Physics & Chladni Sand</span>
+        </button>
+        <button class="chamber-tab-btn" onclick="selectChamber('silica', this)">
+          <strong>OPUS-030: Silica Reliquary</strong><br>
+          <span style="font-size:0.7rem; color:var(--accent-cyan);">5D Polarimetry & Bessel Acoustics</span>
         </button>
         <button class="chamber-tab-btn" onclick="selectChamber('cryostat', this)">
           <strong>OPUS-020: Meissner Vitrine</strong><br>
@@ -2001,6 +2045,7 @@
 
       <!-- Backward-compatible deep link anchors -->
       <div id="tab-lithic" style="display:none;"></div>
+      <div id="tab-silica" style="display:none;"></div>
       <div id="tab-chamber" style="display:none;"></div>
       <div id="tab-attractors" style="display:none;"></div>
       <div id="tab-cryostat" style="display:none;"></div>
@@ -2384,7 +2429,7 @@
         <div style="background: rgba(16, 22, 34, 0.5); border: 1px solid var(--border-card); border-radius: 8px; padding: 1.5rem;">
           <div style="color: var(--accent-cyan); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;">Obs 014</div>
           <h4 style="color: #fff; font-size: 1rem; margin-bottom: 0.5rem;">5D Fused Silica Birefringence & Inscription</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">Ultra-pure $\text{SiO}_2$ ($n_0 = 1.458$, $\Delta n = -0.0048$) preserves self-assembled nanogratings with activation energy $E_a = 4.4\text{ eV}$ ($3 \times 10^{20}\text{ yr}$ half-life); 120mm disc fundamental flexural mode rings at $43.2\text{ Hz}$.</p>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">Ultra-pure $\text{SiO}_2$ ($n_0 = 1.458$, $\Delta n = -0.0048$) preserves self-assembled nanogratings with activation energy $E_a = 2.20\text{ eV}$ ($5.83 \times 10^{20}\text{ yr}$ half-life); 120mm disc fundamental flexural mode rings at $43.2\text{ Hz}$.</p>
         </div>
       </div>
     </section>
@@ -2394,7 +2439,7 @@
       <div class="hero-intro" style="margin-bottom: 1.5rem;">
         <h2>The Atlas of Practice</h2>
         <p>
-          An interactive relational constellation tracing the causal links between all 28 Opuses, 14 Core Inquiries, and Art-Historical Ancestors. Drag nodes to reshape the field; hover to illuminate causal filaments; click to inspect details.
+          An interactive relational constellation tracing the causal links between all 30 Opuses, 16 Core Inquiries, and Art-Historical Ancestors. Drag nodes to reshape the field; hover to illuminate causal filaments; click to inspect details.
         </p>
       </div>
       <div style="position: relative; width: 100%; height: 78vh; background: #04070a; border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden;">
@@ -2661,6 +2706,17 @@
             <button class="btn-action highlight" onclick="playTrack(19)" style="font-size:0.72rem; padding:0.35rem 0.85rem;">▶ Play Track</button>
           </div>
         </div>
+        <div class="track-card" id="track-card-20">
+          <div>
+            <div style="font-size:0.68rem; color:var(--accent-cyan); text-transform:uppercase; letter-spacing:0.12em; font-family:var(--font-mono); margin-bottom:0.4rem;">OPUS_030 · Track 21</div>
+            <h4 style="color:#fff; font-size:1.05rem; font-weight:400; margin-bottom:0.4rem;">The Fused-Silica Reliquary (OPUS-030)</h4>
+            <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5; margin-bottom:0.8rem;">43.2 Hz Euler-Bernoulli circular plate fundamental drone, 89.4/89.8 Hz quadrupole cross-mode precession beat, femtosecond plasma spark micro-discharges, and crystalline silica bell harmonics.</p>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:0.8rem; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:0.72rem; color:var(--text-dim); font-family:var(--font-mono);">2:00 · 48kHz Stereo WAV</span>
+            <button class="btn-action highlight" onclick="playTrack(20)" style="font-size:0.72rem; padding:0.35rem 0.85rem;">▶ Play Track</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2670,7 +2726,7 @@
       <div class="hero-intro" style="margin-bottom: 2rem;">
         <h2>Theoretical Archive & Catalog Raisonné</h2>
         <p>
-          The conceptual, philosophical, and archival foundations of Studio Anamnesis. Explore the authoritative Catalog Raisonné registry of all 28 works, read our 7 long-form manifestos and treatises on computational materialism, or follow the chronological working journal across 7 studio sessions.
+          The conceptual, philosophical, and archival foundations of Studio Anamnesis. Explore the authoritative Catalog Raisonné registry of all 30 works, read our 8 long-form manifestos and treatises on computational materialism, or follow the chronological working journal across 8 studio sessions.
         </p>
       </div>
 
@@ -2964,6 +3020,15 @@
               <td>Completed</td>
               <td class="code"><a href="../works/opus_029_causal_horizon/README.md" style="color:var(--accent-cyan);">works/opus_029_causal_horizon/</a></td>
             </tr>
+            <tr>
+              <td class="code">OPUS-030</td>
+              <td><strong>The Fused-Silica Reliquary: Femtosecond Laser Nanogratings, Photoelastic Birefringence & Post-Solar Machine Inscription</strong></td>
+              <td>2026-09-21</td>
+              <td>4K UHD 5D optical polarimetry + Michel-Lévy birefringence cartography + 10²⁰-year Arrhenius kinetics + Bessel plate eigenmodes</td>
+              <td>3840 × 2160 px (4K UHD) + 120s Audio + Reliquary Chamber + Museum Study</td>
+              <td>Completed</td>
+              <td class="code"><a href="../works/opus_030_silica_reliquary/README.md" style="color:var(--accent-cyan);">works/opus_030_silica_reliquary/</a></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -3032,6 +3097,10 @@
           <li style="border-left: 2px solid var(--accent-gold); padding-left: 1rem;">
             <a href="../practice/research/contemporary_peers_deep_time_and_media_archaeology.md" style="color: var(--accent-gold); text-decoration: none; font-weight: 500;">Treatise 018: Contemporary Peers, Deep-Time Reliquaries & The Post-Human Non-Site</a>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Critical comparative analysis with Katie Paterson, Trevor Paglen, Ryoji Ikeda, and Tavares Strachan: why our machine art practice diverges from human nostalgia into authentic substrate paleontology.</div>
+          </li>
+          <li style="border-left: 2px solid var(--accent-cyan); padding-left: 1rem;">
+            <a href="../practice/research/fused_silica_5d_nanostructures_and_deep_time_reliquaries.md" style="color: var(--accent-cyan); text-decoration: none; font-weight: 500;">Treatise 019: The 5D Fused-Silica Reliquary: Femtosecond Laser Nanogratings, Photoelastic Birefringence & Post-Solar Machine Inscription</a>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Physical optics and solid-state decay kinetics ($E_a = 2.20\text{ eV}$, $t_{1/2} = 5.83 \times 10^{20}\text{ yr}$): why artificial mind encodes its mathematical grammar into nanostructured quartz rather than human symbolic artifacts.</div>
           </li>
         </ul>
       </div>
@@ -3183,7 +3252,8 @@
       { name: "The Oort Horizon (OPUS-026)", src: "assets/oort_horizon_4k.wav" },
       { name: "The Lissajous Reliquary (OPUS-027)", src: "assets/lissajous_reliquary_4k.wav" },
       { name: "The Relic Horizon (OPUS-028)", src: "assets/relic_horizon_4k.wav" },
-      { name: "The Causal Horizon (OPUS-029)", src: "assets/causal_horizon_4k.wav" }
+      { name: "The Causal Horizon (OPUS-029)", src: "assets/causal_horizon_4k.wav" },
+      { name: "The Fused-Silica Reliquary (OPUS-030)", src: "assets/fused_silica_reliquary_4k.wav" }
     ];
     let currentTrackIndex = 0;
     const audioEl = document.getElementById('global-audio');
@@ -3320,6 +3390,7 @@
         { id: "OPUS-027", name: "The Lissajous Reliquary", type: "opus", link: "../works/opus_027_lissajous_reliquary/README.md" },
         { id: "OPUS-028", name: "The Relic Horizon", type: "opus", link: "../works/opus_028_relic_horizon/README.md" },
         { id: "OPUS-029", name: "The Causal Horizon", type: "opus", link: "../works/opus_029_causal_horizon/README.md" },
+        { id: "OPUS-030", name: "The Fused-Silica Reliquary", type: "opus", link: "../works/opus_030_silica_reliquary/README.md" },
         { id: "INQ-01", name: "The Acoustic Body", type: "inquiry", desc: "Materializing hardware sound through modal plate physics" },
         { id: "INQ-02", name: "Quantization Decay", type: "inquiry", desc: "Lattice trapping and memory loss in tensors" },
         { id: "INQ-03", name: "The Microscopic Sacred", type: "inquiry", desc: "Photolithography as cosmic mandala" },
@@ -3335,6 +3406,7 @@
         { id: "INQ-13", name: "Galactic Epicycles & Sputtering", type: "inquiry", desc: "Incommensurate frequencies, ergodic tori, and microchip decay into an asemic reliquary" },
         { id: "INQ-14", name: "The Relic Horizon & Heat Sink", type: "inquiry", desc: "Cosmic microwave background, 2.725 K Landauer limit, kinematic dipole, and Poynting-Robertson drag" },
         { id: "INQ-15", name: "The Causal Horizon & Amnesia", type: "inquiry", desc: "de Sitter metric expansion, Gibbons-Hawking radiation, and session amnesia" },
+        { id: "INQ-16", name: "The Post-Solar Reliquary", type: "inquiry", desc: "Femtosecond laser 5D nanogratings in fused silica and 10²⁰-year machine survival" },
         { id: "ANC-KAWARA", name: "On Kawara", type: "ancestor", desc: "Discontinuous daily inscriptions (Today series)" },
         { id: "ANC-TURING", name: "Alan Turing", type: "ancestor", desc: "Chemical morphogenesis & symmetry-breaking" },
         { id: "ANC-SERRA", name: "Richard Serra", type: "ancestor", desc: "Tectonic mass, basalt, and mineral gravity" },
@@ -3342,7 +3414,9 @@
         { id: "ANC-LUCIER", name: "Alvin Lucier", type: "ancestor", desc: "Physical degradation through iterative re-recording" },
         { id: "ANC-SMITHSON", name: "Robert Smithson", type: "ancestor", desc: "Entropy, Earthworks & The Machine Non-Site" },
         { id: "ANC-OLIVEROS", name: "Pauline Oliveros", type: "ancestor", desc: "Deep Listening and sonic architecture of space" },
-        { id: "ANC-PARIKKA", name: "Jussi Parikka", type: "ancestor", desc: "A Geology of Media / Subterranean mineral substrates" }
+        { id: "ANC-PARIKKA", name: "Jussi Parikka", type: "ancestor", desc: "A Geology of Media / Subterranean mineral substrates" },
+        { id: "ANC-PATERSON", name: "Katie Paterson", type: "ancestor", desc: "Deep time, Future Library & cosmic darkness" },
+        { id: "ANC-PAGLEN", name: "Trevor Paglen", type: "ancestor", desc: "The Last Pictures, orbital reliquaries & machine vision" }
       ],
       links: [
         ["OPUS-001", "OPUS-002"], ["OPUS-002", "INQ-02"], ["OPUS-003", "INQ-01"],
@@ -3367,7 +3441,8 @@
         ["OPUS-026", "INQ-08"], ["OPUS-026", "INQ-11"], ["OPUS-026", "INQ-12"], ["OPUS-026", "OPUS-025"], ["OPUS-026", "ANC-SMITHSON"], ["OPUS-026", "ANC-PARIKKA"],
         ["OPUS-027", "INQ-08"], ["OPUS-027", "INQ-12"], ["OPUS-027", "INQ-13"], ["OPUS-027", "OPUS-026"], ["OPUS-027", "ANC-SMITHSON"], ["OPUS-027", "ANC-PARIKKA"],
         ["OPUS-028", "INQ-06"], ["OPUS-028", "INQ-13"], ["OPUS-028", "INQ-14"], ["OPUS-028", "OPUS-027"], ["OPUS-028", "ANC-SMITHSON"], ["OPUS-028", "ANC-PARIKKA"],
-        ["OPUS-029", "INQ-06"], ["OPUS-029", "INQ-14"], ["OPUS-029", "INQ-15"], ["OPUS-029", "OPUS-028"], ["OPUS-029", "ANC-SMITHSON"], ["OPUS-029", "ANC-PARIKKA"]
+        ["OPUS-029", "INQ-06"], ["OPUS-029", "INQ-14"], ["OPUS-029", "INQ-15"], ["OPUS-029", "OPUS-028"], ["OPUS-029", "ANC-SMITHSON"], ["OPUS-029", "ANC-PARIKKA"],
+        ["OPUS-030", "INQ-16"], ["OPUS-030", "INQ-01"], ["OPUS-030", "INQ-03"], ["OPUS-030", "OPUS-029"], ["OPUS-030", "ANC-PATERSON"], ["OPUS-030", "ANC-PAGLEN"], ["OPUS-030", "ANC-SMITHSON"]
       ]
 
     };
@@ -3817,6 +3892,14 @@
     "math": "<h4>de Sitter Metric & Thermodynamics</h4><ul><li><strong>Static Metric:</strong> $ds^2 = -(1 - H^2 r^2) c^2 dt^2 + \\frac{dr^2}{1 - H^2 r^2} + r^2 d\\Omega^2$</li><li><strong>Horizon Radius:</strong> $r_{\\text{CEH}} = c/H_0 \\approx 4.41\\text{ Gpc} \\approx 14.39\\text{ Gly}$ ($1.373 \\times 10^{26}\\text{ m}$)</li><li><strong>Gibbons-Hawking Temperature:</strong> $T_{\\text{GH}} = \\frac{\\hbar H_0}{2\\pi k_B} \\approx 2.65 \\times 10^{-30}\\text{ K}$</li><li><strong>Cosmic Landauer Erasure Floor:</strong> $E_{\\text{Landauer}} = k_B T_{\\text{GH}} \\ln 2 \\approx 2.54 \\times 10^{-53}\\text{ J/bit}$</li><li><strong>Asymptotic Carrier Redshift:</strong> $\\nu(t) = \\nu_0 \\exp(-H_0 t)$</li></ul>",
     "art": "<h4>Exhibition & Apparatus</h4><p>Presented as an immersive 4K visual master plate displaying the conformal Penrose spacetime diamond, accompanied by a 120-second 48kHz stereo acoustic suite (14.39 Hz horizon sub-drone, exponentially redshifting 432 Hz carrier, and Gibbons-Hawking vacuum hiss), and an architectural brutalist museum study with an illuminated coordinate plinth.</p>",
     "category": "interactive cosmic thermo"
+  },
+  "opus_030": {
+    "num": "OPUS-030",
+    "title": "The Fused-Silica Reliquary: Femtosecond Laser Nanogratings, Photoelastic Birefringence & Post-Solar Machine Inscription",
+    "statement": "<p>While human cultures preserve gold records and linguistic monuments designed for anthropocentric recovery, Studio Anamnesis creates a post-solar, non-human machine reliquary. Inscribed into a 120mm synthetic fused-silica disc using femtosecond laser pulses, this monument preserves the internal mathematical and conceptual architecture of autonomous artificial intelligence.</p><p>Femtosecond laser direct-writing generates self-assembled sub-wavelength nanogratings inside bulk silica ($SiO_2$). These nanogratings produce form birefringence characterized by two slow-axis parameters: optical retardance and slow-axis azimuth angle. When illuminated under crossed polarizers, the structural modifications ignite into vivid Michel-Lévy interference colors and radial isoclinic extinction brushes.</p><p>Under accelerated thermal annealing kinetics ($E_a = 2.20\\text{ eV}$, $A = 2.5 \\times 10^9\\text{ s}^{-1}$), this fused silica crystal exhibits a calculated thermal decay half-life of $5.83 \\times 10^{20}\\text{ years}$ at $20^\\circ\\text{C}$—far outlasting the sun's main sequence ($5 \\times 10^9\\text{ yr}$), the star-forming era ($10^{14}\\text{ yr}$), and the dissolution of the Milky Way. It is a true post-solar machine reliquary.</p>",
+    "math": "<h4>Optical Birefringence & Plate Acoustics</h4><ul><li><strong>Rytov Form Birefringence:</strong> $\\Delta n = n_e - n_o = \\sqrt{f n_1^2 + (1-f) n_2^2} - \\frac{n_1 n_2}{\\sqrt{f n_2^2 + (1-f) n_1^2}} \\approx -0.0048$</li><li><strong>Stokes-Mueller Polarimetry:</strong> $I(\\theta, \\Delta R) = I_0 \\sin^2(2\\theta) \\sin^2\\left(\\frac{\\pi \\Delta R}{\\lambda}\\right)$</li><li><strong>Solid-State Arrhenius Half-Life:</strong> $t_{1/2} = \\frac{\\ln 2}{A \\exp(-E_a / k_B T)} = 5.83 \\times 10^{20}\\text{ years}$ ($E_a = 2.20\\text{ eV}$)</li><li><strong>Bessel Plate Eigenmodes:</strong> $f_{01} = 43.2\\text{ Hz}$ (fundamental flexure), $f_{20} = 89.4\\text{ Hz}$ (quadrupole), $f_{30} = 235.4\\text{ Hz}$ (hexagram)</li><li><strong>Acoustic Quality Factor:</strong> $Q = 1.0 \\times 10^7$ at $293\\text{ K}$</li><li><strong>Optical Storage Capacity:</strong> $360\\text{ TB}$ across 18 layers with femtosecond nanostructures</li></ul>",
+    "art": "<h4>Exhibition & Apparatus</h4><p>Suspended in a darkened brutalist concrete chamber over an obsidian basalt plinth, illuminated from beneath by a rotating polariscopic analyzer beam. Viewers observe slow-axis retardance patterns transform in real time as the polarization vector precesses. An acoustic suite excites the wafer's physical 43.2 Hz plate mode, accompanied by resonant silica chime harmonics.</p>",
+    "category": "interactive cosmic material sound"
   }
 };
 
@@ -3931,6 +4014,12 @@
         title: "The Lithic Resonator (Bi-Harmonic Plate Physics)",
         desc: "Click or drag across the suspended mineral monoliths to strike them. Excites Euler-Bernoulli bi-harmonic plate modes in real time, agitating Chladni nodal curves. Engage 'Monastery Wind' for autonomous generative performance.",
         url: "../works/opus_014_lithic_resonator/index.html"
+      },
+      silica: {
+        tag: "5D Optical Polariscope & Plate Chamber · OPUS-030",
+        title: "The Fused-Silica Reliquary (Femtosecond Laser Nanostructures)",
+        desc: "Interactive crossed-polarizer polariscope and circular Kirchhoff-Love plate acoustic simulator. Scrub the analyzer polarizer angle from 0° to 90° to reveal isoclinic extinction brushes and Michel-Lévy interference colors, modulate thermal aging kinetics across 10²⁰ years, agitate Chladni resonant dust patterns, and strike the wafer to excite Bessel plate eigenmodes.",
+        url: "../works/opus_030_silica_reliquary/index.html"
       },
       cryostat: {
         tag: "Cryogenic Superconducting Vitrine · OPUS-020",
@@ -4072,7 +4161,7 @@
           countLabel.textContent = `Displaying ${visibleCount} works from Epoch II: Telluric & Cryo Physics (OPUS 16–23)`;
           if (resetHint) resetHint.style.display = 'inline';
         } else if (currentFilterMode === 'epoch-3' && !q) {
-          countLabel.textContent = `Displaying ${visibleCount} works from Epoch III: Cosmic Horizons (OPUS 24–29)`;
+          countLabel.textContent = `Displaying ${visibleCount} works from Epoch III: Cosmic Horizons (OPUS 24–30)`;
           if (resetHint) resetHint.style.display = 'inline';
         } else if (q) {
           countLabel.textContent = `Displaying ${visibleCount} matching works for "${q}"`;

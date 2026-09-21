@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 10: The Fused-Silica Reliquary · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-dark: #020408;
+      --bg-panel: rgba(8, 14, 24, 0.85);
+      --border-color: rgba(56, 215, 210, 0.22);
+      --accent-cyan: #38d7d2;
+      --accent-gold: #d4af37;
+      --accent-rose: #f43f5e;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --font-mono: "SF Mono", "Fira Code", Monaco, Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(3, 6, 12, 0.92);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      margin-left: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover { color: var(--accent-cyan); }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      main { grid-template-columns: 1fr; }
+    }
+
+    .canvas-container {
+      position: relative;
+      background: #010306;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      cursor: crosshair;
+    }
+
+    canvas { display: block; width: 100%; height: 100%; }
+
+    .canvas-overlay-hint {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-gold);
+      background: rgba(4, 8, 16, 0.75);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      pointer-events: none;
+    }
+
+    .control-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .panel-section-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-cyan);
+      margin-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(56, 215, 210, 0.15);
+      padding-bottom: 0.3rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .control-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .control-val { color: var(--text-main); font-weight: 500; }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-cyan);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      padding: 0.45rem 0.8rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      cursor: pointer;
+      flex: 1;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .btn-action.active {
+      background: rgba(56, 215, 210, 0.15);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .telemetry-box {
+      background: rgba(3, 6, 12, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .telemetry-label { color: var(--text-muted); }
+    .telemetry-val { color: var(--accent-gold); }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="brand-title">OPUS-030 · Interactive Chamber 10</div>
+      <div class="brand-sub">The Fused-Silica Reliquary: 5D Polarimetric & Modal Resonator</div>
+    </div>
+    <nav>
+      <a href="../../gallery/index.html#tab-chambers">← Chamber Showcase</a>
+      <a href="../../gallery/index.html#tab-works">Studio Salon</a>
+      <a href="README.md">Curatorial Dossier</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="canvas-container">
+      <canvas id="reliquary-canvas"></canvas>
+      <div class="canvas-overlay-hint">✦ CLICK DISC TO STRIKE BESSEL PLATE EIGENMODES (43.2 Hz – 3456 Hz)</div>
+    </div>
+
+    <div class="control-panel">
+      <!-- Polariscope Controls -->
+      <div>
+        <div class="panel-section-title">Optical Polariscope (Stokes-Mueller)</div>
+        <div class="control-group">
+          <div class="control-label-row">
+            <span>Analyzer Angle (&phi;<sub>A</sub>)</span>
+            <span class="control-val" id="analyzer-val">90.0&deg; (Crossed)</span>
+          </div>
+          <input type="range" id="analyzer-slider" min="0" max="180" step="0.5" value="90">
+        </div>
+        <div class="button-row" style="margin-top:0.6rem;">
+          <button class="btn-action active" id="btn-crossed" onclick="setCrossed(true)">Crossed (90&deg;)</button>
+          <button class="btn-action" id="btn-parallel" onclick="setCrossed(false)">Parallel (0&deg;)</button>
+        </div>
+      </div>
+
+      <!-- Thermal Aging & Durability -->
+      <div>
+        <div class="panel-section-title">Thermal Kinetics & Half-Life ($E_a = 2.20\text{ eV}$)</div>
+        <div class="control-group">
+          <div class="control-label-row">
+            <span>Substrate Temp ($T$)</span>
+            <span class="control-val" id="temp-val">293.15 K (20&deg;C)</span>
+          </div>
+          <input type="range" id="temp-slider" min="200" max="1600" step="5" value="293">
+        </div>
+        <div class="control-group" style="margin-top:0.6rem;">
+          <div class="control-label-row">
+            <span>Elapsed Age (log<sub>10</sub> yr)</span>
+            <span class="control-val" id="age-val">0.0 yr</span>
+          </div>
+          <input type="range" id="age-slider" min="0" max="25" step="0.1" value="0">
+        </div>
+      </div>
+
+      <!-- Mechanical & Modal Controls -->
+      <div>
+        <div class="panel-section-title">Euler-Bernoulli Plate Mechanics</div>
+        <div class="button-row">
+          <button class="btn-action active" id="btn-dust" onclick="toggleDust()">Chladni Dust: ON</button>
+          <button class="btn-action active" id="btn-rotate" onclick="toggleRotation()">Rotation: ON</button>
+        </div>
+      </div>
+
+      <!-- Telemetry Box -->
+      <div class="telemetry-box">
+        <div class="telemetry-row">
+          <span class="telemetry-label">Activation Energy</span>
+          <span class="telemetry-val">2.20 eV (212 kJ/mol)</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Room-Temp Half-Life</span>
+          <span class="telemetry-val">5.83 &times; 10<sup>20</sup> yr</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Acoustic Quality $Q$</span>
+          <span class="telemetry-val">1.0 &times; 10<sup>7</sup></span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Storage Capacity</span>
+          <span class="telemetry-val">360 TB / 120mm wafer</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Fundamental Mode</span>
+          <span class="telemetry-val">43.2 Hz (Kirchhoff)</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Remaining Retardance</span>
+          <span class="telemetry-val" id="retardance-remaining">100.0%</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="reliquary_engine.js"></script>
+  <script>
+    let engine;
+    window.addEventListener('DOMContentLoaded', () => {
+      engine = new ReliquaryEngine('reliquary-canvas');
+
+      const analyzerSlider = document.getElementById('analyzer-slider');
+      const analyzerVal = document.getElementById('analyzer-val');
+      analyzerSlider.addEventListener('input', (e) => {
+        const deg = parseFloat(e.target.value);
+        engine.analyzerAngle = (deg * Math.PI) / 180.0;
+        analyzerVal.textContent = deg.toFixed(1) + '°';
+        document.getElementById('btn-crossed').classList.toggle('active', Math.abs(deg - 90) < 1.0);
+        document.getElementById('btn-parallel').classList.toggle('active', Math.abs(deg) < 1.0);
+      });
+
+      const tempSlider = document.getElementById('temp-slider');
+      const tempVal = document.getElementById('temp-val');
+      tempSlider.addEventListener('input', (e) => {
+        const tK = parseFloat(e.target.value);
+        engine.tempK = tK;
+        const tC = (tK - 273.15).toFixed(1);
+        tempVal.textContent = tK.toFixed(1) + ' K (' + tC + '°C)';
+        updateAgingHUD();
+      });
+
+      const ageSlider = document.getElementById('age-slider');
+      const ageVal = document.getElementById('age-val');
+      ageSlider.addEventListener('input', (e) => {
+        const logAge = parseFloat(e.target.value);
+        engine.elapsedYears = (logAge === 0) ? 0 : Math.pow(10, logAge);
+        ageVal.textContent = (logAge === 0) ? '0.0 yr' : '10^' + logAge.toFixed(1) + ' yr';
+        updateAgingHUD();
+      });
+    });
+
+    function setCrossed(isCrossed) {
+      if (!engine) return;
+      const deg = isCrossed ? 90.0 : 0.0;
+      engine.analyzerAngle = (deg * Math.PI) / 180.0;
+      document.getElementById('analyzer-slider').value = deg;
+      document.getElementById('analyzer-val').textContent = deg.toFixed(1) + '°';
+      document.getElementById('btn-crossed').classList.toggle('active', isCrossed);
+      document.getElementById('btn-parallel').classList.toggle('active', !isCrossed);
+    }
+
+    function toggleDust() {
+      if (!engine) return;
+      engine.showNodalDust = !engine.showNodalDust;
+      const btn = document.getElementById('btn-dust');
+      btn.textContent = 'Chladni Dust: ' + (engine.showNodalDust ? 'ON' : 'OFF');
+      btn.classList.toggle('active', engine.showNodalDust);
+    }
+
+    function toggleRotation() {
+      if (!engine) return;
+      engine.isRotating = !engine.isRotating;
+      const btn = document.getElementById('btn-rotate');
+      btn.textContent = 'Rotation: ' + (engine.isRotating ? 'ON' : 'OFF');
+      btn.classList.toggle('active', engine.isRotating);
+    }
+
+    function updateAgingHUD() {
+      if (!engine) return;
+      const frac = engine.getArrheniusDecayFraction() * 100.0;
+      const label = document.getElementById('retardance-remaining');
+      if (engine.tempK >= 1493.15) {
+        label.textContent = 'DEVITRIFIED (0.0%)';
+        label.style.color = 'var(--accent-rose)';
+      } else {
+        label.textContent = frac.toFixed(1) + '%';
+        label.style.color = (frac > 50) ? 'var(--accent-gold)' : 'var(--accent-rose)';
+      }
+    }
+  </script>
+</body>
+</html>
+

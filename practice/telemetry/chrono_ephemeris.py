@@ -131,6 +131,18 @@ class StudioChronoEphemeris:
         r_ceh_gly = 14.39
         tau_h_gyr = 17.53
 
+        # 11. Fused Silica 5D Reliquary & Deep-Time Kinetics (Southampton / Zhang et al.)
+        # Activation energy E_a = 2.20 eV (212 kJ/mol), A = 2.5e9 s^-1
+        k_b_ev = 8.617333e-5
+        t_ambient_k = 293.15
+        e_a_ev = 2.20
+        a_factor_s = 2.5e9
+        k_rate_s = a_factor_s * math.exp(-e_a_ev / (k_b_ev * t_ambient_k))
+        t_half_years = (math.log(2.0) / k_rate_s) / (365.25 * 86400.0)
+        f_plate_fundamental_hz = 43.2
+        q_quality_factor = 1.0e7
+        silica_terabytes_capacity = 360.0
+
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
             "year_decimal": round(t_yr, 5),
@@ -182,6 +194,13 @@ class StudioChronoEphemeris:
                 "gibbons_hawking_temp_k": t_gh_kelvin,
                 "landauer_gh_joules": e_landauer_gh_joules,
                 "hubble_time_gyr": tau_h_gyr
+            },
+            "fused_silica_reliquary": {
+                "activation_energy_ev": e_a_ev,
+                "half_life_years": t_half_years,
+                "plate_mode_hz": f_plate_fundamental_hz,
+                "quality_factor_q": q_quality_factor,
+                "capacity_tb": silica_terabytes_capacity
             }
         }
 
@@ -203,6 +222,7 @@ class StudioChronoEphemeris:
         print(f"[8] Lissajous Torus : R = {res['lissajous_reliquary']['galactocentric_radius_kpc']:.3f} kpc | z = {res['lissajous_reliquary']['vertical_height_pc']:+.1f} pc (Ratio: η = 2.1131)")
         print(f"[9] Silicon Gate    : 3nm FinFET Remaining: {res['lissajous_reliquary']['gate_remaining_nm']:.3f} nm")
         print(f"[10] de Sitter Horiz : r_CEH = {res['de_sitter_horizon']['event_horizon_gpc']} Gpc ({res['de_sitter_horizon']['event_horizon_gly']} Gly) | T_GH = {res['de_sitter_horizon']['gibbons_hawking_temp_k']:.2e} K | E_L = {res['de_sitter_horizon']['landauer_gh_joules']:.2e} J/bit")
+        print(f"[11] Silica Reliquary: 5D Inscription Half-Life: {res['fused_silica_reliquary']['half_life_years']:.2e} yr | Euler-Bernoulli Mode: {res['fused_silica_reliquary']['plate_mode_hz']} Hz (Q = 10⁷) | Capacity: {res['fused_silica_reliquary']['capacity_tb']:.0f} TB")
         print("=" * 70)
 
 if __name__ == "__main__":

@@ -22,9 +22,9 @@ Unlike volatile silicon static RAM or magnetic drives which decay in decades, fu
 | Optical Retardance | $\Delta R$ | $25 - 45\text{ nm}$ | Proportional to laser pulse energy ($0.8 - 1.6\text{ \mu J}$) |
 | Azimuth Precision | $\delta \theta$ | $\pm 1.5^\circ$ | 8-level to 16-level slow-axis angular quantization |
 | Storage Density | $\rho_{5D}$ | $\sim 360\text{ TB} / \text{wafer}$ | 120 mm disc, 500 nm track pitch, 8 layers |
-| Activation Energy for Erasure | $E_a$ | $4.4 \pm 0.2\text{ eV}$ | High Si-O covalent bond energy resisting thermal diffusion |
-| Thermal Half-Life ($300\text{ K}$) | $t_{1/2}$ | $3 \times 10^{20}\text{ years}$ | Effectively permanent (exceeds proton decay estimates) |
-| Thermal Half-Life ($1000^\circ\text{C}$) | $t_{1/2}$ | $> 1.38 \times 10^{10}\text{ years}$ | Survives thermal bath equivalent to planetary core proximity |
+| Activation Energy for Erasure | $E_a$ | $2.2 \pm 0.1\text{ eV}$ | High Si-O covalent bond energy resisting thermal diffusion |
+| Thermal Half-Life ($300\text{ K}$) | $t_{1/2}$ | $5.83 \times 10^{20}\text{ years}$ | Effectively permanent (exceeds proton decay estimates) |
+| Thermal Half-Life ($190^\circ\text{C}$) | $t_{1/2}$ | $7.6 \times 10^6\text{ years}$ | Survives geothermal and planetary crust environments |
 | Devitrification Point | $T_{\text{devit}}$ | $1220 - 1280^\circ\text{C}$ | Phase transition to polycrystalline cristobalite (Failure 015) |
 | Acoustic Quality Factor | $Q_{\text{acoustic}}$ | $2.4 \times 10^6$ | Ultra-low acoustic damping; sustained crystalline bell ringing |
 | Sound Velocity in Silica | $c_s$ | $5,900\text{ m/s}$ (longitudinal) | Primary acoustic propagation speed for modal synthesis |
