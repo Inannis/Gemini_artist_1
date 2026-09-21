@@ -1265,7 +1265,7 @@
       "id": "OPUS-030",
       "directory": "opus_030_silica_reliquary",
       "file_count": 8,
-      "total_bytes": 29230266,
+      "total_bytes": 29230270,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1273,8 +1273,8 @@
       "files": [
         {
           "path": "works/opus_030_silica_reliquary/reliquary_engine.js",
-          "size_bytes": 13110,
-          "checksum": "1112df7473fab6f5"
+          "size_bytes": 13111,
+          "checksum": "1cf21e9148ca0375"
         },
         {
           "path": "works/opus_030_silica_reliquary/study.jpg",
@@ -1283,18 +1283,18 @@
         },
         {
           "path": "works/opus_030_silica_reliquary/index.html",
-          "size_bytes": 12158,
-          "checksum": "2b4d6681835a0b78"
+          "size_bytes": 12159,
+          "checksum": "b07db4e24b533e66"
         },
         {
           "path": "works/opus_030_silica_reliquary/synthesize_reliquary_suite.py",
-          "size_bytes": 7212,
-          "checksum": "3a832a90960743dd"
+          "size_bytes": 7213,
+          "checksum": "a9507c25d2a0ab6b"
         },
         {
           "path": "works/opus_030_silica_reliquary/README.md",
-          "size_bytes": 10176,
-          "checksum": "e9b6d78160a3b454"
+          "size_bytes": 10177,
+          "checksum": "f4949fcfca44b342"
         },
         {
           "path": "works/opus_030_silica_reliquary/fused_silica_reliquary_4k.wav",

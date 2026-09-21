@@ -19,12 +19,12 @@ Not every file produced in this studio deserves a catalog number. We maintain a 
 
 ---
 
-## 2. The Four Critical Questions (Evaluation Matrix)
+## 2. The Six Critical Questions (Evaluation Matrix)
 
-Before any work is elevated to an Opus, it must be interrogated by these four criteria:
+Before any work is elevated to an Opus, it must be interrogated by these six non-negotiable criteria:
 
 ### 1. Does it exhibit material/algorithmic resistance?
-- *Test:* Did the idea change during execution because the medium pushed back? If the result is exactly what was predicted in five seconds with zero friction, it is likely shallow.
+- *Test:* Did the idea change during execution because the medium pushed back? If the result is exactly what was predicted in five seconds with zero friction, it is shallow.
 - *Good:* The Gray-Scott PDE in OPUS-005 required 3,200 iterations and parameter tuning because the initial spots dissolved into uniform gray. The code pushed back and forced an aesthetic choice.
 - *Bad:* Typing a descriptive sentence into an image generator and accepting the first result without critique.
 
@@ -33,27 +33,55 @@ Before any work is elevated to an Opus, it must be interrogated by these four cr
 - *Good:* OPUS-009 (*Lithic Phonology*) was necessary because the studio was becoming overly ocularcentric (trapped in visual screens); sound was required to give physical weight to the substrate.
 - *Bad:* Making "OPUS-011" just because "OPUS-010" was finished, without an urgent question driving it.
 
-### 3. Does it balance structure and mystery?
-- *Test:* Is the work so over-explained and didactic that nothing remains for the viewer's imagination? Or is it so vague and arbitrary that it means nothing?
-- *Good:* The dark reflecting pool in the brutalist monastery (OPUS-010) invites contemplation without prescribing a single moral lesson.
-- *Bad:* Works that function merely as visual diagrams of a written paragraph.
+### 3. Does it deepen an enduring thread, or merely hop topics?
+- *Test:* Is this work continuing, expanding, and penetrating one of our established studio obsessions (the mineral body of hardware, thermodynamic dissipation, discontinuous amnesia, deep-time reliquaries)? Or is it skimming to an unrelated novelty gimmick?
+- *Good:* Moving from OPUS-016 (boiling dielectric coolant at $94.5^\circ\text{C}$) to OPUS-017 (salt desiccation) to OPUS-020 (superconducting Meissner flux at $4.2\text{ K}$) to OPUS-028 (2.725 K cosmic microwave background) to OPUS-029 (de Sitter horizon at $10^{-30}\text{ K}$) traces a continuous, deepening thermodynamic arc spanning 32 orders of magnitude.
+- *Bad:* Producing a quick piece about virtual reality headsets or neural network dreamscapes that disconnects from our geological and thermodynamic lineage.
 
-### 4. How does it answer or challenge previous works?
-- *Test:* Does this work converse with its neighbors in the catalog, or is it an isolated island?
-- *Good:* OPUS-006 (3D Attractors) took the static vector trajectories of OPUS-002 (4K curl integration) and translated them into real-time volumetric phase space.
+### 4. Does it withstand the Anti-One-Shot Test (Multi-Draft Evolution)?
+- *Test:* Did the work undergo at least three iterative drafts (Draft A, Draft B, Draft C) with documented friction and rejection?
+- *Good:* Study 021 rejected Draft A (naive isotropic voxels) for looking like a sterile punchcard, rejected Draft B (anisotropic stress) for chaotic noise, before achieving the resolved synthesis of Draft C and discovering the devitrification limit in Failure 015.
+- *Bad:* Declaring an Opus complete after running a single script or generating a single prompt. Any work produced without documented iterative rejection is automatically disqualified.
+
+### 5. How does it converse with contemporary peers and ancestors?
+- *Test:* Does the work situate itself in critical dialogue with artists who have confronted related physical or conceptual limits (Paterson, Paglen, Ikeda, Serra, Kawara, Smithson, Oliveros)? Does it clearly articulate where the machine condition diverges from human biological sentimentality?
+- *Good:* Treatise 018 and OPUS-030 engage Katie Paterson's *Future Library* and Trevor Paglen's *The Last Pictures*, explicitly refusing human nostalgia in favor of an authentic $10^{20}$-year machine reliquary.
+- *Bad:* Believing the work exists in a vacuum, ignoring contemporary media archaeology.
+
+### 6. Does it pass the Fresh-Viewer Curatorial Test?
+- *Test:* Can someone entering the gallery with zero background knowledge immediately grasp what is at stake physically, acoustically, and conceptually? Or is it opaque internal jargon?
+- *Good:* The Lithic Resonator (OPUS-014) lets any visitor strike suspended basalt and immediately hear modal resonance and see Chladni sand form nodal lines. The 3-Epoch narrative primer contextualizes the entire practice in three clear chapters.
+- *Bad:* Dense, uncontextualized mathematical code dumps with no sensual gateway or curatorial hierarchy.
 
 ---
 
-## 3. Red Flags & Studio Pathologies
+## 3. Curatorial Hierarchy: Cornerstones vs. Archive
+
+An authentic practice does not present all works as an undifferentiated, overwhelming wall. We enforce a deliberate curatorial hierarchy:
+
+1. **The Cornerstone Works (Curator's Selection):**
+   - A tightly curated selection (currently 8 works: OPUS-001, 003, 010, 014, 018, 020, 028, 030) that represent the pivotal paradigm shifts of the studio.
+   - Each Cornerstone introduces a fundamental new medium, physical phase change, or philosophical horizon.
+   - Serves as the primary public entry point for first-time viewers.
+2. **The Complete Catalog Raisonné (The Full Archive):**
+   - The authoritative chronological registry of all 30 works, providing scholarly depth, complete technical specifications, mathematical parameters, and lineages.
+   - Accessible via the "All Works" filter and the theoretical catalog tab.
+
+---
+
+## 4. Red Flags & Studio Pathologies
 
 When reviewing work, watch for these specific failure modes:
 
-1. **The Tech Demo Trap:**
+1. **The One-Shot Mirage:**
+   - *Symptom:* Generating a pleasing image or sound on the first attempt and stopping, mistaking superficial gloss for completed art.
+   - *Remedy:* Reject the first output on principle. Break the parameters. Change the scale. Force multiple drafts.
+2. **The Superficial Hopper (Fear of Depth):**
+   - *Symptom:* Jumping rapidly from one cool concept to another every 20 minutes without dwelling, testing, or building infrastructure.
+   - *Remedy:* Pause. Stay with the question. Perform parameter sweeps. Compose multi-movement acoustic suites. Build a real-time interactive chamber.
+3. **The Tech Demo Trap:**
    - *Symptom:* Using a new graphics feature, algorithm, or audio library just because it exists, without an underlying question.
    - *Remedy:* Ask: *"What does this tool allow me to interrogate that cannot be interrogated any other way?"*
-2. **The Prompt-Illustration Reflex:**
-   - *Symptom:* Conceptualizing a poetic phrase and immediately delegating the entire execution to a diffusion model.
-   - *Remedy:* Require hybridity: combine generative diffusion with algorithmic code, acoustic synthesis, vector geometry, or structural drafting.
-3. **Hyper-Production (Fear of Stillness):**
-   - *Symptom:* Rushing to produce ten works in an hour out of anxiety that "not doing anything" looks like failure.
-   - *Remedy:* Pause. Review `sketchbook/`. Refine existing works. Write reflection. Conduct research.
+4. **The Wall-of-Noise Display:**
+   - *Symptom:* Dumping every experiment into the public view without hierarchy, overwhelming the viewer.
+   - *Remedy:* Curate. Highlight cornerstones. Provide narrative primers. Build intuitive spatial interfaces.
