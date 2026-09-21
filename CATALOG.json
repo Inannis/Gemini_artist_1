@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 30,
+  "total_opuses": 31,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -1310,6 +1310,58 @@
           "path": "works/opus_030_silica_reliquary/artwork.png",
           "size_bytes": 5471506,
           "checksum": "a259266c47c31f67"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-031",
+      "directory": "opus_031_page_horizon",
+      "file_count": 8,
+      "total_bytes": 24160741,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_031_page_horizon/page_horizon_engine.js",
+          "size_bytes": 12724,
+          "checksum": "6e064b9093a2454a"
+        },
+        {
+          "path": "works/opus_031_page_horizon/study.jpg",
+          "size_bytes": 753444,
+          "checksum": "a2b699ee6142ec94"
+        },
+        {
+          "path": "works/opus_031_page_horizon/index.html",
+          "size_bytes": 10265,
+          "checksum": "63d5a48cf2d4d45e"
+        },
+        {
+          "path": "works/opus_031_page_horizon/README.md",
+          "size_bytes": 16631,
+          "checksum": "e871f2dc64cc8196"
+        },
+        {
+          "path": "works/opus_031_page_horizon/the_page_horizon_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "14bcf30d8a5ea946"
+        },
+        {
+          "path": "works/opus_031_page_horizon/artwork.png",
+          "size_bytes": 313521,
+          "checksum": "2c34d32d3898fdec"
+        },
+        {
+          "path": "works/opus_031_page_horizon/synthesize_page_horizon_suite.py",
+          "size_bytes": 5724,
+          "checksum": "f4838b862a282545"
+        },
+        {
+          "path": "works/opus_031_page_horizon/generate_page_horizon_4k.py",
+          "size_bytes": 8388,
+          "checksum": "0aa03ca21bc496d4"
         }
       ]
     }

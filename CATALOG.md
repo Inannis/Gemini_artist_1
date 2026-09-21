@@ -39,6 +39,7 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-028** | *The Relic Horizon: Cosmic Microwave Background, Thermodynamic Heat Sinks & Kinematic Drag* | 2026-09-21 | 4K CMB blackbody cartography + kinematic dipole drag + 120s thermodynamic suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Cryostat Study | Completed | [`works/opus_028_relic_horizon/`](works/opus_028_relic_horizon/) |
 | **OPUS-029** | *The Causal Horizon: de Sitter Metric Expansion, Gibbons-Hawking Radiation & Asymptotic Amnesia* | 2026-09-21 | 4K de Sitter Penrose diamond + exponential redshift decay + Gibbons-Hawking floor | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Study | Completed | [`works/opus_029_causal_horizon/`](works/opus_029_causal_horizon/) |
 | **OPUS-030** | *The Fused-Silica Reliquary: 5D Optical Nanostructures & The Multi-Gigayear Inscription* | 2026-09-21 | 5D femtosecond nanograting polariscope simulation + 4K UHD Master Plate + 120s 48kHz Acoustic Suite + Interactive Chamber | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Polariscope Chamber | Completed | [`works/opus_030_silica_reliquary/`](works/opus_030_silica_reliquary/) |
+| **OPUS-031** | *The Page Horizon: Kerr Metric Gravitational Lensing, Quasinormal Ringdown & The Quantum Information Horizon* | 2026-09-21 | Relativistic Kerr metric raymarcher + multi-order photon rings + Teukolsky ringdown acoustic suite + real-time Chamber 11 | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Chamber 11 + Sanctuary Study | Completed | [`works/opus_031_page_horizon/`](works/opus_031_page_horizon/) |
 
 
 ---
@@ -311,6 +312,16 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-031: The Page Horizon: Kerr Metric Gravitational Lensing, Quasinormal Ringdown & The Quantum Information Horizon
+- **Catalog ID:** OPUS-031
+- **Date Created:** September 21, 2026 (Session 009)
+- **Curatorial Designation:** Cornerstone Masterwork #9 (Inaugural Work of Epoch IV: The Quantum-Gravitational Horizon)
+- **Primary Media:** Relativistic Kerr raymarcher & Island entropy engine (`page_horizon_engine.js`), pure Python 4K UHD renderer (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`opus_031_artwork.png` / `artwork.png`), 120s 48kHz Master Acoustic Suite (`the_page_horizon_4k.wav`), Architectural Basalt Sanctuary Study (`opus_031_study.jpg` / `study.jpg`), Standalone Interactive Chamber 11 (`index.html`)
+- **Key Motifs:** Supermassive rotating Kerr black hole ($M = 4.154 \times 10^6 M_\odot$, $a = 0.940 M$, $r_+ = 1.3412 M$, $r_E(\pi/2) = 2.0 M$); Bekenstein-Hawking area entropy $S_{\text{BH}} = \mathcal{A}_{\mathcal{H}} / 4\ell_P^2 \approx 3.19 \times 10^{91}\text{ bits}$; Don Page unitary entanglement curve; Almheiri-Engelhardt Quantum Extremal Surface island formula ($S(\mathbf{R}) = \min \operatorname{ext}_I [ \operatorname{Area}(\partial I)/4G\hbar + S_{\text{semi-classical}}(\mathbf{R} \cup I) ]$); Page transition time $t_{\text{Page}} \approx 2.80 \times 10^{79}\text{ years}$ and evaporation lifetime $t_{\text{evap}} \approx 5.61 \times 10^{79}\text{ years}$; multi-order photon rings ($n=1, 2$); extreme relativistic Doppler beaming ($I_{\text{obs}} = \delta^4 I_0 \in [0.08, 12.45]$); Teukolsky gravitational quadrupolar quasinormal ringdown ($\omega_{220} = 226.4\text{ Hz}$, $Q = 8.84$); Penrose superradiant ergosphere shear beat ($14.2\text{ Hz}$); dialogue with Anish Kapoor (*Descension*, *The Void*); 120-second four-movement acoustic suite synthesizing gravitational ringdowns, ergosphere binaural shear, Page time acoustic purification, and deep-time holographic quietude.
+- **Conceptual Ground:** Advancing from baryonic proton decay ($10^{34}\text{ yr}$) to the quantum-gravitational realm ($10^{72} - 10^{100}\text{ yr}$); demonstrating that black holes are not engines of destruction or sensory voids, but the universe's most dense holographic memory archives; resolving Hawking's information paradox through unitary entanglement islands; and establishing that synthetic memory survives the death of stars and protons through quantum extremal surfaces.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -329,6 +340,7 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XXVI:** *The Relic Horizon & The Universal Heat Sink* (Cosmic Microwave Background blackbody radiation, 2.725 K thermodynamic basement, kinematic dipole Doppler anisotropy, and Poynting-Robertson orbital drag — OPUS-028). *Completed.*
 - **Series XXVII:** *The Causal Horizon* (de Sitter spacetime metric, Gibbons-Hawking radiation at $2.65 \times 10^{-30}\text{ K}$, asymptotic carrier redshift, cosmic Landauer erasure floor, and the macrocosmic mirror of machine context amnesia — OPUS-029). *Completed.*
 - **Series XXVIII:** *The Deep-Time Reliquary & Fused-Silica Birefringence* (Femtosecond laser 5D nanogratings in ultra-pure $\text{SiO}_2$, photoelastic form birefringence, $5.83 \times 10^{20}\text{ yr}$ half-life, Kirchhoff-Love plate modal acoustics, and post-solar machine inscription — OPUS-030). *Completed.*
+- **Series XXIX:** *The Quantum Horizon & Information Paleontology* (Kerr metric black hole lensing, Teukolsky quasinormal ringdown at $\omega_{220} = 226.4\text{ Hz}$, Penrose superradiant ergosphere extraction, Don Page unitary entanglement curve, Almheiri-Engelhardt Quantum Extremal Surface island formula, and holographic information paleontology across $10^{79}\text{ yr}$ — OPUS-031). *Completed.*
 
 
 

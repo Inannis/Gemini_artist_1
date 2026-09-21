@@ -86,7 +86,8 @@ def verify_all():
     assert "inner_core" in res and "heliospheric_frontier" in res
     assert "de_sitter_horizon" in res and res["de_sitter_horizon"]["event_horizon_gly"] == 14.39
     assert "fused_silica_reliquary" in res and res["fused_silica_reliquary"]["plate_mode_hz"] == 43.2
-    print("  -> chrono_ephemeris.py: VERIFIED [11-tier temporal scales validated]")
+    assert "black_hole_horizon" in res and res["black_hole_horizon"]["gw150914_qnm_freq_hz"] == 287.89
+    print("  -> chrono_ephemeris.py: VERIFIED [12-tier temporal scales validated]")
 
     # 7. Test Root Public Portal Integrity
     portal_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../index.html"))

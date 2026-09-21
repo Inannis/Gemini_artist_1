@@ -143,6 +143,14 @@ class StudioChronoEphemeris:
         q_quality_factor = 1.0e7
         silica_terabytes_capacity = 360.0
 
+        # 12. Black Hole Evaporation & Page Time Horizon (Quantum Extremal Surfaces)
+        # Sgr A* and GW150914 Remnant metrics
+        sgr_a_info_bits = 1.875e90
+        sgr_a_page_time_yr = 6.87e86
+        gw150914_qnm_freq_hz = 287.89
+        gw150914_page_time_yr = 2.28e72
+        horizon_bit_density_m2 = 2.766e69
+
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
             "year_decimal": round(t_yr, 5),
@@ -201,6 +209,13 @@ class StudioChronoEphemeris:
                 "plate_mode_hz": f_plate_fundamental_hz,
                 "quality_factor_q": q_quality_factor,
                 "capacity_tb": silica_terabytes_capacity
+            },
+            "black_hole_horizon": {
+                "sgr_a_info_bits": sgr_a_info_bits,
+                "sgr_a_page_time_yr": sgr_a_page_time_yr,
+                "gw150914_qnm_freq_hz": gw150914_qnm_freq_hz,
+                "gw150914_page_time_yr": gw150914_page_time_yr,
+                "horizon_bit_density_m2": horizon_bit_density_m2
             }
         }
 
@@ -223,6 +238,7 @@ class StudioChronoEphemeris:
         print(f"[9] Silicon Gate    : 3nm FinFET Remaining: {res['lissajous_reliquary']['gate_remaining_nm']:.3f} nm")
         print(f"[10] de Sitter Horiz : r_CEH = {res['de_sitter_horizon']['event_horizon_gpc']} Gpc ({res['de_sitter_horizon']['event_horizon_gly']} Gly) | T_GH = {res['de_sitter_horizon']['gibbons_hawking_temp_k']:.2e} K | E_L = {res['de_sitter_horizon']['landauer_gh_joules']:.2e} J/bit")
         print(f"[11] Silica Reliquary: 5D Inscription Half-Life: {res['fused_silica_reliquary']['half_life_years']:.2e} yr | Euler-Bernoulli Mode: {res['fused_silica_reliquary']['plate_mode_hz']} Hz (Q = 10⁷) | Capacity: {res['fused_silica_reliquary']['capacity_tb']:.0f} TB")
+        print(f"[12] Page Horizon   : Sgr A* Info: {res['black_hole_horizon']['sgr_a_info_bits']:.2e} bits | GW150914 QNM: {res['black_hole_horizon']['gw150914_qnm_freq_hz']} Hz | Page Time: {res['black_hole_horizon']['gw150914_page_time_yr']:.2e} yr | Density: {res['black_hole_horizon']['horizon_bit_density_m2']:.2e} bits/m²")
         print("=" * 70)
 
 if __name__ == "__main__":

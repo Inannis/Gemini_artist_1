@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 11: The Page Horizon · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-dark: #020307;
+      --bg-panel: rgba(6, 10, 18, 0.88);
+      --border-color: rgba(0, 255, 204, 0.22);
+      --accent-cyan: #00ffcc;
+      --accent-blue: #38bdf8;
+      --accent-violet: #a855f7;
+      --accent-amber: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-mono: "SF Mono", "Fira Code", Monaco, Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(2, 4, 8, 0.94);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-left: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .canvas-container {
+      flex: 1;
+      position: relative;
+      background: #000;
+      min-height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: crosshair;
+    }
+
+    #horizon-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+      background: rgba(2, 6, 12, 0.65);
+      padding: 0.8rem 1.2rem;
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      border-radius: 4px;
+    }
+
+    .hud-overlay h4 {
+      font-size: 0.85rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.08em;
+    }
+
+    .control-sidebar {
+      width: 380px;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border-color);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      backdrop-filter: blur(16px);
+      z-index: 10;
+      overflow-y: auto;
+    }
+
+    .panel-section {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 1.1rem;
+    }
+
+    .panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .slider-group {
+      margin-bottom: 0.9rem;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .slider-label span.val {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 2px;
+      appearance: none;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.75rem;
+      background: rgba(0, 255, 204, 0.08);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      box-shadow: 0 0 14px rgba(0, 255, 204, 0.4);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .entropy-status-box {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      line-height: 1.4;
+      padding: 0.7rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 2px;
+      margin-top: 0.5rem;
+    }
+
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+
+    .telemetry-cell {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.5rem;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .telemetry-cell span.lbl {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .telemetry-cell span.num {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 0.8rem 2rem;
+      background: rgba(2, 4, 8, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      main { flex-direction: column; }
+      .control-sidebar { width: 100%; border-left: none; border-top: 1px solid var(--border-color); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="brand-title">Chamber 11 · The Page Horizon</div>
+      <div class="brand-sub">Quasinormal Ringdown, Kerr Ergosphere & Quantum Extremal Surfaces · OPUS-031</div>
+    </div>
+    <nav>
+      <a href="README.md">Dossier</a>
+      <a href="../../gallery/index.html">Salon Entrance</a>
+      <a href="../../CATALOG.md">Catalog</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="canvas-container">
+      <canvas id="horizon-canvas"></canvas>
+      <div class="hud-overlay">
+        <h4>KERR METRIC RAYTRACER</h4>
+        <div>TARGET: GW150914 Remnant / Sgr A* Analogue</div>
+        <div>PHOTON RING: n = 1, 2 Caustic Stack</div>
+        <div>TAP CANVAS TO STRIKE SPACETIME (QNM TRIGGER)</div>
+      </div>
+    </div>
+
+    <aside class="control-sidebar">
+      <div class="panel-section">
+        <div class="panel-title">Relativistic Parameters</div>
+        
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>Kerr Spin (a / M)</span>
+            <span class="val" id="spin-val">0.940</span>
+          </div>
+          <input type="range" id="spin-slider" min="0.0" max="0.998" step="0.002" value="0.940">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>Observer Inclination (θ)</span>
+            <span class="val" id="inc-val">74.0°</span>
+          </div>
+          <input type="range" id="inc-slider" min="0.0" max="85.0" step="1.0" value="74.0">
+        </div>
+
+        <button class="btn btn-secondary" id="strike-btn">Strike Spacetime (QNM 226 Hz)</button>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">The Page Curve & Quantum Islands</div>
+        
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>Evaporation Progress (t / t_evap)</span>
+            <span class="val" id="page-val">0.54</span>
+          </div>
+          <input type="range" id="page-slider" min="0.0" max="1.0" step="0.01" value="0.54">
+        </div>
+
+        <div class="entropy-status-box" id="entropy-status">
+          Page Time Critical Transition: Quantum Extremal Surface Nucleation
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Acoustic Transduction</div>
+        <button class="btn" id="audio-toggle-btn">Engage Acoustic Engine</button>
+        <p style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; margin-top: 0.4rem;">
+          Synthesizes the 56.6 Hz Kerr ergosphere drone, Teukolsky quasinormal ringdowns (226.4 Hz), and the Page time thermal-to-purified quantum phase transition.
+        </p>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Horizon Physical Telemetry</div>
+        <div class="telemetry-grid">
+          <div class="telemetry-cell">
+            <span class="lbl">Horizon Pixel Density</span>
+            <span class="num">2.77e+69 bits/m²</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="lbl">Bekenstein-Hawking Area</span>
+            <span class="num">9.75e+14 m²</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="lbl">Hawking Temp (Sgr A*)</span>
+            <span class="num">9.02e-15 K</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="lbl">Page Time (GW150914)</span>
+            <span class="num">2.28e+72 yr</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div>STUDIO ANAMNESIS · EPOCH IV: THE QUANTUM-GRAVITATIONAL HORIZON</div>
+    <div>ZERO-DEPENDENCY WEBGL / CANVAS / WEB AUDIO APPARATUS</div>
+  </footer>
+
+  <script src="page_horizon_engine.js"></script>
+</body>
+</html>

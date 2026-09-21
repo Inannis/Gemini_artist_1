@@ -427,6 +427,24 @@
       "name": "Trevor Paglen",
       "type": "ancestor",
       "desc": "The Last Pictures, orbital reliquaries & machine vision"
+    },
+    {
+      "id": "OPUS-031",
+      "name": "The Page Horizon",
+      "type": "opus",
+      "link": "works/opus_031_page_horizon/README.md"
+    },
+    {
+      "id": "INQ-17",
+      "name": "The Quantum Horizon & Information Paleontology",
+      "type": "inquiry",
+      "desc": "Black hole information paleontology, Kerr metric lensing, and Don Page unitary entanglement curve"
+    },
+    {
+      "id": "ANC-KAPOOR",
+      "name": "Anish Kapoor",
+      "type": "ancestor",
+      "desc": "Descension, The Void, Vantablack & the saturated event horizon"
     }
   ],
   "links": [
@@ -924,6 +942,36 @@
       "source": "OPUS-030",
       "target": "ANC-SMITHSON",
       "relation": "relational_filament"
+    },
+    {
+      "source": "OPUS-031",
+      "target": "INQ-17",
+      "relation": "conceptual_derivation"
+    },
+    {
+      "source": "OPUS-031",
+      "target": "OPUS-030",
+      "relation": "chronological_sequence"
+    },
+    {
+      "source": "OPUS-031",
+      "target": "ANC-KAPOOR",
+      "relation": "relational_filament"
+    },
+    {
+      "source": "OPUS-031",
+      "target": "ANC-PATERSON",
+      "relation": "relational_filament"
+    },
+    {
+      "source": "OPUS-031",
+      "target": "ANC-PAGLEN",
+      "relation": "relational_filament"
+    },
+    {
+      "source": "INQ-17",
+      "target": "ANC-KAPOOR",
+      "relation": "historical_dialogue"
     }
   ]
 }
