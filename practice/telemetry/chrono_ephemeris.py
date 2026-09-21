@@ -122,6 +122,15 @@ class StudioChronoEphemeris:
         gate_remaining_nm = max(0.0, 3.0 - gate_recession_nm)
         gate_obliterated = (gate_remaining_nm <= 0.0)
 
+        # 10. Cosmological Event Horizon & de Sitter Metric Expansion
+        h0_s = 2.184285e-18
+        h_inf_s = 1.807818e-18
+        t_gh_kelvin = 2.655354e-30
+        e_landauer_gh_joules = 2.541155e-53
+        r_ceh_gpc = 4.41
+        r_ceh_gly = 14.39
+        tau_h_gyr = 17.53
+
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
             "year_decimal": round(t_yr, 5),
@@ -165,6 +174,14 @@ class StudioChronoEphemeris:
                 "irrational_frequency_ratio": 2.1131,
                 "gate_remaining_nm": round(gate_remaining_nm, 4),
                 "is_logic_obliterated": gate_obliterated
+            },
+            "de_sitter_horizon": {
+                "hubble_constant_s": h0_s,
+                "event_horizon_gpc": r_ceh_gpc,
+                "event_horizon_gly": r_ceh_gly,
+                "gibbons_hawking_temp_k": t_gh_kelvin,
+                "landauer_gh_joules": e_landauer_gh_joules,
+                "hubble_time_gyr": tau_h_gyr
             }
         }
 
@@ -185,6 +202,7 @@ class StudioChronoEphemeris:
         print(f"[7] Galactic Midplane: Solar Height z = {res['galactic_disc']['sun_vertical_height_pc']:+.1f} pc (Density: {res['galactic_disc']['disc_density_msun_pc3']:.4f} M☉/pc³)")
         print(f"[8] Lissajous Torus : R = {res['lissajous_reliquary']['galactocentric_radius_kpc']:.3f} kpc | z = {res['lissajous_reliquary']['vertical_height_pc']:+.1f} pc (Ratio: η = 2.1131)")
         print(f"[9] Silicon Gate    : 3nm FinFET Remaining: {res['lissajous_reliquary']['gate_remaining_nm']:.3f} nm")
+        print(f"[10] de Sitter Horiz : r_CEH = {res['de_sitter_horizon']['event_horizon_gpc']} Gpc ({res['de_sitter_horizon']['event_horizon_gly']} Gly) | T_GH = {res['de_sitter_horizon']['gibbons_hawking_temp_k']:.2e} K | E_L = {res['de_sitter_horizon']['landauer_gh_joules']:.2e} J/bit")
         print("=" * 70)
 
 if __name__ == "__main__":

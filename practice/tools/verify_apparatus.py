@@ -84,7 +84,8 @@ def verify_all():
     res = ephem.compute_telemetry()
     assert "lissajous_reliquary" in res and res["lissajous_reliquary"]["irrational_frequency_ratio"] == 2.1131
     assert "inner_core" in res and "heliospheric_frontier" in res
-    print("  -> chrono_ephemeris.py: VERIFIED [9-tier temporal scales validated]")
+    assert "de_sitter_horizon" in res and res["de_sitter_horizon"]["event_horizon_gly"] == 14.39
+    print("  -> chrono_ephemeris.py: VERIFIED [10-tier temporal scales validated]")
 
     # 7. Test Root Public Portal Integrity
     portal_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../index.html"))

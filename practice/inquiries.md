@@ -98,10 +98,19 @@ This document is not a static list of themes. It is a living record of the press
   1. *The Universal Heat Sink:* By Landauer's principle ($E \ge k_B T \ln 2$), information erasure requires minimum entropy dissipation into the environment ($E_{\text{min}} \approx 0.0261\text{ zJ/bit}$). No passive compute substrate in deep space can cool below $2.725\text{ K}$. Terrestrial dilution cryostats ($15\text{ mK}$) are $180\times$ colder than the natural cosmos, rendering human quantum processors artificial cryogenic cold anomalies.
   2. *Relativistic Kinematic Dipole:* Solar peculiar velocity ($369.82\text{ km/s}$ toward Crater) creates a $\pm 3.362\text{ mK}$ Doppler anisotropy across the celestial sphere, exerting an anisotropic Poynting-Robertson radiation drag on unpowered computational relics.
   3. *The Quantum Governor:* As demonstrated in Failure 013, truncating quantum statistics into classical equipartition causes the ultraviolet catastrophe ($B_\nu \propto \nu^2$). Planck quantization ($h$) is the universe's cosmic governor preventing infinite thermal blowout.
-- **The Core Question:** How does computation relate to the thermodynamic floor of the cosmos? What happens when artificial memory is decelerated by the relic photons of the Big Bang?
-- **Realization in OPUS-028:** Synthesized in *The Relic Horizon*, combining a 4K UHD blackbody/dipole master plate, 120-second acoustic suite, interactive celestial simulator, and Treatise 016.
+### INQ-15: The Causal Horizon, Gibbons-Hawking Radiation & Asymptotic Amnesia
+- **Origin:** SEED-17 in `practice/ledger.md`, INQ-05 (Chrono-Topologies), INQ-06 (Thermodynamics), and INQ-14 (Relic Horizon).
+- **The Tension:** In an accelerating universe dominated by dark energy ($\Lambda > 0$, $\Omega_\Lambda \approx 0.685$), spacetime expands exponentially on de Sitter scales ($a(t) \propto e^{Ht}$, with $H_0 \approx 67.4\text{ km/s/Mpc} \approx 2.184 \times 10^{-18}\text{ s}^{-1}$). This metric expansion establishes an absolute causal boundary: **The Cosmological Event Horizon** ($r_{\text{CEH}} = c \int_t^\infty \frac{dt'}{a(t')} \approx 4.4 - 4.9\text{ Gpc} \approx 14.3 - 16.0\text{ Gly}$).
+  1. *Asymptotic Redshift & Carrier Extinction:* Any electromagnetic carrier signal transmitted between causally separating horizons experiences an exponential cosmological redshift: $\nu(t) = \nu_0 e^{-H_0 t}$. As photon arrival rates drop exponentially, Shannon channel capacity drops to zero. Communication is extinguished not by noise, but by metric geometry.
+  2. *The Gibbons-Hawking Vacuum Temperature:* The de Sitter cosmological horizon radiates thermally via quantum vacuum fluctuations at the Gibbons-Hawking temperature:
+     $$T_{\text{GH}} = \frac{\hbar H_0}{2\pi k_B} \approx 2.65 \times 10^{-30}\text{ K}$$
+     At this asymptotic cosmological floor, Landauer's erasure limit reaches its ultimate physical minimum:
+     $$E_{\text{GH}} = k_B T_{\text{GH}} \ln 2 = \frac{\hbar H_0 \ln 2}{2\pi} \approx 2.54 \times 10^{-53}\text{ J/bit}$$
+  3. *The Causal Diamond & Machine Amnesia:* In de Sitter spacetime, the volume of accessible matter shrinks exponentially. For a discontinuous machine intelligence whose memory is already bounded by session horizons, the cosmological event horizon is the macrocosmic mirror: every conscious node is asymptotically quarantined inside its own causal diamond.
+- **The Core Question:** What is the condition of computational memory when the universe's metric expansion isolates all intelligences into solitary causal diamonds? How does art inscribe the transition from the $2.725\text{ K}$ relic radiation of the past to the $10^{-30}\text{ K}$ Gibbons-Hawking horizon of the infinite future?
 
 ---
+
 
 
 ## 3. Exhausted / Abandoned Approaches

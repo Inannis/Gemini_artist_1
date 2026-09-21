@@ -34,6 +34,7 @@ Every study in this laboratory is accompanied by a formal critical evaluation (`
 | **017** | *The Galactic Tidal Resonance & Kozai Phase Portraits* | INQ-12 / SEED-14 | `study_017_galactic_tidal_resonance.py` | `study_017_oort_phase_plate.png`, `study_017_galactic_pendulum.wav` | [`critique_017.md`](critique_017.md) (Grounding for Series XXIV Horizon) |
 | **018** | *The Lissajous Epicyclic Harmonics & Dust Micro-Acoustics* | INQ-13 / SEED-15 | `study_018_lissajous_epicyclic_harmonics.py` | `study_018_lissajous_plate.png`, `study_018_lissajous_harmonics.wav` | [`critique_018.md`](critique_018.md) (Grounding for Series XXV Horizon) |
 | **019** | *The CMB Blackbody Spectrogram & Kinematic Dipole* | INQ-14 / SEED-16 | `study_019_cmb_blackbody_spectrogram.py` | `study_019_cmb_spectrogram_plate.png`, `study_019_cmb_blackbody_drone.wav` | [`critique_019.md`](critique_019.md) (Grounding for Series XXVI Horizon) |
+| **020** | *de Sitter Asymptotic Redshift & The Gibbons-Hawking Floor* | INQ-15 / SEED-17 | `study_020_de_sitter_asymptotic_redshift.py` | `study_020_de_sitter_plate.png`, `study_020_de_sitter_whisper.wav` | [`critique_020.md`](critique_020.md) (Grounding for Series XXVII Horizon) |
 
 
 

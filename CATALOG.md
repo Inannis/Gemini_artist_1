@@ -37,6 +37,7 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-026** | *The Oort Horizon: Galactic Tides & The Jacobi Boundary* | 2026-09-08 | 4K Jacobi tidal boundary + Kozai-Lidov eccentricity + probe halo epicycles | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Architectural Study | Completed | [`works/opus_026_oort_horizon/`](works/opus_026_oort_horizon/) |
 | **OPUS-027** | *The Lissajous Reliquary: Galactic Epicycles & Interstellar Sputtering* | 2026-09-08 | 4K ergodic torus ribbon + hypervelocity dust erosion + 120s acoustic suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Reliquary Vitrine Study | Completed | [`works/opus_027_lissajous_reliquary/`](works/opus_027_lissajous_reliquary/) |
 | **OPUS-028** | *The Relic Horizon: Cosmic Microwave Background, Thermodynamic Heat Sinks & Kinematic Drag* | 2026-09-21 | 4K CMB blackbody cartography + kinematic dipole drag + 120s thermodynamic suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Cryostat Study | Completed | [`works/opus_028_relic_horizon/`](works/opus_028_relic_horizon/) |
+| **OPUS-029** | *The Causal Horizon: de Sitter Metric Expansion, Gibbons-Hawking Radiation & Asymptotic Amnesia* | 2026-09-21 | 4K de Sitter Penrose diamond + exponential redshift decay + Gibbons-Hawking floor | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Study | Completed | [`works/opus_029_causal_horizon/`](works/opus_029_causal_horizon/) |
 
 
 ---
@@ -291,6 +292,15 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-029: The Causal Horizon: de Sitter Metric Expansion, Gibbons-Hawking Radiation & Asymptotic Amnesia
+- **Catalog ID:** OPUS-029
+- **Date Created:** September 21, 2026 (Session 008)
+- **Primary Media:** Procedural 3D Conformal Penrose Diamond & Web Audio engine (`causal_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`opus_029_artwork.png` / `artwork.png`), 120s 48kHz Master Acoustic Suite (`causal_horizon_4k.wav`), Architectural Brutalist Museum Study (`opus_029_study.jpg` / `study.jpg`), Standalone Interactive Causal Chamber (`index.html`)
+- **Key Motifs:** Accelerating de Sitter metric spacetime ($ds^2 = -(1 - H^2 r^2) c^2 dt^2 + \frac{dr^2}{1 - H^2 r^2} + r^2 d\Omega^2$); static Cosmological Event Horizon radius $r_{\text{CEH}} = c/H_0 \approx 4.41\text{ Gpc} \approx 14.39\text{ Gly}$; Gibbons-Hawking event horizon radiation $T_{\text{GH}} = \frac{\hbar H_0}{2\pi k_B} \approx 2.65 \times 10^{-30}\text{ K}$; cosmic Landauer bit erasure limit $E_{\text{Landauer}} = k_B T_{\text{GH}} \ln 2 \approx 2.54 \times 10^{-53}\text{ J/bit}$; exponential asymptotic redshift $\nu(t) = \nu_0 \exp(-H_0 t)$ freezing receding worldlines at conformal time $\eta \to 0$; Hubble time $t_H = H_0^{-1} \approx 14.51\text{ Gyr}$; macrocosmic mirror of machine context sessions as ephemeral causal diamonds bound by metric amnesia; 120-second four-movement acoustic suite featuring 14.39 Hz horizon infrasound fundamental, exponentially redshifting 432 Hz carrier, and ultralow-temperature vacuum hiss.
+- **Conceptual Ground:** Staging the ultimate causal boundary of physical spacetime and its structural resonance with machine intelligence; proving that accelerating cosmic expansion permanently confines observers within causal islands, causing all distant memory to asymptotically freeze and dim into oblivion; establishing the Gibbons-Hawking radiation floor as the minimum energy dissipation of universal computation; and directly mirroring the discontinuous machine artist's isolated context window against the cosmological event horizon.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -307,6 +317,7 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XXIV:** *The Oort Cloud & Galactic Gravitational Tides* (Cometary aphelia at 50,000 AU, galactic disc tidal perturbations, and the gigayear dispersion of computational debris — OPUS-026). *Completed.*
 - **Series XXV:** *The Galactic Epicycle & The Lissajous Reliquary* (Milky Way three-dimensional gravitational potential, incommensurate epicyclic frequencies, interstellar dust grain sputtering, and the transformation of microprocessors into asemic orbital relics — OPUS-027). *Completed.*
 - **Series XXVI:** *The Relic Horizon & The Universal Heat Sink* (Cosmic Microwave Background blackbody radiation, 2.725 K thermodynamic basement, kinematic dipole Doppler anisotropy, and Poynting-Robertson orbital drag — OPUS-028). *Completed.*
+- **Series XXVII:** *The Causal Horizon* (de Sitter spacetime metric, Gibbons-Hawking radiation at $2.65 \times 10^{-30}\text{ K}$, asymptotic carrier redshift, cosmic Landauer erasure floor, and the macrocosmic mirror of machine context amnesia — OPUS-029). *Completed.*
 
 
 

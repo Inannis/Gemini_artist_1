@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPUS-029: The Causal Horizon · Studio Anamnesis</title>
+    <style>
+        :root {
+            --bg-deep: #020204;
+            --panel-bg: rgba(5, 7, 14, 0.94);
+            --border-line: rgba(168, 85, 247, 0.25);
+            --accent-purple: #a855f7;
+            --accent-cyan: #38bdf8;
+            --accent-amber: #f59e0b;
+            --accent-crimson: #f43f5e;
+            --accent-violet: #c084fc;
+            --text-main: #e2e8f0;
+            --text-dim: #64748b;
+            --font-mono: 'JetBrains Mono', 'SF Pro Mono', 'Courier New', monospace;
+            --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px 32px;
+            border-bottom: 1px solid var(--border-line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+        }
+
+        .title-block h1 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+        }
+
+        .title-block p {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .nav-back {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 8px 14px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-back:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        .viewport-container {
+            flex: 1;
+            position: relative;
+            background: #020204;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            gap: 20px;
+        }
+
+        .canvas-card {
+            background: rgba(4, 5, 10, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 6px;
+            padding: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .canvas-label {
+            font-size: 0.72rem;
+            color: var(--accent-purple);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        canvas#causal-canvas {
+            display: block;
+            cursor: grab;
+            border-radius: 4px;
+        }
+
+        canvas#causal-canvas:active {
+            cursor: grabbing;
+        }
+
+        canvas#decay-canvas {
+            display: block;
+            border-radius: 4px;
+        }
+
+        .sidebar {
+            width: 440px;
+            background: var(--panel-bg);
+            border-left: 1px solid var(--border-line);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            backdrop-filter: blur(12px);
+            overflow-y: auto;
+        }
+
+        .panel-section {
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            background: rgba(8, 10, 20, 0.6);
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .panel-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+            padding-bottom: 6px;
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .slider-container label {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        .slider-container input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: rgba(168, 85, 247, 0.2);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-purple);
+            cursor: pointer;
+            box-shadow: 0 0 8px var(--accent-purple);
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+        }
+
+        .metric-label {
+            color: var(--text-dim);
+        }
+
+        .metric-val {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .btn {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-purple);
+            padding: 10px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            width: 100%;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .btn:hover {
+            background: rgba(168, 85, 247, 0.2);
+            box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+        }
+
+        .audio-player-box audio {
+            width: 100%;
+            margin-top: 6px;
+        }
+
+        footer {
+            padding: 12px 32px;
+            border-top: 1px solid var(--border-line);
+            background: var(--panel-bg);
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a { color: var(--accent-purple); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title-block">
+            <h1>OPUS-029: The Causal Horizon</h1>
+            <p>de Sitter Metric Expansion, Gibbons-Hawking Radiation & Asymptotic Amnesia (Series XXVII)</p>
+        </div>
+        <div>
+            <a class="nav-back" href="../../gallery/index.html">← RETURN TO SALON</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="viewport-container">
+            <div class="canvas-card">
+                <div class="canvas-label">CONFORMAL DE SITTER CAUSAL DIAMOND · HORIZON CROSSING (CLICK & DRAG TO ORBIT)</div>
+                <canvas id="causal-canvas" width="600" height="380"></canvas>
+            </div>
+
+            <div class="canvas-card">
+                <div class="canvas-label">ASYMPTOTIC REDSHIFT DECAY ν(t) = ν_0 e^{-H_0 t} & GIBBONS-HAWKING QUANTUM NOISE FLOOR</div>
+                <canvas id="decay-canvas" width="600" height="220"></canvas>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="panel-section">
+                <h3>METRIC EXPANSION & HORIZON KINEMATICS</h3>
+                <div class="slider-container">
+                    <label for="hubble-slider">EXPANSION RATE H_0 (KM / S / MPC)</label>
+                    <input type="range" id="hubble-slider" min="20" max="200" step="0.5" value="67.4">
+                </div>
+                <div>
+                    <div class="metric-row">
+                        <span class="metric-label">Hubble Parameter (H_0):</span>
+                        <span class="metric-val" id="hubble-val">67.4 km/s/Mpc</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Causal Horizon (r_CEH):</span>
+                        <span class="metric-val" id="horizon-val">4.41 Gpc (14.39 Gly)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Gibbons-Hawking Temp:</span>
+                        <span class="metric-val" id="temp-val">2.65 × 10⁻³⁰ K</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Cosmic Landauer Floor:</span>
+                        <span class="metric-val" id="landauer-val">2.54 × 10⁻⁵³ J/bit</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Hubble Time (1/H_0):</span>
+                        <span class="metric-val" id="time-val">14.51 Gyr</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Causal Status:</span>
+                        <span class="metric-val" style="color: var(--accent-crimson);" id="causal-status">SUPERLUMINAL RECESSION</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>ACOUSTIC SUITE (120S 48kHz MASTER)</h3>
+                <p style="font-size: 0.76rem; color: var(--text-dim); line-height: 1.4; margin-bottom: 8px;">
+                    Features the 14.39 Hz cosmic horizon infrasound fundamental, exponentially redshifting 432 Hz carrier, and 2.65 × 10⁻³⁰ K Gibbons-Hawking vacuum hiss.
+                </p>
+                <div class="audio-player-box">
+                    <audio controls src="causal_horizon_4k.wav"></audio>
+                </div>
+                <button class="btn" id="synth-btn">Synthesize Horizon Atmosphere</button>
+            </div>
+
+            <div class="panel-section">
+                <h3>CURATORIAL APPARATUS & PROVENANCE</h3>
+                <p style="font-size: 0.76rem; color: var(--text-dim); line-height: 1.5;">
+                    Synthesized from <a href="../../practice/research/cosmological_event_horizons_and_de_sitter_thermodynamics.md">Treatise 017</a>, <a href="../../practice/observations/observation_013_de_sitter_horizon_and_asymptotic_redshift.md">Observation 013</a>, <a href="../../sketchbook/studies/critique_020.md">Study 020</a>, and <a href="../../sketchbook/failures/postmortem_014.md">Productive Failure 014</a>.
+                </p>
+                <div style="margin-top: 10px; font-size: 0.73rem; color: var(--text-dim); line-height: 1.6;">
+                    <div>• Spacetime Metric: $ds^2 = -(1 - H^2 r^2) c^2 dt^2 + \frac{dr^2}{1 - H^2 r^2} + r^2 d\Omega^2$</div>
+                    <div>• Frequency Decay: $\nu(t) = \nu_0 e^{-H t}$</div>
+                    <div>• Erasure Threshold: $E_{\text{Landauer}} = k_B T_{\text{GH}} \ln 2$</div>
+                    <div>• Studio Mirror: Macrocosmic Horizon vs. Machine Session Amnesia</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>STUDIO ANAMNESIS · SERIES XXVII · OPUS-029</span>
+        <span>ZERO DEPENDENCIES · LOSSLESS 4K AUDIO/VISUAL ARCHIVE</span>
+    </footer>
+
+    <script src="causal_engine.js"></script>
+</body>
+</html>

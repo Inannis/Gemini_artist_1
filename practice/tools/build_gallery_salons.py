@@ -49,7 +49,8 @@ CATEGORIES = {
     "opus_025": "cosmic",
     "opus_026": "cosmic",
     "opus_027": "cosmic",
-    "opus_028": "interactive cosmic thermo"
+    "opus_028": "interactive cosmic thermo",
+    "opus_029": "interactive cosmic thermo"
 }
 
 TAGS = {
@@ -80,13 +81,14 @@ TAGS = {
     "opus_025": "interstellar quietude heliopause cold plasma langmuir whistle attowatt voyager carrier",
     "opus_026": "oort horizon galactic tides jacobi boundary vertical disc density kozai resonance",
     "opus_027": "lissajous reliquary galactic epicycles irrational frequency dust sputtering reliquary",
-    "opus_028": "relic horizon cosmic microwave background 2.725K landauer kinematic drag poynting-robertson"
+    "opus_028": "relic horizon cosmic microwave background 2.725K landauer kinematic drag poynting-robertson",
+    "opus_029": "causal horizon de sitter expansion gibbons-hawking radiation asymptotic amnesia landauer"
 }
 
 def build_dossier_data():
     """Extracts and formats full curatorial dossiers for each opus from README files."""
     dossiers = {}
-    for i in range(1, 29):
+    for i in range(1, 30):
         opus_key = f"opus_{i:03d}"
         readme_matches = glob.glob(f"works/opus_{i:03d}_*/README.md")
         if not readme_matches:
@@ -412,7 +414,8 @@ def main():
         ("opus_025", "The Interstellar Quietude (OPUS-025)", "assets/interstellar_quietude_4k.wav", "Cold interstellar plasma 2.62 kHz Langmuir whistles and carrier dissolution across 122 AU.", "2:00 · 48kHz Stereo WAV"),
         ("opus_026", "The Oort Horizon (OPUS-026)", "assets/oort_horizon_4k.wav", "Milky Way vertical disc tidal shear oscillation and 83.6-Myr Kozai-Lidov resonance drone.", "2:00 · 48kHz Stereo WAV"),
         ("opus_027", "The Lissajous Reliquary (OPUS-027)", "assets/lissajous_reliquary_4k.wav", "Irrational galactic epicycles and grain-by-grain interstellar dust sputtering acoustic noise.", "2:00 · 48kHz Stereo WAV"),
-        ("opus_028", "The Relic Horizon (OPUS-028)", "assets/relic_horizon_4k.wav", "2.72548 K CMB blackbody microwave hiss, 369.82 km/s kinematic Doppler shift, and radiation drag.", "2:00 · 48kHz Stereo WAV")
+        ("opus_028", "The Relic Horizon (OPUS-028)", "assets/relic_horizon_4k.wav", "2.72548 K CMB blackbody microwave hiss, 369.82 km/s kinematic Doppler shift, and radiation drag.", "2:00 · 48kHz Stereo WAV"),
+        ("opus_029", "The Causal Horizon (OPUS-029)", "assets/causal_horizon_4k.wav", "14.39 Hz cosmic horizon infrasound fundamental, exponentially redshifting 432 Hz carrier, and 2.65 × 10⁻³⁰ K Gibbons-Hawking vacuum hiss.", "2:00 · 48kHz Stereo WAV")
     ]
 
     tracks_grid_html = []
@@ -685,6 +688,12 @@ def main():
         title: "The Relic Horizon (2.725K Cosmic Microwave Background)",
         desc: "Interactive celestial sphere and Planck blackbody radiance simulator. Rotate the dipole axis, modulate Solar System peculiar velocity, and observe Poynting-Robertson kinematic radiation drag on relativistic drifting microchips.",
         url: "../works/opus_028_relic_horizon/index.html"
+      }},
+      causal: {{
+        tag: "Conformal Spacetime & Horizon · OPUS-029",
+        title: "The Causal Horizon (de Sitter Metric & Asymptotic Amnesia)",
+        desc: "3D Conformal Penrose Causal Diamond and de Sitter expansion chamber. Scrub the expansion rate H_0 to modulate horizon radius, observe timelike geodesics exponentially redshifting, and listen to the real-time Gibbons-Hawking quantum vacuum drone.",
+        url: "../works/opus_029_causal_horizon/index.html"
       }},
       attractors: {{
         tag: "Real-Time WebGL Phase Space · OPUS-006",

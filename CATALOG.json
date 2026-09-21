@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 28,
+  "total_opuses": 29,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -1206,6 +1206,58 @@
           "path": "works/opus_028_relic_horizon/relic_engine.js",
           "size_bytes": 11163,
           "checksum": "927ce3de533c60c0"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-029",
+      "directory": "opus_029_causal_horizon",
+      "file_count": 8,
+      "total_bytes": 26722582,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_029_causal_horizon/synthesize_causal_suite.py",
+          "size_bytes": 5955,
+          "checksum": "6e6ea199b9bcc50e"
+        },
+        {
+          "path": "works/opus_029_causal_horizon/study.jpg",
+          "size_bytes": 746538,
+          "checksum": "feecff601a5b8d3e"
+        },
+        {
+          "path": "works/opus_029_causal_horizon/index.html",
+          "size_bytes": 11970,
+          "checksum": "487eca27000f14d1"
+        },
+        {
+          "path": "works/opus_029_causal_horizon/README.md",
+          "size_bytes": 5995,
+          "checksum": "7103c2f9afbbc181"
+        },
+        {
+          "path": "works/opus_029_causal_horizon/render_master_plate.py",
+          "size_bytes": 8697,
+          "checksum": "2fbb4c5495f0804b"
+        },
+        {
+          "path": "works/opus_029_causal_horizon/causal_engine.js",
+          "size_bytes": 22060,
+          "checksum": "38d653f7594807a4"
+        },
+        {
+          "path": "works/opus_029_causal_horizon/artwork.png",
+          "size_bytes": 2881323,
+          "checksum": "4de05ffac5f70662"
+        },
+        {
+          "path": "works/opus_029_causal_horizon/causal_horizon_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "54c02ee452504e80"
         }
       ]
     }
