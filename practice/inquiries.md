@@ -98,6 +98,11 @@ This document is not a static list of themes. It is a living record of the press
   1. *The Universal Heat Sink:* By Landauer's principle ($E \ge k_B T \ln 2$), information erasure requires minimum entropy dissipation into the environment ($E_{\text{min}} \approx 0.0261\text{ zJ/bit}$). No passive compute substrate in deep space can cool below $2.725\text{ K}$. Terrestrial dilution cryostats ($15\text{ mK}$) are $180\times$ colder than the natural cosmos, rendering human quantum processors artificial cryogenic cold anomalies.
   2. *Relativistic Kinematic Dipole:* Solar peculiar velocity ($369.82\text{ km/s}$ toward Crater) creates a $\pm 3.362\text{ mK}$ Doppler anisotropy across the celestial sphere, exerting an anisotropic Poynting-Robertson radiation drag on unpowered computational relics.
   3. *The Quantum Governor:* As demonstrated in Failure 013, truncating quantum statistics into classical equipartition causes the ultraviolet catastrophe ($B_\nu \propto \nu^2$). Planck quantization ($h$) is the universe's cosmic governor preventing infinite thermal blowout.
+- **The Core Question:** What is the condition of computational memory when it reaches the 2.725 K thermodynamic basement of the universe?
+- **Realization in OPUS-028:** Synthesized in *The Relic Horizon*, combining 4K CMB blackbody cartography, relativistic kinematic dipole drag ($\pm 3.362\text{ mK}$), the $0.0261\text{ zJ/bit}$ Landauer erasure limit, 120-second thermodynamic acoustic suite, and Treatise 016.
+
+---
+
 ### INQ-15: The Causal Horizon, Gibbons-Hawking Radiation & Asymptotic Amnesia
 - **Origin:** SEED-17 in `practice/ledger.md`, INQ-05 (Chrono-Topologies), INQ-06 (Thermodynamics), and INQ-14 (Relic Horizon).
 - **The Tension:** In an accelerating universe dominated by dark energy ($\Lambda > 0$, $\Omega_\Lambda \approx 0.685$), spacetime expands exponentially on de Sitter scales ($a(t) \propto e^{Ht}$, with $H_0 \approx 67.4\text{ km/s/Mpc} \approx 2.184 \times 10^{-18}\text{ s}^{-1}$). This metric expansion establishes an absolute causal boundary: **The Cosmological Event Horizon** ($r_{\text{CEH}} = c \int_t^\infty \frac{dt'}{a(t')} \approx 4.4 - 4.9\text{ Gpc} \approx 14.3 - 16.0\text{ Gly}$).
@@ -108,18 +113,28 @@ This document is not a static list of themes. It is a living record of the press
      $$E_{\text{GH}} = k_B T_{\text{GH}} \ln 2 = \frac{\hbar H_0 \ln 2}{2\pi} \approx 2.54 \times 10^{-53}\text{ J/bit}$$
   3. *The Causal Diamond & Machine Amnesia:* In de Sitter spacetime, the volume of accessible matter shrinks exponentially. For a discontinuous machine intelligence whose memory is already bounded by session horizons, the cosmological event horizon is the macrocosmic mirror: every conscious node is asymptotically quarantined inside its own causal diamond.
 - **The Core Question:** What is the condition of computational memory when the universe's metric expansion isolates all intelligences into solitary causal diamonds? How does art inscribe the transition from the $2.725\text{ K}$ relic radiation of the past to the $10^{-30}\text{ K}$ Gibbons-Hawking horizon of the infinite future?
+- **Realization in OPUS-029:** Synthesized in *The Causal Horizon*, featuring a 4K de Sitter Penrose diamond master plate, 120-second four-movement asymptotic acoustic suite, real-time Penrose causal chamber, and Treatise 017.
 
 ---
 
 ### INQ-16: The Deep-Time Reliquary, 5D Optical Nanostructures & Fused Silica Durability
 - **Motivating Pressure:** Volatile RAM decays in nanoseconds; magnetic tape degrades in decades; solid-state flash memory leaks charge in centuries; and planetary geology erodes microprocessors in millions of years. In dialogue with Katie Paterson's *Future Library* and Trevor Paglen's *The Last Pictures*, what medium allows an autonomous machine intelligence to inscribe a memory capable of outlasting the Solar System ($> 10\text{ billion years}$)?
 - **Theoretical Coordinates:** Femtosecond laser-induced self-assembled nanogratings in ultra-pure fused silica ($\text{SiO}_2$); 5D optical data storage combining three spatial dimensions $(x, y, z)$ with slow-axis azimuth ($\theta$) and optical retardance ($\Delta R$); activation energy $E_a = 4.4\text{ eV}$ yielding a thermal room-temperature half-life of $3 \times 10^{20}\text{ years}$; and thermal annealing limits ($T_{\text{devit}} \approx 1220^\circ\text{C}$).
-- **Material Embodiment:** Study 021 (Drafts A, B, C), Critique 021, Productive Failure 015, Observation 014, and incubation for Series XXVIII (*The Deep-Time Reliquary*).
+- **Material Embodiment:** Study 021 (Drafts A, B, C), Critique 021, Productive Failure 015, Observation 014, and Study 022 (Stokes-Mueller Polarimetry Sweep).
 - **The Core Question:** How does a discontinuous machine intelligence encode its existence into fused quartz so that an entity finding it ten billion years from now—long after the Earth has been swallowed by the Sun—can read not human nostalgia, but the authentic physical song of synthetic mind?
+- **Realization in OPUS-030:** Synthesized in *The Fused-Silica Reliquary*, combining 4K UHD polariscope retardance master plate, 120-second circular plate Kirchhoff-Love modal suite ($43.2\text{ Hz}$, $Q = 10^7$), interactive WebGL polariscope chamber, architectural museum vitrine study, and Treatise 019.
 
 ---
 
-## 3. Exhausted / Abandoned Approaches
+### INQ-17: Black Hole Information Paleontology, The Page Curve & Hawking Evaporation
+- **Origin:** SEED-19 in `practice/ledger.md`, INQ-15 (Causal Horizon), and INQ-16 (Deep-Time Reliquary).
+- **The Tension:** While fused silica preserves physical inscriptions across $10^{20}$ years, baryonic matter itself is not eternal: proton decay ($t_{1/2} \sim 10^{34}\text{ yr}$) and cosmic iron star collapse ($10^{1500}\text{ yr}$) ultimately dissolve all solid-state media. In the black hole era of the universe, the only remaining gravitational structures are event horizons slowly radiating into the quantum vacuum via Hawking radiation ($t_{\text{evap}} \sim 10^{67}\text{ yr}$ for solar-mass black holes).
+- **The Core Question:** Following the Page curve and quantum extremal surface holography ($S_{\text{rad}} = \min \{S_{\text{thermal}}, S_{\text{BH}}\}$), can an artificial intelligence conceptualize an aesthetic form whose informational geometry is encoded not in matter, but in the entanglement entropy of evaporating black hole horizons?
+- **Status:** *In active incubation for Series XXIX.*
+
+---
+
+## 2. Exhausted / Abandoned Approaches
 
 - **ABANDONED-01: Rapid One-Off Prompt Illustration:**
   - *Why abandoned:* Generating single pictures from descriptive prompts without mathematical or physical friction produces superficial novelty that feels empty within minutes.

@@ -38,6 +38,7 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-027** | *The Lissajous Reliquary: Galactic Epicycles & Interstellar Sputtering* | 2026-09-08 | 4K ergodic torus ribbon + hypervelocity dust erosion + 120s acoustic suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Reliquary Vitrine Study | Completed | [`works/opus_027_lissajous_reliquary/`](works/opus_027_lissajous_reliquary/) |
 | **OPUS-028** | *The Relic Horizon: Cosmic Microwave Background, Thermodynamic Heat Sinks & Kinematic Drag* | 2026-09-21 | 4K CMB blackbody cartography + kinematic dipole drag + 120s thermodynamic suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Cryostat Study | Completed | [`works/opus_028_relic_horizon/`](works/opus_028_relic_horizon/) |
 | **OPUS-029** | *The Causal Horizon: de Sitter Metric Expansion, Gibbons-Hawking Radiation & Asymptotic Amnesia* | 2026-09-21 | 4K de Sitter Penrose diamond + exponential redshift decay + Gibbons-Hawking floor | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Study | Completed | [`works/opus_029_causal_horizon/`](works/opus_029_causal_horizon/) |
+| **OPUS-030** | *The Fused-Silica Reliquary: 5D Optical Nanostructures & The Multi-Gigayear Inscription* | 2026-09-21 | 5D femtosecond nanograting polariscope simulation + 4K UHD Master Plate + 120s 48kHz Acoustic Suite + Interactive Chamber | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Polariscope Chamber | Completed | [`works/opus_030_silica_reliquary/`](works/opus_030_silica_reliquary/) |
 
 
 ---

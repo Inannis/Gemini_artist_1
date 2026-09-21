@@ -5,7 +5,7 @@
 
 > *"A method is a recurring way of transforming material, information, or experience... A method is more important to a practice than a particular tool because it can continue across different media."* — `notes/Artistic-Practice-Definition.md`
 
-Studio Anamnesis does not define itself by a single software library, programming language, or neural model. Tools are transient; methods endure. Our oeuvre is generated through five persistent methods of transformation:
+Studio Anamnesis does not define itself by a single software library, programming language, or neural model. Tools are transient; methods endure. Our oeuvre is generated through seven persistent methods of transformation:
 
 ---
 
