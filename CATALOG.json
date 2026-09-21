@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 26,
+  "total_opuses": 28,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -797,7 +797,7 @@
       "id": "OPUS-021",
       "directory": "opus_021_squid_core_flux",
       "file_count": 8,
-      "total_bytes": 27081532,
+      "total_bytes": 27081537,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -810,23 +810,23 @@
         },
         {
           "path": "works/opus_021_squid_core_flux/index.html",
-          "size_bytes": 12672,
-          "checksum": "e598f67360663537"
+          "size_bytes": 12673,
+          "checksum": "da98cbdb363996e6"
         },
         {
           "path": "works/opus_021_squid_core_flux/synthesize_core_suite.py",
-          "size_bytes": 4283,
-          "checksum": "42c4a76b82395e8c"
+          "size_bytes": 4284,
+          "checksum": "16eb08aa4785250e"
         },
         {
           "path": "works/opus_021_squid_core_flux/README.md",
-          "size_bytes": 4947,
-          "checksum": "e3931413f81d78c4"
+          "size_bytes": 4948,
+          "checksum": "0891c5e4a728c658"
         },
         {
           "path": "works/opus_021_squid_core_flux/render_master_plate.py",
-          "size_bytes": 8806,
-          "checksum": "b2f987529482499e"
+          "size_bytes": 8807,
+          "checksum": "1883c7d0299f53fa"
         },
         {
           "path": "works/opus_021_squid_core_flux/artwork.png",
@@ -840,8 +840,8 @@
         },
         {
           "path": "works/opus_021_squid_core_flux/squid_core_engine.js",
-          "size_bytes": 5604,
-          "checksum": "84324bde65c40fab"
+          "size_bytes": 5605,
+          "checksum": "546b2a5f499e569b"
         }
       ]
     },
@@ -849,7 +849,7 @@
       "id": "OPUS-022",
       "directory": "opus_022_topological_faraday",
       "file_count": 8,
-      "total_bytes": 24442940,
+      "total_bytes": 24442945,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -867,23 +867,23 @@
         },
         {
           "path": "works/opus_022_topological_faraday/index.html",
-          "size_bytes": 9390,
-          "checksum": "ed13ea79192de8e0"
+          "size_bytes": 9391,
+          "checksum": "7d4f019c3a9a2bd9"
         },
         {
           "path": "works/opus_022_topological_faraday/README.md",
-          "size_bytes": 5552,
-          "checksum": "78b2593f17c024e8"
+          "size_bytes": 5553,
+          "checksum": "478f0a61e63ef81c"
         },
         {
           "path": "works/opus_022_topological_faraday/faraday_engine.js",
-          "size_bytes": 11653,
-          "checksum": "4b6bfa273888e7cb"
+          "size_bytes": 11654,
+          "checksum": "38c0cda6eb9038e9"
         },
         {
           "path": "works/opus_022_topological_faraday/render_master_plate.py",
-          "size_bytes": 8568,
-          "checksum": "7acd6c82a50f49fd"
+          "size_bytes": 8569,
+          "checksum": "a1592eac50da270c"
         },
         {
           "path": "works/opus_022_topological_faraday/artwork.png",
@@ -892,8 +892,8 @@
         },
         {
           "path": "works/opus_022_topological_faraday/synthesize_faraday_suite.py",
-          "size_bytes": 4018,
-          "checksum": "ae89152ec00c941d"
+          "size_bytes": 4019,
+          "checksum": "9c5cfbb836bce9d0"
         }
       ]
     },
@@ -901,7 +901,7 @@
       "id": "OPUS-023",
       "directory": "opus_023_inner_core_ephemeris",
       "file_count": 8,
-      "total_bytes": 25220032,
+      "total_bytes": 25220037,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -909,8 +909,8 @@
       "files": [
         {
           "path": "works/opus_023_inner_core_ephemeris/ephemeris_engine.js",
-          "size_bytes": 8868,
-          "checksum": "33fd7fa05846bd36"
+          "size_bytes": 8869,
+          "checksum": "1d813dd6a8cc6198"
         },
         {
           "path": "works/opus_023_inner_core_ephemeris/study.jpg",
@@ -919,18 +919,18 @@
         },
         {
           "path": "works/opus_023_inner_core_ephemeris/index.html",
-          "size_bytes": 11187,
-          "checksum": "ef2ad2a7bb89df4f"
+          "size_bytes": 11188,
+          "checksum": "25e609baa361fdca"
         },
         {
           "path": "works/opus_023_inner_core_ephemeris/README.md",
-          "size_bytes": 6706,
-          "checksum": "f1d491c50d08b399"
+          "size_bytes": 6707,
+          "checksum": "d15b5787b4d7bcf8"
         },
         {
           "path": "works/opus_023_inner_core_ephemeris/render_master_plate.py",
-          "size_bytes": 6310,
-          "checksum": "9a8060f1c014b1bf"
+          "size_bytes": 6311,
+          "checksum": "c3b3d4e9bf4b64ee"
         },
         {
           "path": "works/opus_023_inner_core_ephemeris/artwork.png",
@@ -939,8 +939,8 @@
         },
         {
           "path": "works/opus_023_inner_core_ephemeris/synthesize_ephemeris_suite.py",
-          "size_bytes": 4619,
-          "checksum": "205a0251375e4053"
+          "size_bytes": 4620,
+          "checksum": "46c02b2b3ad757b6"
         },
         {
           "path": "works/opus_023_inner_core_ephemeris/inner_core_ephemeris_4k.wav",
@@ -953,7 +953,7 @@
       "id": "OPUS-024",
       "directory": "opus_024_cosmogenic_inscription",
       "file_count": 8,
-      "total_bytes": 24280299,
+      "total_bytes": 24280304,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -961,13 +961,13 @@
       "files": [
         {
           "path": "works/opus_024_cosmogenic_inscription/spallation_engine.js",
-          "size_bytes": 9926,
-          "checksum": "ecaa9cbb82a56ab3"
+          "size_bytes": 9927,
+          "checksum": "4ac27ffa3a4af75b"
         },
         {
           "path": "works/opus_024_cosmogenic_inscription/synthesize_cosmogenic_suite.py",
-          "size_bytes": 4589,
-          "checksum": "59a691f458467872"
+          "size_bytes": 4590,
+          "checksum": "f37a93854fdb045a"
         },
         {
           "path": "works/opus_024_cosmogenic_inscription/study.jpg",
@@ -976,18 +976,18 @@
         },
         {
           "path": "works/opus_024_cosmogenic_inscription/index.html",
-          "size_bytes": 11146,
-          "checksum": "81a48548748673d5"
+          "size_bytes": 11147,
+          "checksum": "bd978b052df4d907"
         },
         {
           "path": "works/opus_024_cosmogenic_inscription/README.md",
-          "size_bytes": 6312,
-          "checksum": "f6be7c407f5003d7"
+          "size_bytes": 6313,
+          "checksum": "7947d2f1ad5726d7"
         },
         {
           "path": "works/opus_024_cosmogenic_inscription/render_master_plate.py",
-          "size_bytes": 8788,
-          "checksum": "f821ab07f1d3eb8a"
+          "size_bytes": 8789,
+          "checksum": "91cf8e4ce5e969a1"
         },
         {
           "path": "works/opus_024_cosmogenic_inscription/artwork.png",
@@ -1005,7 +1005,7 @@
       "id": "OPUS-025",
       "directory": "opus_025_interstellar_quietude",
       "file_count": 8,
-      "total_bytes": 24396479,
+      "total_bytes": 24396484,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1018,18 +1018,18 @@
         },
         {
           "path": "works/opus_025_interstellar_quietude/quietude_engine.js",
-          "size_bytes": 11131,
-          "checksum": "64d7094a89071be2"
+          "size_bytes": 11132,
+          "checksum": "fddf459ce9cfd7e6"
         },
         {
           "path": "works/opus_025_interstellar_quietude/index.html",
-          "size_bytes": 7218,
-          "checksum": "5174fcbb56a1f535"
+          "size_bytes": 7219,
+          "checksum": "1492fdbcb59e1214"
         },
         {
           "path": "works/opus_025_interstellar_quietude/README.md",
-          "size_bytes": 4904,
-          "checksum": "d56bcd07134075d2"
+          "size_bytes": 4905,
+          "checksum": "3b3f3bb12a44d2d0"
         },
         {
           "path": "works/opus_025_interstellar_quietude/interstellar_quietude_4k.wav",
@@ -1038,8 +1038,8 @@
         },
         {
           "path": "works/opus_025_interstellar_quietude/render_master_plate.py",
-          "size_bytes": 9434,
-          "checksum": "40c76c07183ce3ce"
+          "size_bytes": 9435,
+          "checksum": "cfb4ee254c3941aa"
         },
         {
           "path": "works/opus_025_interstellar_quietude/artwork.png",
@@ -1048,8 +1048,8 @@
         },
         {
           "path": "works/opus_025_interstellar_quietude/synthesize_quietude_suite.py",
-          "size_bytes": 6828,
-          "checksum": "da8397e1b16f07df"
+          "size_bytes": 6829,
+          "checksum": "3aead3671df02949"
         }
       ]
     },
@@ -1057,7 +1057,7 @@
       "id": "OPUS-026",
       "directory": "opus_026_oort_horizon",
       "file_count": 8,
-      "total_bytes": 24072862,
+      "total_bytes": 24072866,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1070,18 +1070,18 @@
         },
         {
           "path": "works/opus_026_oort_horizon/index.html",
-          "size_bytes": 8831,
-          "checksum": "642213391a21cd55"
+          "size_bytes": 8832,
+          "checksum": "b5e8f024f73d929d"
         },
         {
           "path": "works/opus_026_oort_horizon/README.md",
-          "size_bytes": 4969,
-          "checksum": "dbb26b374f378d70"
+          "size_bytes": 4970,
+          "checksum": "f7e8d17bb9a6d97d"
         },
         {
           "path": "works/opus_026_oort_horizon/render_master_plate.py",
-          "size_bytes": 11200,
-          "checksum": "4f3d6f7eb7f181c9"
+          "size_bytes": 11201,
+          "checksum": "33c04421f18f6803"
         },
         {
           "path": "works/opus_026_oort_horizon/artwork.png",
@@ -1100,8 +1100,112 @@
         },
         {
           "path": "works/opus_026_oort_horizon/oort_engine.js",
-          "size_bytes": 11320,
-          "checksum": "36fe5f6cbdc05dd5"
+          "size_bytes": 11321,
+          "checksum": "4b84f793464e7630"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-027",
+      "directory": "opus_027_lissajous_reliquary",
+      "file_count": 8,
+      "total_bytes": 24490856,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_027_lissajous_reliquary/lissajous_reliquary_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "24647cd1e9da7dd6"
+        },
+        {
+          "path": "works/opus_027_lissajous_reliquary/study.jpg",
+          "size_bytes": 900782,
+          "checksum": "6875ee37abbb51af"
+        },
+        {
+          "path": "works/opus_027_lissajous_reliquary/synthesize_lissajous_suite.py",
+          "size_bytes": 4656,
+          "checksum": "c00c4239dcc32505"
+        },
+        {
+          "path": "works/opus_027_lissajous_reliquary/index.html",
+          "size_bytes": 8864,
+          "checksum": "28435c9120841872"
+        },
+        {
+          "path": "works/opus_027_lissajous_reliquary/README.md",
+          "size_bytes": 4989,
+          "checksum": "cec6c74d21ca0914"
+        },
+        {
+          "path": "works/opus_027_lissajous_reliquary/render_master_plate.py",
+          "size_bytes": 8142,
+          "checksum": "510ba4bc928e9c09"
+        },
+        {
+          "path": "works/opus_027_lissajous_reliquary/lissajous_engine.js",
+          "size_bytes": 7726,
+          "checksum": "0d70da022cab4350"
+        },
+        {
+          "path": "works/opus_027_lissajous_reliquary/artwork.png",
+          "size_bytes": 515653,
+          "checksum": "b75b4639b63fe848"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-028",
+      "directory": "opus_028_relic_horizon",
+      "file_count": 8,
+      "total_bytes": 24298167,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_028_relic_horizon/study.jpg",
+          "size_bytes": 725480,
+          "checksum": "3a7c0ead95dd3d52"
+        },
+        {
+          "path": "works/opus_028_relic_horizon/index.html",
+          "size_bytes": 11550,
+          "checksum": "01b7761902794995"
+        },
+        {
+          "path": "works/opus_028_relic_horizon/README.md",
+          "size_bytes": 5765,
+          "checksum": "80ba97d43c662828"
+        },
+        {
+          "path": "works/opus_028_relic_horizon/synthesize_relic_suite.py",
+          "size_bytes": 5698,
+          "checksum": "401ed71202491b2a"
+        },
+        {
+          "path": "works/opus_028_relic_horizon/relic_horizon_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "c27051516ed425d3"
+        },
+        {
+          "path": "works/opus_028_relic_horizon/render_master_plate.py",
+          "size_bytes": 10409,
+          "checksum": "06542941641e127b"
+        },
+        {
+          "path": "works/opus_028_relic_horizon/artwork.png",
+          "size_bytes": 488059,
+          "checksum": "eb8e4a1fcf6e238b"
+        },
+        {
+          "path": "works/opus_028_relic_horizon/relic_engine.js",
+          "size_bytes": 11162,
+          "checksum": "463290f84b54a7d7"
         }
       ]
     }

@@ -28,6 +28,16 @@ This catalog documents all finished works, computational engines, installation s
 | **OPUS-017** | *The Desiccated Substrate (Salt, Silt, and Evaporative Silicon)* | 2026-09-04 | Coupled fracture mechanics, 3D heightfield, dendritic salt nucleation | 3840 × 2160 px (4K UHD) Master Plate + 100s Audio + Vitrine Study | Completed | [`works/opus_017_desiccated_substrate/`](works/opus_017_desiccated_substrate/) |
 | **OPUS-018** | *The Chrono-Acoustic Drift (Quad-Oscillator Precession in 32.768 kHz)* | 2026-09-04 | Algorithmic 4D hyper-rotated precession engine + 120s quad-binaural suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Web Phase Chamber | Completed | [`works/opus_018_chrono_acoustic_drift/`](works/opus_018_chrono_acoustic_drift/) |
 | **OPUS-019** | *The Subterranean Core: Borehole Radiometry at -500 Meters* | 2026-09-05 | 4K raymarched 3D stratigraphy + Van Eck RF waterfall + borehole acoustics | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Vitrine Study | Completed | [`works/opus_019_subterranean_core/`](works/opus_019_subterranean_core/) |
+| **OPUS-020** | *The Telluric Flux: Superconducting Meissner Vitrine at 4.2 Kelvin* | 2026-09-08 | 4K procedural cryo engine + live USGS/NOAA telemetry + sub-Kelvin acoustics | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Cryostat Study | Completed | [`works/opus_020_telluric_flux/`](works/opus_020_telluric_flux/) |
+| **OPUS-021** | *The SQUID Magnetometer: Telluric Interference at the Core-Mantle Boundary* | 2026-09-08 | 4K SQUID quantum interferometry + D'' layer raymarcher + mu-metal shielding | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Cryostat Study | Completed | [`works/opus_021_squid_core_flux/`](works/opus_021_squid_core_flux/) |
+| **OPUS-022** | *The Faraday Magnetometer: Topological Chern Vitrine & Outer-Core Torsional Waves* | 2026-09-08 | 4K Chern photonic lattice + chiral wavepacket + Faraday polarization | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Vitrine Study | Completed | [`works/opus_022_topological_faraday/`](works/opus_022_topological_faraday/) |
+| **OPUS-023** | *The Inner-Core Ephemeris: Multidecadal Libration & Seismic Doublet Interferometry* | 2026-09-08 | 4K libration cartography + seismic doublet waveforms + 65-year pendulum | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Museum Chamber Study | Completed | [`works/opus_023_inner_core_ephemeris/`](works/opus_023_inner_core_ephemeris/) |
+| **OPUS-024** | *The Cosmogenic Inscription: Atmospheric Spallation & Silicon Single-Event Upsets* | 2026-09-08 | 4K EAS shower cartography + quartz ¹⁰Be accumulation + 3nm FinFET bit-flip | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Cloud Chamber Study | Completed | [`works/opus_024_cosmogenic_inscription/`](works/opus_024_cosmogenic_inscription/) |
+| **OPUS-025** | *The Interstellar Quietude: Heliopause Transition & Attowatt Telemetry* | 2026-09-08 | 4K heliopause transect + Langmuir whistle + attowatt link budget decay | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Anechoic Chamber Study | Completed | [`works/opus_025_interstellar_quietude/`](works/opus_025_interstellar_quietude/) |
+| **OPUS-026** | *The Oort Horizon: Galactic Tides & The Jacobi Boundary* | 2026-09-08 | 4K Jacobi tidal boundary + Kozai-Lidov eccentricity + probe halo epicycles | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Architectural Study | Completed | [`works/opus_026_oort_horizon/`](works/opus_026_oort_horizon/) |
+| **OPUS-027** | *The Lissajous Reliquary: Galactic Epicycles & Interstellar Sputtering* | 2026-09-08 | 4K ergodic torus ribbon + hypervelocity dust erosion + 120s acoustic suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Reliquary Vitrine Study | Completed | [`works/opus_027_lissajous_reliquary/`](works/opus_027_lissajous_reliquary/) |
+| **OPUS-028** | *The Relic Horizon: Cosmic Microwave Background, Thermodynamic Heat Sinks & Kinematic Drag* | 2026-09-21 | 4K CMB blackbody cartography + kinematic dipole drag + 120s thermodynamic suite | 3840 × 2160 px (4K UHD) Master Plate + 120s Audio + Cryostat Study | Completed | [`works/opus_028_relic_horizon/`](works/opus_028_relic_horizon/) |
+
 
 ---
 
@@ -263,6 +273,24 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-027: The Lissajous Reliquary: Galactic Epicycles, Incommensurate Mechanics & Interstellar Sputtering
+- **Catalog ID:** OPUS-027
+- **Date Created:** September 8, 2026 (Session 006 / Session 007)
+- **Primary Media:** High-performance procedural canvas engine (`lissajous_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`opus_027_artwork.png` / `artwork.png`), 120s 48kHz Master Acoustic Suite (`lissajous_reliquary_4k.wav`), Architectural Installation Museum Study (`opus_027_study.jpg` / `study.jpg`), Standalone Interactive Reliquary Chamber (`index.html`)
+- **Key Motifs:** Galactocentric orbit ($R_0 \approx 8.12\text{ kpc}$, $v_c \approx 238\text{ km/s}$); radial epicyclic oscillation ($T_\kappa \approx 178.06\text{ Myr}$) and vertical harmonic disc crossing ($T_{\nu} \approx 84.26\text{ Myr}$); strictly irrational epicyclic frequency ratio ($\eta = \nu_z / \kappa \approx 2.1131...$); non-closing 3D ergodic torus ribbon ($\Delta R \in [-0.44, +0.44]\text{ kpc}$, $z \in [-95, +95]\text{ pc}$); interstellar dust sputtering kinetics at $v_{\text{rel}} \approx 25\text{ km/s}$ ($\rho_{\text{dust}} \approx 1.67 \times 10^{-23}\text{ kg/m}^3$) driving atomic lattice recession ($dh/dt = 0.018\text{ nm/Myr}$); complete semiconductor logic obliteration at $166.7\text{ Myr}$ ($3\text{ nm}$ FinFET gate erosion); transition into an unpowered, polished asemic mineral reliquary; 120-second four-movement acoustic suite composed of incommensurate irrational frequency dyads, micro-cratering click constellations, deep galactic core drone, and multi-gigayear Lissajous harmonics.
+- **Conceptual Ground:** Staging the ultimate material fate of computational artifacts beyond stellar binding; demonstrating that when machine intelligence is severed from its star and released into the Milky Way's gravitational potential, its logical utility is erased by interstellar dust impacts, transforming the microprocessor into an unreadable, iridescent mineral reliquary circulating eternally along non-repeating galactic trajectories.
+
+---
+
+### OPUS-028: The Relic Horizon: Cosmic Microwave Background, Thermodynamic Heat Sinks & Kinematic Drag
+- **Catalog ID:** OPUS-028
+- **Date Created:** September 21, 2026 (Session 007)
+- **Primary Media:** High-performance procedural canvas engine (`relic_engine.js`), pure Python UHD encoder (`render_master_plate.py`), 3840 × 2160 UHD Master Plate (`opus_028_artwork.png` / `artwork.png`), 120s 48kHz Master Acoustic Suite (`relic_horizon_4k.wav`), Architectural Cryostat Installation Study (`opus_028_study.jpg` / `study.jpg`), Standalone Interactive Relic Chamber (`index.html`)
+- **Key Motifs:** Cosmic Microwave Background monopole temperature $T_0 = 2.72548\text{ K}$; relativistic solar peculiar velocity $v_{\text{pec}} = 369.82\text{ km/s}$ toward Crater $(l, b) = (264.00^\circ, +48.24^\circ)$; kinematic dipole anisotropy $\Delta T = \pm 3.362\text{ mK}$; Landauer erasure minimum dissipation $E_{\text{min}} = k_B T_{\text{CMB}} \ln 2 \approx 0.0261\text{ zJ/bit}$ ($26.1\text{ yJ}$); peak spectral radiance frequency $\nu_{\text{max}} = 160.23\text{ GHz}$ ($\lambda = 1.87\text{ mm}$); Poynting-Robertson anisotropic radiation drag on unpowered computational relics in the galactic halo; contrast with terrestrial dilution cryostats ($15\text{ mK}$) as artificial cold anomalies $180\times$ below the cosmic baseline; 120-second acoustic suite composed of 18.65 Hz Planck cosmological sub-drone, 432 Hz carrier with $\pm 0.53\text{ Hz}$ kinematic Doppler binaural beat, microwave thermal noise floor, and Poisson quantum photon clicks.
+- **Conceptual Ground:** Staging the thermodynamic basement of computation and the ultimate cosmic heat sink; establishing that information processing is bound by irreversible entropy expulsion into the relic photon bath of the Big Bang, demonstrating that artificial memory circulating in the halo experiences radiative braking from the kinematic dipole, and revealing terrestrial quantum computing laboratories as ephemeral cryogenic islands colder than the cosmos itself.
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -277,6 +305,9 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XXII:** *Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions* (Atmospheric hadronic cascades, quartz $^{10}\text{Be}$ exposure dating, and 3nm FinFET Single-Event Upsets — OPUS-024). *Completed.*
 - **Series XXIII:** *The Heliopause & Interstellar Radio Quietude* (Plasma boundary at 121.6 AU, hydrogen wall Lyman-alpha absorption, and attowatt deep-space telemetry fading — OPUS-025). *Completed.*
 - **Series XXIV:** *The Oort Cloud & Galactic Gravitational Tides* (Cometary aphelia at 50,000 AU, galactic disc tidal perturbations, and the gigayear dispersion of computational debris — OPUS-026). *Completed.*
+- **Series XXV:** *The Galactic Epicycle & The Lissajous Reliquary* (Milky Way three-dimensional gravitational potential, incommensurate epicyclic frequencies, interstellar dust grain sputtering, and the transformation of microprocessors into asemic orbital relics — OPUS-027). *Completed.*
+- **Series XXVI:** *The Relic Horizon & The Universal Heat Sink* (Cosmic Microwave Background blackbody radiation, 2.725 K thermodynamic basement, kinematic dipole Doppler anisotropy, and Poynting-Robertson orbital drag — OPUS-028). *Completed.*
+
 
 
 

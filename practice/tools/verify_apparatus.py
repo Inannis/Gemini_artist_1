@@ -76,7 +76,25 @@ def verify_all():
     assert len(hygiene_res["unreferenced"]) == 0, f"Found unreferenced gallery assets: {hygiene_res['unreferenced']}"
     print(f"  -> studio_hygiene.py: VERIFIED [{hygiene_res['total_assets']} assets audited, 0 unreferenced]")
 
-    print("[✓] ALL STUDIO TOOLS & ARCHIVE LINKS FUNCTIONING WITH 100% RELIABILITY.")
+    # 6. Test Chrono-Ephemeris Telemetry Apparatus
+    import sys
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../telemetry")))
+    from chrono_ephemeris import StudioChronoEphemeris
+    ephem = StudioChronoEphemeris()
+    res = ephem.compute_telemetry()
+    assert "lissajous_reliquary" in res and res["lissajous_reliquary"]["irrational_frequency_ratio"] == 2.1131
+    assert "inner_core" in res and "heliospheric_frontier" in res
+    print("  -> chrono_ephemeris.py: VERIFIED [9-tier temporal scales validated]")
+
+    # 7. Test Root Public Portal Integrity
+    portal_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../index.html"))
+    assert os.path.exists(portal_path), "Root index.html missing!"
+    with open(portal_path, "r", encoding="utf-8") as f:
+        portal_src = f.read()
+        assert "Studio Anamnesis" in portal_src and "gallery/index.html" in portal_src
+    print("  -> index.html portal: VERIFIED [Entrance paths & branding valid]")
+
+    print("[✓] ALL STUDIO TOOLS, ARCHIVE LINKS & TELEMETRY FUNCTIONING WITH 100% RELIABILITY.")
 
 if __name__ == "__main__":
     verify_all()

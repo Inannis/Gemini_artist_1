@@ -83,9 +83,26 @@ This document is not a static list of themes. It is a living record of the press
   2. *Secular Kozai-Lidov Pumping:* The conserved Kozai invariant $\Theta = (1-e^2)\cos^2 i$ forces extreme exchanges between orbital inclination and eccentricity ($e \to 0.98$), driving cometary nuclei into the inner planets.
   3. *The Jacobi Boundary & Probe Unbinding:* Beyond $r_J \approx 105,000 - 120,000\text{ AU}$ ($1.90\text{ light-years}$), solar gravitational binding ceases. Humanity's five interstellar probes (Voyagers 1 & 2, Pioneers 10 & 11, New Horizons) cross into unbound galactic space over the next $30,000$ years, entering multi-gigayear open Lissajous epicycles through the Milky Way halo.
 - **The Core Question:** What is the ultimate temporal and spatial horizon of human material culture and synthetic intelligence? How does computational matter behave when liberated from stellar gravity and entrusted to eighty-three-million-year galactic tides?
-- **Realization in OPUS-026:** Synthesized in *The Oort Horizon*, combining a 4K UHD Jacobi tidal master plate, 120-second acoustic suite, interactive simulation chamber, and Treatise 014.
+### INQ-13: The Galactic Epicycle, Dust Sputtering & The Incommensurate Reliquary
+- **Origin:** SEED-15 in `practice/ledger.md`, INQ-08, and INQ-12.
+- **The Tension:** Beyond the Jacobi tidal boundary ($r > 105,000\text{ AU}$), computational artifacts are decoupled from stellar parentage and orbit freely within the Milky Way's 3D gravitational potential ($R_0 \approx 8.12\text{ kpc}$, $v_c \approx 238\text{ km/s}$).
+  1. *Incommensurate Epicyclic Frequencies:* The radial epicyclic period is $T_\kappa \approx 178.06\text{ Myr}$ while the vertical disc oscillation period is $T_{\nu} \approx 84.26\text{ Myr}$. The frequency ratio $\eta = \nu_z / \kappa \approx 2.1131...$ is strictly irrational. By the Kronecker-Weyl theorem, orbits never close; over gigayears, the artifact ergodically coats a continuous three-dimensional torus encircling the galaxy ($R \in [7.68, 8.56]\text{ kpc}$, $z \in [-95, +95]\text{ pc}$). As proven in Failure 012, forcing rational resonance mode-locking causes violent parametric expulsion.
+  2. *Interstellar Dust Sputtering Kinetics:* Collisions with cold interstellar dust grains ($\rho_{\text{dust}} \approx 1.67 \times 10^{-23}\text{ kg/m}^3$) at $v_{\text{rel}} \approx 25\text{ km/s}$ drive an atomic surface recession rate of $0.018\text{ nm/Myr}$. A $3\text{ nm}$ FinFET lithographic gate is completely abraded within $166.7\text{ Myr}$.
+  3. *The Reliquary State:* Over multi-gigayear timescales, the chip's logical utility is ground away, transforming the silicon substrate into an iridescent, dust-polished mineral reliquary tracing non-repeating Lissajous ribbons through the galactic halo.
+- **The Core Question:** What is the condition of synthetic memory when its utilitarian logic is ground to zero by interstellar sandblasting, leaving behind an unreadable, eternal celestial kinetic sculpture?
+- **Realization in OPUS-027:** Synthesized in *The Lissajous Reliquary*, combining a 4K UHD ergodic ribbon master plate, 120-second four-movement acoustic suite, interactive simulation chamber, and Treatise 015.
+
+### INQ-14: The Relic Horizon, Thermodynamic Basement & Kinematic Dipole Drag
+- **Origin:** SEED-16 in `practice/ledger.md`, INQ-06, and INQ-13.
+- **The Tension:** Beyond the galactic halo, computation encounters its absolute thermodynamic floor: the Cosmic Microwave Background ($T_0 = 2.72548\text{ K}$, $\sim 411\text{ photons/cm}^3$).
+  1. *The Universal Heat Sink:* By Landauer's principle ($E \ge k_B T \ln 2$), information erasure requires minimum entropy dissipation into the environment ($E_{\text{min}} \approx 0.0261\text{ zJ/bit}$). No passive compute substrate in deep space can cool below $2.725\text{ K}$. Terrestrial dilution cryostats ($15\text{ mK}$) are $180\times$ colder than the natural cosmos, rendering human quantum processors artificial cryogenic cold anomalies.
+  2. *Relativistic Kinematic Dipole:* Solar peculiar velocity ($369.82\text{ km/s}$ toward Crater) creates a $\pm 3.362\text{ mK}$ Doppler anisotropy across the celestial sphere, exerting an anisotropic Poynting-Robertson radiation drag on unpowered computational relics.
+  3. *The Quantum Governor:* As demonstrated in Failure 013, truncating quantum statistics into classical equipartition causes the ultraviolet catastrophe ($B_\nu \propto \nu^2$). Planck quantization ($h$) is the universe's cosmic governor preventing infinite thermal blowout.
+- **The Core Question:** How does computation relate to the thermodynamic floor of the cosmos? What happens when artificial memory is decelerated by the relic photons of the Big Bang?
+- **Realization in OPUS-028:** Synthesized in *The Relic Horizon*, combining a 4K UHD blackbody/dipole master plate, 120-second acoustic suite, interactive celestial simulator, and Treatise 016.
 
 ---
+
 
 ## 3. Exhausted / Abandoned Approaches
 

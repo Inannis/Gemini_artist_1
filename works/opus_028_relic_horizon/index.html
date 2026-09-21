@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPUS-028: The Relic Horizon · Studio Anamnesis</title>
+    <style>
+        :root {
+            --bg-deep: #020306;
+            --panel-bg: rgba(6, 10, 18, 0.94);
+            --border-line: rgba(56, 189, 248, 0.25);
+            --accent-cyan: #38bdf8;
+            --accent-gold: #facc15;
+            --accent-amber: #f59e0b;
+            --accent-crimson: #f43f5e;
+            --text-main: #e2e8f0;
+            --text-dim: #64748b;
+            --font-mono: 'JetBrains Mono', 'SF Pro Mono', 'Courier New', monospace;
+            --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px 32px;
+            border-bottom: 1px solid var(--border-line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+        }
+
+        .title-block h1 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+        }
+
+        .title-block p {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        .nav-back {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            border: 1px solid rgba(250, 204, 21, 0.3);
+            padding: 8px 14px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-back:hover {
+            background: rgba(250, 204, 21, 0.1);
+            border-color: var(--accent-gold);
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+
+        .viewport-container {
+            flex: 1;
+            position: relative;
+            background: #020306;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            gap: 20px;
+        }
+
+        .canvas-card {
+            background: rgba(4, 7, 14, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 6px;
+            padding: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .canvas-label {
+            font-size: 0.72rem;
+            color: var(--accent-cyan);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        canvas#cmb-canvas {
+            display: block;
+            cursor: grab;
+            border-radius: 4px;
+        }
+
+        canvas#cmb-canvas:active {
+            cursor: grabbing;
+        }
+
+        canvas#planck-canvas {
+            display: block;
+            border-radius: 4px;
+        }
+
+        .sidebar {
+            width: 440px;
+            background: var(--panel-bg);
+            border-left: 1px solid var(--border-line);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            backdrop-filter: blur(12px);
+            overflow-y: auto;
+        }
+
+        .panel-section {
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            background: rgba(8, 14, 24, 0.6);
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .panel-section h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(250, 204, 21, 0.15);
+            padding-bottom: 6px;
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .slider-container label {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        .slider-container input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: rgba(56, 189, 248, 0.2);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            cursor: pointer;
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+        }
+
+        .metric-label {
+            color: var(--text-dim);
+        }
+
+        .metric-val {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .btn {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 10px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            width: 100%;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .audio-player-box audio {
+            width: 100%;
+            margin-top: 6px;
+        }
+
+        footer {
+            padding: 12px 32px;
+            border-top: 1px solid var(--border-line);
+            background: var(--panel-bg);
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a { color: var(--accent-cyan); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="title-block">
+            <h1>OPUS-028: The Relic Horizon</h1>
+            <p>Cosmic Microwave Background, Thermodynamic Heat Sinks & Kinematic Drag (Series XXVI)</p>
+        </div>
+        <div>
+            <a class="nav-back" href="../../gallery/index.html">← RETURN TO SALON</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="viewport-container">
+            <div class="canvas-card">
+                <div class="canvas-label">CELESTIAL SPHERE · CMB KINEMATIC DIPOLE ANISOTROPY (CLICK & DRAG TO ROTATE)</div>
+                <canvas id="cmb-canvas" width="600" height="380"></canvas>
+            </div>
+
+            <div class="canvas-card">
+                <div class="canvas-label">SPECTRAL RADIANCE B_ν(T) · PLANCK BLACKBODY vs RAYLEIGH-JEANS CATASTROPHE</div>
+                <canvas id="planck-canvas" width="600" height="220"></canvas>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="panel-section">
+                <h3>KINEMATIC DIPOLE & THERMODYNAMICS</h3>
+                <div class="slider-container">
+                    <label for="vel-slider">PECULIAR VELOCITY RELATIVE TO CMB (KM/S)</label>
+                    <input type="range" id="vel-slider" min="0" max="1200" step="1" value="369.8">
+                </div>
+                <div>
+                    <div class="metric-row">
+                        <span class="metric-label">Peculiar Velocity (v_pec):</span>
+                        <span class="metric-val" id="vel-val">369.8 km/s</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Dipole Anisotropy (ΔT):</span>
+                        <span class="metric-val" id="dipole-val">±3.362 mK</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Landauer Bit Erasure (2.725 K):</span>
+                        <span class="metric-val" id="landauer-val">0.0261 zJ/bit (26.1 yJ)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Peak Radiance ν_max:</span>
+                        <span class="metric-val">160.23 GHz (λ = 1.87 mm)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Poynting-Robertson Drag:</span>
+                        <span class="metric-val" style="color: var(--accent-gold);">ACTIVE ON HALO RELICS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>ACOUSTIC SUITE (120S 48kHz MASTER)</h3>
+                <p style="font-size: 0.76rem; color: var(--text-dim); line-height: 1.4; margin-bottom: 8px;">
+                    Synthesizes the 18.65 Hz Planck cosmological sub-drone, 432 Hz carrier with ±0.53 Hz kinematic Doppler binaural beat, and microwave cosmic noise floor.
+                </p>
+                <div class="audio-player-box">
+                    <audio controls src="relic_horizon_4k.wav"></audio>
+                </div>
+                <button class="btn" id="synth-btn">Synthesize Relic Atmosphere</button>
+            </div>
+
+            <div class="panel-section">
+                <h3>CURATORIAL APPARATUS & PROVENANCE</h3>
+                <p style="font-size: 0.76rem; color: var(--text-dim); line-height: 1.5;">
+                    Anchored in <a href="../../practice/research/cosmic_microwave_background_and_thermodynamic_basement.md">Treatise 016</a>, <a href="../../practice/observations/observation_012_cmb_dipole_and_cosmic_noise_floor.md">Observation 012</a>, <a href="../../sketchbook/studies/critique_019.md">Study 019</a>, and <a href="../../sketchbook/failures/postmortem_013.md">Productive Failure 013</a>.
+                </p>
+                <div style="margin-top: 10px; font-size: 0.73rem; color: var(--text-dim); line-height: 1.6;">
+                    <div>• Temperature: $T_0 = 2.72548 \pm 0.00057\text{ K}$</div>
+                    <div>• Apex: $(l, b) = (264.00^\circ, +48.24^\circ)$ in Crater</div>
+                    <div>• Photon Density: $n_\gamma \approx 411\text{ photons/cm}^3$</div>
+                    <div>• Dilution Cryostat: 15 mK (Terrestrial Cold Anomaly)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span>STUDIO ANAMNESIS · SERIES XXVI · OPUS-028</span>
+        <span>ZERO DEPENDENCIES · LOSSLESS 4K AUDIO/VISUAL ARCHIVE</span>
+    </footer>
+
+    <script src="relic_engine.js"></script>
+</body>
+</html>

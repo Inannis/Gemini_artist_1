@@ -22,6 +22,7 @@ Unlike completed opuses, observations are descriptive, empirical, and open-ended
 | **009** | *Heliopause Plasma Discontinuity & Attowatt Deep-Space Telemetry* | 2026-09-08 | Voyager 1/2 PWS telemetry, VLISM cold plasma, 8.42 GHz carrier link budget | Proving the 40x plasma density jump ($0.002 \to 0.085\text{ cm}^{-3}$), $2.6\text{ kHz}$ Langmuir whistle, and $0.91\text{ aW}$ carrier attenuation over 122 AU. |
 | **010** | *Galactic Tides & Oort Cloud Jacobi Radius Dispersion* | 2026-09-08 | Oort cloud ($100,000\text{ AU}$), Milky Way disc mass density ($0.10 M_{\odot}/\text{pc}^3$), Voyager megayear ephemeris | Modeling the 83.6-Myr vertical galactic oscillation, Jacobi tidal horizon ($100,000\text{ AU}$), and the 30,000-year transition into unbounded Milky Way orbit. |
 | **011** | *Galactic Epicycles, Incommensurate Tori & Interstellar Dust Sputtering* | 2026-09-08 | Milky Way 3D potential, irrational frequency ratio ($\nu_z/\kappa = 2.1131$), interstellar dust micro-abrasion | Calculating non-closing ergodic Lissajous torus orbits, hypervelocity dust sputtering ($0.018\text{ nm/Myr}$), and the obliteration of 3nm FinFET gates in $167\text{ Myr}$. |
+| **012** | *CMB Kinematic Dipole & The Universal Noise Floor* | 2026-09-21 | Cosmic Microwave Background ($2.7255\text{ K}$), $3.362\text{ mK}$ kinematic dipole, Penzias-Wilson noise floor | Measuring the $-194.2\text{ dBm/Hz}$ ($0.376\text{ aW}$) cosmological thermal noise floor and $369.8\text{ km/s}$ solar peculiar velocity toward Crater. |
 
 
 

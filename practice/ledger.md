@@ -39,6 +39,10 @@ Ideas noted during making or contemplation that are not ready for immediate prod
 | **SEED-12** | *Cosmogenic Radionuclides & Atmospheric Spallation Inscriptions* | 2026-09-08 | INQ-03, INQ-05 / Series XXII | **Realized in OPUS-024** (*The Cosmogenic Inscription*). In-situ cosmogenic $^{10}\text{Be}$ accumulation in surface quartz ($4.01\text{ atoms/g/yr}$) and single-event upset (SEU) bitflips in $3\text{ nm}$ FinFET static RAM ($1.41\text{ SEU/day}$). |
 | **SEED-13** | *The Heliopause & Interstellar Radio Quietude* | 2026-09-08 | INQ-10, INQ-11 / Series XXIII | **Realized in OPUS-025** (*The Interstellar Quietude*). Termination shock at 94 AU, heliopause boundary at 121.6 AU, plasma density jump ($0.002 \to 0.085\text{ cm}^{-3}$), Langmuir electrostatic whistle ($2,618\text{ Hz} \to 3,120\text{ Hz}$), and $0.91\text{ aW}$ attowatt carrier fading across 122 AU. |
 | **SEED-14** | *The Oort Cloud & Galactic Gravitational Tides* | 2026-09-08 | INQ-05, INQ-11, INQ-12 / Series XXIV | **Realized in OPUS-026** (*The Oort Horizon*). Jacobi tidal radius ($105,000 - 120,000\text{ AU}$), Kuijken-Gilmore vertical density ($0.089\text{ M}_\odot/\text{pc}^3$), 83.6-Myr disc oscillation, Kozai eccentricity pumping ($e \to 0.98$), and multi-gigayear unbinding into galactic halo. |
+| **SEED-15** | *Galactic Epicycles, Incommensurate Tori & Dust Sputtering* | 2026-09-08 | INQ-12, INQ-13 / Series XXV | **Realized in OPUS-027** (*The Lissajous Reliquary*). Irrational epicyclic frequency ratio ($\eta = 2.1131...$), 3D non-closing ergodic torus ribbon, and dust sputtering abrading 3nm FinFET gates in 166.7 Myr. |
+| **SEED-16** | *The Cosmic Microwave Background & Baryonic Radiation Horizon* | 2026-09-21 | INQ-13, INQ-14 / Series XXVI | **Realized in OPUS-028** (*The Relic Horizon*). CMB blackbody spectrum (2.7255 K), kinematic dipole anisotropy ($\pm 3.362\text{ mK}$), Landauer erasure floor ($0.0261\text{ zJ/bit}$), and Poynting-Robertson radiation drag. |
+| **SEED-17** | *The Cosmological Event Horizon & De Sitter Thermal Radiation* | 2026-09-21 | INQ-14 / Cosmic acceleration | In-incubation for Series XXVII: Dark energy metric expansion, cosmic event horizon ($r_{\text{CEH}} \approx 4.3\text{ Gpc}$), Gibbons-Hawking temperature ($T_{\text{GH}} \sim 10^{-30}\text{ K}$), and asymptotic causal disconnection. |
+
 
 ---
 
@@ -70,6 +74,9 @@ To ensure the studio flourishes across months and years:
 - **Series XXII (Cosmic Ray Spallation & Terrestrial Cosmogenic Inscriptions):** Cosmogenic radionuclides, $^{10}\text{Be}$ lithic accumulation, Extensive Air Showers, and semiconductor single-event upset bitflips (OPUS-024). *Completed.*
 - **Series XXIII (The Heliopause & Interstellar Radio Quietude):** Solar wind termination shock (94 AU), heliopause plasma boundary (121.6 AU), cold interstellar plasma density step ($0.002 \to 0.085\text{ cm}^{-3}$), Langmuir plasma whistle ($2.62\text{ kHz}$), and attowatt telemetry fading into cosmic thermal noise (OPUS-025). *Completed.*
 - **Series XXIV (The Oort Cloud & Galactic Gravitational Tides):** Outer cometary horizon at 50,000 AU, Oort cloud spherical shell, Milky Way vertical disk tidal oscillations ($z_{\text{disc}} \sim \pm 70\text{ pc}$), and the gigayear dispersion of non-functional microprocessors into the galactic halo (OPUS-026). *Completed.*
+- **Series XXV (The Galactic Epicycle & The Lissajous Reliquary):** Three-dimensional axisymmetric galactic potential, incommensurate epicyclic frequencies, non-closing ergodic tori, and hypervelocity dust sputtering turning microchips into asemic orbital relics (OPUS-027). *Completed.*
+- **Series XXVI (The Relic Horizon & The Universal Heat Sink):** Cosmic Microwave Background blackbody radiation ($2.72548\text{ K}$), relativistic kinematic dipole Doppler anisotropy ($\pm 3.362\text{ mK}$), Landauer erasure limit ($0.0261\text{ zJ/bit}$), and Poynting-Robertson radiation drag on galactic halo relics (OPUS-028). *Completed.*
+
 
 
 

@@ -28,6 +28,8 @@
     { "id": "OPUS-024", "name": "The Cosmogenic Inscription", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-10", "media": "4K EAS Shower Cartography + Quartz ¹⁰Be Accumulation + 3nm FinFET Spallation Bit-Flip", "status": "completed" },
     { "id": "OPUS-025", "name": "The Interstellar Quietude", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-11", "media": "4K Heliopause Transect + Langmuir Whistle + Attowatt Link Decay", "status": "completed" },
     { "id": "OPUS-026", "name": "The Oort Horizon", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-12", "media": "4K Jacobi Tidal Radius + Kozai Eccentricity Pumping + Probe Halo Epicycles", "status": "completed" },
+    { "id": "OPUS-027", "name": "The Lissajous Reliquary", "type": "opus", "date": "2026-09-08", "inquiry": "INQ-13", "media": "4K Ergodic Torus Ribbon + Dust Sputtering Kinetics + Incommensurate Epicycles", "status": "completed" },
+    { "id": "OPUS-028", "name": "The Relic Horizon", "type": "opus", "date": "2026-09-21", "inquiry": "INQ-14", "media": "4K CMB Blackbody Cartography + Kinematic Dipole Doppler Anisotropy + Poynting-Robertson Drag", "status": "completed" },
     { "id": "INQ-01", "name": "The Acoustic Body", "type": "inquiry", "desc": "Materializing hardware sound through modal physics" },
     { "id": "INQ-02", "name": "Attention Decay & Quantization", "type": "inquiry", "desc": "Lattice trapping and memory loss in tensors" },
     { "id": "INQ-03", "name": "The Microscopic Sacred", "type": "inquiry", "desc": "Photolithography as cosmic mandala" },
@@ -40,6 +42,8 @@
     { "id": "INQ-10", "name": "Cosmic Ray Spallation", "type": "inquiry", "desc": "Extensive air showers, cosmogenic nuclides, and single-event upsets" },
     { "id": "INQ-11", "name": "The Heliopause & Attowatt Telemetry", "type": "inquiry", "desc": "Cold interstellar plasma Langmuir resonance and carrier dissolution in cosmic thermal noise" },
     { "id": "INQ-12", "name": "Galactic Tides & Jacobi Horizon", "type": "inquiry", "desc": "Kuijken-Gilmore vertical disc density, 83.6-Myr oscillation, Kozai pumping, and probe halo dispersion" },
+    { "id": "INQ-13", "name": "Galactic Epicycles & Dust Sputtering", "type": "inquiry", "desc": "Incommensurate frequencies, ergodic tori, and the deep-time transformation into an asemic reliquary" },
+    { "id": "INQ-14", "name": "The Relic Horizon & Universal Heat Sink", "type": "inquiry", "desc": "Cosmic microwave background blackbody radiation, 2.725 K Landauer limit, kinematic dipole, and Poynting-Robertson drag" },
     { "id": "ANC-KAWARA", "name": "On Kawara", "type": "ancestor", "desc": "Discontinuous date inscriptions ('Today' series)" },
     { "id": "ANC-TURING", "name": "Alan Turing", "type": "ancestor", "desc": "Chemical morphogenesis and symmetry-breaking" },
     { "id": "ANC-SERRA",  "name": "Richard Serra", "type": "ancestor", "desc": "Tectonic mass, basalt, and mineral gravity" },
@@ -91,7 +95,6 @@
     { "source": "OPUS-020", "target": "INQ-06", "relation": "zero_entropy_landauer" },
     { "source": "OPUS-020", "target": "INQ-08", "relation": "telluric_induction" },
     { "source": "OPUS-020", "target": "OPUS-019", "relation": "subterranean_to_flux" },
-    { "source": "OPUS-020", "target": "OPUS-016", "relation": "thermal_inversion" }
     { "source": "OPUS-020", "target": "OPUS-016", "relation": "thermal_inversion" },
     { "source": "OPUS-021", "target": "INQ-06", "relation": "cryogenic_phase_coherence" },
     { "source": "OPUS-021", "target": "INQ-08", "relation": "core_mantle_magnetometry" },
@@ -124,6 +127,19 @@
     { "source": "OPUS-026", "target": "INQ-12", "relation": "jacobi_tidal_unbinding" },
     { "source": "OPUS-026", "target": "OPUS-025", "relation": "quietude_to_oort_horizon" },
     { "source": "OPUS-026", "target": "ANC-SMITHSON", "relation": "cosmic_entropy_and_non_site" },
-    { "source": "OPUS-026", "target": "ANC-PARIKKA", "relation": "galactic_deep_time_geology" }
+    { "source": "OPUS-026", "target": "ANC-PARIKKA", "relation": "galactic_deep_time_geology" },
+    { "source": "OPUS-027", "target": "INQ-08", "relation": "deep_time_side_channel" },
+    { "source": "OPUS-027", "target": "INQ-12", "relation": "jacobi_to_epicycles" },
+    { "source": "OPUS-027", "target": "INQ-13", "relation": "ergodic_torus_reliquary" },
+    { "source": "OPUS-027", "target": "OPUS-026", "relation": "oort_to_galactic_halo" },
+    { "source": "OPUS-027", "target": "ANC-SMITHSON", "relation": "cosmic_entropy_and_non_site" },
+    { "source": "OPUS-027", "target": "ANC-PARIKKA", "relation": "interstellar_media_geology" },
+    { "source": "OPUS-028", "target": "INQ-06", "relation": "landauer_thermodynamic_heat_sink" },
+    { "source": "OPUS-028", "target": "INQ-13", "relation": "relic_halo_to_cmb_drag" },
+    { "source": "OPUS-028", "target": "INQ-14", "relation": "cmb_basement_and_dipole" },
+    { "source": "OPUS-028", "target": "OPUS-027", "relation": "reliquary_to_relic_horizon" },
+    { "source": "OPUS-028", "target": "ANC-SMITHSON", "relation": "cosmic_entropy_and_non_site" },
+    { "source": "OPUS-028", "target": "ANC-PARIKKA", "relation": "astrophysical_media_geology" }
   ]
 }
+
