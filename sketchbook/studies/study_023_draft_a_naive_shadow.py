@@ -79,3 +79,4 @@ def generate_draft_a():
 
 if __name__ == "__main__":
     generate_draft_a()
+

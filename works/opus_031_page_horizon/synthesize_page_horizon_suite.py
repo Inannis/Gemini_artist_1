@@ -130,3 +130,4 @@ def synthesize_page_horizon_suite():
 
 if __name__ == "__main__":
     synthesize_page_horizon_suite()
+

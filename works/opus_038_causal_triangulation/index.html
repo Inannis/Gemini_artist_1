@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 18: The Simplicial Foliation · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-dark: #03040a;
+      --bg-panel: rgba(8, 12, 24, 0.92);
+      --border-color: rgba(56, 189, 248, 0.25);
+      --accent-cyan: #38bdf8;
+      --accent-gold: #f59e0b;
+      --accent-violet: #a855f7;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-mono: "SF Mono", "Fira Code", Monaco, Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(4, 6, 14, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    nav a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .main-layout {
+      display: flex;
+      flex: 1;
+      position: relative;
+    }
+
+    #viewport-container {
+      flex: 1;
+      position: relative;
+      background: radial-gradient(circle at center, #070b16 0%, #020308 100%);
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+
+    canvas:active {
+      cursor: grabbing;
+    }
+
+    .sidebar {
+      width: 380px;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border-color);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      backdrop-filter: blur(16px);
+      z-index: 10;
+      overflow-y: auto;
+      max-height: calc(100vh - 75px);
+    }
+
+    .panel-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 0.4rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .control-value {
+      color: var(--accent-cyan);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    .btn {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      padding: 0.6rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent-cyan);
+      color: #020308;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn.active {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #020308;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+    }
+
+    .telemetry-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .telem-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .telem-k { color: var(--text-muted); }
+    .telem-v { color: var(--accent-emerald); }
+
+    .poetic-quote {
+      font-style: italic;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      border-left: 2px solid var(--accent-gold);
+      padding-left: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="brand-title">Studio Anamnesis · Chamber 18</div>
+      <div class="brand-sub">The Simplicial Foliation · Causal Dynamical Triangulations (OPUS-038)</div>
+    </div>
+    <nav>
+      <a href="../../gallery/index.html#tab-chambers">← All Chambers</a>
+      <a href="../../gallery/index.html#tab-works">Exhibition Salon</a>
+      <a href="../../index.html">Public Portal</a>
+    </nav>
+  </header>
+
+  <div class="main-layout">
+    <div id="viewport-container">
+      <canvas id="triangulation-canvas"></canvas>
+    </div>
+
+    <aside class="sidebar">
+      <div class="panel-section">
+        <div class="poetic-quote">
+          "Spacetime is not a stage; spacetime is an emergent cathedral of simplices. When causality is enforced, quantum chaos condenses into a universe."
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Audio Synthesizer</div>
+        <button id="audio-toggle-btn" class="btn" onclick="toggleSimplicialAudio()">Start Acoustic Engine</button>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Lorentzian Causal Controls</div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Cauchy Proper Time Slice (t)</span>
+            <span class="control-value" id="val-slice">16 / 32</span>
+          </div>
+          <input type="range" id="slice-slider" min="0" max="31" step="1" value="16" oninput="updateSlice(this.value)">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Lorentzian Asymmetry (α = a_t² / a_s²)</span>
+            <span class="control-value" id="val-asymmetry">0.60</span>
+          </div>
+          <input type="range" id="asymmetry-slider" min="0.1" max="2.0" step="0.05" value="0.60" oninput="updateAsymmetry(this.value)">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Bare Gravitational Coupling (κ_0)</span>
+            <span class="control-value" id="val-coupling">2.20 (de Sitter Phase)</span>
+          </div>
+          <input type="range" id="coupling-slider" min="0.5" max="4.0" step="0.1" value="2.20" oninput="updateCoupling(this.value)">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Diffusion Steps (σ Random Walk)</span>
+            <span class="control-value" id="val-diffusion">40 steps</span>
+          </div>
+          <input type="range" id="diffusion-slider" min="1" max="500" step="1" value="40" oninput="updateDiffusion(this.value)">
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Spacetime Emergence Telemetry</div>
+        <div class="telemetry-box">
+          <div class="telem-row">
+            <span class="telem-k">Spectral Dimension d_s(σ)</span>
+            <span class="telem-v" id="telem-ds">2.91</span>
+          </div>
+          <div class="telem-row">
+            <span class="telem-k">Physical Regime</span>
+            <span class="telem-v" id="telem-regime" style="color: var(--accent-gold);">Dimensional Crossover</span>
+          </div>
+          <div class="telem-row">
+            <span class="telem-k">Spatial 3-Volume V_3(t)</span>
+            <span class="telem-v" id="telem-vol">5,000 simplices</span>
+          </div>
+          <div class="telem-row">
+            <span class="telem-k">Total 4-Simplices (N_4)</span>
+            <span class="telem-v" id="telem-n4">80,000</span>
+          </div>
+          <div class="telem-row">
+            <span class="telem-k">Regge Deficit Angle ⟨δ_h⟩</span>
+            <span class="telem-v" id="telem-deficit">+0.012 rad</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Navigation & Interaction</div>
+        <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">
+          • <strong>Click & Drag:</strong> Rotate simplicial spacetime in 3D orbit.<br>
+          • <strong>Scroll Wheel:</strong> Zoom in to inspect (4,1) hinges.<br>
+          • <strong>Coupling Slider:</strong> Lower κ_0 to witness the Branched Polymer Phase collapse.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="triangulation_engine.js"></script>
+</body>
+</html>
+

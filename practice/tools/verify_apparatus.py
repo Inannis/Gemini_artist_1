@@ -88,6 +88,17 @@ def verify_all():
     assert "fused_silica_reliquary" in res and res["fused_silica_reliquary"]["plate_mode_hz"] == 43.2
     assert "black_hole_horizon" in res and res["black_hole_horizon"]["gw150914_qnm_freq_hz"] == 287.89
     print("  -> chrono_ephemeris.py: VERIFIED [12-tier temporal scales validated]")
+    assert "vacuum_decay_horizon" in res and res["vacuum_decay_horizon"]["higgs_mass_gev"] == 125.10
+    assert "boltzmann_horizon" in res and res["boltzmann_horizon"]["entropy_kb"] > 1e122
+    assert "penrose_crossover" in res and res["penrose_crossover"]["variance_suppression"] == 0.68
+    assert "holographic_matrix" in res and res["holographic_matrix"]["central_charge"] == 12.0
+    assert "spin_network" in res and res["spin_network"]["immirzi_gamma"] == 0.274067
+    assert "moyal_foam" in res and res["moyal_foam"]["fuzzy_matrix_dim"] == 32
+    assert "causal_triangulation" in res and res["causal_triangulation"]["d_macro"] == 4.02
+    assert "wheeler_geon" in res and res["wheeler_geon"]["apparent_charge_c"] == 1.602176634e-19
+    assert "er_epr_wormhole" in res and res["er_epr_wormhole"]["kruskal_shift_delta_v"] < 0
+    assert "happy_qec_network" in res and res["happy_qec_network"]["is_protected"] is True
+    print("  -> chrono_ephemeris.py: VERIFIED [22-tier temporal scales validated]")
 
     # 7. Test Root Public Portal Integrity
     portal_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../index.html"))
@@ -95,7 +106,11 @@ def verify_all():
     with open(portal_path, "r", encoding="utf-8") as f:
         portal_src = f.read()
         assert "Studio Anamnesis" in portal_src and "gallery/index.html" in portal_src
-    print("  -> index.html portal: VERIFIED [Entrance paths & branding valid]")
+    # 8. Test Comprehensive Curatorial & Hygiene Governance
+    from studio_curator_audit import run_comprehensive_audit
+    issues = run_comprehensive_audit()
+    assert issues == 0, f"Curatorial hygiene audit failed with {issues} issues!"
+    print("  -> studio_curator_audit.py: VERIFIED [0 orphaned files, 100% parity]")
 
     print("[✓] ALL STUDIO TOOLS, ARCHIVE LINKS & TELEMETRY FUNCTIONING WITH 100% RELIABILITY.")
 

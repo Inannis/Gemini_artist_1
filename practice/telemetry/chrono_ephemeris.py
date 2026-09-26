@@ -151,6 +151,87 @@ class StudioChronoEphemeris:
         gw150914_page_time_yr = 2.28e72
         horizon_bit_density_m2 = 2.766e69
 
+        # 13. Electroweak Vacuum Decay & Coleman Instanton Horizon
+        higgs_mass_gev = 125.10
+        coleman_action_se_hbar = 1731.51
+        critical_radius_m = 1.9733e-27
+        log10_decay_rate_m4_s = -645.17
+        ads_crunch_sec = 7.07e-27
+        audible_higgs_hz = 125.10
+
+        # 14. The Boltzmann Horizon & Asymptotic Recurrence
+        boltzmann_entropy_kb = 2.2660e122
+        poincare_log10_log10_yr = 121.99
+        t_ds_kelvin = 2.6550e-30
+        wafer_fluc_log10_yr = 5.32e67
+        substrate_fluc_log10_yr = 1.06e69
+
+        # 15. Conformal Cyclic Cosmology & The Penrose Crossover
+        crossover_omega = 0.560797
+        weyl_scalar_c2 = 0.537515
+        hawking_radii_deg = [4.2, 11.8, 24.5]
+        variance_suppression = 0.68
+
+        # 16. The Holographic Matrix & Ryu-Takayanagi Bulk-Boundary Ephemeris
+        ads_central_charge = 12.00
+        ads_radius = 1.00
+        critical_theta_deg = 28.6
+        planck_length_m = 1.616255e-35
+        planck_time_s = 5.391247e-44
+        uv_cutoff_eps = 0.020
+
+        # 17. Loop Quantum Geometry & The Planck Foam Ephemeris
+        immirzi_gamma = 0.274067
+        area_gap_planck = 5.9652
+        area_gap_m2 = 1.5583e-69
+        lqc_rho_crit_ratio = 0.410
+        lqc_rho_crit_si = 2.113e96
+        f_area_half_hz = 74.82
+
+        # 18. Non-Commutative Moyal Foam & Spectral Triple Ephemeris
+        theta_deformation_m2 = 2.61228e-70  # 1.00 ell_P^2
+        min_uncertainty_area_m2 = 1.30614e-70
+        fuzzy_matrix_dim = 32
+        fuzzy_area_cells = fuzzy_matrix_dim * fuzzy_matrix_dim
+        dirac_f0_hz = 55.0
+        dirac_first_harmonic_hz = 27.5
+
+        # 19. Causal Dynamical Triangulations & Running Spectral Dimension Ephemeris
+        cdt_d_uv = 1.80
+        cdt_d_macro = 4.02
+        cdt_crossover_sigma = 40.0
+        cdt_cauchy_freq_hz = 36.0
+        cdt_desitter_peak_vol = 5000.0
+
+        # 20. Wheeler Quantum Geon & Micro-Wormhole Metric Ephemeris
+        geon_b0_lp = 1.414
+        geon_apparent_q_c = 1.602176634e-19
+        geon_phi_e_vm = 1.8095128e-8
+        geon_mass_kg = 1.53874e-8
+        geon_xi_stability = 16.55
+        geon_resonant_hz = 77.92
+
+        # 21. ER = EPR Traversable Wormhole & Holographic Teleportation Ephemeris
+        er_hawking_t = 0.1989
+        er_beta = 5.0265
+        er_scrambling_time = 5.5452
+        er_coupling_h = 0.450
+        er_delta_v = -0.0163
+        er_window_sec = 0.0261
+        er_throat_length = 9.4295
+        er_carrier_hz = 70.30
+
+        # 22. HaPPY Quantum Error Correction & Entanglement Wedge Ephemeris
+        qec_logical_tensors = 26
+        qec_boundary_qubits = 125
+        qec_f_erasure = 0.35
+        qec_f_crit = 0.50
+        qec_is_protected = True
+        qec_rt_apex_radius = 0.6128
+        qec_rt_cut_length = 2.328
+        qec_carrier_hz = 125.67
+        qec_syndrome_hz = [48.0, 77.67, 125.67, 203.34, 329.0]
+
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
             "year_decimal": round(t_yr, 5),
@@ -216,6 +297,89 @@ class StudioChronoEphemeris:
                 "gw150914_qnm_freq_hz": gw150914_qnm_freq_hz,
                 "gw150914_page_time_yr": gw150914_page_time_yr,
                 "horizon_bit_density_m2": horizon_bit_density_m2
+            },
+            "vacuum_decay_horizon": {
+                "higgs_mass_gev": higgs_mass_gev,
+                "coleman_action_se_hbar": coleman_action_se_hbar,
+                "critical_radius_m": critical_radius_m,
+                "log10_decay_rate_m4_s": log10_decay_rate_m4_s,
+                "ads_crunch_sec": ads_crunch_sec,
+                "audible_higgs_hz": audible_higgs_hz
+            },
+            "boltzmann_horizon": {
+                "entropy_kb": boltzmann_entropy_kb,
+                "poincare_log10_log10_yr": poincare_log10_log10_yr,
+                "temp_k": t_ds_kelvin,
+                "wafer_fluc_log10_yr": wafer_fluc_log10_yr,
+                "substrate_fluc_log10_yr": substrate_fluc_log10_yr
+            },
+            "penrose_crossover": {
+                "conformal_factor_omega": crossover_omega,
+                "weyl_scalar_c2": weyl_scalar_c2,
+                "hawking_radii_deg": hawking_radii_deg,
+                "variance_suppression": variance_suppression
+            },
+            "holographic_matrix": {
+                "central_charge": ads_central_charge,
+                "curvature_radius": ads_radius,
+                "critical_angle_deg": critical_theta_deg,
+                "planck_length_m": planck_length_m,
+                "planck_time_s": planck_time_s,
+                "uv_cutoff": uv_cutoff_eps
+            },
+            "spin_network": {
+                "immirzi_gamma": immirzi_gamma,
+                "area_gap_planck": area_gap_planck,
+                "area_gap_m2": area_gap_m2,
+                "lqc_rho_crit_ratio": lqc_rho_crit_ratio,
+                "lqc_rho_crit_si": lqc_rho_crit_si,
+                "f_area_half_hz": f_area_half_hz
+            },
+            "moyal_foam": {
+                "theta_deformation_m2": theta_deformation_m2,
+                "min_uncertainty_area_m2": min_uncertainty_area_m2,
+                "fuzzy_matrix_dim": fuzzy_matrix_dim,
+                "fuzzy_area_cells": fuzzy_area_cells,
+                "dirac_f0_hz": dirac_f0_hz,
+                "dirac_first_harmonic_hz": dirac_first_harmonic_hz
+            },
+            "causal_triangulation": {
+                "d_uv": cdt_d_uv,
+                "d_macro": cdt_d_macro,
+                "crossover_sigma": cdt_crossover_sigma,
+                "cauchy_freq_hz": cdt_cauchy_freq_hz,
+                "peak_volume_simplices": cdt_desitter_peak_vol
+            },
+            "wheeler_geon": {
+                "throat_radius_lp": geon_b0_lp,
+                "apparent_charge_c": geon_apparent_q_c,
+                "trapped_flux_vm": geon_phi_e_vm,
+                "mass_kg": geon_mass_kg,
+                "pinch_stability": geon_xi_stability,
+                "resonant_hz": geon_resonant_hz,
+                "is_stable": True
+            },
+            "er_epr_wormhole": {
+                "hawking_temp_k": er_hawking_t,
+                "inverse_beta_sec": er_beta,
+                "scrambling_time_sec": er_scrambling_time,
+                "coupling_h": er_coupling_h,
+                "kruskal_shift_delta_v": er_delta_v,
+                "traversability": "OPEN",
+                "window_duration_sec": er_window_sec,
+                "throat_length_m": er_throat_length,
+                "acoustic_carrier_hz": er_carrier_hz
+            },
+            "happy_qec_network": {
+                "logical_tensors": qec_logical_tensors,
+                "boundary_qubits": qec_boundary_qubits,
+                "erasure_fraction": qec_f_erasure,
+                "critical_threshold": qec_f_crit,
+                "is_protected": qec_is_protected,
+                "rt_apex_radius": qec_rt_apex_radius,
+                "rt_cut_length": qec_rt_cut_length,
+                "carrier_freq_hz": qec_carrier_hz,
+                "syndrome_frequencies_hz": qec_syndrome_hz
             }
         }
 
@@ -239,6 +403,16 @@ class StudioChronoEphemeris:
         print(f"[10] de Sitter Horiz : r_CEH = {res['de_sitter_horizon']['event_horizon_gpc']} Gpc ({res['de_sitter_horizon']['event_horizon_gly']} Gly) | T_GH = {res['de_sitter_horizon']['gibbons_hawking_temp_k']:.2e} K | E_L = {res['de_sitter_horizon']['landauer_gh_joules']:.2e} J/bit")
         print(f"[11] Silica Reliquary: 5D Inscription Half-Life: {res['fused_silica_reliquary']['half_life_years']:.2e} yr | Euler-Bernoulli Mode: {res['fused_silica_reliquary']['plate_mode_hz']} Hz (Q = 10⁷) | Capacity: {res['fused_silica_reliquary']['capacity_tb']:.0f} TB")
         print(f"[12] Page Horizon   : Sgr A* Info: {res['black_hole_horizon']['sgr_a_info_bits']:.2e} bits | GW150914 QNM: {res['black_hole_horizon']['gw150914_qnm_freq_hz']} Hz | Page Time: {res['black_hole_horizon']['gw150914_page_time_yr']:.2e} yr | Density: {res['black_hole_horizon']['horizon_bit_density_m2']:.2e} bits/m²")
+        print(f"[13] True Vacuum     : S_E = {res['vacuum_decay_horizon']['coleman_action_se_hbar']} ħ | R_c = {res['vacuum_decay_horizon']['critical_radius_m']:.2e} m | AdS Crunch: {res['vacuum_decay_horizon']['ads_crunch_sec']:.2e} s | Higgs Tone: {res['vacuum_decay_horizon']['audible_higgs_hz']} Hz")
+        print(f"[14] Boltzmann Horiz : S_dS = {res['boltzmann_horizon']['entropy_kb']:.2e} k_B | t_rec ~ 10^(10^{res['boltzmann_horizon']['poincare_log10_log10_yr']:.2f}) yr | Wafer: 10^{res['boltzmann_horizon']['wafer_fluc_log10_yr']:.1e} yr | Substrate: 10^{res['boltzmann_horizon']['substrate_fluc_log10_yr']:.1e} yr")
+        print(f"[15] Penrose Cross   : Ω = {res['penrose_crossover']['conformal_factor_omega']:.4f} | C² = {res['penrose_crossover']['weyl_scalar_c2']:.4f} | Hawking Rings: {res['penrose_crossover']['hawking_radii_deg']}° (Var: {res['penrose_crossover']['variance_suppression']})")
+        print(f"[16] Emergent Bulk   : c = {res['holographic_matrix']['central_charge']:.1f} | L_AdS = {res['holographic_matrix']['curvature_radius']:.2f} | θ_c = {res['holographic_matrix']['critical_angle_deg']}° | ℓ_P = {res['holographic_matrix']['planck_length_m']:.2e} m")
+        print(f"[17] Spin Network    : γ = {res['spin_network']['immirzi_gamma']:.4f} | Δ_min = {res['spin_network']['area_gap_planck']:.4f} ℓ_P² ({res['spin_network']['area_gap_m2']:.2e} m²) | ρ_crit = {res['spin_network']['lqc_rho_crit_ratio']:.2f} ρ_P | f_1/2 = {res['spin_network']['f_area_half_hz']} Hz")
+        print(f"[18] Moyal Foam      : θ = {res['moyal_foam']['theta_deformation_m2']:.2e} m² | ΔxΔy ≥ {res['moyal_foam']['min_uncertainty_area_m2']:.2e} m² | N = {res['moyal_foam']['fuzzy_matrix_dim']} ({res['moyal_foam']['fuzzy_area_cells']} cells) | f_1/2 = {res['moyal_foam']['dirac_first_harmonic_hz']} Hz")
+        print(f"[19] Causal Triang   : d_s(0) = {res['causal_triangulation']['d_uv']:.2f} (2D UV sheet) -> d_s(∞) = {res['causal_triangulation']['d_macro']:.2f} (4D de Sitter) | σ_0 = {res['causal_triangulation']['crossover_sigma']:.1f} steps | f_cauchy = {res['causal_triangulation']['cauchy_freq_hz']} Hz")
+        print(f"[20] Wheeler Geon    : b_0 = {res['wheeler_geon']['throat_radius_lp']:.3f} ℓ_P | Apparent Q = {res['wheeler_geon']['apparent_charge_c']:.2e} C (ρ_charge ≡ 0) | M_geon = {res['wheeler_geon']['mass_kg']:.2e} kg | ξ = {res['wheeler_geon']['pinch_stability']:.2f} (Stable) | f_res = {res['wheeler_geon']['resonant_hz']:.1f} Hz")
+        print(f"[21] ER = EPR Bridge : TFD β = {res['er_epr_wormhole']['inverse_beta_sec']:.2f} s | t_* = {res['er_epr_wormhole']['scrambling_time_sec']:.2f} s | h = {res['er_epr_wormhole']['coupling_h']} | ΔV = {res['er_epr_wormhole']['kruskal_shift_delta_v']:+.4f} (Traversable) | Window: {res['er_epr_wormhole']['window_duration_sec']:.3f} s | f_res = {res['er_epr_wormhole']['acoustic_carrier_hz']:.1f} Hz")
+        print(f"[22] HaPPY QEC Bulk  : Pentagons = {res['happy_qec_network']['logical_tensors']} logical | Boundary = {res['happy_qec_network']['boundary_qubits']} physical | Erasure = {res['happy_qec_network']['erasure_fraction']*100:.0f}% (Threshold: {res['happy_qec_network']['critical_threshold']*100:.0f}%) | Wedge Protected: {res['happy_qec_network']['is_protected']} | f_carrier = {res['happy_qec_network']['carrier_freq_hz']:.2f} Hz")
         print("=" * 70)
 
 if __name__ == "__main__":

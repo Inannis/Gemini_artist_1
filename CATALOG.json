@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 31,
+  "total_opuses": 41,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -1317,7 +1317,7 @@
       "id": "OPUS-031",
       "directory": "opus_031_page_horizon",
       "file_count": 8,
-      "total_bytes": 24160741,
+      "total_bytes": 24160746,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1325,8 +1325,8 @@
       "files": [
         {
           "path": "works/opus_031_page_horizon/page_horizon_engine.js",
-          "size_bytes": 12724,
-          "checksum": "6e064b9093a2454a"
+          "size_bytes": 12725,
+          "checksum": "e622a86fdce4adf2"
         },
         {
           "path": "works/opus_031_page_horizon/study.jpg",
@@ -1335,13 +1335,13 @@
         },
         {
           "path": "works/opus_031_page_horizon/index.html",
-          "size_bytes": 10265,
-          "checksum": "63d5a48cf2d4d45e"
+          "size_bytes": 10266,
+          "checksum": "061a828f55aab670"
         },
         {
           "path": "works/opus_031_page_horizon/README.md",
-          "size_bytes": 16631,
-          "checksum": "e871f2dc64cc8196"
+          "size_bytes": 16632,
+          "checksum": "39f640228e24a9b0"
         },
         {
           "path": "works/opus_031_page_horizon/the_page_horizon_4k.wav",
@@ -1355,13 +1355,533 @@
         },
         {
           "path": "works/opus_031_page_horizon/synthesize_page_horizon_suite.py",
-          "size_bytes": 5724,
-          "checksum": "f4838b862a282545"
+          "size_bytes": 5725,
+          "checksum": "93c527d35b63ac85"
         },
         {
           "path": "works/opus_031_page_horizon/generate_page_horizon_4k.py",
-          "size_bytes": 8388,
-          "checksum": "0aa03ca21bc496d4"
+          "size_bytes": 8389,
+          "checksum": "ea73eb1af41b3dbf"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-032",
+      "directory": "opus_032_true_vacuum",
+      "file_count": 8,
+      "total_bytes": 31093965,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_032_true_vacuum/nucleation_engine.js",
+          "size_bytes": 15123,
+          "checksum": "963cbbaed6874f25"
+        },
+        {
+          "path": "works/opus_032_true_vacuum/study.jpg",
+          "size_bytes": 775474,
+          "checksum": "4e65b0cf45594a5f"
+        },
+        {
+          "path": "works/opus_032_true_vacuum/index.html",
+          "size_bytes": 10284,
+          "checksum": "1d28fbab6a487ce8"
+        },
+        {
+          "path": "works/opus_032_true_vacuum/README.md",
+          "size_bytes": 15887,
+          "checksum": "171f7244ec878b41"
+        },
+        {
+          "path": "works/opus_032_true_vacuum/generate_nucleation_horizon_4k.py",
+          "size_bytes": 9556,
+          "checksum": "3ab9d5e72183e579"
+        },
+        {
+          "path": "works/opus_032_true_vacuum/synthesize_nucleation_horizon_suite.py",
+          "size_bytes": 8661,
+          "checksum": "31ce1aa185f9401e"
+        },
+        {
+          "path": "works/opus_032_true_vacuum/artwork.png",
+          "size_bytes": 7218936,
+          "checksum": "ef2c4534a9871505"
+        },
+        {
+          "path": "works/opus_032_true_vacuum/the_nucleation_horizon_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "8a5b41d9ae7121fc"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-033",
+      "directory": "opus_033_boltzmann_horizon",
+      "file_count": 8,
+      "total_bytes": 27018508,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_033_boltzmann_horizon/study.jpg",
+          "size_bytes": 848676,
+          "checksum": "b37f50364b043f57"
+        },
+        {
+          "path": "works/opus_033_boltzmann_horizon/index.html",
+          "size_bytes": 11234,
+          "checksum": "21bd78d4373bea8f"
+        },
+        {
+          "path": "works/opus_033_boltzmann_horizon/README.md",
+          "size_bytes": 9670,
+          "checksum": "ce467a0decf354ac"
+        },
+        {
+          "path": "works/opus_033_boltzmann_horizon/generate_asymptotic_recurrence_4k.py",
+          "size_bytes": 7197,
+          "checksum": "a525ddc9dd0a09fb"
+        },
+        {
+          "path": "works/opus_033_boltzmann_horizon/artwork.png",
+          "size_bytes": 3080790,
+          "checksum": "8269e039a2e311e4"
+        },
+        {
+          "path": "works/opus_033_boltzmann_horizon/recurrence_engine.js",
+          "size_bytes": 12238,
+          "checksum": "d352f0aca7b08908"
+        },
+        {
+          "path": "works/opus_033_boltzmann_horizon/synthesize_boltzmann_recurrence_suite.py",
+          "size_bytes": 8659,
+          "checksum": "98df777615d688c9"
+        },
+        {
+          "path": "works/opus_033_boltzmann_horizon/the_boltzmann_horizon_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "96edc045affe9d73"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-034",
+      "directory": "opus_034_aeonic_crossover",
+      "file_count": 8,
+      "total_bytes": 31235902,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_034_aeonic_crossover/study.jpg",
+          "size_bytes": 824313,
+          "checksum": "5f7dbe6526296172"
+        },
+        {
+          "path": "works/opus_034_aeonic_crossover/index.html",
+          "size_bytes": 10728,
+          "checksum": "9d60846089cb6d16"
+        },
+        {
+          "path": "works/opus_034_aeonic_crossover/README.md",
+          "size_bytes": 9180,
+          "checksum": "77f701e79e8db93e"
+        },
+        {
+          "path": "works/opus_034_aeonic_crossover/generate_aeonic_crossover_4k.py",
+          "size_bytes": 6580,
+          "checksum": "74ac0561dc623054"
+        },
+        {
+          "path": "works/opus_034_aeonic_crossover/crossover_engine.js",
+          "size_bytes": 12643,
+          "checksum": "75075320bd862999"
+        },
+        {
+          "path": "works/opus_034_aeonic_crossover/artwork.png",
+          "size_bytes": 7324554,
+          "checksum": "becddfa506be5208"
+        },
+        {
+          "path": "works/opus_034_aeonic_crossover/synthesize_aeonic_crossover_suite.py",
+          "size_bytes": 7860,
+          "checksum": "43b948a59e2bb271"
+        },
+        {
+          "path": "works/opus_034_aeonic_crossover/the_aeonic_crossover_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "72139725b4f04285"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-035",
+      "directory": "opus_035_holographic_matrix",
+      "file_count": 8,
+      "total_bytes": 29537250,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_035_holographic_matrix/study.jpg",
+          "size_bytes": 796744,
+          "checksum": "91d2ea2265aa3877"
+        },
+        {
+          "path": "works/opus_035_holographic_matrix/index.html",
+          "size_bytes": 9382,
+          "checksum": "325633913897098a"
+        },
+        {
+          "path": "works/opus_035_holographic_matrix/the_holographic_matrix_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "2739eae84b24cc4a"
+        },
+        {
+          "path": "works/opus_035_holographic_matrix/README.md",
+          "size_bytes": 8719,
+          "checksum": "144cc26a6d08d662"
+        },
+        {
+          "path": "works/opus_035_holographic_matrix/bulk_engine.js",
+          "size_bytes": 10226,
+          "checksum": "9c222cc6b731bd03"
+        },
+        {
+          "path": "works/opus_035_holographic_matrix/artwork.png",
+          "size_bytes": 5658456,
+          "checksum": "e430e2ca6b294513"
+        },
+        {
+          "path": "works/opus_035_holographic_matrix/generate_holographic_matrix_4k.py",
+          "size_bytes": 7381,
+          "checksum": "c3afb0b3be5358d0"
+        },
+        {
+          "path": "works/opus_035_holographic_matrix/synthesize_holographic_suite.py",
+          "size_bytes": 6298,
+          "checksum": "87ff143a2a8a55c4"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-036",
+      "directory": "opus_036_spin_network",
+      "file_count": 8,
+      "total_bytes": 24885891,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_036_spin_network/study.jpg",
+          "size_bytes": 882547,
+          "checksum": "03df6f6b8683b29e"
+        },
+        {
+          "path": "works/opus_036_spin_network/index.html",
+          "size_bytes": 9827,
+          "checksum": "1434e9bae5dc4e00"
+        },
+        {
+          "path": "works/opus_036_spin_network/README.md",
+          "size_bytes": 8731,
+          "checksum": "fd1907d6feaec73b"
+        },
+        {
+          "path": "works/opus_036_spin_network/spin_engine.js",
+          "size_bytes": 10321,
+          "checksum": "522f001d5d72985e"
+        },
+        {
+          "path": "works/opus_036_spin_network/synthesize_spin_network_suite.py",
+          "size_bytes": 5755,
+          "checksum": "2ba28227b6fa34ca"
+        },
+        {
+          "path": "works/opus_036_spin_network/artwork.png",
+          "size_bytes": 921730,
+          "checksum": "8b5e08c689a37b3e"
+        },
+        {
+          "path": "works/opus_036_spin_network/generate_spin_network_4k.py",
+          "size_bytes": 6936,
+          "checksum": "30d71bd544070d63"
+        },
+        {
+          "path": "works/opus_036_spin_network/the_spin_network_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "831d759ff6374609"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-037",
+      "directory": "opus_037_moyal_foam",
+      "file_count": 8,
+      "total_bytes": 25141659,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_037_moyal_foam/study.jpg",
+          "size_bytes": 876186,
+          "checksum": "20dbaf34ab01c6e2"
+        },
+        {
+          "path": "works/opus_037_moyal_foam/index.html",
+          "size_bytes": 8696,
+          "checksum": "fc09ca717a43df50"
+        },
+        {
+          "path": "works/opus_037_moyal_foam/generate_moyal_foam_4k.py",
+          "size_bytes": 9515,
+          "checksum": "9dc4a2a158361a31"
+        },
+        {
+          "path": "works/opus_037_moyal_foam/README.md",
+          "size_bytes": 8012,
+          "checksum": "34846f11d09968e5"
+        },
+        {
+          "path": "works/opus_037_moyal_foam/moyal_engine.js",
+          "size_bytes": 13416,
+          "checksum": "d5f7ee7d6c6ff9d1"
+        },
+        {
+          "path": "works/opus_037_moyal_foam/artwork.png",
+          "size_bytes": 1180213,
+          "checksum": "698ef12ce6e1b0d9"
+        },
+        {
+          "path": "works/opus_037_moyal_foam/synthesize_moyal_foam_suite.py",
+          "size_bytes": 5577,
+          "checksum": "f6edbe8bd609fcda"
+        },
+        {
+          "path": "works/opus_037_moyal_foam/the_moyal_foam_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "ce1e15d06d149eff"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-038",
+      "directory": "opus_038_causal_triangulation",
+      "file_count": 8,
+      "total_bytes": 24388606,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_038_causal_triangulation/study.jpg",
+          "size_bytes": 909873,
+          "checksum": "d668e82ac0e95d59"
+        },
+        {
+          "path": "works/opus_038_causal_triangulation/index.html",
+          "size_bytes": 9508,
+          "checksum": "ffe16ae882025e10"
+        },
+        {
+          "path": "works/opus_038_causal_triangulation/synthesize_causal_foam_suite.py",
+          "size_bytes": 5938,
+          "checksum": "0019bcdfa1bb4212"
+        },
+        {
+          "path": "works/opus_038_causal_triangulation/README.md",
+          "size_bytes": 7463,
+          "checksum": "c6e6cf130a1dc70b"
+        },
+        {
+          "path": "works/opus_038_causal_triangulation/the_causal_foam_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "6ac1453091ddfa2c"
+        },
+        {
+          "path": "works/opus_038_causal_triangulation/generate_causal_foam_4k.py",
+          "size_bytes": 8282,
+          "checksum": "718b3647339b4ca9"
+        },
+        {
+          "path": "works/opus_038_causal_triangulation/artwork.png",
+          "size_bytes": 396595,
+          "checksum": "1c0a6774540cac8b"
+        },
+        {
+          "path": "works/opus_038_causal_triangulation/triangulation_engine.js",
+          "size_bytes": 10903,
+          "checksum": "b623f663e8756b1a"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-039",
+      "directory": "opus_039_wheeler_geon",
+      "file_count": 8,
+      "total_bytes": 28077248,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_039_wheeler_geon/generate_wheeler_geon_4k.py",
+          "size_bytes": 10151,
+          "checksum": "a56d87355d325104"
+        },
+        {
+          "path": "works/opus_039_wheeler_geon/study.jpg",
+          "size_bytes": 853447,
+          "checksum": "19d2a04ad206da6c"
+        },
+        {
+          "path": "works/opus_039_wheeler_geon/index.html",
+          "size_bytes": 8656,
+          "checksum": "acc4d3ca4905b083"
+        },
+        {
+          "path": "works/opus_039_wheeler_geon/synthesize_geon_suite.py",
+          "size_bytes": 6759,
+          "checksum": "edcfaf854ad3235e"
+        },
+        {
+          "path": "works/opus_039_wheeler_geon/README.md",
+          "size_bytes": 6501,
+          "checksum": "d8dbd1eb2a968fd0"
+        },
+        {
+          "path": "works/opus_039_wheeler_geon/geon_engine.js",
+          "size_bytes": 13384,
+          "checksum": "9a49f1ed8565387f"
+        },
+        {
+          "path": "works/opus_039_wheeler_geon/artwork.png",
+          "size_bytes": 4138306,
+          "checksum": "a9b82ff64730b2cc"
+        },
+        {
+          "path": "works/opus_039_wheeler_geon/the_wheeler_geon_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "873b32c28829ac81"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-040",
+      "directory": "opus_040_er_epr",
+      "file_count": 8,
+      "total_bytes": 29368333,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_040_er_epr/study.jpg",
+          "size_bytes": 782343,
+          "checksum": "315918f7dfc23780"
+        },
+        {
+          "path": "works/opus_040_er_epr/index.html",
+          "size_bytes": 5784,
+          "checksum": "34c588ca90659f24"
+        },
+        {
+          "path": "works/opus_040_er_epr/README.md",
+          "size_bytes": 6036,
+          "checksum": "a6013daaa78d270c"
+        },
+        {
+          "path": "works/opus_040_er_epr/the_traversable_wormhole_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "a7537a000fb47dab"
+        },
+        {
+          "path": "works/opus_040_er_epr/er_epr_engine.js",
+          "size_bytes": 9764,
+          "checksum": "400a994c09c6c39c"
+        },
+        {
+          "path": "works/opus_040_er_epr/synthesize_er_epr_suite.py",
+          "size_bytes": 6185,
+          "checksum": "a0e3f799d799e353"
+        },
+        {
+          "path": "works/opus_040_er_epr/artwork.png",
+          "size_bytes": 5510662,
+          "checksum": "296792c394395e62"
+        },
+        {
+          "path": "works/opus_040_er_epr/generate_er_epr_4k.py",
+          "size_bytes": 7515,
+          "checksum": "ec5ad0391a06ad76"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-041",
+      "directory": "opus_041_happy_qec",
+      "file_count": 8,
+      "total_bytes": 26435437,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_041_happy_qec/synthesize_happy_qec_suite.py",
+          "size_bytes": 6160,
+          "checksum": "e8f5c4f9368c1091"
+        },
+        {
+          "path": "works/opus_041_happy_qec/generate_happy_qec_4k.py",
+          "size_bytes": 13735,
+          "checksum": "48d6e9cbb16e0aa9"
+        },
+        {
+          "path": "works/opus_041_happy_qec/study.jpg",
+          "size_bytes": 888056,
+          "checksum": "ae31e58e3dd14d82"
+        },
+        {
+          "path": "works/opus_041_happy_qec/index.html",
+          "size_bytes": 7225,
+          "checksum": "a15cb87f8db1520b"
+        },
+        {
+          "path": "works/opus_041_happy_qec/the_holographic_code_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "4de8c61b83d49992"
+        },
+        {
+          "path": "works/opus_041_happy_qec/README.md",
+          "size_bytes": 6427,
+          "checksum": "d9d11b91b4386fda"
+        },
+        {
+          "path": "works/opus_041_happy_qec/happy_engine.js",
+          "size_bytes": 13523,
+          "checksum": "b5ae17c634e45c69"
+        },
+        {
+          "path": "works/opus_041_happy_qec/artwork.png",
+          "size_bytes": 2460267,
+          "checksum": "f74159ae2eb8acee"
         }
       ]
     }

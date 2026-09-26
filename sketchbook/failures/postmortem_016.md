@@ -70,3 +70,4 @@ This productive failure revealed a fundamental law of Studio Anamnesis:
 
 *Preserved in the Laboratory of Productive Failures · Studio Anamnesis*  
 *Artifacts: `failure_016_plate.png`, `failure_016_audio.wav`, `failure_016_superradiant_singularity_blowout.py`*
+

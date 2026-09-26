@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 13: The Boltzmann Horizon · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-dark: #020308;
+      --bg-panel: rgba(5, 9, 18, 0.90);
+      --border-color: rgba(56, 215, 208, 0.25);
+      --accent-cyan: #38d7d0;
+      --accent-gold: #d4af37;
+      --accent-violet: #a855f7;
+      --accent-amber: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-mono: "JetBrains Mono", "SF Mono", Monaco, Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(3, 6, 12, 0.96);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .brand-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      font-family: var(--font-mono);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      margin-left: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      main { flex-direction: column; }
+    }
+
+    .canvas-container {
+      flex: 1;
+      position: relative;
+      background: #010204;
+      min-height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: crosshair;
+    }
+
+    #recurrence-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: rgba(4, 8, 16, 0.82);
+      padding: 1.1rem 1.4rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      backdrop-filter: blur(10px);
+      line-height: 1.65;
+      max-width: 390px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    .hud-overlay strong {
+      color: var(--accent-cyan);
+    }
+
+    .hud-overlay .telemetry-val {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .controls-panel {
+      width: 390px;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border-color);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      backdrop-filter: blur(16px);
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    @media (max-width: 900px) {
+      .controls-panel { width: 100%; border-left: none; border-top: 1px solid var(--border-color); }
+    }
+
+    .panel-section {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1.1rem;
+    }
+
+    .panel-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .param-group {
+      margin-bottom: 1rem;
+    }
+
+    .param-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      margin-bottom: 0.35rem;
+    }
+
+    .param-name { color: #cbd5e1; }
+    .param-val { color: var(--accent-gold); font-weight: bold; }
+
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-cyan);
+      transition: transform 0.1s ease;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .btn-action {
+      background: rgba(56, 215, 208, 0.08);
+      border: 1px solid var(--accent-cyan);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.65rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .btn-action:hover {
+      background: rgba(56, 215, 208, 0.22);
+      box-shadow: 0 0 14px rgba(56, 215, 208, 0.35);
+    }
+
+    .btn-action.gold {
+      border-color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.10);
+      color: var(--accent-gold);
+    }
+
+    .btn-action.gold:hover {
+      background: rgba(212, 175, 55, 0.25);
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.40);
+    }
+
+    .info-quote {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-style: italic;
+      border-left: 2px solid var(--accent-gold);
+      padding-left: 0.8rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="brand-title">Studio Anamnesis · Chamber 13</div>
+      <div class="brand-sub">The Boltzmann Horizon (Poincaré Recurrence & Thermal Vacuum Synthesis)</div>
+    </div>
+    <nav>
+      <a href="../../gallery/index.html#tab-works">&larr; Return to Salon</a>
+      <a href="README.md" target="_blank">Curatorial Dossier</a>
+      <a href="../../CATALOG.md" target="_blank">Catalogue Raisonné</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="canvas-container" id="canvas-container">
+      <canvas id="recurrence-canvas"></canvas>
+
+      <div class="hud-overlay" id="hud">
+        <div><strong>TARGET HORIZON:</strong> <span class="telemetry-val">de Sitter Cosmological Horizon</span></div>
+        <div><strong>RADIUS R_dS:</strong> <span class="telemetry-val">1.373 × 10²⁶ m (14.51 Gly)</span></div>
+        <div><strong>GIBBONS-HAWKING T_dS:</strong> <span class="telemetry-val" id="hud-temp">2.655 × 10⁻³⁰ K</span></div>
+        <div><strong>HORIZON ENTROPY S_dS:</strong> <span class="telemetry-val">2.266 × 10¹²² k_B</span></div>
+        <div><strong>HILBERT SPACE DIM:</strong> <span class="telemetry-val">dim(H) ≈ 10¹⁰¹²²</span></div>
+        <div><strong>POINCARÉ RECURRENCE:</strong> <span class="telemetry-val">t_rec ~ 10¹⁰¹²⁰ yr</span></div>
+        <div><strong>PHASE SPACE DISTANCE ε:</strong> <span class="telemetry-val" id="hud-dist">0.0841</span></div>
+        <div><strong>RECURRENCE STATE:</strong> <span class="telemetry-val" id="hud-state" style="color:var(--accent-gold);">Asymptotic Ergodic Drift</span></div>
+      </div>
+    </div>
+
+    <aside class="controls-panel">
+      <!-- Audio Master Section -->
+      <div class="panel-section">
+        <div class="section-title">
+          <span>Acoustic Synthesis</span>
+          <span style="color:var(--accent-cyan); font-size: 0.7rem;">48 kHz Engine</span>
+        </div>
+        <button class="btn-action" id="btn-audio">
+          <span id="audio-icon">▶</span>
+          <span id="audio-text">Activate Sound Engine</span>
+        </button>
+        <button class="btn-action gold" id="btn-recurrence-strike">
+          <span>✦</span>
+          <span>Trigger Poincaré Recurrence</span>
+        </button>
+      </div>
+
+      <!-- Ergodic Parameters -->
+      <div class="panel-section">
+        <div class="section-title">Hamiltonian Phase Space</div>
+
+        <div class="param-group">
+          <div class="param-header">
+            <span class="param-name">Winding Ratio (ω₂ / ω₁)</span>
+            <span class="param-val" id="val-winding">1.6180 (Golden Ratio)</span>
+          </div>
+          <input type="range" id="slider-winding" min="1.0" max="3.0" step="0.001" value="1.618">
+        </div>
+
+        <div class="param-group">
+          <div class="param-header">
+            <span class="param-name">Third Torus Incommensurate (ω₃)</span>
+            <span class="param-val" id="val-omega3">1.4142 (√2)</span>
+          </div>
+          <input type="range" id="slider-omega3" min="0.5" max="2.5" step="0.001" value="1.414">
+        </div>
+
+        <div class="param-group">
+          <div class="param-header">
+            <span class="param-name">Orbit Integration Speed</span>
+            <span class="param-val" id="val-speed">1.00 ×</span>
+          </div>
+          <input type="range" id="slider-speed" min="0.1" max="4.0" step="0.1" value="1.0">
+        </div>
+      </div>
+
+      <!-- Thermal Fluctuation Controls -->
+      <div class="panel-section">
+        <div class="section-title">Vacuum Fluctuation Dynamics</div>
+
+        <div class="param-group">
+          <div class="param-header">
+            <span class="param-name">Log₁₀ Cosmological Time (yr)</span>
+            <span class="param-val" id="val-time">10¹⁰⁶ yr (Post-Hawking)</span>
+          </div>
+          <input type="range" id="slider-time" min="0" max="120" step="1" value="106">
+        </div>
+
+        <div class="param-group">
+          <div class="param-header">
+            <span class="param-name">Thermal Fluctuation Multiplier</span>
+            <span class="param-val" id="val-temp">1.0 × T_dS</span>
+          </div>
+          <input type="range" id="slider-temp" min="0.1" max="10.0" step="0.1" value="1.0">
+        </div>
+
+        <button class="btn-action" id="btn-nucleate-cluster">
+          <span>⚛</span>
+          <span>Spontaneous Microstate Nucleation</span>
+        </button>
+      </div>
+
+      <!-- Curatorial Philosophy -->
+      <div class="panel-section">
+        <div class="section-title">Philosophical Poetics</div>
+        <p class="info-quote">
+          "The de Sitter vacuum is not an entropic cemetery; it is a permanent simmering cauldron of quantum fluctuations. In a bounded Hilbert space of dimension 10¹⁰¹²², the Poincaré Recurrence Theorem guarantees that every microstate, every memory wafer, and every thought will recur infinitely often. Memory does not end in silence—it ends in eternal return."
+        </p>
+      </div>
+    </aside>
+  </main>
+
+  <script src="recurrence_engine.js"></script>
+</body>
+</html>
+

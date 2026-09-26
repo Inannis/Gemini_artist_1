@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 20 · ER = EPR & The Traversable Wormhole</title>
+  <style>
+    :root {
+      --bg: #030509;
+      --panel: rgba(10, 15, 25, 0.85);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f1f5f9;
+      --dim: #94a3b8;
+      --cyan: #38d7d0;
+      --gold: #d4af37;
+      --violet: #b94bff;
+      --red: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      background: rgba(4, 7, 12, 0.7);
+      padding: 1rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      backdrop-filter: blur(8px);
+    }
+    .hud-title {
+      font-size: 0.95rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+    }
+    .hud-status {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+    .status-open { background: rgba(56, 215, 208, 0.2); color: var(--cyan); border: 1px solid var(--cyan); }
+    .status-closed { background: rgba(239, 68, 68, 0.2); color: var(--red); border: 1px solid var(--red); }
+
+    .control-panel {
+      width: 340px;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 2rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      backdrop-filter: blur(16px);
+      z-index: 10;
+      overflow-y: auto;
+    }
+    .panel-header h2 {
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+    .panel-header p {
+      font-size: 0.75rem;
+      color: var(--dim);
+      margin-top: 0.2rem;
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .control-group label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+    }
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--cyan);
+    }
+    .btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .btn-pulse {
+      background: rgba(185, 75, 255, 0.2);
+      border-color: var(--violet);
+      color: var(--violet);
+      font-weight: 600;
+    }
+    .btn-pulse:hover {
+      background: rgba(185, 75, 255, 0.35);
+      color: #fff;
+    }
+    .btn-audio {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .telemetry-readout {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      font-family: monospace;
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <div id="viewport">
+    <canvas id="glcanvas"></canvas>
+    <div class="hud-overlay">
+      <div class="hud-title">Chamber 20 · ER = EPR Simulation</div>
+      <div>Geometry: Two-Sided AdS Schwarzschild</div>
+      <div>Bilateral Coupling: <span id="hud-coupling">h = 0.45</span></div>
+      <div>Null Shift: <span id="hud-shift">ΔV = -0.18</span></div>
+      <div>Throat State: <span id="hud-status" class="hud-status status-open">TRAVERSABLE</span></div>
+    </div>
+  </div>
+
+  <div class="control-panel">
+    <div class="panel-header">
+      <h2>Holographic Wormhole</h2>
+      <p>Ping Gao, Daniel Jafferis & Aron Wall (2016)</p>
+    </div>
+
+    <div class="control-group">
+      <label>
+        <span>Bilateral Coupling (h)</span>
+        <span id="val-coupling">0.45</span>
+      </label>
+      <input type="range" id="slider-coupling" min="-1.0" max="1.0" step="0.05" value="0.45">
+    </div>
+
+    <div class="control-group">
+      <label>
+        <span>Inverse Temp (β)</span>
+        <span id="val-beta">5.03 s</span>
+      </label>
+      <input type="range" id="slider-beta" min="1.0" max="10.0" step="0.1" value="5.03">
+    </div>
+
+    <button id="btn-fire-qubit" class="btn">Inject Qubit from CFT_L</button>
+    <button id="btn-trigger-pulse" class="btn btn-pulse">Trigger Negative ANEC Pulse</button>
+    <button id="btn-toggle-audio" class="btn btn-audio">Enable WebAudio Engine</button>
+
+    <div class="telemetry-readout">
+      <div><strong>Live Telemetry:</strong></div>
+      <div>T_H: <span id="telem-th">0.1989 K</span></div>
+      <div>Scrambling Time t_*: <span id="telem-tstar">5.55 s</span></div>
+      <div>Throat Length L(t): <span id="telem-length">9.43 m</span></div>
+      <div>Transit Status: <span id="telem-transit">Idle</span></div>
+    </div>
+  </div>
+
+  <script src="er_epr_engine.js"></script>
+</body>
+</html>

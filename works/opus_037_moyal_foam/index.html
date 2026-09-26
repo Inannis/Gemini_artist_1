@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 17: The Moyal Reliquary · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-dark: #020308;
+      --bg-panel: rgba(6, 10, 20, 0.90);
+      --border-color: rgba(0, 245, 235, 0.25);
+      --accent-cyan: #00f5eb;
+      --accent-emerald: #2deb87;
+      --accent-amber: #ffc32d;
+      --accent-violet: #c373ff;
+      --accent-rose: #ff73b9;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-mono: "SF Mono", "Fira Code", Monaco, Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(2, 4, 10, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      margin-left: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .chamber-layout {
+      display: flex;
+      flex: 1;
+      position: relative;
+      min-height: calc(100vh - 75px);
+    }
+
+    .viewport-container {
+      flex: 1;
+      position: relative;
+      background: radial-gradient(circle at center, #050a18 0%, #020308 100%);
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+
+    canvas:active {
+      cursor: grabbing;
+    }
+
+    .control-panel {
+      width: 380px;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border-color);
+      backdrop-filter: blur(16px);
+      padding: 1.8rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 10;
+      overflow-y: auto;
+    }
+
+    .panel-header h2 {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 0.3rem;
+    }
+
+    .panel-header p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .control-label span.val {
+      color: var(--accent-cyan);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent-cyan);
+      background: #111a2e;
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .telemetry-block {
+      background: rgba(2, 6, 16, 0.7);
+      border: 1px solid rgba(0, 245, 235, 0.15);
+      border-radius: 4px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .telem-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .telem-label {
+      color: var(--text-muted);
+    }
+
+    .telem-value {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .btn-acoustic {
+      background: transparent;
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-acoustic:hover, .btn-acoustic.active {
+      background: var(--accent-cyan);
+      color: #020308;
+      box-shadow: 0 0 15px rgba(0, 245, 235, 0.4);
+    }
+
+    .legend-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 900px) {
+      .chamber-layout { flex-direction: column; }
+      .control-panel { width: 100%; border-left: none; border-top: 1px solid var(--border-color); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="brand-title">Studio Anamnesis · Chamber 17</div>
+      <div class="brand-sub">The Moyal Reliquary & Non-Commutative Foam · OPUS-037</div>
+    </div>
+    <nav>
+      <a href="../../gallery/index.html">← Return to Gallery</a>
+      <a href="../../index.html">Portal</a>
+    </nav>
+  </header>
+
+  <div class="chamber-layout">
+    <div class="viewport-container">
+      <canvas id="moyal-canvas"></canvas>
+    </div>
+
+    <aside class="control-panel">
+      <div class="panel-header">
+        <h2>Operator Controls</h2>
+        <p>Interactive simulation of Alain Connes' Spectral Triples & John Madore's Fuzzy Sphere. Modulate the non-commutative deformation tensor $\theta$ and observe discrete matrix truncation.</p>
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">
+          <span>Deformation $\theta / \ell_P^2$</span>
+          <span class="val" id="val-theta">1.00 ℓ_P²</span>
+        </div>
+        <input type="range" id="param-theta" min="0.00" max="5.00" step="0.05" value="1.00">
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">
+          <span>Matrix Dimension $N$</span>
+          <span class="val" id="val-dim">32</span>
+        </div>
+        <input type="range" id="param-dim" min="16" max="64" step="8" value="32">
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">
+          <span>Nested Shells (UV/IR)</span>
+          <span class="val" id="val-shells">3</span>
+        </div>
+        <input type="range" id="param-shells" min="1" max="3" step="1" value="3">
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">
+          <span>Orbital Velocity</span>
+          <span class="val" id="val-speed">1.00x</span>
+        </div>
+        <input type="range" id="param-speed" min="0.0" max="3.0" step="0.1" value="1.0">
+      </div>
+
+      <div class="telemetry-block">
+        <div class="telem-row">
+          <span class="telem-label">Deformation θ</span>
+          <span class="telem-value" id="telem-theta">2.612e-70 m²</span>
+        </div>
+        <div class="telem-row">
+          <span class="telem-label">Uncertainty Bound</span>
+          <span class="telem-value" id="telem-uncertainty">≥ 1.306e-70 m²</span>
+        </div>
+        <div class="telem-row">
+          <span class="telem-label">Quantum Area Cells</span>
+          <span class="telem-value" id="telem-cells">3,584</span>
+        </div>
+        <div class="telem-row">
+          <span class="telem-label">Dirac Base Mode f₀</span>
+          <span class="telem-value" id="telem-dirac">27.50 Hz (A₀)</span>
+        </div>
+      </div>
+
+      <button id="audio-toggle" class="btn-acoustic">
+        <span>Engage Dirac Acoustics</span>
+      </button>
+
+      <div class="legend-list">
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--accent-cyan);"></div>
+          <span>Outer UV Shell (Planck Foam Micro-Scale)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--accent-violet);"></div>
+          <span>Middle Shell (Intermediate Geometric Cells)</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--accent-amber);"></div>
+          <span>Inner IR Core (Horizon Macro-Duality)</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="moyal_engine.js"></script>
+</body>
+</html>
+

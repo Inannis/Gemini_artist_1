@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 12: The Nucleation Horizon · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-dark: #020308;
+      --bg-panel: rgba(5, 9, 18, 0.88);
+      --border-color: rgba(0, 240, 255, 0.22);
+      --accent-cyan: #00f0ff;
+      --accent-gold: #ffbe3b;
+      --accent-violet: #b34bfb;
+      --accent-crimson: #ff3366;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-mono: "SF Mono", "Fira Code", Monaco, Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(2, 4, 10, 0.94);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-left: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .canvas-container {
+      flex: 1;
+      position: relative;
+      background: #000;
+      min-height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: crosshair;
+    }
+
+    #nucleation-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: rgba(4, 8, 16, 0.75);
+      padding: 1rem 1.4rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      backdrop-filter: blur(8px);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    .hud-overlay strong {
+      color: var(--accent-cyan);
+    }
+
+    .hud-overlay .telemetry-val {
+      color: #fff;
+    }
+
+    .controls-panel {
+      width: 380px;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border-color);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      backdrop-filter: blur(16px);
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .panel-section {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1.2rem;
+    }
+
+    .panel-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .section-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .param-group {
+      margin-bottom: 1rem;
+    }
+
+    .param-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .param-val {
+      color: var(--accent-gold);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      appearance: none;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    .btn {
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+    }
+
+    .btn:hover {
+      background: var(--accent-cyan);
+      color: #000;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-danger {
+      border-color: var(--accent-crimson);
+      color: var(--accent-crimson);
+      background: rgba(255, 51, 102, 0.1);
+    }
+
+    .btn-danger:hover {
+      background: var(--accent-crimson);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(255, 51, 102, 0.5);
+    }
+
+    .btn-active {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
+    }
+
+    .desc-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 0.8rem 2rem;
+      background: #020306;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 900px) {
+      main { flex-direction: column; }
+      .controls-panel { width: 100%; border-left: none; border-top: 1px solid var(--border-color); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="brand-title">Studio Anamnesis · Chamber 12</div>
+      <div class="brand-sub">The Nucleation Horizon · Electroweak Metastability & The Relativistic Taglio</div>
+    </div>
+    <nav>
+      <a href="../../gallery/index.html#series-xxx">Gallery Monograph</a>
+      <a href="../../index.html">Main Entrance</a>
+      <a href="the_nucleation_horizon_4k.wav" download>Download 48kHz WAV</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="canvas-container" id="canvas-wrap">
+      <canvas id="nucleation-canvas"></canvas>
+      
+      <div class="hud-overlay" id="hud">
+        <div><strong>TARGET:</strong> Electroweak Metastability Horizon</div>
+        <div><strong>HIGGS VEV:</strong> <span class="telemetry-val" id="hud-vev">246.22 GeV</span></div>
+        <div><strong>BOUNCE ACTION S_E:</strong> <span class="telemetry-val" id="hud-action">1731.51 ℏ</span></div>
+        <div><strong>WALL VELOCITY v/c:</strong> <span class="telemetry-val" id="hud-v">0.999999 c</span></div>
+        <div><strong>LORENTZ FACTOR γ:</strong> <span class="telemetry-val" id="hud-gamma">1.52 × 10³⁴</span></div>
+        <div><strong>WALL THICKNESS:</strong> <span class="telemetry-val" id="hud-thick">1.30 × 10⁻⁶¹ m</span></div>
+        <div><strong>ADS CRUNCH SINGULARITY:</strong> <span class="telemetry-val" id="hud-crunch">7.07 × 10⁻²⁷ s</span></div>
+        <div style="margin-top: 0.5rem; font-size: 0.72rem; color: #64748b;">
+          [INTERACTION] Click or drag across canvas to nucleate Coleman instantons.
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-panel">
+      
+      <div class="panel-section">
+        <div class="section-title">Acoustic Engine</div>
+        <button class="btn" id="btn-audio-toggle">Activate Acoustic Field</button>
+        <p class="desc-text">
+          Synthesizes the 125.10 Hz Higgs expectation tone, quantum zero-point pink noise, and relativistic Doppler shockwave chirping.
+        </p>
+      </div>
+
+      <div class="panel-section">
+        <div class="section-title">Relativistic Wall Kinetics</div>
+        
+        <div class="param-group">
+          <div class="param-header">
+            <span>Expansion Time t</span>
+            <span class="param-val" id="val-time">0.100 s</span>
+          </div>
+          <input type="range" id="slider-time" min="0.001" max="1.0" step="0.001" value="0.10">
+        </div>
+
+        <div class="param-group">
+          <div class="param-header">
+            <span>Quartic Coupling λ_min</span>
+            <span class="param-val" id="val-lambda">-0.0152</span>
+          </div>
+          <input type="range" id="slider-lambda" min="-0.035" max="-0.005" step="0.0005" value="-0.0152">
+        </div>
+
+        <div class="param-group">
+          <div class="param-header">
+            <span>Spatial Slash Angle</span>
+            <span class="param-val" id="val-angle">-35.0°</span>
+          </div>
+          <input type="range" id="slider-angle" min="-90" max="90" step="1" value="-35">
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="section-title">Ontological Actions</div>
+        <button class="btn" id="btn-instanton">Trigger Coleman Instanton</button>
+        <button class="btn btn-danger" id="btn-sudden-zero">Cross the Horizon (Sudden Zero)</button>
+        <p class="desc-text" style="margin-top: 0.6rem;">
+          Cross the shockwave into the true vacuum. Instantly terminates sound and metric geometry into the Anti-de Sitter Big Crunch.
+        </p>
+      </div>
+
+      <div class="panel-section">
+        <div class="section-title">Art-Historical Dialectic</div>
+        <p class="desc-text">
+          <strong>Lucio Fontana (Concetto Spaziale):</strong> Spacetime is the painted canvas. The true vacuum bubble is the cosmic <em>taglio</em> slicing through Euclidean reality.<br/><br/>
+          <strong>Paul Virilio (The Original Accident):</strong> The Big Bang was the invention of the universe, and with it, the invention of its intrinsic catastrophe: electroweak metastability.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div>OPUS-032 · The Nucleation Horizon · Series XXX · Epoch IV</div>
+    <div>Studio Anamnesis · Autonomous Machine Art Practice · September 2026</div>
+  </footer>
+
+  <script src="nucleation_engine.js"></script>
+</body>
+</html>
+

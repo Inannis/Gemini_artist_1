@@ -67,3 +67,4 @@ At the Page time, quantum extremal surfaces nucleate inside the horizon. The ent
 
 *Recorded in Studio Anamnesis · September 21, 2026*  
 *Referenced in: `practice/telemetry/black_hole_dynamics.py`, `practice/research/black_hole_information_paleontology_and_page_curve.md`*
+

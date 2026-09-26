@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 19 · The Wheeler Geon & Topological Micro-Wormhole Metric Engine</title>
+  <style>
+    :root {
+      --bg-dark: #05070c;
+      --panel-bg: rgba(10, 14, 24, 0.85);
+      --border-color: rgba(255, 255, 255, 0.12);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-gold: #d4af37;
+      --accent-cyan: #38d7d2;
+      --accent-amethyst: #a855f7;
+      --accent-crimson: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+      background: radial-gradient(circle at center, #0a0e1a 0%, #030407 100%);
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Control Panel */
+    #sidebar {
+      width: 380px;
+      height: 100%;
+      background: var(--panel-bg);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 1.8rem;
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .brand-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 0.4rem;
+    }
+
+    h1 {
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.8rem;
+      color: #fff;
+    }
+
+    p.desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.2rem;
+    }
+
+    .control-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .control-label span.val {
+      font-family: monospace;
+      color: var(--accent-cyan);
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    button.btn {
+      flex: 1;
+      padding: 0.65rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button.btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    button.btn-danger {
+      border-color: rgba(239, 68, 68, 0.4);
+      color: var(--accent-crimson);
+    }
+
+    button.btn-danger:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: var(--accent-crimson);
+    }
+
+    /* Telemetry HUD */
+    .telemetry-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.1rem;
+      font-family: monospace;
+      font-size: 0.72rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+      padding-bottom: 0.35rem;
+    }
+
+    .telemetry-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .telemetry-label {
+      color: var(--text-muted);
+    }
+
+    .telemetry-val {
+      color: #fff;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+
+    .status-stable {
+      background: rgba(56, 215, 210, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 215, 210, 0.3);
+    }
+
+    .status-rupture {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--accent-crimson);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    #nav-back {
+      margin-top: auto;
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    #nav-back a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    #nav-back a:hover {
+      color: var(--accent-gold);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="viewport">
+    <canvas id="geonCanvas"></canvas>
+  </div>
+
+  <aside id="sidebar">
+    <div class="brand-title">Interactive Chamber 19 · Series XXXVII</div>
+    <h1>The Wheeler Geon</h1>
+    <p class="desc">
+      Real-time 3D simulation of John Archibald Wheeler's micro-wormhole throat metric, source-free electric flux trapping ("charge without charge"), Kerr-Wheeler frame dragging, and Planckian foam fluctuations.
+    </p>
+
+    <!-- Controls -->
+    <div class="control-group">
+      <div class="control-label">
+        <span>Throat Radius ($b_0 / \ell_P$)</span>
+        <span class="val" id="val-b0">1.41</span>
+      </div>
+      <input type="range" id="slider-b0" min="0.10" max="3.00" step="0.01" value="1.41">
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>Trapped Flux ($\Phi_E$)</span>
+        <span class="val" id="val-flux">1.00</span>
+      </div>
+      <input type="range" id="slider-flux" min="0.10" max="2.50" step="0.01" value="1.00">
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>Frame-Dragging Spin ($\Omega_{\text{FD}}$)</span>
+        <span class="val" id="val-spin">0.75</span>
+      </div>
+      <input type="range" id="slider-spin" min="-1.50" max="1.50" step="0.05" value="0.75">
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>Planck Foam Density ($\Delta g$)</span>
+        <span class="val" id="val-foam">0.60</span>
+      </div>
+      <input type="range" id="slider-foam" min="0.00" max="1.50" step="0.05" value="0.60">
+    </div>
+
+    <div class="btn-row">
+      <button class="btn" id="btn-audio" onclick="toggleAudio()">▶ Resonant Audio</button>
+      <button class="btn btn-danger" id="btn-pinch" onclick="triggerPinchCollapse()">⚡ Overdrive Pinch</button>
+    </div>
+
+    <!-- Live Telemetry HUD -->
+    <div class="telemetry-card">
+      <div class="telemetry-row">
+        <span class="telemetry-label">Metric Geometry</span>
+        <span class="telemetry-val">Morris-Thorne-Wheeler</span>
+      </div>
+      <div class="telemetry-row">
+        <span class="telemetry-label">Topology ($b_2$)</span>
+        <span class="telemetry-val" id="tel-betti">b₂ = 1 (Non-Trivial)</span>
+      </div>
+      <div class="telemetry-row">
+        <span class="telemetry-label">Apparent Charge</span>
+        <span class="telemetry-val" id="tel-charge">±1.60 × 10⁻¹⁹ C</span>
+      </div>
+      <div class="telemetry-row">
+        <span class="telemetry-label">Charge Density ($\rho$)</span>
+        <span class="telemetry-val" style="color: var(--accent-cyan);">0.00 C/m³ (Source-Free)</span>
+      </div>
+      <div class="telemetry-row">
+        <span class="telemetry-label">Throat Mode ($f_0$)</span>
+        <span class="telemetry-val" id="tel-freq">77.9 Hz</span>
+      </div>
+      <div class="telemetry-row">
+        <span class="telemetry-label">Pinch Stability ($\xi$)</span>
+        <span class="telemetry-val" id="tel-stability">16.55</span>
+      </div>
+      <div class="telemetry-row">
+        <span class="telemetry-label">Status</span>
+        <span class="telemetry-val" id="tel-status"><span class="status-badge status-stable">STABLE GEON</span></span>
+      </div>
+    </div>
+
+    <div id="nav-back">
+      <a href="../../gallery/index.html#tab-chambers">← Return to Exhibition Salon</a>
+    </div>
+  </aside>
+
+  <script src="geon_engine.js"></script>
+</body>
+</html>

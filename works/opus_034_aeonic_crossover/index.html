@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 14: The Penrose Crossover Engine · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-dark: #020308;
+      --bg-panel: rgba(5, 9, 18, 0.92);
+      --border-color: rgba(56, 215, 208, 0.25);
+      --accent-cyan: #38d7d0;
+      --accent-gold: #d4af37;
+      --accent-violet: #a855f7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-mono: "JetBrains Mono", "SF Mono", Monaco, Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(3, 6, 12, 0.96);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .brand-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      font-family: var(--font-mono);
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      margin-left: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      main { flex-direction: column; }
+    }
+
+    .canvas-container {
+      flex: 1;
+      position: relative;
+      background: #010206;
+      min-height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: grab;
+    }
+
+    .canvas-container:active {
+      cursor: grabbing;
+    }
+
+    #crossover-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .controls-panel {
+      width: 380px;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border-color);
+      padding: 1.8rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      overflow-y: auto;
+      max-height: calc(100vh - 65px);
+      backdrop-filter: blur(16px);
+    }
+
+    @media (max-width: 900px) {
+      .controls-panel {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        max-height: none;
+      }
+    }
+
+    .panel-section {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1.2rem;
+    }
+
+    .panel-section:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.8rem;
+    }
+
+    .control-group {
+      margin-bottom: 1rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      font-family: var(--font-mono);
+    }
+
+    .control-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .control-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(56, 215, 208, 0.8);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    .btn-toggle {
+      flex: 1;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-toggle:hover {
+      background: rgba(56, 215, 208, 0.12);
+      color: #fff;
+    }
+
+    .btn-toggle.active {
+      background: rgba(56, 215, 208, 0.25);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .telemetry-box {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      line-height: 1.6;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+
+    .telemetry-label {
+      color: var(--text-muted);
+    }
+
+    .telemetry-val {
+      color: var(--accent-gold);
+      font-weight: 500;
+    }
+
+    .btn-action {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(56, 215, 208, 0.12);
+      border: 1px solid var(--accent-cyan);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: var(--accent-cyan);
+      color: #03050a;
+      box-shadow: 0 0 16px rgba(56, 215, 208, 0.4);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      margin-top: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="brand-title">OPUS-034 · Chamber 14</div>
+      <div class="brand-sub">The Penrose Crossover Engine (Conformal Cyclic Cosmology)</div>
+    </div>
+    <nav>
+      <a href="../../gallery/index.html#tab-chambers">← Back to Exhibition Salon</a>
+      <a href="README.md" target="_blank">Monograph</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="canvas-container">
+      <canvas id="crossover-canvas"></canvas>
+    </div>
+
+    <div class="controls-panel">
+      <!-- Section 1: Conformal Factor -->
+      <div class="panel-section">
+        <div class="panel-title">Conformal Metric Scaling (Ω)</div>
+        <div class="control-group">
+          <div class="control-label">
+            <span>Conformal Factor Ω(t)</span>
+            <span id="label-omega">0.56</span>
+          </div>
+          <input type="range" id="slider-omega" class="control-slider" min="0.01" max="2.00" step="0.01" value="0.56">
+        </div>
+        <p style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.5;">
+          Scrubbing Ω rescales the metric ($\hat{g}_{ab} = \Omega^2 g_{ab}$). As $\Omega \to 0$, the cold infinite future boundary $\mathscr{I}^+$ of the prior aeon is conformally mapped onto the smooth Big Bang $\mathscr{I}^-$ of the next aeon.
+        </p>
+      </div>
+
+      <!-- Section 2: Gravitational Strain & Rings -->
+      <div class="panel-section">
+        <div class="panel-title">Hawking Point Rings & Gravitational Strain</div>
+        <div class="control-group">
+          <div class="control-label">
+            <span>Quadrupole Strain h+</span>
+            <span id="label-strain">0.082</span>
+          </div>
+          <input type="range" id="slider-strain" class="control-slider" min="0.0" max="0.25" step="0.005" value="0.082">
+        </div>
+
+        <div class="control-label" style="margin-top: 0.8rem;">Select Concentric Horizon Ring</div>
+        <div class="btn-group">
+          <button class="btn-toggle ring-select-btn active" data-ring="all">All Rings</button>
+          <button class="btn-toggle ring-select-btn" data-ring="r1">Ring I (4.2°)</button>
+          <button class="btn-toggle ring-select-btn" data-ring="r2">Ring II (11.8°)</button>
+          <button class="btn-toggle ring-select-btn" data-ring="r3">Ring III (24.5°)</button>
+        </div>
+
+        <label class="checkbox-group">
+          <input type="checkbox" id="chk-stokes" checked>
+          <span>Display Stokes Q/U Polarization Streamlines</span>
+        </label>
+        <label class="checkbox-group">
+          <input type="checkbox" id="chk-weyl" checked>
+          <span>Display Vanishing Weyl Curvature Flowlines</span>
+        </label>
+      </div>
+
+      <!-- Section 3: Telemetry HUD -->
+      <div class="panel-section">
+        <div class="panel-title">Cosmological Crossover Ephemeris</div>
+        <div class="telemetry-box">
+          <div class="telemetry-row">
+            <span class="telemetry-label">Cosmic Aeon:</span>
+            <span class="telemetry-val" id="telem-aeon">Aeon n (Cold Future)</span>
+          </div>
+          <div class="telemetry-row">
+            <span class="telemetry-label">Conformal Factor Ω:</span>
+            <span class="telemetry-val" id="telem-omega">0.560</span>
+          </div>
+          <div class="telemetry-row">
+            <span class="telemetry-label">Weyl Tensor Scalar C²:</span>
+            <span class="telemetry-val" id="telem-weyl">0.5375</span>
+          </div>
+          <div class="telemetry-row">
+            <span class="telemetry-label">CMB Variance Ratio:</span>
+            <span class="telemetry-val" id="telem-var">0.680</span>
+          </div>
+          <div class="telemetry-row">
+            <span class="telemetry-label">Hypersurface:</span>
+            <span class="telemetry-val">Σ (I+ ≡ I-)</span>
+          </div>
+          <div class="telemetry-row">
+            <span class="telemetry-label">Rest-Mass Condition:</span>
+            <span class="telemetry-val" style="color:var(--accent-cyan);">m ≡ 0 (Massless)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Live Audio Suite Synthesizer -->
+      <div class="panel-section">
+        <div class="panel-title">Real-Time Acoustic Chamber</div>
+        <button id="btn-audio-toggle" class="btn-action">▶ Engage Chamber Acoustic Suite</button>
+        <p style="font-size: 0.68rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
+          Synthesizes the 43.2 Hz silica carrier, 287.89 Hz QNM ringdown, and 4.2 Hz Hawking amplitude tremolo with binaural phase rotation.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script src="crossover_engine.js"></script>
+</body>
+</html>
+

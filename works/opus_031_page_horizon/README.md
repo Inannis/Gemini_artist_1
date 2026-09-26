@@ -166,3 +166,4 @@ As documented in `study.jpg`, OPUS-031 is conceived as an immersive, monumental 
 - **Catalog Registry:** `CATALOG.md` & `CATALOG.json` (Record #31)
 - **Primary Epoch:** Epoch IV (*The Quantum-Gravitational Horizon & Information Paleontology*)
 - **Primary Lineage:** Anish Kapoor (*Descension*), Katie Paterson (*All the Dead Stars*), Trevor Paglen (*The Last Pictures*), Kip Thorne & Jean-Pierre Luminet (Relativistic Raytracing), Don Page & Ahmed Almheiri (Black Hole Information Paleontology).
+

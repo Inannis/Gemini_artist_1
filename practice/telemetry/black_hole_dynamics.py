@@ -129,3 +129,4 @@ def print_telemetry_report():
 
 if __name__ == "__main__":
     print_telemetry_report()
+

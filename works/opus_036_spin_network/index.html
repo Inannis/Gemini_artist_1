@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 16: The Spin Network Reliquary · Studio Anamnesis</title>
+  <style>
+    :root {
+      --bg-dark: #020308;
+      --bg-panel: rgba(6, 10, 20, 0.90);
+      --border-color: rgba(0, 245, 235, 0.25);
+      --accent-cyan: #00f5eb;
+      --accent-emerald: #2deb87;
+      --accent-amber: #ffc32d;
+      --accent-violet: #c373ff;
+      --accent-rose: #ff73b9;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-mono: "SF Mono", "Fira Code", Monaco, Menlo, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(2, 4, 10, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-left: 1.5rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .canvas-container {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #070e1c 0%, #020308 85%);
+      cursor: grab;
+    }
+
+    .canvas-container:active {
+      cursor: grabbing;
+    }
+
+    canvas {
+      box-shadow: 0 0 70px rgba(0, 245, 235, 0.08);
+      border-radius: 8px;
+    }
+
+    .controls-panel {
+      width: 400px;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--border-color);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      backdrop-filter: blur(16px);
+      z-index: 10;
+      overflow-y: auto;
+    }
+
+    .panel-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+    }
+
+    .panel-header h2 {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      color: var(--accent-cyan);
+      letter-spacing: 0.05em;
+    }
+
+    .panel-header p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .control-value {
+      color: var(--accent-cyan);
+      font-weight: bold;
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+
+    .telemetry-box {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .telemetry-label {
+      color: var(--text-muted);
+    }
+
+    .phase-badge {
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .phase-stable {
+      background: rgba(0, 245, 235, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 245, 235, 0.3);
+    }
+
+    .phase-bounce {
+      background: rgba(255, 195, 45, 0.2);
+      color: var(--accent-amber);
+      border: 1px solid rgba(255, 195, 45, 0.4);
+    }
+
+    .audio-btn {
+      background: transparent;
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .audio-btn:hover {
+      background: rgba(0, 245, 235, 0.1);
+      box-shadow: 0 0 15px rgba(0, 245, 235, 0.2);
+    }
+
+    .audio-btn.active {
+      background: var(--accent-cyan);
+      color: #020308;
+      font-weight: bold;
+    }
+
+    .spin-legend {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding-top: 0.5rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="brand-title">Studio Anamnesis · Chamber 16</div>
+      <div class="brand-sub">The Spin Network Reliquary & Planck Foam Simulator · Series XXXIV</div>
+    </div>
+    <nav>
+      <a href="../../index.html">Studio Portal</a>
+      <a href="../../gallery/index.html">Master Gallery</a>
+      <a href="../opus_035_holographic_matrix/index.html">Chamber 15</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="canvas-container" id="canvas-wrap">
+      <canvas id="spin-canvas" width="860" height="860"></canvas>
+    </div>
+
+    <div class="controls-panel">
+      <div class="panel-header">
+        <h2>Quantum Geometry Foliator</h2>
+        <p>Explore the discrete Planckian fabric of spacetime. Interact with nodes, alter the Barbero-Immirzi parameter, or compress the energy density to trigger the Loop Quantum Bounce.</p>
+      </div>
+
+      <button id="audio-toggle" class="audio-btn">
+        <span>Initialize Area Spectrum Sonification</span>
+      </button>
+
+      <div class="control-group">
+        <div class="control-label">
+          <span>Barbero-Immirzi Parameter (γ)</span>
+          <span class="control-value" id="val-gamma">0.274</span>
+        </div>
+        <input type="range" id="param-gamma" min="0.04" max="0.60" step="0.005" value="0.274">
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">
+          <span>Energy Density (ρ / ρ_crit)</span>
+          <span class="control-value" id="val-rho">0.05</span>
+        </div>
+        <input type="range" id="param-rho" min="0.00" max="1.00" step="0.01" value="0.05">
+      </div>
+
+      <div class="control-group">
+        <div class="control-label">
+          <span>Network Quanta (Vertices N)</span>
+          <span class="control-value" id="val-nodes">64</span>
+        </div>
+        <input type="range" id="param-nodes" min="24" max="120" step="4" value="64">
+      </div>
+
+      <div class="telemetry-box">
+        <div class="telemetry-row">
+          <span class="telemetry-label">Minimal Area Gap (Δ_min)</span>
+          <span class="control-value" id="telem-gap">5.965 ℓ_P²</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Hubble Rate (H)</span>
+          <span class="control-value" id="telem-hubble">0.975 H_0</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Cosmological State</span>
+          <span id="telem-state" class="phase-badge phase-stable">Expanding</span>
+        </div>
+        <div class="telemetry-row">
+          <span class="telemetry-label">Total Quantized Volume</span>
+          <span class="control-value" id="telem-vol">412.8 ℓ_P³</span>
+        </div>
+      </div>
+
+      <div class="panel-header" style="padding-top: 0.5rem;">
+        <h3 style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">SU(2) Area Spectrum Ladder</h3>
+        <div class="spin-legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#00f5eb;"></span> j=1/2 (Δ_min)</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#2deb87;"></span> j=1</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#ffc32d;"></span> j=3/2</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#c373ff;"></span> j=2</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#ff73b9;"></span> j=5/2</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#ffffff;"></span> j=3</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="spin_engine.js"></script>
+</body>
+</html>
+

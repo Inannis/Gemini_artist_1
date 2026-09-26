@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 21 · The Holographic Code & The Entanglement Wedge</title>
+  <style>
+    :root {
+      --bg: #030509;
+      --panel: rgba(8, 12, 22, 0.88);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f1f5f9;
+      --dim: #94a3b8;
+      --cyan: #38d7d0;
+      --gold: #d4af37;
+      --emerald: #10b981;
+      --red: #ef4444;
+      --accent: #60a5fa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      background: rgba(4, 7, 14, 0.75);
+      padding: 1.1rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+    }
+    .hud-title {
+      font-size: 0.95rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
+    }
+    .hud-status {
+      display: inline-block;
+      font-weight: bold;
+      padding: 0.15rem 0.6rem;
+      border-radius: 4px;
+      margin-top: 0.4rem;
+    }
+    .status-protected {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .status-decohered {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--red);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      animation: pulse 1s infinite alternate;
+    }
+    @keyframes pulse {
+      from { opacity: 0.6; }
+      to { opacity: 1.0; }
+    }
+    #sidebar {
+      width: 380px;
+      height: 100%;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      overflow-y: auto;
+      backdrop-filter: blur(12px);
+    }
+    .panel-header h2 {
+      font-size: 1.15rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+    .panel-header p {
+      font-size: 0.8rem;
+      color: var(--dim);
+      line-height: 1.4;
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-family: monospace;
+      color: var(--dim);
+    }
+    .control-label span:last-child {
+      color: var(--text);
+      font-weight: 600;
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--cyan);
+      cursor: pointer;
+    }
+    .btn-group {
+      display: flex;
+      gap: 0.6rem;
+    }
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-family: monospace;
+      letter-spacing: 0.05em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    button.active {
+      background: rgba(56, 215, 208, 0.2);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    .telemetry-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 0.9rem;
+      font-family: monospace;
+      font-size: 0.76rem;
+      line-height: 1.7;
+    }
+    .telemetry-card .k { color: var(--dim); }
+    .telemetry-card .v { color: var(--gold); font-weight: bold; float: right; }
+    .nav-back {
+      font-size: 0.75rem;
+      color: var(--dim);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: auto;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--cyan); }
+  </style>
+</head>
+<body>
+  <div id="viewport">
+    <canvas id="happyCanvas"></canvas>
+    <div class="hud-overlay">
+      <div class="hud-title">Chamber 21 · HaPPY QEC Apparatus</div>
+      <div>Manifold: <span style="color:var(--text)">Poincaré Disk \(\mathbb{H}^2\)</span></div>
+      <div>Tiling: <span style="color:var(--text)">{5, 4} Hyperbolic Pentagonal Coxeter</span></div>
+      <div>Minimal Surface: <span style="color:var(--gold)" id="hudRtLen">γ_A (L = 4.12)</span></div>
+      <div id="hudStatusBadge" class="hud-status status-protected">PROTECTED (Core In Wedge)</div>
+    </div>
+  </div>
+
+  <div id="sidebar">
+    <div class="panel-header">
+      <h2>Holographic Code</h2>
+      <p>Continuous bulk spacetime as an isometric quantum error-correcting tensor network. Dong-Harlow-Wall entanglement wedge reconstruction theorem.</p>
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>SUBREGION A SPAN</span>
+        <span id="lblSpan">261° (72.5%)</span>
+      </div>
+      <input type="range" id="rngSpan" min="90" max="340" step="1" value="261">
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>ERASURE FRACTION f_erasure</span>
+        <span id="lblErasure">0.275 (f_crit = 0.500)</span>
+      </div>
+      <input type="range" id="rngErasure" min="0.05" max="0.75" step="0.01" value="0.275">
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>ACOUSTIC RESONANCE</span>
+        <span id="lblAudio">Muted</span>
+      </div>
+      <div class="btn-group">
+        <button id="btnAudioToggle">Activate Audio</button>
+        <button id="btnReset">Reset Code</button>
+      </div>
+    </div>
+
+    <div class="telemetry-card">
+      <div><span class="k">Tensors (Bulk / Bound):</span> <span class="v">26 / 125</span></div>
+      <div><span class="k">Carrier Frequency:</span> <span class="v">125.67 Hz</span></div>
+      <div><span class="k">RT Apex Radius r_min:</span> <span class="v" id="telApex">0.214</span></div>
+      <div><span class="k">Holographic Entropy S(A):</span> <span class="v" id="telEntropy">1.03 nats</span></div>
+      <div><span class="k">Logical Fidelity:</span> <span class="v" id="telFidelity">98.4%</span></div>
+      <div><span class="k">Reconstruction State:</span> <span class="v" id="telState" style="color:var(--emerald)">RECONSTRUCTIBLE</span></div>
+    </div>
+
+    <a href="../../gallery/index.html" class="nav-back">← Return to Grand Salon Gallery</a>
+  </div>
+
+  <script src="happy_engine.js"></script>
+</body>
+</html>

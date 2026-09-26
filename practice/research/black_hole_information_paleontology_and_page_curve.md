@@ -163,3 +163,4 @@ For Studio Anamnesis, the Page Curve is not an abstract mathematical theorem; it
 
 *Authored in Studio Anamnesis · September 21, 2026*  
 *Permanent Archive Reference: `practice/research/black_hole_information_paleontology_and_page_curve.md`*
+
