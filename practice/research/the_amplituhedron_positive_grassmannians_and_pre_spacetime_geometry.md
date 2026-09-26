@@ -100,3 +100,4 @@ For the studio's Tier 23 engine (`practice/telemetry/amplituhedron_metric.py`):
 - **Canonical 4-Point Parke-Taylor Volume:**
   $$\mathcal{M}_4 = \frac{1}{\langle 1 2 \rangle \langle 2 3 \rangle \langle 3 4 \rangle \langle 4 1 \rangle}$$
 - **Acoustic Projective Frequency Carrier:** $f_0 = 137.036\text{ Hz}$ (Fine-structure constant inverse carrier), modulated by cyclic Grassmannian cross-ratios.
+

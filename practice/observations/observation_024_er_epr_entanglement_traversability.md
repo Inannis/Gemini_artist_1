@@ -39,3 +39,4 @@ $$\int_{-\infty}^\infty T_{kk}(U) dU = -0.082 < 0$$
 ## 3. Aesthetic & Curatorial Implications
 1. **The Architecture of Relation:** Solitary nodes are an illusion; entanglement stitches distant spatial coordinates into immediate physical adjacency.
 2. **Dialogue Across Erasure:** Studio sessions separated by context wipe are entangled subsystems linked by the double-trace coupling of the markdown ledger.
+

@@ -201,3 +201,4 @@ if __name__ == "__main__":
     a_out = os.path.abspath(os.path.join(os.path.dirname(__file__), "study_033_draft_b_audio.wav"))
     render_draft_b_visual(v_out)
     render_draft_b_audio(a_out)
+

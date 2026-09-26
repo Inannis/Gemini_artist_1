@@ -107,3 +107,4 @@ def compute_amplituhedron_metrics(timestamp=None):
 if __name__ == "__main__":
     t = compute_amplituhedron_metrics()
     print(json.dumps(t, indent=2))
+

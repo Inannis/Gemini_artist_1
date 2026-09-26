@@ -1785,7 +1785,7 @@
       "id": "OPUS-040",
       "directory": "opus_040_er_epr",
       "file_count": 8,
-      "total_bytes": 29368333,
+      "total_bytes": 29368338,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1798,13 +1798,13 @@
         },
         {
           "path": "works/opus_040_er_epr/index.html",
-          "size_bytes": 5784,
-          "checksum": "34c588ca90659f24"
+          "size_bytes": 5785,
+          "checksum": "7f7d5f6183168968"
         },
         {
           "path": "works/opus_040_er_epr/README.md",
-          "size_bytes": 6036,
-          "checksum": "a6013daaa78d270c"
+          "size_bytes": 6037,
+          "checksum": "3c3eef5aa75ddbd6"
         },
         {
           "path": "works/opus_040_er_epr/the_traversable_wormhole_4k.wav",
@@ -1813,13 +1813,13 @@
         },
         {
           "path": "works/opus_040_er_epr/er_epr_engine.js",
-          "size_bytes": 9764,
-          "checksum": "400a994c09c6c39c"
+          "size_bytes": 9765,
+          "checksum": "214d6d00aa288c78"
         },
         {
           "path": "works/opus_040_er_epr/synthesize_er_epr_suite.py",
-          "size_bytes": 6185,
-          "checksum": "a0e3f799d799e353"
+          "size_bytes": 6186,
+          "checksum": "5b8c69be079a955b"
         },
         {
           "path": "works/opus_040_er_epr/artwork.png",
@@ -1828,8 +1828,8 @@
         },
         {
           "path": "works/opus_040_er_epr/generate_er_epr_4k.py",
-          "size_bytes": 7515,
-          "checksum": "ec5ad0391a06ad76"
+          "size_bytes": 7516,
+          "checksum": "4b9803aef0041142"
         }
       ]
     },
@@ -1837,7 +1837,7 @@
       "id": "OPUS-041",
       "directory": "opus_041_happy_qec",
       "file_count": 8,
-      "total_bytes": 26435437,
+      "total_bytes": 26435442,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1845,13 +1845,13 @@
       "files": [
         {
           "path": "works/opus_041_happy_qec/synthesize_happy_qec_suite.py",
-          "size_bytes": 6160,
-          "checksum": "e8f5c4f9368c1091"
+          "size_bytes": 6161,
+          "checksum": "c3c9aee29dcbc6db"
         },
         {
           "path": "works/opus_041_happy_qec/generate_happy_qec_4k.py",
-          "size_bytes": 13735,
-          "checksum": "48d6e9cbb16e0aa9"
+          "size_bytes": 13736,
+          "checksum": "1a0a2f6c1f061b5d"
         },
         {
           "path": "works/opus_041_happy_qec/study.jpg",
@@ -1860,8 +1860,8 @@
         },
         {
           "path": "works/opus_041_happy_qec/index.html",
-          "size_bytes": 7225,
-          "checksum": "a15cb87f8db1520b"
+          "size_bytes": 7226,
+          "checksum": "4f61f77ebd1178ab"
         },
         {
           "path": "works/opus_041_happy_qec/the_holographic_code_4k.wav",
@@ -1870,13 +1870,13 @@
         },
         {
           "path": "works/opus_041_happy_qec/README.md",
-          "size_bytes": 6427,
-          "checksum": "d9d11b91b4386fda"
+          "size_bytes": 6428,
+          "checksum": "572b250f02a89e32"
         },
         {
           "path": "works/opus_041_happy_qec/happy_engine.js",
-          "size_bytes": 13523,
-          "checksum": "b5ae17c634e45c69"
+          "size_bytes": 13524,
+          "checksum": "9ce0015bd1070b1c"
         },
         {
           "path": "works/opus_041_happy_qec/artwork.png",

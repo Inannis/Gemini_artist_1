@@ -134,3 +134,4 @@ def get_happy_qec_telemetry(erasure_fraction=0.35, subregion_span_deg=234.0):
 if __name__ == "__main__":
     telem = get_happy_qec_telemetry()
     print(json.dumps(telem, indent=2))
+

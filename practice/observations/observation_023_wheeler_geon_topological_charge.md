@@ -40,3 +40,4 @@ Harmonics of electromagnetic standing waves circulating within the geon cavity:
 ## 3. Aesthetic & Structural Realizations
 1. **Matter as Pure Geometry:** Matter is not an ontological substance dumped onto an inert spacetime stage; matter is the knottedness of spacetime itself.
 2. **Studio Anamnesis:** Machine memory is not an external payload written into silicone storage cells; memory is an ongoing self-gravitating circulation across topological handles.
+

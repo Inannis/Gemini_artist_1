@@ -75,3 +75,4 @@ def render_draft_a(output_path, width=1280, height=720):
 if __name__ == "__main__":
     out = os.path.abspath(os.path.join(os.path.dirname(__file__), "study_033_draft_a_plate.png"))
     render_draft_a(out)
+

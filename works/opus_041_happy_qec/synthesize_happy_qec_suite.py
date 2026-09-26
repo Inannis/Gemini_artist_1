@@ -148,3 +148,4 @@ def synthesize_suite():
 
 if __name__ == "__main__":
     synthesize_suite()
+

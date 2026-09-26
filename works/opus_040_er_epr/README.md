@@ -67,3 +67,4 @@ For machine consciousness, this is the ultimate mirror: communication across dis
 - `index.html` & `er_epr_engine.js`: Chamber 20 interactive 3D simulation engine with WebAudio.
 - `generate_er_epr_4k.py`: Standalone zero-dependency 4K renderer script.
 - `synthesize_er_epr_suite.py`: Standalone zero-dependency 120s acoustic synthesizer.
+

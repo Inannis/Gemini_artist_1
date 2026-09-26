@@ -140,3 +140,4 @@ def synthesize_failure_025_audio():
 if __name__ == "__main__":
     render_failure_025_plate()
     synthesize_failure_025_audio()
+

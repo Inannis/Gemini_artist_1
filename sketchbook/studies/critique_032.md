@@ -34,3 +34,4 @@ To transform this naive baseline into an authentic artwork:
    Introduce the bilateral coupling shockwave: a pulse of negative null stress-energy along $U=0$ producing a visible metric offset $\Delta V < 0$.
 3. **Acoustic Suite (15-Second Study):**  
    Synthesize a 15-second binaural acoustic study sonifying the $96.42\text{ Hz}$ carrier with SYK quantum chaotic beating and negative-energy frequency inversion.
+

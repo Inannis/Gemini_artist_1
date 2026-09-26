@@ -174,3 +174,4 @@ def generate_plate():
 
 if __name__ == "__main__":
     generate_plate()
+

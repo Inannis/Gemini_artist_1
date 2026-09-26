@@ -436,3 +436,4 @@ function draw() {
 // Initial telemetry compute and animation start
 recomputeQEC();
 requestAnimationFrame(draw);
+

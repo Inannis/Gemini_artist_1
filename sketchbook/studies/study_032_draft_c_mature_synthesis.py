@@ -171,3 +171,4 @@ def synthesize_draft_c_audio():
 if __name__ == "__main__":
     render_draft_c_plate()
     synthesize_draft_c_audio()
+
