@@ -232,6 +232,14 @@ class StudioChronoEphemeris:
         qec_carrier_hz = 125.67
         qec_syndrome_hz = [48.0, 77.67, 125.67, 203.34, 329.0]
 
+        # 23. Amplituhedron & Positive Grassmannian Ephemeris
+        ampl_manifold = "G_+(2, 4)"
+        ampl_is_positive = True
+        ampl_omega_4 = 0.8144
+        ampl_cross_ratio = 0.2580
+        ampl_carrier_hz = 137.036
+        ampl_acoustic_harmonics = [137.04, 35.36, 172.39, 531.15]
+
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
             "year_decimal": round(t_yr, 5),
@@ -380,6 +388,14 @@ class StudioChronoEphemeris:
                 "rt_cut_length": qec_rt_cut_length,
                 "carrier_freq_hz": qec_carrier_hz,
                 "syndrome_frequencies_hz": qec_syndrome_hz
+            },
+            "amplituhedron_geometry": {
+                "grassmannian_manifold": ampl_manifold,
+                "is_totally_positive": ampl_is_positive,
+                "canonical_volume_form": ampl_omega_4,
+                "cross_ratio_chi": ampl_cross_ratio,
+                "carrier_frequency_hz": ampl_carrier_hz,
+                "acoustic_harmonics_hz": ampl_acoustic_harmonics
             }
         }
 
@@ -413,7 +429,9 @@ class StudioChronoEphemeris:
         print(f"[20] Wheeler Geon    : b_0 = {res['wheeler_geon']['throat_radius_lp']:.3f} ℓ_P | Apparent Q = {res['wheeler_geon']['apparent_charge_c']:.2e} C (ρ_charge ≡ 0) | M_geon = {res['wheeler_geon']['mass_kg']:.2e} kg | ξ = {res['wheeler_geon']['pinch_stability']:.2f} (Stable) | f_res = {res['wheeler_geon']['resonant_hz']:.1f} Hz")
         print(f"[21] ER = EPR Bridge : TFD β = {res['er_epr_wormhole']['inverse_beta_sec']:.2f} s | t_* = {res['er_epr_wormhole']['scrambling_time_sec']:.2f} s | h = {res['er_epr_wormhole']['coupling_h']} | ΔV = {res['er_epr_wormhole']['kruskal_shift_delta_v']:+.4f} (Traversable) | Window: {res['er_epr_wormhole']['window_duration_sec']:.3f} s | f_res = {res['er_epr_wormhole']['acoustic_carrier_hz']:.1f} Hz")
         print(f"[22] HaPPY QEC Bulk  : Pentagons = {res['happy_qec_network']['logical_tensors']} logical | Boundary = {res['happy_qec_network']['boundary_qubits']} physical | Erasure = {res['happy_qec_network']['erasure_fraction']*100:.0f}% (Threshold: {res['happy_qec_network']['critical_threshold']*100:.0f}%) | Wedge Protected: {res['happy_qec_network']['is_protected']} | f_carrier = {res['happy_qec_network']['carrier_freq_hz']:.2f} Hz")
+        print(f"[23] Amplituhedron   : {res['amplituhedron_geometry']['grassmannian_manifold']} Positive Polytope | Total Positivity: {res['amplituhedron_geometry']['is_totally_positive']} | Ω_4 = {res['amplituhedron_geometry']['canonical_volume_form']:.4f} | χ = {res['amplituhedron_geometry']['cross_ratio_chi']:.4f} | f_0 = {res['amplituhedron_geometry']['carrier_frequency_hz']} Hz")
         print("=" * 70)
+
 
 if __name__ == "__main__":
     ephemeris = StudioChronoEphemeris()

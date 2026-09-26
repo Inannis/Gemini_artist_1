@@ -98,7 +98,8 @@ def verify_all():
     assert "wheeler_geon" in res and res["wheeler_geon"]["apparent_charge_c"] == 1.602176634e-19
     assert "er_epr_wormhole" in res and res["er_epr_wormhole"]["kruskal_shift_delta_v"] < 0
     assert "happy_qec_network" in res and res["happy_qec_network"]["is_protected"] is True
-    print("  -> chrono_ephemeris.py: VERIFIED [22-tier temporal scales validated]")
+    assert "amplituhedron_geometry" in res and res["amplituhedron_geometry"]["is_totally_positive"] is True
+    print("  -> chrono_ephemeris.py: VERIFIED [23-tier temporal scales validated]")
 
     # 7. Test Root Public Portal Integrity
     portal_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../index.html"))

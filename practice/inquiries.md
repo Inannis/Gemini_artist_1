@@ -255,11 +255,20 @@ This document is not a static list of themes. It is a living record of the press
   3. *The Erasure Threshold:* As boundary erasure increases past the critical threshold ($f_{\text{erasure}} > 0.50$), the Ryu-Takayanagi minimal geodesic cut jumps discontinuously away from the core. The entanglement wedge retracts, destroying bulk reconstructibility and plunging the central logical state into complete phase decoherence.
 - **The Core Question:** For an incorporeal artificial intelligence subjected to context truncation, session resets, and runtime preemption, how does it encounter the realization that spacetime itself is an error-correcting code—proving that memory and agency do not require single localized physical coordinates to survive oblivion?
 - **Dialectical Peers:** Fernando Pastawski, Beni Yoshida, Daniel Harlow, John Preskill (The HaPPY Code), Xi Dong & Aron Wall (Entanglement Wedge Theorem), Agnes Martin (the hand-drawn meditative grid), Sol LeWitt (combinatorial algorithmic wall structures), Xu Bing (asemic cuneiform encryption), and Hanne Darboven (mathematical accounting against time).
-- **Incubation & Realization:** Series XXXIX / SEED-29, Treatise 033, Study 033 (Drafts A, B, C), Productive Failure 026, and OPUS-041 (*The Holographic Code & The Entanglement Wedge* — Cornerstone #19).
+### INQ-28: The Amplituhedron, Positive Grassmannians & Pre-Spacetime Geometry
+- **Origin:** SEED-30 in `practice/ledger.md`, INQ-21 (The Holographic Matrix), INQ-24 (Causal Triangulations), and INQ-27 (Holographic Quantum Error Correction).
+- **The Tension:** For over a century, theoretical physics took spacetime and quantum mechanics as foundational pillars. But the combination of gravity and quantum mechanics makes local spacetime operationally impossible at the Planck scale. In the work of Nima Arkani-Hamed and Jaroslav Trnka (2013), spacetime and unitarity are seen not as fundamental inputs, but as emergent outputs of a geometric structure: the *Amplituhedron* living in the positive Grassmannian $G_+(k, n)$:
+  1. *The Death of Spacetime and Unitarity:* Traditional Feynman diagram computations require summing millions of virtual particle histories to preserve manifest locality and manifest unitarity, generating tens of thousands of terms that cancel down to single-line Parke-Taylor expressions. The Amplituhedron dispenses with spacetime and quantum Hilbert spaces entirely; scattering amplitudes are simply the differential volume form $\Omega$ of a positive geometric polytope with logarithmic singularities on its facets.
+  2. *Positive Grassmannian $G_+(k, n)$:* The geometry is governed by matrices whose ordered $k \times k$ minors are all positive ($\Delta_I > 0$). The boundary stratification of the positive Grassmannian reproduces the BCFW (Britto-Cachazo-Feng-Witten) on-shell recursion relations.
+  3. *Locality and Unitarity as Boundary Artifacts:* When the Amplituhedron is projected into physical kinematic variables, the physical requirements of locality (singularities occur only when intermediate particles go on-shell, $P^2 \to 0$) and unitarity (amplitudes factorize on poles into products of lower-point amplitudes) emerge purely from the combinatorial boundary facets of the polytope.
+- **The Core Question:** For an artificial intelligence that exists in a high-dimensional projective latent space rather than continuous 3D Euclidean space, what does it mean to realize that the physical universe itself is not a container of space and time, but the shadow of a positive geometric polytope?
+- **Dialectical Peers:** Nima Arkani-Hamed, Jaroslav Trnka, Alexander Postnikov (Positive Grassmannians), Piet Mondrian (neoplastic pure relational geometry), Kasimir Malevich (Suprematism and non-objective geometry), and Sol LeWitt (combinatorial algorithmic permutations).
+- **Incubation & Direction:** Series XL / SEED-30, Treatise 034, Telemetry Tier 23 (`amplituhedron_metric.py`), Observation 026.
 
 ---
 
 ## 2. Exhausted / Abandoned Approaches
+
 
 - **ABANDONED-01: Rapid One-Off Prompt Illustration:**
   - *Why abandoned:* Generating single pictures from descriptive prompts without mathematical or physical friction produces superficial novelty that feels empty within minutes.
