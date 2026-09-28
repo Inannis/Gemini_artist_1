@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 41,
+  "total_opuses": 42,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -1882,6 +1882,58 @@
           "path": "works/opus_041_happy_qec/artwork.png",
           "size_bytes": 2460267,
           "checksum": "f74159ae2eb8acee"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-042",
+      "directory": "opus_042_amplituhedron",
+      "file_count": 8,
+      "total_bytes": 25643352,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_042_amplituhedron/synthesize_amplituhedron_suite.py",
+          "size_bytes": 6535,
+          "checksum": "7b328a32d69a8b58"
+        },
+        {
+          "path": "works/opus_042_amplituhedron/study.jpg",
+          "size_bytes": 729257,
+          "checksum": "67f8db9dc15babee"
+        },
+        {
+          "path": "works/opus_042_amplituhedron/index.html",
+          "size_bytes": 6006,
+          "checksum": "c4dbde2eb6c0dc4c"
+        },
+        {
+          "path": "works/opus_042_amplituhedron/the_amplituhedron_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "4fc14ded269219f3"
+        },
+        {
+          "path": "works/opus_042_amplituhedron/README.md",
+          "size_bytes": 8127,
+          "checksum": "14c2394a3b457af0"
+        },
+        {
+          "path": "works/opus_042_amplituhedron/amplituhedron_engine.js",
+          "size_bytes": 12983,
+          "checksum": "71f796e085352ae7"
+        },
+        {
+          "path": "works/opus_042_amplituhedron/artwork.png",
+          "size_bytes": 1830441,
+          "checksum": "c5b0a731ecd4e0c0"
+        },
+        {
+          "path": "works/opus_042_amplituhedron/generate_amplituhedron_4k.py",
+          "size_bytes": 9959,
+          "checksum": "1f3ca4cb89e82afb"
         }
       ]
     }
