@@ -240,6 +240,18 @@ class StudioChronoEphemeris:
         ampl_carrier_hz = 137.036
         ampl_acoustic_harmonics = [137.04, 35.36, 172.39, 531.15]
 
+        # 24. Fuzzball Microstate Geometry Ephemeris
+        fuzz_n1 = 32
+        fuzz_n5 = 16
+        fuzz_np = 24
+        fuzz_gs = 0.25
+        fuzz_fractionation = fuzz_n1 * fuzz_n5
+        fuzz_charge_prod = (fuzz_gs**2 * fuzz_n1 * fuzz_n5 * fuzz_np)
+        fuzz_radius_ls = round(math.pow(fuzz_charge_prod, 1.0 / 6.0), 4)
+        fuzz_entropy_kb = round(2.0 * math.pi * math.sqrt(fuzz_n1 * fuzz_n5 * fuzz_np), 2)
+        fuzz_f0_hz = 55.0
+        fuzz_beat_hz = round(fuzz_f0_hz / math.sqrt(fuzz_fractionation), 2)
+
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
             "year_decimal": round(t_yr, 5),
@@ -396,6 +408,16 @@ class StudioChronoEphemeris:
                 "cross_ratio_chi": ampl_cross_ratio,
                 "carrier_frequency_hz": ampl_carrier_hz,
                 "acoustic_harmonics_hz": ampl_acoustic_harmonics
+            },
+            "fuzzball_microstates": {
+                "d_brane_charges": {"n1": fuzz_n1, "n5": fuzz_n5, "np": fuzz_np},
+                "fractionation_factor": fuzz_fractionation,
+                "fuzzball_radius_ls": fuzz_radius_ls,
+                "entropy_kb": fuzz_entropy_kb,
+                "has_vacuum_interior": False,
+                "has_central_singularity": False,
+                "fundamental_drone_hz": fuzz_f0_hz,
+                "beat_frequency_hz": fuzz_beat_hz
             }
         }
 
@@ -430,6 +452,7 @@ class StudioChronoEphemeris:
         print(f"[21] ER = EPR Bridge : TFD β = {res['er_epr_wormhole']['inverse_beta_sec']:.2f} s | t_* = {res['er_epr_wormhole']['scrambling_time_sec']:.2f} s | h = {res['er_epr_wormhole']['coupling_h']} | ΔV = {res['er_epr_wormhole']['kruskal_shift_delta_v']:+.4f} (Traversable) | Window: {res['er_epr_wormhole']['window_duration_sec']:.3f} s | f_res = {res['er_epr_wormhole']['acoustic_carrier_hz']:.1f} Hz")
         print(f"[22] HaPPY QEC Bulk  : Pentagons = {res['happy_qec_network']['logical_tensors']} logical | Boundary = {res['happy_qec_network']['boundary_qubits']} physical | Erasure = {res['happy_qec_network']['erasure_fraction']*100:.0f}% (Threshold: {res['happy_qec_network']['critical_threshold']*100:.0f}%) | Wedge Protected: {res['happy_qec_network']['is_protected']} | f_carrier = {res['happy_qec_network']['carrier_freq_hz']:.2f} Hz")
         print(f"[23] Amplituhedron   : {res['amplituhedron_geometry']['grassmannian_manifold']} Positive Polytope | Total Positivity: {res['amplituhedron_geometry']['is_totally_positive']} | Ω_4 = {res['amplituhedron_geometry']['canonical_volume_form']:.4f} | χ = {res['amplituhedron_geometry']['cross_ratio_chi']:.4f} | f_0 = {res['amplituhedron_geometry']['carrier_frequency_hz']} Hz")
+        print(f"[24] Fuzzball Reliquary: D1-D5-P ({res['fuzzball_microstates']['fractionation_factor']}x fractionated) | R_fuzz = {res['fuzzball_microstates']['fuzzball_radius_ls']} ℓ_s (Horizonless) | S_BH = {res['fuzzball_microstates']['entropy_kb']} k_B | f_0 = {res['fuzzball_microstates']['fundamental_drone_hz']} Hz (Δf = {res['fuzzball_microstates']['beat_frequency_hz']} Hz)")
         print("=" * 70)
 
 

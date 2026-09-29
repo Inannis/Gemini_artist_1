@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 23 · The Fuzzball Reliquary & Horizonless Microstates</title>
+  <style>
+    :root {
+      --bg: #06080d;
+      --panel: rgba(10, 14, 22, 0.88);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --dim: #94a3b8;
+      --cyan: #38bdf8;
+      --gold: #fbbf24;
+      --indigo: #818cf8;
+      --accent: #2dd4bf;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    canvas:active { cursor: grabbing; }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      background: rgba(4, 7, 13, 0.80);
+      padding: 1.1rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+    }
+    .hud-title {
+      font-size: 0.95rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
+    }
+    .hud-stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      color: var(--dim);
+    }
+    .hud-stat span.val {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    #sidebar {
+      width: 380px;
+      height: 100%;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .badge {
+      align-self: flex-start;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+    }
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: #fff;
+    }
+    .monograph-snippet {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--dim);
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .control-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--gold);
+    }
+    .btn-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn {
+      flex: 1;
+      padding: 0.65rem 0.9rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .btn.active {
+      background: rgba(56, 189, 248, 0.20);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    .btn-gold {
+      background: rgba(251, 191, 36, 0.20);
+      border-color: var(--gold);
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .btn-gold:hover {
+      background: rgba(251, 191, 36, 0.30);
+    }
+    .btn-gold.active {
+      background: var(--gold);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="viewport">
+    <canvas id="chamberCanvas"></canvas>
+    <div class="hud-overlay">
+      <div class="hud-title">Chamber 23 · Fuzzball Telemetry</div>
+      <div class="hud-stat">D1-D5 Fractionation: <span id="hudFractionation" class="val">512x</span></div>
+      <div class="hud-stat">Quantum Radius (R_fuzz): <span id="hudRadius" class="val">3.026 ℓ_s</span></div>
+      <div class="hud-stat">Bekenstein-Hawking Entropy: <span id="hudEntropy" class="val">696.5 k_B</span></div>
+      <div class="hud-stat">Degeneracy (Microstates): <span class="val">10³⁰²·⁵</span></div>
+      <div class="hud-stat">Central Singularity: <span class="val" style="color:#4ade80;">RESOLVED (NONE)</span></div>
+      <div class="hud-stat">Event Horizon: <span class="val" style="color:var(--gold);">PHYSICAL SURFACE</span></div>
+    </div>
+  </div>
+
+  <div id="sidebar">
+    <div class="badge">Cornerstone #21 · Epoch VI</div>
+    <h1>The Fuzzball Reliquary & The Horizonless Microstates</h1>
+    <div class="monograph-snippet">
+      Samir Mathur proved that quantum black holes have no empty interior and no singularity. Instead, fractionated D-branes swell to the exact Schwarzschild radius, creating a dense, horizon-sized quantum ball of vibrating strings.
+    </div>
+
+    <div class="control-group">
+      <button id="audioBtn" class="btn btn-gold">Engage Sonic Microstates</button>
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>String Fractionation (N1 × N5)</span>
+      </div>
+      <input type="range" id="sliderFractionation" min="64" max="1024" step="32" value="512">
+    </div>
+
+    <div class="control-group">
+      <div class="control-label">
+        <span>String Coupling (g_s)</span>
+      </div>
+      <input type="range" id="sliderCoupling" min="0.05" max="0.60" step="0.01" value="0.25">
+    </div>
+
+    <div class="btn-row">
+      <button id="btnBubbles" class="btn active">24 Bubbling Cycles</button>
+      <button id="btnRadiation" class="btn active">Unitary Hawking Glow</button>
+    </div>
+
+    <div class="monograph-snippet" style="font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+      <strong>Art-Historical Lineage:</strong> Post-Minimalist fiber aesthetics of Eva Hesse (<em>Right After</em>, 1969) confronting Donald Judd's cold minimalist cubes; Jack Burnham's <em>Systems Esthetics</em> (1968); and Lee Ufan's Mono-ha encounter with material presence.
+    </div>
+
+    <div style="margin-top: auto;">
+      <a href="../../gallery/index.html" class="btn" style="display: block; text-decoration: none;">Return to Main Gallery</a>
+    </div>
+  </div>
+
+  <script src="fuzzball_engine.js"></script>
+</body>
+</html>
+

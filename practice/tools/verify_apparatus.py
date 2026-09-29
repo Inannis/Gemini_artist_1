@@ -99,7 +99,8 @@ def verify_all():
     assert "er_epr_wormhole" in res and res["er_epr_wormhole"]["kruskal_shift_delta_v"] < 0
     assert "happy_qec_network" in res and res["happy_qec_network"]["is_protected"] is True
     assert "amplituhedron_geometry" in res and res["amplituhedron_geometry"]["is_totally_positive"] is True
-    print("  -> chrono_ephemeris.py: VERIFIED [23-tier temporal scales validated]")
+    assert "fuzzball_microstates" in res and res["fuzzball_microstates"]["fractionation_factor"] == 512
+    print("  -> chrono_ephemeris.py: VERIFIED [24-tier temporal scales validated]")
 
     # 7. Test Root Public Portal Integrity
     portal_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../index.html"))
@@ -112,6 +113,12 @@ def verify_all():
     issues = run_comprehensive_audit()
     assert issues == 0, f"Curatorial hygiene audit failed with {issues} issues!"
     print("  -> studio_curator_audit.py: VERIFIED [0 orphaned files, 100% parity]")
+
+    # 9. Test Studio Acoustic Mastering & Dynamic Headroom
+    from harmonic_spectrum_analyzer import audit_all_gallery_audio
+    _, acoustic_issues = audit_all_gallery_audio()
+    assert len(acoustic_issues) == 0, f"Acoustic mastering audit failed with {len(acoustic_issues)} issues: {acoustic_issues}"
+    print("  -> harmonic_spectrum_analyzer.py: VERIFIED [0 clipping/DC anomalies, 100% mastering parity]")
 
     print("[✓] ALL STUDIO TOOLS, ARCHIVE LINKS & TELEMETRY FUNCTIONING WITH 100% RELIABILITY.")
 

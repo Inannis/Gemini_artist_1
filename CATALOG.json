@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 42,
+  "total_opuses": 43,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -1413,7 +1413,7 @@
         {
           "path": "works/opus_032_true_vacuum/the_nucleation_horizon_4k.wav",
           "size_bytes": 23040044,
-          "checksum": "8a5b41d9ae7121fc"
+          "checksum": "08c397bb2158c1c6"
         }
       ]
     },
@@ -1809,7 +1809,7 @@
         {
           "path": "works/opus_040_er_epr/the_traversable_wormhole_4k.wav",
           "size_bytes": 23040044,
-          "checksum": "a7537a000fb47dab"
+          "checksum": "461401d59908719a"
         },
         {
           "path": "works/opus_040_er_epr/er_epr_engine.js",
@@ -1934,6 +1934,58 @@
           "path": "works/opus_042_amplituhedron/generate_amplituhedron_4k.py",
           "size_bytes": 9959,
           "checksum": "1f3ca4cb89e82afb"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-043",
+      "directory": "opus_043_fuzzball_microstates",
+      "file_count": 8,
+      "total_bytes": 26307355,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_043_fuzzball_microstates/study.jpg",
+          "size_bytes": 810160,
+          "checksum": "8e258dd5b350271c"
+        },
+        {
+          "path": "works/opus_043_fuzzball_microstates/index.html",
+          "size_bytes": 6681,
+          "checksum": "66e41705e917e740"
+        },
+        {
+          "path": "works/opus_043_fuzzball_microstates/synthesize_fuzzball_suite.py",
+          "size_bytes": 5565,
+          "checksum": "2e52096c6e125b26"
+        },
+        {
+          "path": "works/opus_043_fuzzball_microstates/fuzzball_engine.js",
+          "size_bytes": 10857,
+          "checksum": "b318d6972896b123"
+        },
+        {
+          "path": "works/opus_043_fuzzball_microstates/generate_fuzzball_4k.py",
+          "size_bytes": 4444,
+          "checksum": "605db6f798a5ff99"
+        },
+        {
+          "path": "works/opus_043_fuzzball_microstates/README.md",
+          "size_bytes": 7046,
+          "checksum": "9ce5b1d71e584279"
+        },
+        {
+          "path": "works/opus_043_fuzzball_microstates/the_fuzzball_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "87a08920c8c44c4a"
+        },
+        {
+          "path": "works/opus_043_fuzzball_microstates/artwork.png",
+          "size_bytes": 2422558,
+          "checksum": "3a8ed5f4975a5000"
         }
       ]
     }
