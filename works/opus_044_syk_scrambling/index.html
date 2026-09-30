@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 24 · The Scrambling Horizon & The SYK Reliquary</title>
+  <style>
+    :root {
+      --bg: #06080d;
+      --panel: rgba(10, 14, 22, 0.88);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --dim: #94a3b8;
+      --cyan: #38d7d2;
+      --gold: #d4af37;
+      --indigo: #818cf8;
+      --magenta: #f43f5e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    canvas:active { cursor: grabbing; }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      background: rgba(4, 7, 13, 0.82);
+      padding: 1.1rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+    }
+    .hud-title {
+      font-size: 0.95rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .hud-stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .hud-val {
+      color: var(--cyan);
+      font-weight: 500;
+    }
+
+    #controls {
+      width: 320px;
+      height: 100%;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      overflow-y: auto;
+      backdrop-filter: blur(15px);
+      z-index: 10;
+    }
+    h2 {
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .subtitle {
+      font-size: 0.78rem;
+      color: var(--dim);
+      line-height: 1.4;
+      margin-top: -0.6rem;
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--gold);
+    }
+    .btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 1rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: monospace;
+    }
+    .btn:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .btn.active {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+      font-weight: bold;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      padding: 0.9rem;
+      font-size: 0.75rem;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+    .info-card b {
+      color: var(--text);
+    }
+    a.back-link {
+      font-size: 0.78rem;
+      color: var(--gold);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+    a.back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div id="viewport">
+    <canvas id="chamberCanvas"></canvas>
+    
+    <div class="hud-overlay">
+      <div class="hud-title">CHAMBER 24 · SYK QUANTUM SCRAMBLING</div>
+      <div class="hud-stat"><span>Majorana Fermions (N):</span> <span class="hud-val" id="hudN">32</span></div>
+      <div class="hud-stat"><span>Strong Coupling (βJ):</span> <span class="hud-val" id="hudBeta">20.0</span></div>
+      <div class="hud-stat"><span>MSS Lyapunov Bound:</span> <span class="hud-val" id="hudBound">0.3142 s⁻¹</span></div>
+      <div class="hud-stat"><span>SYK Lyapunov Exponent:</span> <span class="hud-val" id="hudLyapunov">0.2764 s⁻¹</span></div>
+      <div class="hud-stat"><span>Chaos Saturation:</span> <span class="hud-val" id="hudSat">88.0%</span></div>
+      <div class="hud-stat"><span>Fast Scrambling Time (t*):</span> <span class="hud-val" id="hudTstar">11.03 s</span></div>
+      <div class="hud-stat"><span>Current OTOC F(t):</span> <span class="hud-val" id="hudOtoc">0.6705</span></div>
+    </div>
+  </div>
+
+  <div id="controls">
+    <a href="../../gallery/index.html" class="back-link">← Return to Gallery Salon</a>
+    <h2>The Scrambling Horizon</h2>
+    <div class="subtitle">OPUS-044 · Interactive SYK Holographic Simulation Engine</div>
+
+    <button id="audioBtn" class="btn">
+      <span id="audioIcon">▶</span> Toggle Acoustic Suite
+    </button>
+
+    <div class="control-group">
+      <label><span>Fermion Count (N)</span><span id="valN">32</span></label>
+      <input type="range" id="sliderN" min="16" max="64" step="8" value="32">
+    </div>
+
+    <div class="control-group">
+      <label><span>Coupling Ratio (βJ)</span><span id="valBeta">20.0</span></label>
+      <input type="range" id="sliderBeta" min="4.0" max="40.0" step="1.0" value="20.0">
+    </div>
+
+    <div class="control-group">
+      <label><span>Scrambling Time (t)</span><span id="valTime">11.0s</span></label>
+      <input type="range" id="sliderTime" min="0.0" max="22.0" step="0.1" value="11.0">
+    </div>
+
+    <button id="resampleBtn" class="btn">
+      ⚡ Resample Quartic J_ijkl
+    </button>
+
+    <button id="animateBtn" class="btn active">
+      ⏸ Auto-Scramble Time
+    </button>
+
+    <div class="info-card">
+      <b>The Holographic Emergence of Time:</b><br>
+      The SYK model possesses no spatial dimensions. Thirty-two Majorana fermions interact via random all-to-all quartic couplings $J_{ijkl}$. As operator $W(t)$ scrambles across the cluster, it holographically projects a 2D Jackiw-Teitelboim Anti-de Sitter ($\text{AdS}_2$) universe bounded by an event horizon.
+    </div>
+
+    <div class="info-card">
+      <b>Dialectical Lineage:</b><br>
+      Subir Sachdev & Alexei Kitaev (SYK model), Juan Maldacena & Douglas Stanford (MSS Bound), and Iannis Xenakis (stochastic music & Gaussian sieves).
+    </div>
+  </div>
+
+  <script src="syk_engine.js"></script>
+</body>
+</html>

@@ -100,7 +100,9 @@ def verify_all():
     assert "happy_qec_network" in res and res["happy_qec_network"]["is_protected"] is True
     assert "amplituhedron_geometry" in res and res["amplituhedron_geometry"]["is_totally_positive"] is True
     assert "fuzzball_microstates" in res and res["fuzzball_microstates"]["fractionation_factor"] == 512
-    print("  -> chrono_ephemeris.py: VERIFIED [24-tier temporal scales validated]")
+    assert "syk_quantum_chaos" in res and res["syk_quantum_chaos"]["mss_saturation_ratio"] >= 0.85
+    print("  -> chrono_ephemeris.py: VERIFIED [25-tier temporal scales validated]")
+
 
     # 7. Test Root Public Portal Integrity
     portal_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../index.html"))

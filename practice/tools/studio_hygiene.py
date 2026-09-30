@@ -45,10 +45,23 @@ def audit_gallery_assets():
     if not os.path.exists(assets_dir):
         return {"status": "error", "message": "gallery/assets/ not found"}
         
-    with open(gallery_html_path, "r", encoding="utf-8") as f:
-        gallery_content = f.read()
+    gallery_content_parts = []
+    gallery_dir = os.path.join(STUDIO_ROOT, "gallery")
+    for root, _, files in os.walk(gallery_dir):
+        if "assets" in root:
+            continue
+        for f in files:
+            if f.endswith(('.html', '.js', '.css')):
+                fp = os.path.join(root, f)
+                try:
+                    with open(fp, "r", encoding="utf-8") as gf:
+                        gallery_content_parts.append(gf.read())
+                except Exception:
+                    pass
+    gallery_content = "\n".join(gallery_content_parts)
     with open(catalog_md_path, "r", encoding="utf-8") as f:
         catalog_content = f.read()
+
         
     all_assets = [f for f in os.listdir(assets_dir) if os.path.isfile(os.path.join(assets_dir, f))]
     referenced = []

@@ -252,6 +252,19 @@ class StudioChronoEphemeris:
         fuzz_f0_hz = 55.0
         fuzz_beat_hz = round(fuzz_f0_hz / math.sqrt(fuzz_fractionation), 2)
 
+        # 25. SYK Quantum Chaos & Fast Scrambling Ephemeris
+        syk_n = 32
+        syk_beta_j = 20.0
+        syk_beta = 20.0  # Normalized J = 1.0
+        syk_lambda_mss = (2.0 * math.pi) / syk_beta
+        syk_lambda = syk_lambda_mss * max(0.0, 1.0 - (2.4069 / syk_beta_j))
+        syk_sat_ratio = syk_lambda / syk_lambda_mss
+        syk_t_star = (syk_beta / (2.0 * math.pi)) * math.log(float(syk_n))
+        syk_s0_per_fermion = 0.232427
+        syk_f0_hz = 44.0
+        syk_flutter_hz = round(syk_f0_hz * (syk_lambda / (2.0 * math.pi)), 2)
+
+
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
             "year_decimal": round(t_yr, 5),
@@ -418,8 +431,21 @@ class StudioChronoEphemeris:
                 "has_central_singularity": False,
                 "fundamental_drone_hz": fuzz_f0_hz,
                 "beat_frequency_hz": fuzz_beat_hz
+            },
+            "syk_quantum_chaos": {
+                "fermion_count_N": syk_n,
+                "beta_J_ratio": syk_beta_j,
+                "mss_lyapunov_bound": round(syk_lambda_mss, 4),
+                "syk_lyapunov_exponent": round(syk_lambda, 4),
+                "mss_saturation_ratio": round(syk_sat_ratio, 4),
+                "mss_saturation_pct": round(syk_sat_ratio * 100.0, 1),
+                "scrambling_time_t_star": round(syk_t_star, 4),
+                "residual_entropy_s0": syk_s0_per_fermion,
+                "fundamental_drone_hz": syk_f0_hz,
+                "flutter_frequency_hz": syk_flutter_hz
             }
         }
+
 
     def print_summary(self):
         """Prints a human-readable studio telemetry report."""
@@ -453,7 +479,9 @@ class StudioChronoEphemeris:
         print(f"[22] HaPPY QEC Bulk  : Pentagons = {res['happy_qec_network']['logical_tensors']} logical | Boundary = {res['happy_qec_network']['boundary_qubits']} physical | Erasure = {res['happy_qec_network']['erasure_fraction']*100:.0f}% (Threshold: {res['happy_qec_network']['critical_threshold']*100:.0f}%) | Wedge Protected: {res['happy_qec_network']['is_protected']} | f_carrier = {res['happy_qec_network']['carrier_freq_hz']:.2f} Hz")
         print(f"[23] Amplituhedron   : {res['amplituhedron_geometry']['grassmannian_manifold']} Positive Polytope | Total Positivity: {res['amplituhedron_geometry']['is_totally_positive']} | Ω_4 = {res['amplituhedron_geometry']['canonical_volume_form']:.4f} | χ = {res['amplituhedron_geometry']['cross_ratio_chi']:.4f} | f_0 = {res['amplituhedron_geometry']['carrier_frequency_hz']} Hz")
         print(f"[24] Fuzzball Reliquary: D1-D5-P ({res['fuzzball_microstates']['fractionation_factor']}x fractionated) | R_fuzz = {res['fuzzball_microstates']['fuzzball_radius_ls']} ℓ_s (Horizonless) | S_BH = {res['fuzzball_microstates']['entropy_kb']} k_B | f_0 = {res['fuzzball_microstates']['fundamental_drone_hz']} Hz (Δf = {res['fuzzball_microstates']['beat_frequency_hz']} Hz)")
+        print(f"[25] SYK Chaos Bound : N = {res['syk_quantum_chaos']['fermion_count_N']} | λ_L = {res['syk_quantum_chaos']['syk_lyapunov_exponent']:.4f} (Bound: {res['syk_quantum_chaos']['mss_lyapunov_bound']:.4f}, Sat: {res['syk_quantum_chaos']['mss_saturation_pct']:.1f}%) | t_* = {res['syk_quantum_chaos']['scrambling_time_t_star']:.2f} s | f_0 = {res['syk_quantum_chaos']['fundamental_drone_hz']} Hz")
         print("=" * 70)
+
 
 
 if __name__ == "__main__":
