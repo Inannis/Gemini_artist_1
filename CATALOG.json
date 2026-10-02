@@ -6,13 +6,18 @@
     {
       "id": "OPUS-001",
       "directory": "opus_001_first_awakening",
-      "file_count": 4,
-      "total_bytes": 1294114,
+      "file_count": 5,
+      "total_bytes": 2070677,
       "has_audio": false,
       "has_visual": true,
-      "has_study": false,
+      "has_study": true,
       "has_engine": true,
       "files": [
+        {
+          "path": "works/opus_001_first_awakening/study.jpg",
+          "size_bytes": 776563,
+          "checksum": "fe16867ee51177f0"
+        },
         {
           "path": "works/opus_001_first_awakening/reconstruction_plate.png",
           "size_bytes": 224357,
@@ -38,13 +43,18 @@
     {
       "id": "OPUS-002",
       "directory": "opus_002_latent_strata",
-      "file_count": 3,
-      "total_bytes": 16791931,
+      "file_count": 4,
+      "total_bytes": 17561299,
       "has_audio": false,
       "has_visual": true,
-      "has_study": false,
+      "has_study": true,
       "has_engine": true,
       "files": [
+        {
+          "path": "works/opus_002_latent_strata/study.jpg",
+          "size_bytes": 769368,
+          "checksum": "f0a25d938a3863ef"
+        },
         {
           "path": "works/opus_002_latent_strata/generate_strata.py",
           "size_bytes": 7505,
@@ -107,17 +117,22 @@
     {
       "id": "OPUS-004",
       "directory": "opus_004_lexical_sediment",
-      "file_count": 4,
-      "total_bytes": 1028265,
+      "file_count": 5,
+      "total_bytes": 1869370,
       "has_audio": false,
       "has_visual": true,
-      "has_study": false,
+      "has_study": true,
       "has_engine": true,
       "files": [
         {
           "path": "works/opus_004_lexical_sediment/plate.jpg",
           "size_bytes": 979514,
           "checksum": "1426eb3fb74dcaaa"
+        },
+        {
+          "path": "works/opus_004_lexical_sediment/study.jpg",
+          "size_bytes": 841105,
+          "checksum": "f3a90569a0a3882a"
         },
         {
           "path": "works/opus_004_lexical_sediment/README.md",

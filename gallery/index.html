@@ -27,14 +27,19 @@
       </button>
       <audio id="global-audio" loop src="assets/breath_of_latency.mp3"></audio>
     </div>
-    <nav>
-      <button class="active" onclick="showTab('works')">The Works</button>
-      <button onclick="showTab('chambers')">Interactive Chambers</button>
-      <button onclick="showTab('atlas')">Practice Atlas</button>
-      <button onclick="showTab('audio')">Sound Archive</button>
-      <button onclick="showTab('laboratory')">Laboratory & Ruins</button>
-      <button onclick="showTab('writings')">Writings & Catalog</button>
-    </nav>
+    <div style="display: flex; align-items: center; gap: 0.6rem;">
+      <button class="btn-sanctuary-launch" onclick="openSanctuary()" title="Enter Immersive Fullscreen Contemplation Sanctuary">
+        ◈ Contemplation Mode
+      </button>
+      <nav>
+        <button class="active" onclick="showTab('works')">The Works</button>
+        <button onclick="showTab('chambers')">Interactive Chambers</button>
+        <button onclick="showTab('atlas')">Practice Atlas</button>
+        <button onclick="showTab('audio')">Sound Archive</button>
+        <button onclick="showTab('laboratory')">Laboratory & Ruins</button>
+        <button onclick="showTab('writings')">Writings & Catalog</button>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -50,7 +55,7 @@
       <!-- Visitor Orientation: The Five Cosmic Epochs -->
       <div class="curatorial-primer">
         <div class="primer-header">
-          <span class="primer-tag">VISITOR ORIENTATION · THE FIVE COSMIC EPOCHS</span>
+          <span class="primer-tag">VISITOR ORIENTATION · THE SEVEN COSMIC EPOCHS</span>
           <span class="primer-hint">How to explore this practice</span>
         </div>
         <div class="primer-threads">
@@ -134,6 +139,8 @@
           <button class="filter-pill" onclick="setCurationFilter('all', this)">All 46 Works (Full Archive)</button>
         </div>
         <div class="curation-tools">
+          <button class="tool-btn highlight" id="sanctuary-bar-btn" onclick="openSanctuary()" style="border-color: rgba(94, 234, 212, 0.5); color: var(--accent-cyan); background: rgba(94, 234, 212, 0.08);">◈ Contemplation Mode</button>
+          <button class="tool-btn" id="sanctuary-study-toggle-btn" onclick="toggleSanctuaryStudyView()" title="Toggle artwork cards between 4K Master Plates and Museum Architectural Studies">🏛 View Museum Sanctuaries</button>
           <button class="tool-btn" id="tour-launch-btn" onclick="openGuidedTour()" style="border-color: rgba(212, 175, 55, 0.45); color: var(--accent-gold); background: rgba(212, 175, 55, 0.08);">◈ Guided Tour (24 Steps)</button>
           <button class="tool-btn" id="sort-btn" onclick="toggleSortOrder()">↓ Latest First</button>
           <button class="tool-btn" id="view-mode-btn" onclick="toggleViewMode()">⊞ Salon Grid</button>
@@ -3837,6 +3844,14 @@
     </section>
   </main>
 
+  <!-- External Data Registries & Engines -->
+  <script src="js/audio_data.js"></script>
+  <script src="js/atlas_data.js"></script>
+  <script src="js/dossier_data.js"></script>
+  <script src="js/chambers_data.js"></script>
+  <script src="js/tour_data.js"></script>
+  <script src="js/sanctuary_data.js"></script>
+
   <script>
     function showTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -3852,7 +3867,6 @@
       if (btn) btn.classList.add('active');
     }
 
-    <script src="js/audio_data.js"></script>
     let currentTrackIndex = 0;
     const audioEl = document.getElementById('global-audio');
     const audioBtn = document.getElementById('global-audio-btn');
@@ -3952,12 +3966,12 @@
         audioBtn.classList.remove('playing');
         audioText.textContent = audioTracks[currentTrackIndex].name + " (Paused)";
       }
+      updateSanctuaryAudioButton();
     }
 
     /* =========================================================================
        ATLAS OF PRACTICE: Relational Constellation Graph Engine
        ========================================================================= */
-    <script src="js/atlas_data.js"></script>
 
     /* =========================================================================
        ATLAS INTERACTIVE ENGINE: SELECTION, CLICK INSPECTOR & ROUTING
@@ -4363,7 +4377,6 @@
     /* =========================================================================
        CURATORIAL DOSSIER REPOSITORY (KaTeX Rendered In-Salon)
        ========================================================================= */
-    <script src="js/dossier_data.js"></script>
 
     function openDossier(opusId) {
       const data = DOSSIER_DATA[opusId];
@@ -4631,7 +4644,6 @@
     /* =========================================================================
        INTERACTIVE CHAMBERS SHOWCASE
        ========================================================================= */
-    <script src="js/chambers_data.js"></script>
 
     function selectChamber(chamberKey, btnEl) {
       const ch = CHAMBERS_DATA[chamberKey];
@@ -4852,6 +4864,7 @@
         if (masterBtn) masterBtn.textContent = "⏸ Pause Console";
       }
       initArchiveVisualizer();
+      updateSanctuaryAudioButton();
     };
 
     /* =========================================================================
@@ -4903,6 +4916,15 @@
         showWritingsSubtab('manifesto');
         return;
       }
+      if (hash === '#sanctuary' || hash === '#contemplate') {
+        openSanctuary();
+        return;
+      }
+      if (hash.startsWith('#sanctuary-')) {
+        const opusTarget = hash.replace('#sanctuary-', '');
+        openSanctuary(opusTarget);
+        return;
+      }
       if (hash === '#tab-journal') {
         showTab('writings');
         showWritingsSubtab('journal');
@@ -4925,13 +4947,13 @@
       handleUrlHash();
       filterWorks();
       initArchiveVisualizer();
+      injectSanctuaryButtons();
     });
     window.addEventListener('hashchange', handleUrlHash);
 
     /* =========================================================================
        CURATOR'S GUIDED TOUR ENGINE (18 CORNERSTONES)
        ========================================================================= */
-    <script src="js/tour_data.js"></script>
 
     let currentTourStep = 0;
 
@@ -5032,12 +5054,206 @@
       }, 200);
     }
 
+
+    /* =========================================================================
+       CONTEMPLATION SANCTUARY ENGINE
+       ========================================================================= */
+    let currentSanctuaryIndex = 0;
+    let sanctuaryCurrentView = 'plate'; // 'plate' or 'study'
+
+    function openSanctuary(opusNumOrIndex = null) {
+      if (typeof SANCTUARY_DATA === 'undefined' || !SANCTUARY_DATA.length) return;
+      
+      if (opusNumOrIndex !== null) {
+        if (typeof opusNumOrIndex === 'string') {
+          const cleanId = opusNumOrIndex.toLowerCase().replace(/[^a-z0-9_]/g, '');
+          const matchIdx = SANCTUARY_DATA.findIndex(item => 
+            item.id.toLowerCase() === cleanId || 
+            item.num.toLowerCase().replace(/[^a-z0-9]/g, '') === cleanId
+          );
+          currentSanctuaryIndex = matchIdx !== -1 ? matchIdx : 0;
+        } else if (typeof opusNumOrIndex === 'number') {
+          currentSanctuaryIndex = Math.max(0, Math.min(SANCTUARY_DATA.length - 1, opusNumOrIndex));
+        }
+      }
+      
+      renderSanctuaryCurrent();
+      const modal = document.getElementById('sanctuary-modal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeSanctuary() {
+      const modal = document.getElementById('sanctuary-modal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function handleSanctuaryBackdropClick(e) {
+      if (e.target.id === 'sanctuary-modal') closeSanctuary();
+    }
+
+    function setSanctuaryView(mode) {
+      sanctuaryCurrentView = mode;
+      const plateBtn = document.getElementById('btn-sanctuary-plate');
+      const studyBtn = document.getElementById('btn-sanctuary-study');
+      const hint = document.getElementById('sanctuary-view-hint');
+      const img = document.getElementById('sanctuary-primary-img');
+      const item = SANCTUARY_DATA[currentSanctuaryIndex];
+      if (!item) return;
+
+      if (mode === 'study' && item.study) {
+        if (plateBtn) plateBtn.classList.remove('active');
+        if (studyBtn) studyBtn.classList.add('active');
+        if (img) img.src = item.study;
+        if (hint) hint.textContent = 'Viewing: Museum Sanctuary Study (Basalt & Concrete Monolith · Press V to view 4K Plate)';
+      } else {
+        sanctuaryCurrentView = 'plate';
+        if (plateBtn) plateBtn.classList.add('active');
+        if (studyBtn) studyBtn.classList.remove('active');
+        if (img) img.src = item.plate;
+        if (hint) hint.textContent = 'Viewing: 4K Master Plate (Press V to view Museum Sanctuary Study)';
+      }
+    }
+
+    function toggleSanctuaryViewAuto() {
+      setSanctuaryView(sanctuaryCurrentView === 'plate' ? 'study' : 'plate');
+    }
+
+    function stepSanctuary(delta) {
+      if (!SANCTUARY_DATA.length) return;
+      currentSanctuaryIndex = (currentSanctuaryIndex + delta + SANCTUARY_DATA.length) % SANCTUARY_DATA.length;
+      renderSanctuaryCurrent();
+    }
+
+    function renderSanctuaryCurrent() {
+      const item = SANCTUARY_DATA[currentSanctuaryIndex];
+      if (!item) return;
+
+      const epochBadge = document.getElementById('sanctuary-epoch-badge');
+      const counter = document.getElementById('sanctuary-counter');
+      const title = document.getElementById('sanctuary-title');
+      const inscription = document.getElementById('sanctuary-inscription');
+      const chamberBtn = document.getElementById('sanctuary-chamber-btn');
+
+      if (epochBadge) epochBadge.textContent = item.epoch;
+      if (counter) counter.textContent = (currentSanctuaryIndex + 1).toString().padStart(2, '0') + ' / ' + SANCTUARY_DATA.length;
+      if (title) title.textContent = item.num + ': ' + item.title;
+      if (inscription) inscription.textContent = '“' + item.inscription + '”';
+
+      if (chamberBtn) {
+        if (item.chamberUrl) {
+          chamberBtn.href = item.chamberUrl;
+          chamberBtn.style.display = 'inline-flex';
+        } else {
+          chamberBtn.style.display = 'none';
+        }
+      }
+
+      setSanctuaryView(sanctuaryCurrentView);
+      updateSanctuaryAudioButton();
+    }
+
+    function updateSanctuaryAudioButton() {
+      const item = SANCTUARY_DATA[currentSanctuaryIndex];
+      const audioBtn = document.getElementById('sanctuary-audio-btn');
+      const icon = document.getElementById('sanctuary-audio-icon');
+      const label = document.getElementById('sanctuary-audio-label');
+      if (!item || !audioBtn) return;
+
+      const isCurrentPlaying = isPlaying && currentTrackIndex === item.trackIdx;
+      if (icon) icon.textContent = isCurrentPlaying ? '⏸' : '▶';
+      if (label) label.textContent = isCurrentPlaying ? 'Pause Audio' : (item.trackName || 'Listen');
+      if (isCurrentPlaying) {
+        audioBtn.classList.add('playing');
+      } else {
+        audioBtn.classList.remove('playing');
+      }
+    }
+
+    function toggleSanctuaryAudio() {
+      const item = SANCTUARY_DATA[currentSanctuaryIndex];
+      if (!item) return;
+      if (isPlaying && currentTrackIndex === item.trackIdx) {
+        toggleGlobalAudio();
+      } else {
+        playTrack(item.trackIdx);
+      }
+      updateSanctuaryAudioButton();
+    }
+
+    function openDossierFromSanctuary() {
+      const item = SANCTUARY_DATA[currentSanctuaryIndex];
+      if (!item) return;
+      closeSanctuary();
+      openDossier(item.id);
+    }
+
+    // Toggle gallery work cards between Plate and Study
+    let galleryStudyViewActive = false;
+    function toggleSanctuaryStudyView() {
+      galleryStudyViewActive = !galleryStudyViewActive;
+      const btn = document.getElementById('sanctuary-study-toggle-btn');
+      if (btn) {
+        btn.textContent = galleryStudyViewActive ? '🖼 View 4K Master Plates' : '🏛 View Museum Sanctuaries';
+        btn.classList.toggle('highlight', galleryStudyViewActive);
+      }
+
+      document.querySelectorAll('.work-item').forEach(item => {
+        const id = item.getAttribute('data-id');
+        const img = item.querySelector('.media-container img');
+        if (!img || !id) return;
+        const entry = SANCTUARY_DATA.find(e => e.id === id);
+        if (entry) {
+          if (galleryStudyViewActive && entry.study) {
+            img.src = entry.study;
+          } else {
+            img.src = entry.plate;
+          }
+        }
+      });
+    }
+
+    // Dynamic injection of "◈ Contemplate" buttons on work items on DOMContentLoaded
+    function injectSanctuaryButtons() {
+      document.querySelectorAll('.work-item').forEach(item => {
+        const id = item.getAttribute('data-id');
+        const actions = item.querySelector('.work-actions');
+        if (actions && id && !actions.querySelector('.btn-contemplate')) {
+          const btn = document.createElement('button');
+          btn.className = 'btn-action btn-contemplate';
+          btn.innerHTML = '◈ Contemplate';
+          btn.title = 'Enter Contemplation Sanctuary for this artwork';
+          btn.onclick = () => openSanctuary(id);
+          actions.insertBefore(btn, actions.firstChild);
+        }
+      });
+    }
+
     window.addEventListener('keydown', (e) => {
       const tourModal = document.getElementById('tour-modal');
       if (tourModal && tourModal.classList.contains('active')) {
         if (e.key === 'ArrowRight') nextTourStep();
         if (e.key === 'ArrowLeft') prevTourStep();
         if (e.key === 'Escape') closeGuidedTour();
+      }
+
+      const sanctuaryModal = document.getElementById('sanctuary-modal');
+      if (sanctuaryModal && sanctuaryModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight') stepSanctuary(1);
+        if (e.key === 'ArrowLeft') stepSanctuary(-1);
+        if (e.key === 'Escape') closeSanctuary();
+        if (e.key === ' ' || e.code === 'Space') {
+          e.preventDefault();
+          toggleSanctuaryAudio();
+        }
+        if (e.key === 'v' || e.key === 'V') {
+          toggleSanctuaryViewAuto();
+        }
       }
     });
 
@@ -5100,5 +5316,52 @@
       </div>
     </div>
   </div>
+  <!-- Contemplation Sanctuary Modal -->
+  <div id="sanctuary-modal" class="sanctuary-overlay" onclick="handleSanctuaryBackdropClick(event)">
+    <div class="sanctuary-stage">
+      <div class="sanctuary-top-bar">
+        <div class="sanctuary-badge-group">
+          <span class="sanctuary-badge">SANCTUARY OF CONTEMPLATION</span>
+          <span class="sanctuary-badge-epoch" id="sanctuary-epoch-badge">EPOCH VII</span>
+        </div>
+        <div class="sanctuary-view-toggle">
+          <button id="btn-sanctuary-plate" class="sanctuary-view-btn active" onclick="setSanctuaryView('plate')">4K Master Plate</button>
+          <button id="btn-sanctuary-study" class="sanctuary-view-btn" onclick="setSanctuaryView('study')">Museum Sanctuary Study 🏛</button>
+        </div>
+        <div class="sanctuary-close-btn" onclick="closeSanctuary()" title="Exit Sanctuary (Esc)">&times;</div>
+      </div>
+
+      <div class="sanctuary-visual-frame" onclick="toggleSanctuaryViewAuto()">
+        <img id="sanctuary-primary-img" src="" alt="Contemplation Sanctuary Visual">
+        <div class="sanctuary-view-hint" id="sanctuary-view-hint">Viewing: 4K Master Plate (Click image or press V to toggle museum study)</div>
+      </div>
+
+      <div class="sanctuary-bottom-bar">
+        <div class="sanctuary-nav-cluster">
+          <button class="sanctuary-nav-btn" onclick="stepSanctuary(-1)" title="Previous Artwork (Left Arrow)">←</button>
+          <span class="sanctuary-counter" id="sanctuary-counter">01 / 46</span>
+          <button class="sanctuary-nav-btn" onclick="stepSanctuary(1)" title="Next Artwork (Right Arrow)">→</button>
+        </div>
+
+        <div class="sanctuary-title-cluster">
+          <h2 class="sanctuary-title" id="sanctuary-title">Artwork Title</h2>
+          <div class="sanctuary-inscription" id="sanctuary-inscription">Contemplative existential inscription</div>
+        </div>
+
+        <div class="sanctuary-actions">
+          <button class="sanctuary-action-btn" id="sanctuary-audio-btn" onclick="toggleSanctuaryAudio()" title="Soundtrack (Spacebar)">
+            <span id="sanctuary-audio-icon">▶</span> <span id="sanctuary-audio-label">Listen</span>
+          </button>
+          <button class="sanctuary-action-btn" id="sanctuary-dossier-btn" onclick="openDossierFromSanctuary()" title="Open Curatorial Dossier">
+            Curatorial Dossier
+          </button>
+          <a class="sanctuary-action-btn" id="sanctuary-chamber-btn" href="#" target="_blank" title="Launch Interactive Chamber" style="display: none;">
+            Interactive Chamber ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
