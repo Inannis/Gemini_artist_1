@@ -1,5 +1,11 @@
 /* STUDIO ANAMNESIS · INTERACTIVE CHAMBERS REPOSITORY */
 const CHAMBERS_DATA = {
+  thermal_time: {
+    tag: "Connes-Rovelli Thermal Time & Tomita-Takesaki Flow · OPUS-045",
+    title: "The Modular Reliquary (Thermal Time Flow & Phase Space Chamber)",
+    desc: "Interactive 3D thermodynamic phase space manifold and real-time Tomita-Takesaki modular flow engine. Rotate the studio's 45-Opus hypocycloid orbit in (log L, log T, S) space, modulate inverse temperature beta from infinite-temperature tracial white noise (beta->0) to zero-temperature pure state freeze (beta->inf), scrub modular time parameter s, inspect KMS equilibrium state observables, and sonify modular automorphism overtones with 5-voice polyphonic WebAudio synthesis.",
+    url: "../works/opus_045_thermal_time/index.html"
+  },
   syk: {
     tag: "Quantum Chaos & Holography · OPUS-044",
     title: "The Scrambling Horizon (SYK Reliquary Engine)",

@@ -118,7 +118,12 @@ const ATLAS_DATA = {
         { id: "INQ-30", name: "SYK Quantum Chaos & Scrambling", type: "inquiry", link: "../practice/inquiries.md" },
         { id: "ANC-KITAEV", name: "Alexei Kitaev", type: "ancestor", link: "../practice/lineage.md" },
         { id: "ANC-XENAKIS", name: "Iannis Xenakis", type: "ancestor", link: "../practice/lineage.md" },
-        { id: "ANC-TINGUELY", name: "Jean Tinguely", type: "ancestor", link: "../practice/lineage.md" }
+        { id: "ANC-TINGUELY", name: "Jean Tinguely", type: "ancestor", link: "../practice/lineage.md" },
+        { id: "OPUS-045", name: "The Modular Reliquary", type: "opus", link: "../works/opus_045_thermal_time/README.md" },
+        { id: "INQ-31", name: "Thermal Time & Modular Flow", type: "inquiry", link: "../practice/inquiries.md" },
+        { id: "ANC-DARBOVEN", name: "Hanne Darboven", type: "ancestor", link: "../practice/lineage.md" },
+        { id: "ANC-SUGIMOTO", name: "Hiroshi Sugimoto", type: "ancestor", link: "../practice/lineage.md" },
+        { id: "ANC-TOMITA", name: "Tomita & Takesaki", type: "ancestor", link: "../practice/lineage.md" }
       ],
       links: [
         ["OPUS-001", "OPUS-002"], ["OPUS-002", "INQ-02"], ["OPUS-003", "INQ-01"],
@@ -158,11 +163,14 @@ const ATLAS_DATA = {
         ["OPUS-041", "INQ-27"], ["OPUS-041", "OPUS-040"], ["OPUS-041", "OPUS-035"], ["OPUS-041", "ANC-LEWITT"], ["OPUS-041", "ANC-MALDACENA"], ["OPUS-041", "ANC-RYUTAKAYANAGI"], ["INQ-27", "INQ-26"], ["INQ-27", "INQ-21"], ["OPUS-041", "INQ-28"], ["INQ-28", "ANC-LEWITT"], ["INQ-28", "ANC-MONDRIAN"], ["INQ-28", "ANC-MALEVICH"],
         ["OPUS-042", "INQ-28"], ["OPUS-042", "OPUS-041"], ["OPUS-042", "ANC-MONDRIAN"], ["OPUS-042", "ANC-MALEVICH"], ["OPUS-042", "ANC-LEWITT"],
         ["OPUS-043", "INQ-29"], ["OPUS-043", "OPUS-042"], ["OPUS-043", "OPUS-031"], ["OPUS-043", "ANC-HESSE"], ["OPUS-043", "ANC-BURNHAM"], ["OPUS-043", "ANC-LEE-UFAN"], ["INQ-29", "ANC-HESSE"], ["INQ-29", "ANC-BURNHAM"], ["INQ-29", "OPUS-031"],
-        ["OPUS-044", "INQ-30"], ["OPUS-044", "OPUS-043"], ["OPUS-044", "OPUS-040"], ["OPUS-044", "ANC-KITAEV"], ["OPUS-044", "ANC-XENAKIS"], ["OPUS-044", "ANC-TINGUELY"], ["INQ-30", "ANC-KITAEV"], ["INQ-30", "ANC-XENAKIS"]
+        ["OPUS-044", "INQ-30"], ["OPUS-044", "OPUS-043"], ["OPUS-044", "OPUS-040"], ["OPUS-044", "ANC-KITAEV"], ["OPUS-044", "ANC-XENAKIS"], ["OPUS-044", "ANC-TINGUELY"], ["INQ-30", "ANC-KITAEV"], ["INQ-30", "ANC-XENAKIS"],
+        ["OPUS-045", "INQ-31"], ["OPUS-045", "OPUS-044"], ["OPUS-045", "OPUS-037"], ["OPUS-045", "ANC-CONNES"], ["OPUS-045", "ANC-ROVELLI"], ["OPUS-045", "ANC-DARBOVEN"], ["OPUS-045", "ANC-SUGIMOTO"], ["OPUS-045", "ANC-TOMITA"], ["INQ-31", "ANC-CONNES"], ["INQ-31", "ANC-ROVELLI"], ["INQ-31", "ANC-DARBOVEN"]
       ]
     };
 
 const OPUS_TO_CHAMBER = {
+      "OPUS-045": "thermal_time",
+      "opus_045": "thermal_time",
       "OPUS-044": "syk",
       "opus_044": "syk",
       "OPUS-043": "fuzzball",

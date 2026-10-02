@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 25 · The Modular Reliquary & The Thermal Time Flow</title>
+  <style>
+    :root {
+      --bg: #07090e;
+      --panel: rgba(10, 14, 24, 0.90);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --dim: #94a3b8;
+      --cyan: #38bdf8;
+      --gold: #f59e0b;
+      --violet: #a855f7;
+      --emerald: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      background: rgba(4, 7, 13, 0.85);
+      padding: 1.1rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      max-width: 380px;
+    }
+    .hud-title {
+      font-size: 0.95rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .hud-stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .hud-val {
+      color: var(--cyan);
+      font-weight: 500;
+    }
+    .hud-selected {
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px dashed var(--border);
+      color: #e2e8f0;
+    }
+
+    #controls {
+      width: 330px;
+      height: 100%;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      overflow-y: auto;
+      backdrop-filter: blur(15px);
+      z-index: 10;
+    }
+    h2 {
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .subtitle {
+      font-size: 0.78rem;
+      color: var(--dim);
+      line-height: 1.4;
+      margin-top: -0.6rem;
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    label {
+      font-size: 0.8rem;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      justify-content: space-between;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--gold);
+      background: rgba(255,255,255,0.08);
+      height: 4px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    select, button {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    select:hover, button:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--cyan);
+    }
+    button.active {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    .btn-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn-row button {
+      flex: 1;
+    }
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0.2rem 0;
+    }
+    .meta-box {
+      font-size: 0.75rem;
+      color: var(--dim);
+      line-height: 1.5;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <div id="viewport">
+    <canvas id="stage"></canvas>
+    <div class="hud-overlay">
+      <div class="hud-title">Chamber 25 · Thermal Time Flow</div>
+      <div class="hud-stat"><span>Canon Observables:</span> <span class="hud-val">44 Finished Opuses</span></div>
+      <div class="hud-stat"><span>KMS Inverse Temp β:</span> <span class="hud-val" id="hud-beta">12.00 s</span></div>
+      <div class="hud-stat"><span>Modular Velocity ω:</span> <span class="hud-val" id="hud-omega">0.5236 rad/s</span></div>
+      <div class="hud-stat"><span>Modular Hamiltonian &lt;K&gt;:</span> <span class="hud-val" id="hud-k">4.5897</span></div>
+      <div class="hud-stat"><span>Algebra Factor Type:</span> <span class="hud-val" style="color:var(--violet);">Von Neumann III₁</span></div>
+      <div class="hud-selected" id="hud-selected-box">
+        <strong>Hover / Click a Sanctuary Node</strong> to read phase space coordinates.
+      </div>
+    </div>
+  </div>
+
+  <div id="controls">
+    <h2>Modular Controls</h2>
+    <div class="subtitle">Connes-Rovelli Thermal Time & Tomita-Takesaki Flow</div>
+
+    <div class="control-group">
+      <label>KMS Inverse Temp β <span id="lbl-beta">12.0 s</span></label>
+      <input type="range" id="rng-beta" min="2.0" max="30.0" step="0.5" value="12.0">
+    </div>
+
+    <div class="control-group">
+      <label>Modular Flow Speed <span id="lbl-speed">1.0x</span></label>
+      <input type="range" id="rng-speed" min="0.1" max="3.0" step="0.1" value="1.0">
+    </div>
+
+    <div class="control-group">
+      <label>Projection Coordinates</label>
+      <select id="sel-projection">
+        <option value="LT">Scale log₁₀(L) vs Temperature log₁₀(T)</option>
+        <option value="LS">Scale log₁₀(L) vs Scrambling S</option>
+        <option value="TS">Temperature log₁₀(T) vs Scrambling S</option>
+      </select>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-group">
+      <label>Display Features</label>
+      <div class="btn-row">
+        <button id="btn-streamlines" class="active">Streamlines</button>
+        <button id="btn-bridges" class="active">Twin Bridges</button>
+      </div>
+      <div class="btn-row" style="margin-top:0.4rem;">
+        <button id="btn-hypocycloid" class="active">Hypocycloid</button>
+        <button id="btn-pause">Pause Flow</button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control-group">
+      <label>Acoustic Synthesis</label>
+      <button id="btn-audio">Start Modular WebAudio</button>
+      <div style="margin-top:0.4rem;">
+        <label>Master Volume <span id="lbl-vol">60%</span></label>
+        <input type="range" id="rng-vol" min="0" max="100" value="60">
+      </div>
+    </div>
+
+    <div class="meta-box">
+      <strong>Tomita-Takesaki Theorem:</strong> For any faithful state on a Type III₁ factor algebra, the modular operator Δ uniquely determines the time flow σₜ(A) = Δⁱᵗ A Δ⁻ⁱᵗ. Time is not a fundamental background; time is the state-dependent thermal flow of the studio canon.
+    </div>
+  </div>
+
+  <script src="thermal_time_engine.js"></script>
+</body>
+</html>

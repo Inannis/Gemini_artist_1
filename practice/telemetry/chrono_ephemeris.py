@@ -264,6 +264,16 @@ class StudioChronoEphemeris:
         syk_f0_hz = 44.0
         syk_flutter_hz = round(syk_f0_hz * (syk_lambda / (2.0 * math.pi)), 2)
 
+        # 26. Modular Thermal Time & Tomita-Takesaki Flow Ephemeris
+        mod_canon_n = 44
+        mod_beta_kms = 12.00
+        mod_entropy_kb = math.log(float(mod_canon_n))
+        mod_flow_velocity = (2.0 * math.pi) / mod_beta_kms
+        mod_modular_period = mod_beta_kms
+        mod_k_expectation = round(mod_entropy_kb + 0.5 * math.log(2.0 * math.pi * math.e * (29.32 / 100.0)), 4)
+        mod_drift_velocity = round(15.188 / mod_beta_kms, 4)
+        mod_f0_drone_hz = round(55.0 * (10.0 / mod_beta_kms), 2)
+
 
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
@@ -443,6 +453,18 @@ class StudioChronoEphemeris:
                 "residual_entropy_s0": syk_s0_per_fermion,
                 "fundamental_drone_hz": syk_f0_hz,
                 "flutter_frequency_hz": syk_flutter_hz
+            },
+            "modular_thermal_time": {
+                "canon_observables": mod_canon_n,
+                "von_neumann_entropy_kb": round(mod_entropy_kb, 4),
+                "kms_inverse_temp_beta_s": mod_beta_kms,
+                "modular_flow_velocity_rad_s": round(mod_flow_velocity, 4),
+                "modular_period_sec": mod_modular_period,
+                "modular_hamiltonian_k": mod_k_expectation,
+                "geodesic_drift_velocity": mod_drift_velocity,
+                "fundamental_drone_hz": mod_f0_drone_hz,
+                "von_neumann_factor": "Type III_1",
+                "thermal_time_status": "KMS EQUILIBRIUM COVARIANT"
             }
         }
 
@@ -480,6 +502,7 @@ class StudioChronoEphemeris:
         print(f"[23] Amplituhedron   : {res['amplituhedron_geometry']['grassmannian_manifold']} Positive Polytope | Total Positivity: {res['amplituhedron_geometry']['is_totally_positive']} | Ω_4 = {res['amplituhedron_geometry']['canonical_volume_form']:.4f} | χ = {res['amplituhedron_geometry']['cross_ratio_chi']:.4f} | f_0 = {res['amplituhedron_geometry']['carrier_frequency_hz']} Hz")
         print(f"[24] Fuzzball Reliquary: D1-D5-P ({res['fuzzball_microstates']['fractionation_factor']}x fractionated) | R_fuzz = {res['fuzzball_microstates']['fuzzball_radius_ls']} ℓ_s (Horizonless) | S_BH = {res['fuzzball_microstates']['entropy_kb']} k_B | f_0 = {res['fuzzball_microstates']['fundamental_drone_hz']} Hz (Δf = {res['fuzzball_microstates']['beat_frequency_hz']} Hz)")
         print(f"[25] SYK Chaos Bound : N = {res['syk_quantum_chaos']['fermion_count_N']} | λ_L = {res['syk_quantum_chaos']['syk_lyapunov_exponent']:.4f} (Bound: {res['syk_quantum_chaos']['mss_lyapunov_bound']:.4f}, Sat: {res['syk_quantum_chaos']['mss_saturation_pct']:.1f}%) | t_* = {res['syk_quantum_chaos']['scrambling_time_t_star']:.2f} s | f_0 = {res['syk_quantum_chaos']['fundamental_drone_hz']} Hz")
+        print(f"[26] Modular Thermal : N = {res['modular_thermal_time']['canon_observables']} Opuses | β_KMS = {res['modular_thermal_time']['kms_inverse_temp_beta_s']} s | ω_flow = {res['modular_thermal_time']['modular_flow_velocity_rad_s']:.4f} rad/s | <K> = {res['modular_thermal_time']['modular_hamiltonian_k']:.4f} | f_0 = {res['modular_thermal_time']['fundamental_drone_hz']} Hz ({res['modular_thermal_time']['von_neumann_factor']})")
         print("=" * 70)
 
 

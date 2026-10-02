@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 44,
+  "total_opuses": 45,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -2038,6 +2038,58 @@
           "path": "works/opus_044_syk_scrambling/artwork.png",
           "size_bytes": 2841856,
           "checksum": "bda1d5b854f3f86b"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-045",
+      "directory": "opus_045_thermal_time",
+      "file_count": 8,
+      "total_bytes": 24602351,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": true,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_045_thermal_time/study.jpg",
+          "size_bytes": 844553,
+          "checksum": "0dc7c985c6418160"
+        },
+        {
+          "path": "works/opus_045_thermal_time/index.html",
+          "size_bytes": 7061,
+          "checksum": "048ad62cb1a364c1"
+        },
+        {
+          "path": "works/opus_045_thermal_time/README.md",
+          "size_bytes": 10023,
+          "checksum": "ee62889e9cad83eb"
+        },
+        {
+          "path": "works/opus_045_thermal_time/thermal_time_engine.js",
+          "size_bytes": 17591,
+          "checksum": "521a431f2d75a6cb"
+        },
+        {
+          "path": "works/opus_045_thermal_time/the_thermal_time_flow_4k.wav",
+          "size_bytes": 23040044,
+          "checksum": "3a45241fd721b81a"
+        },
+        {
+          "path": "works/opus_045_thermal_time/artwork.png",
+          "size_bytes": 667384,
+          "checksum": "ed62c094b5949298"
+        },
+        {
+          "path": "works/opus_045_thermal_time/generate_thermal_time_4k.py",
+          "size_bytes": 8740,
+          "checksum": "445728a12969420d"
+        },
+        {
+          "path": "works/opus_045_thermal_time/synthesize_thermal_time_suite.py",
+          "size_bytes": 6955,
+          "checksum": "448bff535d335a15"
         }
       ]
     }
