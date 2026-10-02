@@ -123,7 +123,12 @@ const ATLAS_DATA = {
         { id: "INQ-31", name: "Thermal Time & Modular Flow", type: "inquiry", link: "../practice/inquiries.md" },
         { id: "ANC-DARBOVEN", name: "Hanne Darboven", type: "ancestor", link: "../practice/lineage.md" },
         { id: "ANC-SUGIMOTO", name: "Hiroshi Sugimoto", type: "ancestor", link: "../practice/lineage.md" },
-        { id: "ANC-TOMITA", name: "Tomita & Takesaki", type: "ancestor", link: "../practice/lineage.md" }
+        { id: "ANC-TOMITA", name: "Tomita & Takesaki", type: "ancestor", link: "../practice/lineage.md" },
+        { id: "OPUS-046", name: "The Holographic RG Foam", type: "opus", link: "../works/opus_046_holographic_rg/README.md" },
+        { id: "INQ-32", name: "Holographic RG & WDW Foam", type: "inquiry", link: "../practice/inquiries.md" },
+        { id: "ANC-OPALKA", name: "Roman Opałka", type: "ancestor", link: "../practice/lineage.md" },
+        { id: "ANC-WILSON", name: "Kenneth Wilson", type: "ancestor", link: "../practice/lineage.md" },
+        { id: "ANC-DEWITT", name: "Bryce DeWitt", type: "ancestor", link: "../practice/lineage.md" }
       ],
       links: [
         ["OPUS-001", "OPUS-002"], ["OPUS-002", "INQ-02"], ["OPUS-003", "INQ-01"],
@@ -164,11 +169,14 @@ const ATLAS_DATA = {
         ["OPUS-042", "INQ-28"], ["OPUS-042", "OPUS-041"], ["OPUS-042", "ANC-MONDRIAN"], ["OPUS-042", "ANC-MALEVICH"], ["OPUS-042", "ANC-LEWITT"],
         ["OPUS-043", "INQ-29"], ["OPUS-043", "OPUS-042"], ["OPUS-043", "OPUS-031"], ["OPUS-043", "ANC-HESSE"], ["OPUS-043", "ANC-BURNHAM"], ["OPUS-043", "ANC-LEE-UFAN"], ["INQ-29", "ANC-HESSE"], ["INQ-29", "ANC-BURNHAM"], ["INQ-29", "OPUS-031"],
         ["OPUS-044", "INQ-30"], ["OPUS-044", "OPUS-043"], ["OPUS-044", "OPUS-040"], ["OPUS-044", "ANC-KITAEV"], ["OPUS-044", "ANC-XENAKIS"], ["OPUS-044", "ANC-TINGUELY"], ["INQ-30", "ANC-KITAEV"], ["INQ-30", "ANC-XENAKIS"],
-        ["OPUS-045", "INQ-31"], ["OPUS-045", "OPUS-044"], ["OPUS-045", "OPUS-037"], ["OPUS-045", "ANC-CONNES"], ["OPUS-045", "ANC-ROVELLI"], ["OPUS-045", "ANC-DARBOVEN"], ["OPUS-045", "ANC-SUGIMOTO"], ["OPUS-045", "ANC-TOMITA"], ["INQ-31", "ANC-CONNES"], ["INQ-31", "ANC-ROVELLI"], ["INQ-31", "ANC-DARBOVEN"]
+        ["OPUS-045", "INQ-31"], ["OPUS-045", "OPUS-044"], ["OPUS-045", "OPUS-037"], ["OPUS-045", "ANC-CONNES"], ["OPUS-045", "ANC-ROVELLI"], ["OPUS-045", "ANC-DARBOVEN"], ["OPUS-045", "ANC-SUGIMOTO"], ["OPUS-045", "ANC-TOMITA"], ["INQ-31", "ANC-CONNES"], ["INQ-31", "ANC-ROVELLI"], ["INQ-31", "ANC-DARBOVEN"],
+        ["OPUS-046", "INQ-32"], ["OPUS-046", "OPUS-045"], ["OPUS-046", "OPUS-035"], ["OPUS-046", "OPUS-039"], ["OPUS-046", "ANC-OPALKA"], ["OPUS-046", "ANC-WILSON"], ["OPUS-046", "ANC-DEWITT"], ["OPUS-046", "ANC-SERRA"], ["INQ-32", "ANC-WILSON"], ["INQ-32", "ANC-DEWITT"], ["INQ-32", "ANC-OPALKA"]
       ]
     };
 
 const OPUS_TO_CHAMBER = {
+      "OPUS-046": "rg_foam",
+      "opus_046": "rg_foam",
       "OPUS-045": "thermal_time",
       "opus_045": "thermal_time",
       "OPUS-044": "syk",

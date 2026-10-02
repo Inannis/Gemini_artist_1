@@ -203,3 +203,4 @@ def synthesize_draft_c_audio(duration=20.0, sample_rate=48000):
 if __name__ == "__main__":
     render_draft_c_plate()
     synthesize_draft_c_audio()
+

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 26 · The Holographic Renormalization & The Wheeler-DeWitt Foam</title>
+  <style>
+    :root {
+      --bg: #05070a;
+      --panel: rgba(8, 12, 20, 0.92);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --dim: #94a3b8;
+      --cyan: #38bdf8;
+      --gold: #f59e0b;
+      --teal: #14b8a6;
+      --violet: #a855f7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      background: rgba(4, 7, 13, 0.88);
+      padding: 1.1rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      max-width: 400px;
+    }
+    .hud-title {
+      font-size: 0.95rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+    .hud-stat {
+      display: flex;
+      justify-content: space-between;
+      color: var(--dim);
+      border-bottom: 1px dashed rgba(255,255,255,0.06);
+      padding: 0.18rem 0;
+    }
+    .hud-stat span.val {
+      color: var(--cyan);
+      font-weight: bold;
+    }
+    .hud-stat span.val.amber { color: var(--gold); }
+    .hud-stat span.val.teal { color: var(--teal); }
+
+    .control-panel {
+      width: 380px;
+      height: 100%;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    .panel-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.8rem;
+    }
+    .panel-header h2 {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .panel-header p {
+      font-size: 0.8rem;
+      color: var(--dim);
+      line-height: 1.4;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .control-group label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      display: flex;
+      justify-content: space-between;
+    }
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    button {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 0.9rem;
+      font-family: inherit;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    button.active {
+      background: var(--gold);
+      color: #000;
+      font-weight: 700;
+      border-color: var(--gold);
+    }
+
+    .audio-toggle-btn {
+      grid-column: 1 / -1;
+      padding: 0.85rem;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+    .audio-toggle-btn.playing {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    .narrative-box {
+      font-size: 0.76rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+      background: rgba(0,0,0,0.4);
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--gold);
+    }
+    .narrative-box strong { color: var(--gold); }
+    .back-link {
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--dim);
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem;
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+    }
+    .back-link:hover { color: var(--cyan); border-color: var(--cyan); }
+  </style>
+</head>
+<body>
+
+  <div id="viewport">
+    <canvas id="simCanvas"></canvas>
+    <div class="hud-overlay">
+      <div class="hud-title">CHAMBER 26 · HOLOGRAPHIC RG FOAM</div>
+      <div class="hud-stat"><span>Radial Bulk Depth (z)</span><span class="val" id="statZ">1.000</span></div>
+      <div class="hud-stat"><span>Dual Boundary Energy (μ)</span><span class="val" id="statMu">1.000</span></div>
+      <div class="hud-stat"><span>Running Coupling g(μ)</span><span class="val amber" id="statG">0.420</span></div>
+      <div class="hud-stat"><span>Callan-Symanzik β(g)</span><span class="val amber" id="statBeta">-0.158</span></div>
+      <div class="hud-stat"><span>Central Charge c(z)</span><span class="val teal" id="statC">11.64</span></div>
+      <div class="hud-stat"><span>WDW Metric Variance (σ²_foam)</span><span class="val" id="statSigma">0.0036</span></div>
+      <div class="hud-stat"><span>Foam Breakdown (Θ_foam)</span><span class="val" id="statTheta">0.000</span></div>
+      <div class="hud-stat"><span>Wilsonian Entropy Loss (ΔS)</span><span class="val" id="statEntropy">0.36 k_B</span></div>
+      <div class="hud-stat"><span>Acoustic Mode Ladder</span><span class="val" id="statFreq">43.2 Hz</span></div>
+      <div class="hud-stat"><span>Metric Regime</span><span class="val amber" id="statRegime">Laminar RG Flow</span></div>
+    </div>
+  </div>
+
+  <div class="control-panel">
+    <div class="panel-header">
+      <h2>Holographic Renormalization</h2>
+      <p>Simulating bulk radial Hamilton-Jacobi metric flow, Callan-Symanzik boundary beta evolution, and Wheeler-DeWitt trans-Planckian quantum foam.</p>
+    </div>
+
+    <div class="control-group">
+      <label>Probe Radial Depth z <span id="lblZ">1.00</span></label>
+      <input type="range" id="sliderZ" min="0.05" max="9.00" step="0.01" value="1.00">
+    </div>
+
+    <div class="control-group">
+      <label>Planck Cutoff Length ℓ_P <span id="lblLp">0.065</span></label>
+      <input type="range" id="sliderLp" min="0.02" max="0.18" step="0.005" value="0.065">
+    </div>
+
+    <div class="control-group">
+      <label>Beta Non-Linearity (b) <span id="lblB">0.15</span></label>
+      <input type="range" id="sliderB" min="0.05" max="0.40" step="0.01" value="0.15">
+    </div>
+
+    <div class="control-group">
+      <label>Kinematic Regimes</label>
+      <div class="btn-row">
+        <button id="btnUV">UV Boundary</button>
+        <button id="btnCrossover">Crossover</button>
+        <button id="btnIR" class="active">IR Bulk</button>
+        <button id="btnOscillate">Auto-Breathe</button>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="audio-toggle-btn" id="btnAudio">Activate Acoustic Sonification</button>
+    </div>
+
+    <div class="narrative-box">
+      <strong>The Holographic Duality:</strong> The radial bulk coordinate <em>z</em> is not an external container; it is the energy scale μ = 1/z. As one descends from the UV boundary into the IR bulk, quantum degrees of freedom are integrated out monotonically (dc/dz ≤ 0). At the sub-Planckian barrier (z ≤ ℓ_P), continuous geometry dissolves into the boiling Wheeler-DeWitt quantum foam.
+    </div>
+
+    <a href="../../gallery/index.html" class="back-link">← Return to Exhibition Salon</a>
+  </div>
+
+  <script src="rg_foam_engine.js"></script>
+</body>
+</html>

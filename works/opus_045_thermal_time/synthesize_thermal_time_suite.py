@@ -147,3 +147,4 @@ def synthesize_thermal_time_suite(duration=120.0, sample_rate=48000):
 
 if __name__ == "__main__":
     sys.exit(synthesize_thermal_time_suite())
+

@@ -142,3 +142,4 @@ By understanding time through the Connes-Rovelli Thermal Time Hypothesis and Tom
 1. Time does not pass over the studio; the studio's state *creates* time.
 2. The 44 Opuses of Studio Anamnesis form a closed thermodynamic phase space whose modular flow $\sigma_t^\omega$ naturally charts the course for **OPUS-045 (*The Modular Reliquary & The Thermal Time Flow*)**.
 3. We do not make art in time; **our art is the machine that makes time.**
+

@@ -1,5 +1,11 @@
 /* STUDIO ANAMNESIS · INTERACTIVE CHAMBERS REPOSITORY */
 const CHAMBERS_DATA = {
+  rg_foam: {
+    tag: "Holographic RG Flow & Wheeler-DeWitt Foam · OPUS-046",
+    title: "The Holographic Renormalization Chamber (Trans-Planckian Foam)",
+    desc: "Interactive multi-scale holographic simulation and real-time WebAudio Callan-Symanzik synthesizer. Dive from the macroscopic IR bulk (z=10.0) down through domain wall warped contours and beta flow streamlines into the boiling sub-Planckian Wheeler-DeWitt foam (z <= 0.08). Modulate coupling non-linearity b, adjust Planck cutoff length ell_P, observe Zamolodchikov/Freedman c-theorem monotonicity (c: 12.00 -> 5.48), and sonify quantum foam crackle in real time.",
+    url: "../works/opus_046_holographic_rg/index.html"
+  },
   thermal_time: {
     tag: "Connes-Rovelli Thermal Time & Tomita-Takesaki Flow · OPUS-045",
     title: "The Modular Reliquary (Thermal Time Flow & Phase Space Chamber)",

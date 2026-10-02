@@ -39,3 +39,4 @@ To rescue Study 037 from naive illustration, Draft B must introduce genuine mate
 2. **Modular Flow Vector Field:** Calculate the Tomita-Takesaki flow lines $\sigma_t^\omega$ curving through the phase space, visualizing the velocity vector field $\omega_{\text{flow}} = 2\pi/\beta$.
 3. **Non-Commutative Deformation:** Deform the trajectories using the modular Hamiltonian $K = -\ln \rho$, creating curved hyperbolic stream traces rather than straight radial ticks.
 4. **Acoustic Dimension:** Synthesize a 15-second acoustic study (`study_037_draft_b_audio.wav`) mapping the KMS thermal drone ($45.83\text{ Hz}$) beating against the modular flow velocity ($0.5236\text{ rad/s}$).
+

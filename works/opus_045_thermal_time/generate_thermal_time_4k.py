@@ -187,3 +187,4 @@ def render_thermal_time_4k(width=3840, height=2160):
 
 if __name__ == "__main__":
     sys.exit(render_thermal_time_4k())
+

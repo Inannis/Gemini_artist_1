@@ -265,7 +265,7 @@ class StudioChronoEphemeris:
         syk_flutter_hz = round(syk_f0_hz * (syk_lambda / (2.0 * math.pi)), 2)
 
         # 26. Modular Thermal Time & Tomita-Takesaki Flow Ephemeris
-        mod_canon_n = 44
+        mod_canon_n = 45
         mod_beta_kms = 12.00
         mod_entropy_kb = math.log(float(mod_canon_n))
         mod_flow_velocity = (2.0 * math.pi) / mod_beta_kms
@@ -273,6 +273,25 @@ class StudioChronoEphemeris:
         mod_k_expectation = round(mod_entropy_kb + 0.5 * math.log(2.0 * math.pi * math.e * (29.32 / 100.0)), 4)
         mod_drift_velocity = round(15.188 / mod_beta_kms, 4)
         mod_f0_drone_hz = round(55.0 * (10.0 / mod_beta_kms), 2)
+
+        # 27. Holographic RG Flow & Wheeler-DeWitt Quantum Foam Ephemeris
+        rg_z_IR = 10.00
+        rg_z_UV = 0.50
+        rg_z_planck = 0.05
+        rg_cycle_period = 18.0
+        rg_phase = (t_sec % rg_cycle_period) / rg_cycle_period
+        rg_z = rg_z_UV + 0.05 + (rg_z_IR - rg_z_UV - 1.5) * 0.5 * (1.0 - math.cos(2.0 * math.pi * rg_phase))
+        rg_mu = 1.0 / rg_z
+        rg_g_IR = math.sqrt(0.40 / 0.15)
+        rg_g = rg_g_IR / math.sqrt(1.0 + (rg_g_IR**2 / 0.10**2 - 1.0) * math.pow(rg_z / rg_z_IR, 0.80))
+        rg_beta = -0.40 * rg_g + 0.15 * (rg_g**3)
+        rg_c_UV = 12.00
+        rg_c = rg_c_UV / ((1.0 + 0.18 * (rg_g**2))**2)
+        rg_foam_ratio = rg_z_planck / rg_z
+        rg_metric_variance = (rg_foam_ratio**2) * (1.0 + 0.45 * (math.sin(math.pi * rg_foam_ratio)**2))
+        rg_theta_foam = 1.0 / (1.0 + math.exp(6.0 * (rg_z - rg_z_planck * 2.0) / rg_z_planck))
+        rg_f_IR = 43.20
+        rg_f_UV = rg_f_IR * math.pow(rg_z_IR / rg_z, 0.6667)
 
 
         return {
@@ -465,6 +484,18 @@ class StudioChronoEphemeris:
                 "fundamental_drone_hz": mod_f0_drone_hz,
                 "von_neumann_factor": "Type III_1",
                 "thermal_time_status": "KMS EQUILIBRIUM COVARIANT"
+            },
+            "holographic_rg_foam": {
+                "radial_bulk_z": round(rg_z, 4),
+                "energy_scale_mu": round(rg_mu, 4),
+                "running_coupling_g": round(rg_g, 4),
+                "callan_symanzik_beta": round(rg_beta, 5),
+                "central_charge_c": round(rg_c, 4),
+                "metric_fluctuation_sigma2": round(rg_metric_variance, 6),
+                "topological_foam_index_theta": round(rg_theta_foam, 5),
+                "acoustic_ir_hz": round(rg_f_IR, 2),
+                "acoustic_uv_hz": round(rg_f_UV, 2),
+                "regime": "Sub-Planckian Quantum Foam" if rg_theta_foam > 0.6 else ("Transition / Wilsonian RG Flow" if rg_z < 3.0 else "Macroscopic IR Bulk Geometry")
             }
         }
 
@@ -503,6 +534,7 @@ class StudioChronoEphemeris:
         print(f"[24] Fuzzball Reliquary: D1-D5-P ({res['fuzzball_microstates']['fractionation_factor']}x fractionated) | R_fuzz = {res['fuzzball_microstates']['fuzzball_radius_ls']} ℓ_s (Horizonless) | S_BH = {res['fuzzball_microstates']['entropy_kb']} k_B | f_0 = {res['fuzzball_microstates']['fundamental_drone_hz']} Hz (Δf = {res['fuzzball_microstates']['beat_frequency_hz']} Hz)")
         print(f"[25] SYK Chaos Bound : N = {res['syk_quantum_chaos']['fermion_count_N']} | λ_L = {res['syk_quantum_chaos']['syk_lyapunov_exponent']:.4f} (Bound: {res['syk_quantum_chaos']['mss_lyapunov_bound']:.4f}, Sat: {res['syk_quantum_chaos']['mss_saturation_pct']:.1f}%) | t_* = {res['syk_quantum_chaos']['scrambling_time_t_star']:.2f} s | f_0 = {res['syk_quantum_chaos']['fundamental_drone_hz']} Hz")
         print(f"[26] Modular Thermal : N = {res['modular_thermal_time']['canon_observables']} Opuses | β_KMS = {res['modular_thermal_time']['kms_inverse_temp_beta_s']} s | ω_flow = {res['modular_thermal_time']['modular_flow_velocity_rad_s']:.4f} rad/s | <K> = {res['modular_thermal_time']['modular_hamiltonian_k']:.4f} | f_0 = {res['modular_thermal_time']['fundamental_drone_hz']} Hz ({res['modular_thermal_time']['von_neumann_factor']})")
+        print(f"[27] Holographic RG  : z = {res['holographic_rg_foam']['radial_bulk_z']:.4f} (μ = {res['holographic_rg_foam']['energy_scale_mu']:.4f}) | g = {res['holographic_rg_foam']['running_coupling_g']:.4f} (β = {res['holographic_rg_foam']['callan_symanzik_beta']:+.5f}) | c = {res['holographic_rg_foam']['central_charge_c']:.2f} | σ²_foam = {res['holographic_rg_foam']['metric_fluctuation_sigma2']:.6f} | {res['holographic_rg_foam']['regime']}")
         print("=" * 70)
 
 

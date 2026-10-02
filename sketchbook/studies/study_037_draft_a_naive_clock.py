@@ -78,3 +78,4 @@ def render_draft_a(width=1200, height=1200):
 
 if __name__ == "__main__":
     sys.exit(render_draft_a())
+

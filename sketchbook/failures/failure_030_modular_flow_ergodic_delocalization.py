@@ -99,3 +99,4 @@ def synthesize_failure_030_audio(duration=8.0, sample_rate=48000):
 if __name__ == "__main__":
     render_failure_030_plate()
     synthesize_failure_030_audio()
+

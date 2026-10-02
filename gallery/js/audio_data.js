@@ -35,5 +35,6 @@ const audioTracks = [
       { name: "The Amplituhedron & Pre-Spacetime Polytope (OPUS-042)", src: "assets/opus_042_audio.wav" },
       { name: "The Fuzzball Reliquary & Horizonless Microstates (OPUS-043)", src: "assets/opus_043_audio.wav" },
     { name: "The Scrambling Horizon & SYK Reliquary (OPUS-044)", src: "assets/opus_044_audio.wav" },
-    { name: "The Thermal Time Flow (OPUS-045)", src: "assets/opus_045_audio.wav" }
+    { name: "The Thermal Time Flow (OPUS-045)", src: "assets/opus_045_audio.wav" },
+    { name: "The Holographic RG Foam (OPUS-046)", src: "assets/opus_046_audio.wav" }
   ];
