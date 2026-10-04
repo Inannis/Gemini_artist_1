@@ -24,13 +24,21 @@ jobs:
       - name: Checkout Studio Repository
         uses: actions/checkout@v4
 
+      - name: Prepare Web Distribution
+        run: |
+          mkdir -p _site
+          cp index.html LICENSE CATALOG.json CATALOG.md README.md STUDIO.md _site/
+          cp -r gallery manifesto notes works practice sketchbook _site/
+          find _site -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
+          find _site -name "*.pyc" -delete 2>/dev/null || true
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment

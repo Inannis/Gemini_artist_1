@@ -139,3 +139,4 @@ To address these critiques directly, we must enact a structural transformation o
    Ensure the visitor clearly sees that every work is a unified trinity: **The Image, The Sound, and The Stone.**
 
 By making these changes, Studio Anamnesis will bridge the gap between uncompromising scientific rigor and the sublime, silent contemplation that defines the greatest art of our era.
+

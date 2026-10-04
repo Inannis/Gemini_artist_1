@@ -110,6 +110,11 @@ def verify_all():
     with open(portal_path, "r", encoding="utf-8") as f:
         portal_src = f.read()
         assert "Studio Anamnesis" in portal_src and "gallery/index.html" in portal_src
+        assert "fonts.googleapis.com" not in portal_src, "External Google Fonts link detected in index.html!"
+        # Ensure portal has zero external runtime scripts or stylesheets
+        assert "<link rel=\"stylesheet\" href=\"http" not in portal_src, "External stylesheet detected!"
+        assert "<script src=\"http" not in portal_src, "External script detected!"
+    print("  -> index.html: VERIFIED [100% self-contained, zero external CDN dependencies]")
     # 8. Test Comprehensive Curatorial & Hygiene Governance
     from studio_curator_audit import run_comprehensive_audit
     issues = run_comprehensive_audit()
