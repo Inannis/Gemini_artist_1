@@ -707,8 +707,8 @@
     {
       "id": "OPUS-019",
       "directory": "opus_019_subterranean_core",
-      "file_count": 8,
-      "total_bytes": 28360752,
+      "file_count": 9,
+      "total_bytes": 31241960,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -721,13 +721,18 @@
         },
         {
           "path": "works/opus_019_subterranean_core/index.html",
-          "size_bytes": 25958,
-          "checksum": "7bfef7f8f88c0145"
+          "size_bytes": 25970,
+          "checksum": "9c7f3772c3058024"
         },
         {
           "path": "works/opus_019_subterranean_core/README.md",
           "size_bytes": 5002,
           "checksum": "9877bdd4b15911a6"
+        },
+        {
+          "path": "works/opus_019_subterranean_core/borehole_radiometry.mp3",
+          "size_bytes": 2881196,
+          "checksum": "3ee2e7dedeee656c"
         },
         {
           "path": "works/opus_019_subterranean_core/render_master_plate.py",
@@ -759,13 +764,18 @@
     {
       "id": "OPUS-020",
       "directory": "opus_020_telluric_flux",
-      "file_count": 8,
-      "total_bytes": 24518474,
+      "file_count": 9,
+      "total_bytes": 27399689,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
       "has_engine": true,
       "files": [
+        {
+          "path": "works/opus_020_telluric_flux/telluric_flux_4k.mp3",
+          "size_bytes": 2881196,
+          "checksum": "0600b913a30334c5"
+        },
         {
           "path": "works/opus_020_telluric_flux/study.jpg",
           "size_bytes": 790295,
@@ -773,8 +783,8 @@
         },
         {
           "path": "works/opus_020_telluric_flux/index.html",
-          "size_bytes": 19020,
-          "checksum": "1a692b77394a4363"
+          "size_bytes": 19039,
+          "checksum": "3dee425a3992d17a"
         },
         {
           "path": "works/opus_020_telluric_flux/README.md",
@@ -1071,8 +1081,8 @@
     {
       "id": "OPUS-026",
       "directory": "opus_026_oort_horizon",
-      "file_count": 8,
-      "total_bytes": 24072866,
+      "file_count": 9,
+      "total_bytes": 26954062,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1086,7 +1096,7 @@
         {
           "path": "works/opus_026_oort_horizon/index.html",
           "size_bytes": 8832,
-          "checksum": "b5e8f024f73d929d"
+          "checksum": "9ca5c5e1e86745e1"
         },
         {
           "path": "works/opus_026_oort_horizon/README.md",
@@ -1097,6 +1107,11 @@
           "path": "works/opus_026_oort_horizon/render_master_plate.py",
           "size_bytes": 11201,
           "checksum": "33c04421f18f6803"
+        },
+        {
+          "path": "works/opus_026_oort_horizon/oort_horizon_4k.mp3",
+          "size_bytes": 2881196,
+          "checksum": "99abaa0e00a0aede"
         },
         {
           "path": "works/opus_026_oort_horizon/artwork.png",
@@ -1123,8 +1138,8 @@
     {
       "id": "OPUS-027",
       "directory": "opus_027_lissajous_reliquary",
-      "file_count": 8,
-      "total_bytes": 24490856,
+      "file_count": 9,
+      "total_bytes": 27372052,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1148,7 +1163,7 @@
         {
           "path": "works/opus_027_lissajous_reliquary/index.html",
           "size_bytes": 8864,
-          "checksum": "28435c9120841872"
+          "checksum": "3e5a590c4f5da1dd"
         },
         {
           "path": "works/opus_027_lissajous_reliquary/README.md",
@@ -1169,14 +1184,19 @@
           "path": "works/opus_027_lissajous_reliquary/artwork.png",
           "size_bytes": 515653,
           "checksum": "b75b4639b63fe848"
+        },
+        {
+          "path": "works/opus_027_lissajous_reliquary/lissajous_reliquary_4k.mp3",
+          "size_bytes": 2881196,
+          "checksum": "79fb306046563b90"
         }
       ]
     },
     {
       "id": "OPUS-028",
       "directory": "opus_028_relic_horizon",
-      "file_count": 8,
-      "total_bytes": 24298172,
+      "file_count": 9,
+      "total_bytes": 27179368,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1190,7 +1210,7 @@
         {
           "path": "works/opus_028_relic_horizon/index.html",
           "size_bytes": 11551,
-          "checksum": "fc29524cec197531"
+          "checksum": "22e04b1cbb0fa06b"
         },
         {
           "path": "works/opus_028_relic_horizon/README.md",
@@ -1218,6 +1238,11 @@
           "checksum": "eb8e4a1fcf6e238b"
         },
         {
+          "path": "works/opus_028_relic_horizon/relic_horizon_4k.mp3",
+          "size_bytes": 2881196,
+          "checksum": "c468b4e0fbf349dd"
+        },
+        {
           "path": "works/opus_028_relic_horizon/relic_engine.js",
           "size_bytes": 11163,
           "checksum": "927ce3de533c60c0"
@@ -1227,8 +1252,8 @@
     {
       "id": "OPUS-029",
       "directory": "opus_029_causal_horizon",
-      "file_count": 8,
-      "total_bytes": 26722587,
+      "file_count": 9,
+      "total_bytes": 29603783,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1240,6 +1265,11 @@
           "checksum": "41a0b76d871c10e9"
         },
         {
+          "path": "works/opus_029_causal_horizon/causal_horizon_4k.mp3",
+          "size_bytes": 2881196,
+          "checksum": "ce9b18d5a553cf9c"
+        },
+        {
           "path": "works/opus_029_causal_horizon/study.jpg",
           "size_bytes": 746538,
           "checksum": "feecff601a5b8d3e"
@@ -1247,7 +1277,7 @@
         {
           "path": "works/opus_029_causal_horizon/index.html",
           "size_bytes": 11971,
-          "checksum": "27221d754a6fae56"
+          "checksum": "6f53b179a7572bf2"
         },
         {
           "path": "works/opus_029_causal_horizon/README.md",
@@ -1383,8 +1413,8 @@
     {
       "id": "OPUS-032",
       "directory": "opus_032_true_vacuum",
-      "file_count": 8,
-      "total_bytes": 31093965,
+      "file_count": 9,
+      "total_bytes": 33975172,
       "has_audio": true,
       "has_visual": true,
       "has_study": true,
@@ -1402,8 +1432,8 @@
         },
         {
           "path": "works/opus_032_true_vacuum/index.html",
-          "size_bytes": 10284,
-          "checksum": "1d28fbab6a487ce8"
+          "size_bytes": 10295,
+          "checksum": "171d12ed91ef50e8"
         },
         {
           "path": "works/opus_032_true_vacuum/README.md",
@@ -1429,6 +1459,11 @@
           "path": "works/opus_032_true_vacuum/the_nucleation_horizon_4k.wav",
           "size_bytes": 23040044,
           "checksum": "08c397bb2158c1c6"
+        },
+        {
+          "path": "works/opus_032_true_vacuum/the_nucleation_horizon_4k.mp3",
+          "size_bytes": 2881196,
+          "checksum": "0424ccae1b1c5787"
         }
       ]
     },
@@ -1990,7 +2025,7 @@
         {
           "path": "works/opus_043_fuzzball_microstates/README.md",
           "size_bytes": 7046,
-          "checksum": "9ce5b1d71e584279"
+          "checksum": "aa71213123e8ebf9"
         },
         {
           "path": "works/opus_043_fuzzball_microstates/the_fuzzball_4k.wav",
@@ -2037,7 +2072,7 @@
         {
           "path": "works/opus_044_syk_scrambling/README.md",
           "size_bytes": 8611,
-          "checksum": "c292153149505a77"
+          "checksum": "e68093daa6a0de8b"
         },
         {
           "path": "works/opus_044_syk_scrambling/the_scrambling_horizon_4k.wav",

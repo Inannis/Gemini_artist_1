@@ -1,5 +1,31 @@
+# ==============================================================================
+# STUDIO ANAMNESIS · ARCHIVAL & REPOSITORY STORAGE GOVERNANCE (.gitignore)
+# ==============================================================================
+
+# Python bytecode & cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Operating system artifacts
 .DS_Store
+Thumbs.db
+Desktop.ini
+
+# Heavy uncompressed audio masters (48kHz 16-bit/24-bit PCM WAV)
+# Preserved permanently on local disk in works/ and sketchbook/ as the studio's physical master tapes.
+# Excluded from Git to preserve repository sustainability within GitHub's 2 GB limit.
+# Web delivery is handled via high-fidelity, perceptually transparent MP3/OGG streaming assets.
+*.wav
+**/*.wav
+
+# Intermediate memory buffers, scratch dumps, and raw telemetry captures
 *.rgb
+*.raw
+*.pcm
 *.tmp
+*.bak
+*~
+scratch/
+.system_generated/

@@ -2,7 +2,7 @@
 """
 STUDIO ANAMNESIS · ACOUSTIC DYNAMIC & HARMONIC SPECTRUM ANALYZER
 Permanent Studio Infrastructure Tool
-Pure Python Standard Library (wave, struct, math)
+Supports zero-dependency WAV inspection (wave, struct, math) & high-fidelity MP3 inspection (ffmpeg stream)
 
 Analyzes audio files to guarantee acoustic mastering standards:
 - Peak Amplitude (dBFS)
@@ -17,34 +17,50 @@ import sys
 import wave
 import struct
 import math
+import subprocess
 
 STUDIO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 
-def analyze_wav_dynamics(filepath):
+def analyze_audio_dynamics(filepath):
     """
-    Performs full dynamic and signal-integrity analysis of a WAV file.
+    Performs full dynamic and signal-integrity analysis of an audio file (.wav or .mp3).
     Returns dictionary with peak_db, rms_db, crest_db, dc_offset, and quality verdict.
     """
     if not os.path.exists(filepath):
         return {"status": "error", "message": f"File not found: {filepath}"}
     
-    try:
-        with wave.open(filepath, "rb") as wf:
-            channels = wf.getnchannels()
-            sampwidth = wf.getsampwidth()
-            framerate = wf.getframerate()
-            n_frames = wf.getnframes()
-            
-            if sampwidth != 2:
-                return {"status": "error", "message": f"Only 16-bit PCM supported, got {sampwidth*8}-bit"}
-            
-            raw_data = wf.readframes(n_frames)
-    except Exception as e:
-        return {"status": "error", "message": str(e)}
+    ext = os.path.splitext(filepath)[1].lower()
     
-    total_samples = n_frames * channels
+    if ext == ".wav":
+        try:
+            with wave.open(filepath, "rb") as wf:
+                channels = wf.getnchannels()
+                sampwidth = wf.getsampwidth()
+                framerate = wf.getframerate()
+                n_frames = wf.getnframes()
+                
+                if sampwidth != 2:
+                    return {"status": "error", "message": f"Only 16-bit PCM supported, got {sampwidth*8}-bit"}
+                
+                raw_data = wf.readframes(n_frames)
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+    elif ext == ".mp3":
+        try:
+            cmd = ['ffmpeg', '-v', 'error', '-i', filepath, '-f', 's16le', '-acodec', 'pcm_s16le', '-']
+            res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+            raw_data = res.stdout
+            channels = 2
+            framerate = 48000
+            n_frames = len(raw_data) // (channels * 2)
+        except Exception as e:
+            return {"status": "error", "message": f"FFmpeg decoding failed: {e}"}
+    else:
+        return {"status": "error", "message": f"Unsupported audio format: {ext}"}
+    
+    total_samples = len(raw_data) // 2
     if total_samples == 0:
-        return {"status": "error", "message": "WAV file contains 0 samples"}
+        return {"status": "error", "message": "Audio stream contains 0 samples"}
     
     # Unpack 16-bit signed integers
     fmt = f"<{total_samples}h"
@@ -96,7 +112,7 @@ def analyze_wav_dynamics(filepath):
     return {
         "status": status,
         "flags": flags,
-        "duration_sec": n_frames / framerate,
+        "duration_sec": n_frames / framerate if framerate > 0 else 0.0,
         "framerate": framerate,
         "channels": channels,
         "peak_db": peak_db,
@@ -106,27 +122,34 @@ def analyze_wav_dynamics(filepath):
         "zero_crossing_rate": zero_crossings / (n_frames / framerate) if n_frames > 0 else 0.0
     }
 
+# Backward compatibility alias
+analyze_wav_dynamics = analyze_audio_dynamics
+
 def audit_all_gallery_audio():
     """Scans and analyzes all audio files in gallery/assets/."""
     assets_dir = os.path.join(STUDIO_ROOT, "gallery", "assets")
-    wav_files = [f for f in os.listdir(assets_dir) if f.endswith(".wav")]
+    # Prioritize MP3 web assets, also include WAV if present
+    audio_files = [f for f in os.listdir(assets_dir) if f.endswith(".mp3")]
+    if not audio_files:
+        audio_files = [f for f in os.listdir(assets_dir) if f.endswith(".wav")]
+        
     results = {}
     anomalies = []
     
     print("==================================================================")
     print("      STUDIO ANAMNESIS · ACOUSTIC INTEGRITY & SPECTRUM AUDIT     ")
     print("==================================================================")
-    print(f"[*] Auditing {len(wav_files)} gallery audio suites in: {assets_dir}\n")
+    print(f"[*] Auditing {len(audio_files)} gallery audio suites in: {assets_dir}\n")
     
-    for f in sorted(wav_files):
+    for f in sorted(audio_files):
         p = os.path.join(assets_dir, f)
-        res = analyze_wav_dynamics(p)
+        res = analyze_audio_dynamics(p)
         results[f] = res
         if res.get("status") != "healthy":
             anomalies.append((f, res))
             print(f"[!] {f}: {res.get('status').upper()} ({', '.join(res.get('flags', []))})")
         else:
-            print(f"[✓] {f:30s} | Peak: {res['peak_db']:6.1f} dBFS | RMS: {res['rms_db']:6.1f} dBFS | Crest: {res['crest_db']:4.1f} dB | DC: {res['dc_offset_pct']:4.2f}%")
+            print(f"[✓] {f:35s} | Peak: {res['peak_db']:6.1f} dBFS | RMS: {res['rms_db']:6.1f} dBFS | Crest: {res['crest_db']:4.1f} dB | DC: {res['dc_offset_pct']:4.2f}%")
             
     print("\n------------------------------------------------------------------")
     if not anomalies:
@@ -141,4 +164,3 @@ if __name__ == "__main__":
     if anomalies:
         sys.exit(1)
     sys.exit(0)
-

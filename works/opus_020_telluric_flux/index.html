@@ -281,7 +281,7 @@
       <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
         <a href="artwork.png" target="_blank" style="color:var(--frost); text-decoration: none;">&rarr; Master Plate (3840×2160 UHD PNG)</a>
         <a href="study.jpg" target="_blank" style="color:var(--cyan); text-decoration: none;">&rarr; Museum Vitrine Study (Cryostat)</a>
-        <a href="telluric_flux_4k.wav" target="_blank" style="color:var(--amber); text-decoration: none;">&rarr; Acoustic Suite (120s 48kHz WAV)</a>
+        <a href="telluric_flux_4k.mp3" target="_blank" style="color:var(--amber); text-decoration: none;">&rarr; Acoustic Suite (120s MP3 Stream / Archival Master)</a>
         <a href="../../gallery/index.html" style="color:var(--text); text-decoration: none;">&rarr; Return to Studio Salon</a>
       </div>
     </section>
@@ -426,7 +426,7 @@
 
     document.getElementById('btnSuite').addEventListener('click', function() {
       if (!masterAudio) {
-        masterAudio = new Audio('telluric_flux_4k.wav');
+        masterAudio = new Audio('telluric_flux_4k.mp3');
         masterAudio.loop = true;
       }
       if (masterAudio.paused) {

@@ -435,7 +435,7 @@
       <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
         <a href="../opus_019_subterranean_core/artwork.png" target="_blank" style="color:var(--amber); text-decoration: none;">&rarr; Master Plate (3840x2160 UHD Lossless PNG)</a>
         <a href="../opus_019_subterranean_core/study.jpg" target="_blank" style="color:var(--teal); text-decoration: none;">&rarr; Installation Study (Museum Vitrine)</a>
-        <a href="../opus_019_subterranean_core/borehole_radiometry.wav" target="_blank" style="color:var(--rf-green); text-decoration: none;">&rarr; Acoustic Suite (120s 48kHz Stereo WAV)</a>
+        <a href="../opus_019_subterranean_core/borehole_radiometry.mp3" target="_blank" style="color:var(--rf-green); text-decoration: none;">&rarr; Acoustic Suite (120s MP3 Stream / Archival Master)</a>
         <a href="../../gallery/index.html" style="color:var(--text); text-decoration: none;">&rarr; Return to Studio Salon</a>
       </div>
     </section>
@@ -617,7 +617,7 @@
     // Master Suite Player
     document.getElementById('btnSuite').addEventListener('click', function() {
       if (!masterAudio) {
-        masterAudio = new Audio('borehole_radiometry.wav');
+        masterAudio = new Audio('borehole_radiometry.mp3');
         masterAudio.loop = true;
       }
       if (masterAudio.paused) {

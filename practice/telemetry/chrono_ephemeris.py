@@ -289,7 +289,8 @@ class StudioChronoEphemeris:
         rg_c = rg_c_UV / ((1.0 + 0.18 * (rg_g**2))**2)
         rg_foam_ratio = rg_z_planck / rg_z
         rg_metric_variance = (rg_foam_ratio**2) * (1.0 + 0.45 * (math.sin(math.pi * rg_foam_ratio)**2))
-        rg_theta_foam = 1.0 / (1.0 + math.exp(6.0 * (rg_z - rg_z_planck * 2.0) / rg_z_planck))
+        rg_exp_arg = max(-100.0, min(100.0, 6.0 * (rg_z - rg_z_planck * 2.0) / rg_z_planck))
+        rg_theta_foam = 1.0 / (1.0 + math.exp(rg_exp_arg))
         rg_f_IR = 43.20
         rg_f_UV = rg_f_IR * math.pow(rg_z_IR / rg_z, 0.6667)
 

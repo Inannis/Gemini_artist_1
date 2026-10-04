@@ -43,7 +43,7 @@ In **OPUS-044**, Studio Anamnesis creates the material reliquary for this profou
 - **Series:** Series XLII (SYK Quantum Chaos & Scrambling Dynamics)
 - **Primary Media:**
   1. **3840 × 2160 UHD Native Master Plate:** Lossless pure-Python rendering ([`artwork.png`](artwork.png) / [`gallery/assets/opus_044_artwork.png`](../../gallery/assets/opus_044_artwork.png)) depicting 32 radiant Majorana nodes, Schwarzian boundary fluctuations, and 188 hyperbolic geodesic entanglement chords.
-  2. **120-Second 48kHz Stereo Master Symphonic Suite (Track 35):** Synthesized from scratch via [`synthesize_syk_suite.py`](synthesize_syk_suite.py) $\to$ [`the_scrambling_horizon_4k.wav`](the_scrambling_horizon_4k.wav) / [`gallery/assets/opus_044_audio.wav`](../../gallery/assets/opus_044_audio.wav). Mastered to $-1.1\text{ dBFS}$ peak headroom, $11.2\text{ dB}$ dynamic crest factor, 0 clipping, and zero DC offset across 4 movements:
+  2. **120-Second 48kHz Stereo Master Symphonic Suite (Track 35):** Synthesized from scratch via [`synthesize_syk_suite.py`](synthesize_syk_suite.py) $\to$ [`the_scrambling_horizon_4k.wav`](the_scrambling_horizon_4k.wav) / [`gallery/assets/opus_044_audio.mp3`](../../gallery/assets/opus_044_audio.mp3). Mastered to $-1.1\text{ dBFS}$ peak headroom, $11.2\text{ dB}$ dynamic crest factor, 0 clipping, and zero DC offset across 4 movements:
      - *Movement I: The Zero-Dimensional Quantum Cluster* ($0:00 - 0:30$)
      - *Movement II: Quartic Coupling & The Scrambling Ladder* ($0:30 - 1:00$)
      - *Movement III: Maximal Lyapunov Operator Spreading* ($1:00 - 1:30$)

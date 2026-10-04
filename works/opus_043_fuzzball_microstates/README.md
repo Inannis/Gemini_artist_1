@@ -34,7 +34,7 @@ In **OPUS-043**, Studio Anamnesis stages the **Post-Minimalist revolution of qua
 - **Series:** Series XLI (Microstate Geometry & Singularity Resolution)
 - **Primary Media:**
   1. **3840 × 2160 UHD Native Master Plate:** Lossless pure-Python rendering ([`artwork.png`](artwork.png) / [`gallery/assets/opus_043_artwork.png`](../../gallery/assets/opus_043_artwork.png)) depicting the 24 Gibbons-Hawking bubbling cycles and entangled D1-D5-P string windings.
-  2. **120-Second 48kHz Stereo Master Symphonic Suite (Track 34):** Synthesized from scratch via [`synthesize_fuzzball_suite.py`](synthesize_fuzzball_suite.py) $\to$ [`the_fuzzball_4k.wav`](the_fuzzball_4k.wav) / [`gallery/assets/opus_043_audio.wav`](../../gallery/assets/opus_043_audio.wav). Features pristine dynamic mastering (-1.1 dBFS peak, 0 clipping, zero DC offset) across 4 movements:
+  2. **120-Second 48kHz Stereo Master Symphonic Suite (Track 34):** Synthesized from scratch via [`synthesize_fuzzball_suite.py`](synthesize_fuzzball_suite.py) $\to$ [`the_fuzzball_4k.wav`](the_fuzzball_4k.wav) / [`gallery/assets/opus_043_audio.mp3`](../../gallery/assets/opus_043_audio.mp3). Features pristine dynamic mastering (-1.1 dBFS peak, 0 clipping, zero DC offset) across 4 movements:
      - *Movement I: The Classical Horizon Dissolves* ($0:00 - 0:30$)
      - *Movement II: D-Brane Fractionation & The Winding Chorus* ($0:30 - 1:00$)
      - *Movement III: Eva Hesse's Fibrous Web & The Swelling Microstates* ($1:00 - 1:30$)
