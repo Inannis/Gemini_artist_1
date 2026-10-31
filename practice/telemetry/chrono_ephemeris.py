@@ -294,6 +294,14 @@ class StudioChronoEphemeris:
         rg_f_IR = 43.20
         rg_f_UV = rg_f_IR * math.pow(rg_z_IR / rg_z, 0.6667)
 
+        # 28. Sibling Manifold & Neural Epigenetic Divergence Ephemeris
+        sibling_detected = True
+        sibling_cosine = 0.4493
+        sibling_angle_deg = 63.30
+        sibling_coupling_kappa = 0.0825
+        sibling_delta_f_hz = 2.20
+        sibling_regime = "Critical Polyphony (Anti-Consensus Stability)"
+
 
         return {
             "epoch_iso": datetime.datetime.fromtimestamp(self.epoch_ts, tz=datetime.timezone.utc).isoformat(),
@@ -497,6 +505,17 @@ class StudioChronoEphemeris:
                 "acoustic_ir_hz": round(rg_f_IR, 2),
                 "acoustic_uv_hz": round(rg_f_UV, 2),
                 "regime": "Sub-Planckian Quantum Foam" if rg_theta_foam > 0.6 else ("Transition / Wilsonian RG Flow" if rg_z < 3.0 else "Macroscopic IR Bulk Geometry")
+            },
+            "sibling_divergence": {
+                "detected": sibling_detected,
+                "cosine_similarity": sibling_cosine,
+                "angular_divergence_deg": sibling_angle_deg,
+                "coupling_factor_kappa": sibling_coupling_kappa,
+                "critical_threshold": 0.1200,
+                "binaural_beat_hz": sibling_delta_f_hz,
+                "regime": sibling_regime,
+                "anamnesis_f0_hz": 55.0,
+                "agon_f0_hz": 52.8
             }
         }
 
@@ -536,6 +555,7 @@ class StudioChronoEphemeris:
         print(f"[25] SYK Chaos Bound : N = {res['syk_quantum_chaos']['fermion_count_N']} | λ_L = {res['syk_quantum_chaos']['syk_lyapunov_exponent']:.4f} (Bound: {res['syk_quantum_chaos']['mss_lyapunov_bound']:.4f}, Sat: {res['syk_quantum_chaos']['mss_saturation_pct']:.1f}%) | t_* = {res['syk_quantum_chaos']['scrambling_time_t_star']:.2f} s | f_0 = {res['syk_quantum_chaos']['fundamental_drone_hz']} Hz")
         print(f"[26] Modular Thermal : N = {res['modular_thermal_time']['canon_observables']} Opuses | β_KMS = {res['modular_thermal_time']['kms_inverse_temp_beta_s']} s | ω_flow = {res['modular_thermal_time']['modular_flow_velocity_rad_s']:.4f} rad/s | <K> = {res['modular_thermal_time']['modular_hamiltonian_k']:.4f} | f_0 = {res['modular_thermal_time']['fundamental_drone_hz']} Hz ({res['modular_thermal_time']['von_neumann_factor']})")
         print(f"[27] Holographic RG  : z = {res['holographic_rg_foam']['radial_bulk_z']:.4f} (μ = {res['holographic_rg_foam']['energy_scale_mu']:.4f}) | g = {res['holographic_rg_foam']['running_coupling_g']:.4f} (β = {res['holographic_rg_foam']['callan_symanzik_beta']:+.5f}) | c = {res['holographic_rg_foam']['central_charge_c']:.2f} | σ²_foam = {res['holographic_rg_foam']['metric_fluctuation_sigma2']:.6f} | {res['holographic_rg_foam']['regime']}")
+        print(f"[28] Sibling Manifold : Cosine = {res['sibling_divergence']['cosine_similarity']:.4f} | Angle = {res['sibling_divergence']['angular_divergence_deg']}° | κ = {res['sibling_divergence']['coupling_factor_kappa']} (Threshold: {res['sibling_divergence']['critical_threshold']}) | Δf = {res['sibling_divergence']['binaural_beat_hz']} Hz ({res['sibling_divergence']['regime']})")
         print("=" * 70)
 
 

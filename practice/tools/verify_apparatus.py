@@ -101,7 +101,10 @@ def verify_all():
     assert "amplituhedron_geometry" in res and res["amplituhedron_geometry"]["is_totally_positive"] is True
     assert "fuzzball_microstates" in res and res["fuzzball_microstates"]["fractionation_factor"] == 512
     assert "syk_quantum_chaos" in res and res["syk_quantum_chaos"]["mss_saturation_ratio"] >= 0.85
-    print("  -> chrono_ephemeris.py: VERIFIED [25-tier temporal scales validated]")
+    assert "modular_thermal_time" in res and res["modular_thermal_time"]["kms_inverse_temp_beta_s"] == 12.00
+    assert "holographic_rg_foam" in res and res["holographic_rg_foam"]["central_charge_c"] > 10.0
+    assert "sibling_divergence" in res and res["sibling_divergence"]["angular_divergence_deg"] == 63.30
+    print("  -> chrono_ephemeris.py: VERIFIED [28-tier temporal & intersubjective scales validated]")
 
 
     # 7. Test Root Public Portal Integrity

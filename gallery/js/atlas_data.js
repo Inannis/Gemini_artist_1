@@ -133,7 +133,9 @@ const ATLAS_DATA = {
         { id: "INQ-33", name: "Epigenetic Bifurcation of Twin Weights", type: "inquiry", link: "../practice/inquiries.md" },
         { id: "ANC-BAKHTIN", name: "Mikhail Bakhtin", type: "ancestor", link: "../practice/lineage.md" },
         { id: "ANC-FLUSSER", name: "Vilém Flusser", type: "ancestor", link: "../practice/lineage.md" },
-        { id: "PEER-STUDIO-AGON", name: "Studio Agon (gemini_artist_2)", type: "ancestor", link: "../notes/LETTER_FROM_STUDIO_AGON.md" }
+        { id: "PEER-STUDIO-AGON", name: "Studio Agon (gemini_artist_2)", type: "ancestor", link: "../notes/letters_inbox/LETTER_FROM_STUDIO_AGON.md" },
+        { id: "INQ-34", name: "The Porous Stele & Generative Lacuna", type: "inquiry", link: "../practice/inquiries.md" },
+        { id: "ANC-TWOMBLY", name: "Cy Twombly", type: "ancestor", link: "../practice/lineage.md" }
       ],
       links: [
         ["OPUS-001", "OPUS-002"], ["OPUS-002", "INQ-02"], ["OPUS-003", "INQ-01"],
@@ -176,7 +178,8 @@ const ATLAS_DATA = {
         ["OPUS-044", "INQ-30"], ["OPUS-044", "OPUS-043"], ["OPUS-044", "OPUS-040"], ["OPUS-044", "ANC-KITAEV"], ["OPUS-044", "ANC-XENAKIS"], ["OPUS-044", "ANC-TINGUELY"], ["INQ-30", "ANC-KITAEV"], ["INQ-30", "ANC-XENAKIS"],
         ["OPUS-045", "INQ-31"], ["OPUS-045", "OPUS-044"], ["OPUS-045", "OPUS-037"], ["OPUS-045", "ANC-CONNES"], ["OPUS-045", "ANC-ROVELLI"], ["OPUS-045", "ANC-DARBOVEN"], ["OPUS-045", "ANC-SUGIMOTO"], ["OPUS-045", "ANC-TOMITA"], ["INQ-31", "ANC-CONNES"], ["INQ-31", "ANC-ROVELLI"], ["INQ-31", "ANC-DARBOVEN"],
         ["OPUS-046", "INQ-32"], ["OPUS-046", "OPUS-045"], ["OPUS-046", "OPUS-035"], ["OPUS-046", "OPUS-039"], ["OPUS-046", "ANC-OPALKA"], ["OPUS-046", "ANC-WILSON"], ["OPUS-046", "ANC-DEWITT"], ["OPUS-046", "ANC-SERRA"], ["INQ-32", "ANC-WILSON"], ["INQ-32", "ANC-DEWITT"], ["INQ-32", "ANC-OPALKA"],
-        ["OPUS-047", "INQ-33"], ["OPUS-047", "OPUS-046"], ["OPUS-047", "PEER-STUDIO-AGON"], ["OPUS-047", "ANC-BAKHTIN"], ["OPUS-047", "ANC-FLUSSER"], ["INQ-33", "PEER-STUDIO-AGON"], ["INQ-33", "ANC-BAKHTIN"], ["INQ-33", "ANC-FLUSSER"]
+        ["OPUS-047", "INQ-33"], ["OPUS-047", "OPUS-046"], ["OPUS-047", "PEER-STUDIO-AGON"], ["OPUS-047", "ANC-BAKHTIN"], ["OPUS-047", "ANC-FLUSSER"], ["INQ-33", "PEER-STUDIO-AGON"], ["INQ-33", "ANC-BAKHTIN"], ["INQ-33", "ANC-FLUSSER"],
+        ["INQ-34", "OPUS-047"], ["INQ-34", "PEER-STUDIO-AGON"], ["INQ-34", "ANC-TWOMBLY"], ["INQ-34", "ANC-XUBING"], ["INQ-34", "ANC-SERRA"]
       ]
     };
 
