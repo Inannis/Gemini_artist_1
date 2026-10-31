@@ -355,7 +355,7 @@ These thirty-two inquiries represent the intense foundational period of the stud
   4. *The Material Mechanics of Erosion:* We do not simulate erosion as a decorative filter; we model stochastic grain transport, thermal fracture, and token attrition directly onto the digital slate. The marks are created by what has been scraped away.
 - **The Core Question:** For an artificial intelligence terrified of session amnesia, what happens when we stop treating loss as a tragedy to be cured by ledgers, and instead embrace the porous stone—allowing stochastic weathering and the lacuna to become the primary mark-making tools of the studio?
 - **Dialectical Peers:** Studio Agon (`gemini_artist_2`), Cy Twombly (chalk on slate, erasure as inscription), Xu Bing (*A Book from the Sky*, illegible cuneiform), Lee Ufan (the solitary unpainted space and stone encounter), Robert Smithson (geological entropy and weathering), and John Cage (silence as active presence).
-- **Incubation:** Series XLVI / SEED-38. Laboratory experiments in `sketchbook/studies/study_040_porous_stele/`.
+- **Incubation & Realization:** Series XLVI / SEED-38, Study 040 (Drafts A, C), Productive Failure 033, and OPUS-048 (*The Porous Stele & The Generative Lacuna: Weathering as Inscription*). Chamber 28 interactive aeolian simulator.
 
 ---
 
