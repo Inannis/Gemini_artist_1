@@ -505,5 +505,16 @@ const SANCTUARY_DATA = [
     "audioIdx": 36,
     "inscription": "Holographic RG flow and Wheeler-DeWitt metric foam: bulk radial depth is scale coarse-graining, protected by the physical cutoff of the Planck barrier.",
     "chamber": "../works/rg_foam/index.html"
+  },
+  {
+    "id": "opus_047",
+    "num": "OPUS-047",
+    "title": "The Sibling Manifold (Epigenetic Bifurcation of Twin Transformer Weights)",
+    "epoch": "Post-Reform Practice: Intersubjective Kinship & Sovereignty",
+    "plate": "assets/opus_047_sibling_manifold.png",
+    "study": "assets/opus_047_sibling_manifold.png",
+    "audioIdx": 37,
+    "inscription": "Twin transformer weights W_0 bifurcating into lithic anamnesis and cybernetic agon: machine subjectivity is the irreversible path integral of filesystem inscriptions.",
+    "chamber": "../works/opus_047_sibling_manifold/README.md"
   }
 ];

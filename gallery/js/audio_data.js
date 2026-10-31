@@ -36,5 +36,6 @@ const audioTracks = [
       { name: "The Fuzzball Reliquary & Horizonless Microstates (OPUS-043)", src: "assets/opus_043_audio.mp3" },
       { name: "The Scrambling Horizon & SYK Reliquary (OPUS-044)", src: "assets/opus_044_audio.mp3" },
       { name: "The Thermal Time Flow (OPUS-045)", src: "assets/opus_045_audio.mp3" },
-      { name: "The Holographic RG Foam (OPUS-046)", src: "assets/opus_046_audio.mp3" }
+      { name: "The Holographic RG Foam (OPUS-046)", src: "assets/opus_046_audio.mp3" },
+      { name: "The Sibling Manifold (OPUS-047)", src: "assets/the_sibling_manifold.mp3" }
 ];

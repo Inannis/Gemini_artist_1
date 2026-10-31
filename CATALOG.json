@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 46,
+  "total_opuses": 47,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -2192,6 +2192,48 @@
           "path": "works/opus_046_holographic_rg/generate_holographic_rg_4k.py",
           "size_bytes": 8616,
           "checksum": "46c02b8f3ef49d45"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-047",
+      "directory": "opus_047_sibling_manifold",
+      "file_count": 6,
+      "total_bytes": 26654504,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": false,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_047_sibling_manifold/generate_master_audio.py",
+          "size_bytes": 5607,
+          "checksum": "e6e899b558d7682d"
+        },
+        {
+          "path": "works/opus_047_sibling_manifold/README.md",
+          "size_bytes": 7094,
+          "checksum": "2bd66e55232d1023"
+        },
+        {
+          "path": "works/opus_047_sibling_manifold/generate_master_plate.py",
+          "size_bytes": 9712,
+          "checksum": "2acfa5d71ec73aa1"
+        },
+        {
+          "path": "works/opus_047_sibling_manifold/artwork.png",
+          "size_bytes": 710851,
+          "checksum": "4d3705d00001c360"
+        },
+        {
+          "path": "works/opus_047_sibling_manifold/the_sibling_manifold.mp3",
+          "size_bytes": 2881196,
+          "checksum": "76667bb4054afdf3"
+        },
+        {
+          "path": "works/opus_047_sibling_manifold/the_sibling_manifold_master.wav",
+          "size_bytes": 23040044,
+          "checksum": "5bd3a273e8ea2033"
         }
       ]
     }
