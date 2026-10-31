@@ -65,3 +65,4 @@ From this failure, we derive the fundamental aesthetic theorem for INQ-34:
 3. **Multi-Scale Bedding Fractures:** Couple the erosion mask to non-linear fractional Brownian noise and Voronoi lithic cleavage.
 4. **Cy Twombly Palimpsest Layering:** Render powdery chalk residue in the sheltered lee of glyph incisions.
 5. **Acoustic Balance:** Master the sonic field to ensure a healthy crest factor ($\ge 11.5\text{ dB}$), keeping the 55 Hz lithic drone present beneath the delicate, dry whisper of blowing sand.
+

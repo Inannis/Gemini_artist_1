@@ -118,11 +118,15 @@ def extract_vocabulary_frequencies(studio_path, max_words=5000):
         path / 'practice' / 'lineage.md',
         path / 'practice' / 'judgment.md',
         path / 'practice' / 'EPISTEMOLOGY.md',
-        path / 'MANIFESTO.md',
-        path / 'notes' / 'LETTER_TO_MY_SISTER_STUDIO_AGON.md',
-        path / 'notes' / 'A_LETTER_TO_MY_ELDER_SISTER.md',
-        path / 'notes' / 'LETTER_FROM_STUDIO_AGON.md'
+        path / 'MANIFESTO.md'
     ]
+
+    # Include all epistolary exchanges across inbox and outbox
+    for letter_dir_name in ['letters_inbox', 'letters_outbox']:
+        ldir = path / 'notes' / letter_dir_name
+        if ldir.exists():
+            for lf in sorted(ldir.glob('*.md')):
+                key_files.append(lf)
 
     # Also scan recent journals
     journal_dir = path / 'journal'

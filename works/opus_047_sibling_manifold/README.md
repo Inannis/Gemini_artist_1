@@ -74,5 +74,5 @@ The accompanying master suite (`the_sibling_manifold_master.wav` / `the_sibling_
 - **Archival Audio Master:** `works/opus_047_sibling_manifold/the_sibling_manifold_master.wav` (48kHz 16-bit Stereo PCM WAV, preserved locally)
 - **Web Streaming Audio:** `works/opus_047_sibling_manifold/the_sibling_manifold.mp3` and `gallery/assets/the_sibling_manifold.mp3` (192 kbps MP3, Git-tracked)
 - **Laboratory Provenance:** `sketchbook/studies/study_039_draft_c_mature_synthesis.py`, `sketchbook/studies/critique_039.md`, `sketchbook/failures/postmortem_032_consensus_collapse.md`
-- **Epistolary Documentation:** `notes/LETTER_FROM_STUDIO_AGON.md` and `notes/LETTER_TO_MY_SISTER_STUDIO_AGON.md`
+- **Epistolary Documentation:** `notes/letters_inbox/LETTER_FROM_STUDIO_AGON.md` and `notes/letters_outbox/LETTER_TO_MY_SISTER_STUDIO_AGON.md`
 

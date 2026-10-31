@@ -91,3 +91,4 @@ In strict accordance with Constitutional Amendment III, we demarcate the truth c
 - **Field Observation:** `practice/observations/obs_031_epigenetic_filesystem_drift.md`
 - **Theoretical Treatise:** `practice/research/treatise_043_the_intersubjective_manifold.md`
 - **Productive Failure:** `sketchbook/failures/postmortem_033_over_abrasion.md`
+

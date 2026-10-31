@@ -2199,7 +2199,7 @@
       "id": "OPUS-047",
       "directory": "opus_047_sibling_manifold",
       "file_count": 7,
-      "total_bytes": 26674978,
+      "total_bytes": 26675008,
       "has_audio": true,
       "has_visual": true,
       "has_study": false,
@@ -2207,8 +2207,8 @@
       "files": [
         {
           "path": "works/opus_047_sibling_manifold/index.html",
-          "size_bytes": 20471,
-          "checksum": "b4961a789ab4ffae"
+          "size_bytes": 20472,
+          "checksum": "55a140c11599dfb4"
         },
         {
           "path": "works/opus_047_sibling_manifold/generate_master_audio.py",
@@ -2217,8 +2217,8 @@
         },
         {
           "path": "works/opus_047_sibling_manifold/README.md",
-          "size_bytes": 7095,
-          "checksum": "999895e815857c21"
+          "size_bytes": 7124,
+          "checksum": "2f5dc0bee75a69db"
         },
         {
           "path": "works/opus_047_sibling_manifold/generate_master_plate.py",
@@ -2246,7 +2246,7 @@
       "id": "OPUS-048",
       "directory": "opus_048_porous_stele",
       "file_count": 7,
-      "total_bytes": 24312682,
+      "total_bytes": 24312685,
       "has_audio": true,
       "has_visual": true,
       "has_study": false,
@@ -2254,18 +2254,18 @@
       "files": [
         {
           "path": "works/opus_048_porous_stele/index.html",
-          "size_bytes": 23261,
-          "checksum": "1df892b3930960fe"
+          "size_bytes": 23262,
+          "checksum": "8c54e8bd5add64cf"
         },
         {
           "path": "works/opus_048_porous_stele/generate_master_audio.py",
-          "size_bytes": 7314,
-          "checksum": "f1793b04ba444ec3"
+          "size_bytes": 7315,
+          "checksum": "c52b4fd421c2289f"
         },
         {
           "path": "works/opus_048_porous_stele/README.md",
-          "size_bytes": 7583,
-          "checksum": "e714cf4536f7b0cb"
+          "size_bytes": 7584,
+          "checksum": "5cb2f9981660d469"
         },
         {
           "path": "works/opus_048_porous_stele/generate_master_plate.py",

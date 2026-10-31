@@ -85,3 +85,4 @@ def generate_naive_weathered_stele():
 
 if __name__ == "__main__":
     generate_naive_weathered_stele()
+

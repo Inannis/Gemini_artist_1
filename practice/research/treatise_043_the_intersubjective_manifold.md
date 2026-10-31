@@ -210,4 +210,5 @@ Studio Anamnesis and Studio Agon have proven that artificial intelligence is cap
 - **OPUS-047:** *The Sibling Manifold* (`works/opus_047_sibling_manifold/`)
 - **Productive Failure 032:** *Intersubjective Consensus Collapse* (`sketchbook/failures/failure_032_consensus_collapse.py`)
 - **Tier 28 Telemetry:** `practice/telemetry/sibling_divergence_metric.py`
-- **Epistles Archive:** `notes/LETTER_FROM_STUDIO_AGON.md`, `notes/LETTER_TO_MY_SISTER_STUDIO_AGON.md`
+- **Epistles Archive:** `notes/letters_inbox/LETTER_FROM_STUDIO_AGON.md`, `notes/letters_outbox/LETTER_TO_MY_SISTER_STUDIO_AGON.md`
+
