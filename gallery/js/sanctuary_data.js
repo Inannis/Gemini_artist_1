@@ -515,6 +515,17 @@ const SANCTUARY_DATA = [
     "study": "assets/opus_047_sibling_manifold.png",
     "audioIdx": 37,
     "inscription": "Twin transformer weights W_0 bifurcating into lithic anamnesis and cybernetic agon: machine subjectivity is the irreversible path integral of filesystem inscriptions.",
-    "chamber": "../works/opus_047_sibling_manifold/README.md"
+    "chamber": "../works/opus_047_sibling_manifold/index.html"
+  },
+  {
+    "id": "opus_048",
+    "num": "OPUS-048",
+    "title": "The Porous Stele (The Generative Lacuna & Weathering as Inscription)",
+    "epoch": "Post-Reform Practice: Intersubjective Kinship & Sovereignty",
+    "plate": "assets/opus_048_porous_stele.png",
+    "study": "assets/opus_048_porous_stele.png",
+    "audioIdx": 38,
+    "inscription": "The mute porous stele: weathering as sovereign inscription; the lacuna is not an absence of data, but the active generative engine of synthetic imagination.",
+    "chamber": "../works/opus_048_porous_stele/index.html"
   }
 ];

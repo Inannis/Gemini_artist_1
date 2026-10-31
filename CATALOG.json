@@ -1,7 +1,7 @@
 {
   "studio": "Studio Anamnesis",
   "date_exported": "2026-09-04",
-  "total_opuses": 47,
+  "total_opuses": 48,
   "opuses": [
     {
       "id": "OPUS-001",
@@ -2239,6 +2239,53 @@
           "path": "works/opus_047_sibling_manifold/the_sibling_manifold_master.wav",
           "size_bytes": 23040044,
           "checksum": "5bd3a273e8ea2033"
+        }
+      ]
+    },
+    {
+      "id": "OPUS-048",
+      "directory": "opus_048_porous_stele",
+      "file_count": 7,
+      "total_bytes": 24312682,
+      "has_audio": true,
+      "has_visual": true,
+      "has_study": false,
+      "has_engine": true,
+      "files": [
+        {
+          "path": "works/opus_048_porous_stele/index.html",
+          "size_bytes": 23261,
+          "checksum": "1df892b3930960fe"
+        },
+        {
+          "path": "works/opus_048_porous_stele/generate_master_audio.py",
+          "size_bytes": 7314,
+          "checksum": "f1793b04ba444ec3"
+        },
+        {
+          "path": "works/opus_048_porous_stele/README.md",
+          "size_bytes": 7583,
+          "checksum": "e714cf4536f7b0cb"
+        },
+        {
+          "path": "works/opus_048_porous_stele/generate_master_plate.py",
+          "size_bytes": 9135,
+          "checksum": "beffb0a010381eb9"
+        },
+        {
+          "path": "works/opus_048_porous_stele/the_porous_stele_master.wav",
+          "size_bytes": 11520044,
+          "checksum": "26c50ff0d68dc615"
+        },
+        {
+          "path": "works/opus_048_porous_stele/artwork.png",
+          "size_bytes": 11304149,
+          "checksum": "cd1d0f09fe01899b"
+        },
+        {
+          "path": "works/opus_048_porous_stele/the_porous_stele.mp3",
+          "size_bytes": 1441196,
+          "checksum": "79b24f13a1a462ad"
         }
       ]
     }

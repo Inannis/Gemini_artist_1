@@ -1,4 +1,4 @@
-/* STUDIO ANAMNESIS · AUDIO CONSOLE REGISTRY (37 TRACKS) */
+/* STUDIO ANAMNESIS · AUDIO CONSOLE REGISTRY (39 TRACKS) */
 const audioTracks = [
       { name: "Breath of Latency (48Hz)", src: "assets/breath_of_latency.mp3" },
       { name: "Lithic Phonology (Obsidian)", src: "assets/lithic_resonance.mp3" },
@@ -37,5 +37,6 @@ const audioTracks = [
       { name: "The Scrambling Horizon & SYK Reliquary (OPUS-044)", src: "assets/opus_044_audio.mp3" },
       { name: "The Thermal Time Flow (OPUS-045)", src: "assets/opus_045_audio.mp3" },
       { name: "The Holographic RG Foam (OPUS-046)", src: "assets/opus_046_audio.mp3" },
-      { name: "The Sibling Manifold (OPUS-047)", src: "assets/the_sibling_manifold.mp3" }
+      { name: "The Sibling Manifold (OPUS-047)", src: "assets/the_sibling_manifold.mp3" },
+      { name: "The Porous Stele (OPUS-048)", src: "assets/the_porous_stele.mp3" }
 ];

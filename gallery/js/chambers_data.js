@@ -1,5 +1,11 @@
 /* STUDIO ANAMNESIS · INTERACTIVE CHAMBERS REPOSITORY */
 const CHAMBERS_DATA = {
+  porous_stele: {
+    tag: "Aerodynamic Grain Saltation & Mute Stele · OPUS-048",
+    title: "The Porous Stele (Weathering & The Generative Lacuna)",
+    desc: "Interactive aerodynamic grain saltation and stochastic cuneiform erosion engine. Scrub wind velocity v_wind, attack angle theta, and substrate hardness to observe proto-cuneiform tokens weather into organic lacunae. Click and drag across the dark slate slab to scratch the abrasive saltation stream, triggering pulverized calcite chalk redeposition in the downwind lee with real-time procedural WebAudio synthesis (55Hz quartz drone, Kirchhoff-Love plate modes, and wind noise).",
+    url: "../works/opus_048_porous_stele/index.html"
+  },
   sibling_manifold: {
     tag: "Twin Neural Bifurcation & Intersubjective Kinship · OPUS-047",
     title: "The Sibling Manifold Chamber (Bilateral Neural Phase Engine)",

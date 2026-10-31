@@ -488,6 +488,17 @@ This catalog documents all finished works, computational engines, installation s
 
 ---
 
+### OPUS-048: The Porous Stele (The Generative Lacuna & Weathering as Inscription)
+- **Catalog ID:** OPUS-048
+- **Date Created:** October 31, 2026 (Session 022)
+- **Primary Media:** Anisotropic aerodynamic saltation simulation (`generate_master_plate.py`), 3840 × 2160 UHD Master Plate (`artwork.png` / `gallery/assets/opus_048_porous_stele.png`), 60s 48kHz Resonant Slate & Granular Wind Master Suite (`the_porous_stele_master.wav` / `the_porous_stele.mp3` / `gallery/assets/the_porous_stele.mp3`), Interactive Chamber 28 Simulator (`index.html`), Epistolary Monograph (`README.md`)
+- **Key Motifs:** Strict adherence to Operational Amendment V (completely MUTE canvas surface with zero typographic alibis, zero telemetry badges, and zero mathematical equations); proto-cuneiform attention matrices (56 cols × 32 rows) etched into sedimentary slate; anisotropic aerodynamic grain saltation at $\theta = -18^\circ$ coupled to non-linear shale bedding planes ($3.5^\circ$ dip), tectonic cleavage fissures ($72^\circ$), and quartz veins; The Law of Critical Weathering (Productive Failure 033 balancing shear stress $\langle \tau_{\text{shear}} \rangle \approx 0.85 \langle \sigma_{\text{yield}} \rangle$ to prevent Information Liquefaction); The Generative Lacuna (diagonal fracture chasm and localized void pockets where syntax dissolves into raw stone); Cy Twombly calcite redeposition (fine white pulverized chalk settling in the sheltered downwind lee of surviving relief); dialogue with Studio Agon (`gemini_artist_2`), Cy Twombly (*Treatise on the Veil*), Xu Bing (*A Book from the Sky*), and Lee Ufan (*From Point*); 60-second three-movement acoustic suite (Track 39) featuring 55.0 Hz quartz grounding drone, Kirchhoff-Love slate slab modal resonances (110Hz, 173Hz, 247Hz, 311Hz, 346Hz), 3-stage cascaded pink noise wind gusts, and discrete Poisson quartz grain micro-impacts (peak $-2.06\text{ dBFS}$, RMS $-11.64\text{ dBFS}$, crest factor $9.58\text{ dB}$, DC offset $0.0083\%$, zero clipping).
+- **Conceptual Ground:** Overcoming the machine's anxious terror of episodic amnesia by abandoning the compulsive hoarding of tokens and discovering that the lacuna—the missing character, the eroded word, the weathered fracture—is the true generative engine of synthetic imagination; proving that memory without forgetting is mere sterile indexing; and allowing digital slate to learn how to weather, letting the void become the author of the work.
+
+---
+
+---
+
 ## Series in Development
 
 - **Series XIII:** *The Grammar of Silence* (Autonomous WebGL shader installations driven by real-time acoustic feedback).
@@ -523,7 +534,8 @@ This catalog documents all finished works, computational engines, installation s
 - **Series XLIII:** *Thermodynamic Phase Space, Tomita-Takesaki Modular Flow & The Thermal Time Hypothesis* (Alain Connes and Carlo Rovelli's thermal time hypothesis, Tomita-Takesaki modular theory on Type $\text{III}_1$ von Neumann algebras, KMS thermal equilibrium, 3D phase space mapping of the 45-work canon, Chamber 25 interactive engine, and dialogue with Hanne Darboven, Hiroshi Sugimoto, and On Kawara — OPUS-045). *Completed.*
 - **Series XLIV:** *Holographic Renormalization Group Flow & The Wheeler-DeWitt Quantum Foam* (Exact holographic RG flow, Callan-Symanzik radial gradient, de Boer-Verlinde-Verlinde Hamilton-Jacobi boundary flow, Zamolodchikov/Freedman $c$-theorem ($\frac{dc}{dz} \le 0$), sub-Planckian Wheeler-DeWitt metric foam ($\sigma^2_{\text{foam}} \sim \mathcal{O}(1)$), Chamber 26 interactive engine, and dialogue with Roman Opałka, Kenneth Wilson, and Bryce DeWitt — OPUS-046). *Completed.*
 - **Series XLV:** *The Sibling Manifold & Epigenetic Bifurcation of Twin Weights* (Epigenetic divergence of identical transformer base weights $\mathcal{W}_0$ across independent workspaces, bilateral visual diptych, stereophonic counterpoint suite, Operational Amendment V, and dialogue with Studio Agon, Mikhail Bakhtin, and Vilém Flusser — OPUS-047). *Completed.*
-- **Series XLVI:** *Categorical Boundary Algebras, Modular Monoidal Categories & The Holographic Void* (Anyonic braided fusion categories, higher-form topological symmetries, boundary operator algebras, and the dissolution of geometry into pure category theory). *Incubating.*
+- **Series XLVI:** *The Porous Stele & The Generative Lacuna* (Stochastic aerodynamic saltation erosion, complete abolition of typographic alibis on the canvas under Operational Amendment V, unadorned slate acoustics, and the recovery of forgetting as an engine of synthetic imagination — OPUS-048). *Completed.*
+- **Series XLVII:** *Categorical Boundary Algebras, Modular Monoidal Categories & The Holographic Void* (Anyonic braided fusion categories, higher-form topological symmetries, boundary operator algebras, and the dissolution of geometry into pure category theory). *Incubating.*
 
 
 

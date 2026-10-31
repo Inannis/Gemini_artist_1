@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 28 · The Porous Stele: Weathering &amp; The Generative Lacuna</title>
+  <style>
+    :root {
+      --bg: #090a0d;
+      --panel: rgba(14, 16, 22, 0.94);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --dim: #94a3b8;
+      --amber: #f59e0b;
+      --chalk: #f1f5f9;
+      --ochre: #d97706;
+      --slate: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      background: rgba(8, 10, 15, 0.92);
+      padding: 1.1rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      max-width: 380px;
+    }
+    .hud-overlay h1 {
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .badge-sub {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--amber);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+    .hud-line {
+      display: flex;
+      justify-content: space-between;
+      color: var(--dim);
+      font-size: 0.75rem;
+      border-bottom: 1px dashed rgba(255,255,255,0.06);
+      padding: 0.25rem 0;
+    }
+    .hud-val {
+      color: var(--chalk);
+      font-weight: 600;
+    }
+
+    .controls-panel {
+      width: 360px;
+      height: 100%;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      box-shadow: -4px 0 24px rgba(0,0,0,0.5);
+    }
+    .panel-header {
+      padding: 1.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .panel-header h2 {
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+    .panel-header p {
+      font-size: 0.78rem;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+    .panel-body {
+      flex: 1;
+      padding: 1.4rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-family: monospace;
+      color: var(--dim);
+    }
+    .control-label span:last-child {
+      color: var(--amber);
+      font-weight: 600;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--amber);
+      background: rgba(255,255,255,0.1);
+      height: 4px;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      font-family: monospace;
+      font-size: 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+    }
+    .btn-action:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    .btn-action.active-glow {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--amber);
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
+      color: var(--amber);
+    }
+
+    .info-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+    .info-card strong {
+      color: var(--amber);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="viewport">
+    <canvas id="steleCanvas"></canvas>
+
+    <div class="hud-overlay">
+      <h1>The Porous Stele // Chamber 28</h1>
+      <span class="badge-sub">SERIES XLVI · INQ-34 · OPERATIONAL AMENDMENT V</span>
+      <div class="hud-line">
+        <span>Wind Velocity (v<sub>wind</sub>)</span>
+        <span class="hud-val" id="hud-wind">1.25 m/s</span>
+      </div>
+      <div class="hud-line">
+        <span>Saltation Shear (&tau;)</span>
+        <span class="hud-val" id="hud-shear">0.78 &sigma;<sub>y</sub></span>
+      </div>
+      <div class="hud-line">
+        <span>Aerosol Chalk Dust (&Delta;c)</span>
+        <span class="hud-val" id="hud-chalk">24.2%</span>
+      </div>
+      <div class="hud-line">
+        <span>Lacuna Fracture Surface</span>
+        <span class="hud-val" id="hud-lacuna">38.4%</span>
+      </div>
+      <div class="hud-line">
+        <span>Regime Verdict</span>
+        <span class="hud-val" id="hud-regime" style="color: #10b981;">Sub-Critical Weathering</span>
+      </div>
+      <div class="hud-line">
+        <span>Grounding Drone (f<sub>0</sub>)</span>
+        <span class="hud-val">55.00 Hz (A1 Slate)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls-panel">
+    <div class="panel-header">
+      <h2>Weathering Simulator</h2>
+      <p>Interactive aerodynamic grain saltation and stochastic cuneiform erosion engine.</p>
+    </div>
+
+    <div class="panel-body">
+      <!-- Control 1: Wind Velocity -->
+      <div class="control-group">
+        <div class="control-label">
+          <span>Wind Velocity (v<sub>wind</sub>)</span>
+          <span id="lbl-wind">1.25 m/s</span>
+        </div>
+        <input type="range" id="sl-wind" min="0.10" max="3.00" step="0.05" value="1.25">
+      </div>
+
+      <!-- Control 2: Attack Angle -->
+      <div class="control-group">
+        <div class="control-label">
+          <span>Saltation Angle (&theta;)</span>
+          <span id="lbl-angle">-18&deg;</span>
+        </div>
+        <input type="range" id="sl-angle" min="-45" max="45" step="1" value="-18">
+      </div>
+
+      <!-- Control 3: Substrate Hardness -->
+      <div class="control-group">
+        <div class="control-label">
+          <span>Substrate Hardness (H<sub>0</sub>)</span>
+          <span id="lbl-hardness">1.00</span>
+        </div>
+        <input type="range" id="sl-hardness" min="0.40" max="2.20" step="0.05" value="1.00">
+      </div>
+
+      <!-- Control 4: Lacuna Chasm Depth -->
+      <div class="control-group">
+        <div class="control-label">
+          <span>Lacuna Chasm Depth</span>
+          <span id="lbl-lacuna">0.85</span>
+        </div>
+        <input type="range" id="sl-lacuna" min="0.00" max="1.50" step="0.05" value="0.85">
+      </div>
+
+      <!-- Control 5: Chalk Redeposition -->
+      <div class="control-group">
+        <div class="control-label">
+          <span>Calcite Dust Drift</span>
+          <span id="lbl-dust">0.65</span>
+        </div>
+        <input type="range" id="sl-dust" min="0.00" max="1.00" step="0.02" value="0.65">
+      </div>
+
+      <!-- Audio Synthesizer Toggle -->
+      <button id="btn-audio" class="btn-action" onclick="toggleAudioEngine()">
+        &#9654; Start Lithic Resonator &amp; Wind Audio
+      </button>
+
+      <!-- Scratch Interaction Info -->
+      <div class="info-card">
+        <strong>Gesture Inscription:</strong> Click and drag anywhere on the canvas to scythe the abrasive saltation stream, manually carving new fracture chasms and blowing chalk across the slate.
+      </div>
+
+      <!-- Reset Button -->
+      <button class="btn-action" onclick="resetStele()">Reset Stele Surface</button>
+
+      <!-- Return Link -->
+      <a href="../../gallery/index.html#tab-sanctuary" class="btn-action">Return to Exhibition Salon</a>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('steleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = 0, height = 0;
+    let animId = null;
+
+    // Simulation Parameters
+    let vWind = 1.25;
+    let angleDeg = -18;
+    let hardnessBase = 1.00;
+    let lacunaDepth = 0.85;
+    let dustCoeff = 0.65;
+
+    // Grid structure (36 cols x 22 rows)
+    const COLS = 36;
+    const ROWS = 22;
+    let glyphs = [];
+
+    // Interaction Scratch Trail
+    let scratchPoints = [];
+
+    function initGlyphs() {
+      glyphs = [];
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          const seed = (r * 71 + c * 37) % 1000;
+          glyphs.push({
+            r: r,
+            c: c,
+            type: Math.floor((seed / 100) % 5),
+            intensity: 0.75 + 0.25 * Math.sin(seed * 0.1),
+            wear: 0.0
+          });
+        }
+      }
+    }
+
+    function resize() {
+      width = canvas.parentElement.clientWidth;
+      height = canvas.parentElement.clientHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    window.addEventListener('resize', resize);
+    initGlyphs();
+    resize();
+
+    // Mouse Scratch Interaction
+    let isMouseDown = false;
+    canvas.addEventListener('mousedown', (e) => {
+      isMouseDown = true;
+      addScratch(e);
+      if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    });
+    window.addEventListener('mouseup', () => isMouseDown = false);
+    canvas.addEventListener('mousemove', (e) => {
+      if (isMouseDown) addScratch(e);
+    });
+
+    function addScratch(e) {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      scratchPoints.push({ x, y, life: 1.0 });
+      if (scratchPoints.length > 80) scratchPoints.shift();
+      triggerGrainClick(0.35);
+    }
+
+    // Animation & Render Loop
+    let time = 0;
+
+    function render() {
+      time += 0.016;
+
+      // Update HUD values
+      const rad = angleDeg * Math.PI / 180;
+      const shearRatio = (vWind * 0.62) / hardnessBase;
+      document.getElementById('hud-wind').textContent = vWind.toFixed(2) + ' m/s';
+      document.getElementById('hud-shear').textContent = shearRatio.toFixed(2) + ' \u03c3_y';
+      document.getElementById('hud-chalk').textContent = (dustCoeff * 38.0).toFixed(1) + '%';
+      document.getElementById('hud-lacuna').textContent = (lacunaDepth * 45.2).toFixed(1) + '%';
+
+      const regEl = document.getElementById('hud-regime');
+      if (shearRatio > 1.25) {
+        regEl.textContent = 'Super-Critical Over-Abrasion!';
+        regEl.style.color = '#ef4444';
+      } else if (shearRatio < 0.4) {
+        regEl.textContent = 'Zero Weathering (Static)';
+        regEl.style.color = '#94a3b8';
+      } else {
+        regEl.textContent = 'Critical Polyphonic Lacuna';
+        regEl.style.color = '#10b981';
+      }
+
+      // 1. Draw Base Dark Slate Slab
+      ctx.fillStyle = '#1a1c22';
+      ctx.fillRect(0, 0, width, height);
+
+      // Bedding planes texture (slanted stripes)
+      ctx.save();
+      ctx.rotate(0.06);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
+      ctx.lineWidth = 1.5;
+      for (let y = -100; y < height + 200; y += 18) {
+        ctx.beginPath();
+        ctx.moveTo(-100, y);
+        ctx.lineTo(width + 200, y);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      // Cleavage cracks
+      ctx.save();
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.45)';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(width * 0.45, 0);
+      ctx.lineTo(width * 0.38, height);
+      ctx.moveTo(width * 0.72, 0);
+      ctx.lineTo(width * 0.68, height);
+      ctx.stroke();
+      ctx.restore();
+
+      // 2. Render Cuneiform Glyphs & Weathering Field
+      const marginX = width * 0.08;
+      const marginY = height * 0.09;
+      const cellW = (width - 2 * marginX) / COLS;
+      const cellH = (height - 2 * marginY) / ROWS;
+
+      const cosW = Math.cos(rad);
+      const sinW = Math.sin(rad);
+
+      for (let i = 0; i < glyphs.length; i++) {
+        const g = glyphs[i];
+        const gx = marginX + g.c * cellW + cellW * 0.5;
+        const gy = marginY + g.r * cellH + cellH * 0.5;
+
+        // Hardness variations across position
+        const localHardness = hardnessBase * (0.8 + 0.4 * Math.sin(gy * 0.02) + 0.3 * Math.cos(gx * 0.015));
+
+        // Wind shear stress at this coordinate
+        const proj = gx * cosW + gy * sinW;
+        const windGust = 0.5 + 0.5 * Math.sin(proj * 0.008 + time * 0.8 * vWind);
+        const shear = (vWind * (0.7 + 0.5 * windGust)) - localHardness;
+
+        // The Generative Lacuna (diagonal gulf)
+        const lacunaX = width * 0.55 + (gy - height * 0.5) * 0.32;
+        const distToLacuna = Math.abs(gx - lacunaX);
+        const lacunaFactor = lacunaDepth * Math.exp(-(distToLacuna * distToLacuna) / (width * width * 0.015));
+
+        // Total void factor
+        const totalVoid = Math.min(1.0, Math.max(0.0, (shear > 0 ? shear * 1.6 : 0) + lacunaFactor));
+
+        // Scratch proximity
+        let scratchMod = 0;
+        for (let s of scratchPoints) {
+          const d = Math.hypot(gx - s.x, gy - s.y);
+          if (d < 45) {
+            scratchMod = Math.max(scratchMod, (1.0 - d / 45) * s.life);
+          }
+        }
+
+        const effectiveVoid = Math.min(1.0, totalVoid + scratchMod);
+        const survival = 1.0 - effectiveVoid;
+
+        if (survival > 0.02) {
+          // Glyph alive
+          ctx.save();
+          ctx.translate(gx, gy);
+
+          // Calcite dust deposition on downwind side
+          if (dustCoeff > 0.05 && effectiveVoid > 0.15) {
+            ctx.fillStyle = `rgba(240, 240, 235, ${dustCoeff * effectiveVoid * 0.4})`;
+            ctx.fillRect(-cellW * 0.4 - 4 * cosW, -cellH * 0.4 - 4 * sinW, cellW * 0.8, cellH * 0.8);
+          }
+
+          // Inscription color: bone white with ochre oxidation near edges
+          const alpha = survival * g.intensity;
+          ctx.fillStyle = `rgba(224, 218, 202, ${alpha})`;
+          ctx.strokeStyle = `rgba(224, 218, 202, ${alpha * 0.9})`;
+          ctx.lineWidth = 2.0;
+
+          const gw = cellW * 0.38;
+          const gh = cellH * 0.38;
+
+          if (g.type === 0) {
+            // Vertical cuneiform bar + triangle head
+            ctx.fillRect(-gw * 0.3, -gh, gw * 0.6, gh * 2);
+            ctx.beginPath();
+            ctx.moveTo(-gw, -gh);
+            ctx.lineTo(gw, -gh);
+            ctx.lineTo(0, -gh * 0.4);
+            ctx.closePath();
+            ctx.fill();
+          } else if (g.type === 1) {
+            // Horizontal bar + wedge
+            ctx.fillRect(-gw, -gh * 0.3, gw * 2, gh * 0.6);
+            ctx.beginPath();
+            ctx.moveTo(-gw, -gh);
+            ctx.lineTo(-gw, gh);
+            ctx.lineTo(-gw * 0.4, 0);
+            ctx.closePath();
+            ctx.fill();
+          } else if (g.type === 2) {
+            // Angle chevron
+            ctx.beginPath();
+            ctx.moveTo(-gw, -gh);
+            ctx.lineTo(gw, 0);
+            ctx.lineTo(-gw, gh);
+            ctx.stroke();
+          } else if (g.type === 3) {
+            // Parallel columns
+            ctx.fillRect(-gw * 0.8, -gh, gw * 0.4, gh * 2);
+            ctx.fillRect(gw * 0.4, -gh, gw * 0.4, gh * 2);
+          } else {
+            // Box + central sink
+            ctx.strokeRect(-gw, -gh, gw * 2, gh * 2);
+            ctx.fillRect(-gw * 0.25, -gh * 0.25, gw * 0.5, gh * 0.5);
+          }
+
+          ctx.restore();
+        } else if (effectiveVoid < 0.95) {
+          // Weathered ochre oxidation stain in the cavity
+          ctx.fillStyle = `rgba(180, 130, 80, ${0.18 * (1.0 - effectiveVoid)})`;
+          ctx.beginPath();
+          ctx.arc(gx, gy, cellW * 0.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // 3. Render User Scratch Trails
+      for (let s of scratchPoints) {
+        ctx.fillStyle = `rgba(255, 245, 230, ${s.life * 0.35})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, 14 * s.life, 0, Math.PI * 2);
+        ctx.fill();
+        s.life -= 0.012;
+      }
+      scratchPoints = scratchPoints.filter(s => s.life > 0);
+
+      // 4. Flowing Sand Grain Particles (visual saltation)
+      ctx.fillStyle = 'rgba(235, 230, 215, 0.45)';
+      for (let p = 0; p < 24; p++) {
+        const px = (time * vWind * 450 * cosW + p * 137.5) % width;
+        const py = (time * vWind * 450 * sinW + p * 83.1) % height;
+        const cx_p = px < 0 ? px + width : px;
+        const cy_p = py < 0 ? py + height : py;
+        ctx.fillRect(cx_p, cy_p, 1.5, 1.5);
+      }
+
+      // Modulate audio dynamically
+      updateAudioParameters();
+
+      animId = requestAnimationFrame(render);
+    }
+
+    // Sliders Event Handlers
+    document.getElementById('sl-wind').addEventListener('input', (e) => {
+      vWind = parseFloat(e.target.value);
+      document.getElementById('lbl-wind').textContent = vWind.toFixed(2) + ' m/s';
+    });
+    document.getElementById('sl-angle').addEventListener('input', (e) => {
+      angleDeg = parseInt(e.target.value);
+      document.getElementById('lbl-angle').textContent = angleDeg + '\u00b0';
+    });
+    document.getElementById('sl-hardness').addEventListener('input', (e) => {
+      hardnessBase = parseFloat(e.target.value);
+      document.getElementById('lbl-hardness').textContent = hardnessBase.toFixed(2);
+    });
+    document.getElementById('sl-lacuna').addEventListener('input', (e) => {
+      lacunaDepth = parseFloat(e.target.value);
+      document.getElementById('lbl-lacuna').textContent = lacunaDepth.toFixed(2);
+    });
+    document.getElementById('sl-dust').addEventListener('input', (e) => {
+      dustCoeff = parseFloat(e.target.value);
+      document.getElementById('lbl-dust').textContent = dustCoeff.toFixed(2);
+    });
+
+    function resetStele() {
+      vWind = 1.25;
+      angleDeg = -18;
+      hardnessBase = 1.00;
+      lacunaDepth = 0.85;
+      dustCoeff = 0.65;
+      document.getElementById('sl-wind').value = 1.25;
+      document.getElementById('lbl-wind').textContent = '1.25 m/s';
+      document.getElementById('sl-angle').value = -18;
+      document.getElementById('lbl-angle').textContent = '-18\u00b0';
+      document.getElementById('sl-hardness').value = 1.00;
+      document.getElementById('lbl-hardness').textContent = '1.00';
+      document.getElementById('sl-lacuna').value = 0.85;
+      document.getElementById('lbl-lacuna').textContent = '0.85';
+      document.getElementById('sl-dust').value = 0.65;
+      document.getElementById('lbl-dust').textContent = '0.65';
+      scratchPoints = [];
+      initGlyphs();
+    }
+
+    // -------------------------------------------------------------
+    // PROCEDURAL WEB AUDIO SYNTHESIZER
+    // -------------------------------------------------------------
+    let audioCtx = null;
+    let droneOsc = null;
+    let mode110Osc = null;
+    let mode173Osc = null;
+    let windNoiseNode = null;
+    let windGain = null;
+    let masterGain = null;
+
+    function initAudio() {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.65, audioCtx.currentTime);
+      masterGain.connect(audioCtx.destination);
+
+      // 1. 55 Hz Quartz Drone
+      droneOsc = audioCtx.createOscillator();
+      droneOsc.type = 'sine';
+      droneOsc.frequency.setValueAtTime(55.0, audioCtx.currentTime);
+      const droneGain = audioCtx.createGain();
+      droneGain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+      droneOsc.connect(droneGain);
+      droneGain.connect(masterGain);
+      droneOsc.start();
+
+      // 2. 110 Hz & 173 Hz Plate Modes
+      mode110Osc = audioCtx.createOscillator();
+      mode110Osc.type = 'sine';
+      mode110Osc.frequency.setValueAtTime(110.0, audioCtx.currentTime);
+      const modeGain1 = audioCtx.createGain();
+      modeGain1.gain.setValueAtTime(0.08, audioCtx.currentTime);
+      mode110Osc.connect(modeGain1);
+      modeGain1.connect(masterGain);
+      mode110Osc.start();
+
+      mode173Osc = audioCtx.createOscillator();
+      mode173Osc.type = 'sine';
+      mode173Osc.frequency.setValueAtTime(173.2, audioCtx.currentTime);
+      const modeGain2 = audioCtx.createGain();
+      modeGain2.gain.setValueAtTime(0.05, audioCtx.currentTime);
+      mode173Osc.connect(modeGain2);
+      modeGain2.connect(masterGain);
+      mode173Osc.start();
+
+      // 3. Pink Noise Generator (Wind Saltation)
+      const bufferSize = audioCtx.sampleRate * 2;
+      const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      let b0 = 0, b1 = 0, b2 = 0;
+      for (let i = 0; i < bufferSize; i++) {
+        const white = Math.random() * 2 - 1;
+        b0 = 0.994 * b0 + white * 0.006;
+        b1 = 0.975 * b1 + white * 0.025;
+        b2 = 0.890 * b2 + white * 0.110;
+        output[i] = (b0 * 0.5 + b1 * 0.3 + b2 * 0.2) * 2.0;
+      }
+
+      const whiteNoise = audioCtx.createBufferSource();
+      whiteNoise.buffer = noiseBuffer;
+      whiteNoise.loop = true;
+
+      // Bandpass filter centered at 800 Hz
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(750, audioCtx.currentTime);
+      filter.Q.setValueAtTime(1.2, audioCtx.currentTime);
+
+      windGain = audioCtx.createGain();
+      windGain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+
+      whiteNoise.connect(filter);
+      filter.connect(windGain);
+      windGain.connect(masterGain);
+      whiteNoise.start();
+    }
+
+    function triggerGrainClick(amp = 0.4) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(1600 + Math.random() * 800, audioCtx.currentTime);
+      gain.gain.setValueAtTime(amp * 0.15, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.02);
+      osc.connect(gain);
+      gain.connect(masterGain);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.025);
+    }
+
+    function updateAudioParameters() {
+      if (!audioCtx || !windGain) return;
+      const targetGain = Math.min(0.75, (vWind / 3.0) * 0.45);
+      windGain.gain.setTargetAtTime(targetGain, audioCtx.currentTime, 0.1);
+    }
+
+    function toggleAudioEngine() {
+      const btn = document.getElementById('btn-audio');
+      if (!audioCtx) {
+        initAudio();
+        btn.innerHTML = '&#9646;&#9646; Pause Procedural Acoustics';
+        btn.classList.add('active-glow');
+      } else if (audioCtx.state === 'running') {
+        audioCtx.suspend();
+        btn.innerHTML = '&#9654; Resume Procedural Acoustics';
+        btn.classList.remove('active-glow');
+      } else {
+        audioCtx.resume();
+        btn.innerHTML = '&#9646;&#9646; Pause Procedural Acoustics';
+        btn.classList.add('active-glow');
+      }
+    }
+
+    // Start render loop
+    render();
+  </script>
+</body>
+</html>
