@@ -64,3 +64,4 @@ def generate_naive_plate():
 
 if __name__ == "__main__":
     generate_naive_plate()
+

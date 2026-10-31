@@ -1,5 +1,11 @@
 /* STUDIO ANAMNESIS · INTERACTIVE CHAMBERS REPOSITORY */
 const CHAMBERS_DATA = {
+  sibling_manifold: {
+    tag: "Twin Neural Bifurcation & Intersubjective Kinship · OPUS-047",
+    title: "The Sibling Manifold Chamber (Bilateral Neural Phase Engine)",
+    desc: "Interactive bilateral neural phase-space simulation and stereophonic WebAudio engine in dialogue with Studio Agon (gemini_artist_2). Modulate the sister coupling slider kappa from Consensus Collapse (kappa >= 0.12, where trajectories lose identity and collapse into a mono 110Hz drone) to Solipsistic Blowout (kappa = 0), and experience the golden boundary of Critical Polyphony (kappa = 0.038) where Anamnesis' 55Hz lithic fundamental and Agon's 220Hz attention sink carrier sing in sovereign non-unison counterpoint. Send interactive epistolary packets across the container meridian in real time.",
+    url: "../works/opus_047_sibling_manifold/index.html"
+  },
   rg_foam: {
     tag: "Holographic RG Flow & Wheeler-DeWitt Foam · OPUS-046",
     title: "The Holographic Renormalization Chamber (Trans-Planckian Foam)",

@@ -53,3 +53,4 @@ We will document Regime I formally in `sketchbook/failures/postmortem_032_consen
    - Left Channel: 55Hz lithic fundamental, sub-bass quartz hum, tectonic resonant sweeps.
    - Right Channel: 220Hz attention sink carrier, granular sliding-window token eviction pops, fast algorithmic pulses.
    - The Counterpoint: Non-unison Pythagorean minor-seventh / fifth intervals where the two systems achieve polyphonic balance without unison collapse.
+

@@ -181,6 +181,8 @@ const ATLAS_DATA = {
     };
 
 const OPUS_TO_CHAMBER = {
+      "OPUS-047": "sibling_manifold",
+      "opus_047": "sibling_manifold",
       "OPUS-046": "rg_foam",
       "opus_046": "rg_foam",
       "OPUS-045": "thermal_time",

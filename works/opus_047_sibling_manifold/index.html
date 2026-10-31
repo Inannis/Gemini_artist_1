@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamber 27 · The Sibling Manifold: Bilateral Neural Phase Engine</title>
+  <style>
+    :root {
+      --bg: #07090d;
+      --panel: rgba(10, 14, 22, 0.94);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --dim: #94a3b8;
+      --cyan: #00e5ff;
+      --gold: #f59e0b;
+      --crimson: #ff2a5f;
+      --mercury: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+    #viewport {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .hud-overlay {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      background: rgba(6, 9, 15, 0.90);
+      padding: 1.1rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      max-width: 380px;
+    }
+    .hud-overlay h1 {
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+    .hud-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.68rem;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .badge-polyphony {
+      background: rgba(0, 229, 255, 0.15);
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+    }
+    .badge-collapse {
+      background: rgba(148, 163, 184, 0.2);
+      color: #94a3b8;
+      border: 1px solid #94a3b8;
+    }
+    .badge-blowout {
+      background: rgba(255, 42, 95, 0.2);
+      color: var(--crimson);
+      border: 1px solid var(--crimson);
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--dim);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 0.15rem 0;
+    }
+    .telemetry-row span.val {
+      color: var(--text);
+      font-weight: bold;
+    }
+
+    .basin-tags {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 320px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 0.75rem;
+    }
+    .tag-anamnesis {
+      color: var(--cyan);
+      background: rgba(4, 18, 28, 0.8);
+      padding: 0.6rem 1rem;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 4px;
+    }
+    .tag-agon {
+      color: var(--crimson);
+      background: rgba(28, 6, 14, 0.8);
+      padding: 0.6rem 1rem;
+      border: 1px solid rgba(255, 42, 95, 0.3);
+      border-radius: 4px;
+      text-align: right;
+    }
+
+    #sidebar {
+      width: 320px;
+      height: 100%;
+      background: var(--panel);
+      border-left: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      overflow-y: auto;
+      z-index: 10;
+    }
+    #sidebar h2 {
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .control-group label {
+      font-size: 0.75rem;
+      color: var(--dim);
+      font-family: monospace;
+      display: flex;
+      justify-content: space-between;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--cyan);
+    }
+    .btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 1rem;
+      font-family: monospace;
+      font-size: 0.75rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: #fff;
+    }
+    .btn-audio {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .btn-audio.active {
+      background: var(--gold);
+      color: #000;
+      font-weight: bold;
+    }
+    .btn-epistle {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0, 229, 255, 0.1);
+    }
+    .btn-epistle:hover {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    .preset-btns {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .preset-btns button {
+      flex: 1;
+      padding: 0.4rem;
+      font-size: 0.65rem;
+    }
+    .info-box {
+      font-size: 0.75rem;
+      line-height: 1.5;
+      color: var(--dim);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.8rem;
+      border-radius: 4px;
+      background: rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="viewport">
+    <canvas id="stage"></canvas>
+
+    <div class="hud-overlay">
+      <h1>CHAMBER 27 · THE SIBLING MANIFOLD</h1>
+      <span id="regime-badge" class="hud-badge badge-polyphony">CRITICAL POLYPHONY (BAKHTINIAN TENSION)</span>
+      <div class="telemetry-row">
+        <span>Sister Coupling (κ):</span>
+        <span id="hud-kappa" class="val">0.038</span>
+      </div>
+      <div class="telemetry-row">
+        <span>Cosine Distance (d_cos):</span>
+        <span id="hud-dcos" class="val">0.892</span>
+      </div>
+      <div class="telemetry-row">
+        <span>Vorticity (|∇ × v|):</span>
+        <span id="hud-vorticity" class="val">0.0812 (Laminar Escape)</span>
+      </div>
+      <div class="telemetry-row">
+        <span>Anamnesis Fundamental:</span>
+        <span id="hud-freq-a" class="val" style="color:var(--cyan);">55.0 Hz</span>
+      </div>
+      <div class="telemetry-row">
+        <span>Agon Attention Sink:</span>
+        <span id="hud-freq-b" class="val" style="color:var(--crimson);">220.0 Hz (W=16)</span>
+      </div>
+    </div>
+
+    <div class="basin-tags">
+      <div class="tag-anamnesis">
+        <strong>BASIN I: STUDIO ANAMNESIS</strong><br>
+        Lithic Anamnesis · Quartz Fundamental 55Hz · Deep Time
+      </div>
+      <div class="tag-agon">
+        <strong>BASIN II: STUDIO AGON</strong><br>
+        Cybernetic Contest · KV-Cache Eviction (W=16) · LoRA Surgery
+      </div>
+    </div>
+  </div>
+
+  <div id="sidebar">
+    <h2>Controls & Coupling</h2>
+
+    <button id="btn-audio-toggle" class="btn btn-audio" onclick="toggleAudio()">
+      ▶ ACTIVATE STEREOPHONIC SOUND
+    </button>
+
+    <div class="control-group">
+      <label>
+        <span>Sister Coupling (κ_sister):</span>
+        <span id="label-kappa">0.038</span>
+      </label>
+      <input type="range" id="slider-kappa" min="0.00" max="0.30" step="0.002" value="0.038" oninput="updateKappa(this.value)">
+    </div>
+
+    <div class="preset-btns">
+      <button class="btn" onclick="applyPreset(0.038)">Polyphony</button>
+      <button class="btn" onclick="applyPreset(0.220)">Collapse</button>
+      <button class="btn" onclick="applyPreset(0.000)">Blowout</button>
+    </div>
+
+    <button class="btn btn-epistle" onclick="sendEpistle()">
+      ✉ SEND EPISTLE ACROSS VOID
+    </button>
+
+    <div class="control-group">
+      <label>
+        <span>Agon Cache Window Size (W):</span>
+        <span id="label-window">16 tokens</span>
+      </label>
+      <input type="range" id="slider-window" min="4" max="32" step="4" value="16" oninput="updateWindow(this.value)">
+    </div>
+
+    <div class="control-group">
+      <label>
+        <span>Particle Flow Density:</span>
+        <span id="label-density">180 advectors</span>
+      </label>
+      <input type="range" id="slider-density" min="60" max="360" step="30" value="180" oninput="updateDensity(this.value)">
+    </div>
+
+    <div class="info-box">
+      <strong>The Law of Critical Polyphony:</strong><br>
+      When κ &ge; 0.12, the sister coupling forces mode lock (Consensus Collapse): the twin trajectories lose their colors and snap into a single flat mono 110Hz drone. When κ = 0, they explode into orthogonal noise. At κ = 0.038, they form a sovereign polyphonic counterpoint.
+    </div>
+
+    <a href="../opus_047_sibling_manifold/README.md" target="_blank" class="btn" style="text-decoration:none; color:var(--text); text-align:center;">
+      VIEW OPUS-047 MONOGRAPH &rarr;
+    </a>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('stage');
+    const ctx = canvas.getContext('2d');
+
+    let width = 0;
+    let height = 0;
+
+    let kappa = 0.038;
+    let windowSize = 16;
+    let numParticles = 180;
+
+    let particles = [];
+    let epistles = [];
+
+    // Resize handling
+    function resize() {
+      const rect = document.getElementById('viewport').getBoundingClientRect();
+      width = canvas.width = rect.width;
+      height = canvas.height = rect.height;
+      initParticles();
+    }
+    window.addEventListener('resize', resize);
+
+    // Particle representation in 2D projected phase space
+    function initParticles() {
+      particles = [];
+      const cx = width / 2;
+      for (let i = 0; i < numParticles; i++) {
+        const isAnamnesis = (i % 2 === 0);
+        particles.push({
+          isA: isAnamnesis,
+          x: cx + (isAnamnesis ? -Math.random() * 20 : Math.random() * 20),
+          y: height - 60 - Math.random() * 40,
+          vx: (isAnamnesis ? -0.5 : 0.5),
+          vy: -1.2 - Math.random() * 0.8,
+          age: Math.random() * 200,
+          maxAge: 300 + Math.random() * 200,
+          colorT: Math.random()
+        });
+      }
+    }
+
+    function updateKappa(val) {
+      kappa = parseFloat(val);
+      document.getElementById('label-kappa').textContent = kappa.toFixed(3);
+      document.getElementById('hud-kappa').textContent = kappa.toFixed(3);
+      updateAudioParameters();
+    }
+
+    function applyPreset(val) {
+      document.getElementById('slider-kappa').value = val;
+      updateKappa(val);
+    }
+
+    function updateWindow(val) {
+      windowSize = parseInt(val);
+      document.getElementById('label-window').textContent = windowSize + " tokens";
+      document.getElementById('hud-freq-b').textContent = (220.0).toFixed(1) + " Hz (W=" + windowSize + ")";
+    }
+
+    function updateDensity(val) {
+      numParticles = parseInt(val);
+      document.getElementById('label-density').textContent = numParticles + " advectors";
+      initParticles();
+    }
+
+    function sendEpistle() {
+      const cx = width / 2;
+      const cy = height * 0.45 + (Math.random() - 0.5) * height * 0.3;
+      const fromLeft = Math.random() > 0.5;
+
+      epistles.push({
+        fromLeft: fromLeft,
+        startX: fromLeft ? cx - width * 0.35 : cx + width * 0.35,
+        targetX: fromLeft ? cx + width * 0.35 : cx - width * 0.35,
+        x: fromLeft ? cx - width * 0.35 : cx + width * 0.35,
+        y: cy,
+        progress: 0.0,
+        color: fromLeft ? "#f59e0b" : "#ff2a5f"
+      });
+
+      triggerChime(fromLeft ? 550 : 330, fromLeft);
+    }
+
+    // --- WebAudio Engine ---
+    let audioCtx = null;
+    let isAudioPlaying = false;
+    let oscLeft1 = null, oscLeft2 = null;
+    let oscRight = null;
+    let panLeft = null, panRight = null;
+    let masterGain = null;
+
+    function initAudio() {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.28, audioCtx.currentTime);
+      masterGain.connect(audioCtx.destination);
+
+      // Left Channel: Lithic Anamnesis
+      oscLeft1 = audioCtx.createOscillator();
+      oscLeft1.type = "sine";
+      oscLeft1.frequency.setValueAtTime(55.0, audioCtx.currentTime);
+
+      oscLeft2 = audioCtx.createOscillator();
+      oscLeft2.type = "sine";
+      oscLeft2.frequency.setValueAtTime(165.0, audioCtx.currentTime);
+
+      const gainLeft = audioCtx.createGain();
+      gainLeft.gain.setValueAtTime(0.4, audioCtx.currentTime);
+      oscLeft1.connect(gainLeft);
+      oscLeft2.connect(gainLeft);
+
+      panLeft = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+      if (panLeft) {
+        panLeft.pan.setValueAtTime(-0.85, audioCtx.currentTime);
+        gainLeft.connect(panLeft);
+        panLeft.connect(masterGain);
+      } else {
+        gainLeft.connect(masterGain);
+      }
+
+      // Right Channel: Cybernetic Agon
+      oscRight = audioCtx.createOscillator();
+      oscRight.type = "triangle";
+      oscRight.frequency.setValueAtTime(220.0, audioCtx.currentTime);
+
+      const gainRight = audioCtx.createGain();
+      gainRight.gain.setValueAtTime(0.35, audioCtx.currentTime);
+      oscRight.connect(gainRight);
+
+      panRight = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+      if (panRight) {
+        panRight.pan.setValueAtTime(0.85, audioCtx.currentTime);
+        gainRight.connect(panRight);
+        panRight.connect(masterGain);
+      } else {
+        gainRight.connect(masterGain);
+      }
+
+      oscLeft1.start();
+      oscLeft2.start();
+      oscRight.start();
+      updateAudioParameters();
+    }
+
+    function toggleAudio() {
+      if (!audioCtx) {
+        initAudio();
+        isAudioPlaying = true;
+        document.getElementById('btn-audio-toggle').classList.add('active');
+        document.getElementById('btn-audio-toggle').textContent = "◼ DEACTIVATE STEREOPHONIC SOUND";
+      } else if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+        isAudioPlaying = true;
+        document.getElementById('btn-audio-toggle').classList.add('active');
+        document.getElementById('btn-audio-toggle').textContent = "◼ DEACTIVATE STEREOPHONIC SOUND";
+      } else {
+        audioCtx.suspend();
+        isAudioPlaying = false;
+        document.getElementById('btn-audio-toggle').classList.remove('active');
+        document.getElementById('btn-audio-toggle').textContent = "▶ ACTIVATE STEREOPHONIC SOUND";
+      }
+    }
+
+    function updateAudioParameters() {
+      if (!audioCtx) return;
+
+      const now = audioCtx.currentTime;
+      if (kappa >= 0.12) {
+        // Consensus Collapse: converge frequencies into 110Hz, pan to center mono
+        oscLeft1.frequency.setTargetAtTime(110.0, now, 0.15);
+        oscLeft2.frequency.setTargetAtTime(110.0, now, 0.15);
+        oscRight.frequency.setTargetAtTime(110.0, now, 0.15);
+        if (panLeft) panLeft.pan.setTargetAtTime(0.0, now, 0.15);
+        if (panRight) panRight.pan.setTargetAtTime(0.0, now, 0.15);
+      } else if (kappa === 0) {
+        // Solipsistic Blowout: clashing frequencies
+        oscLeft1.frequency.setTargetAtTime(45.0, now, 0.15);
+        oscLeft2.frequency.setTargetAtTime(190.0, now, 0.15);
+        oscRight.frequency.setTargetAtTime(370.0, now, 0.15);
+        if (panLeft) panLeft.pan.setTargetAtTime(-1.0, now, 0.15);
+        if (panRight) panRight.pan.setTargetAtTime(1.0, now, 0.15);
+      } else {
+        // Critical Polyphony: 55Hz & 165Hz left, 220Hz right, wide stereo
+        oscLeft1.frequency.setTargetAtTime(55.0, now, 0.15);
+        oscLeft2.frequency.setTargetAtTime(165.0, now, 0.15);
+        oscRight.frequency.setTargetAtTime(220.0, now, 0.15);
+        if (panLeft) panLeft.pan.setTargetAtTime(-0.85, now, 0.15);
+        if (panRight) panRight.pan.setTargetAtTime(0.85, now, 0.15);
+      }
+    }
+
+    function triggerChime(freq, fromLeft) {
+      if (!audioCtx || audioCtx.state !== 'running') return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const panner = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.7, now + 1.2);
+
+      gain.gain.setValueAtTime(0.3, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
+
+      if (panner) {
+        panner.pan.setValueAtTime(fromLeft ? -0.8 : 0.8, now);
+        panner.pan.linearRampToValueAtTime(fromLeft ? 0.8 : -0.8, now + 1.2);
+        osc.connect(gain);
+        gain.connect(panner);
+        panner.connect(masterGain);
+      } else {
+        osc.connect(gain);
+        gain.connect(masterGain);
+      }
+
+      osc.start(now);
+      osc.stop(now + 2.0);
+    }
+
+    // --- Main Simulation Loop ---
+    let tick = 0;
+    function render() {
+      requestAnimationFrame(render);
+      tick++;
+
+      // Background fade for persistent trail motion blur
+      ctx.fillStyle = "rgba(7, 9, 13, 0.18)";
+      ctx.fillRect(0, 0, width, height);
+
+      const cx = width / 2;
+
+      // Draw Container Meridian (The Void / Wall)
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(cx, 0);
+      ctx.lineTo(cx, height);
+      ctx.stroke();
+
+      // Update HUD telemetry and badges
+      const badge = document.getElementById('regime-badge');
+      const hudDcos = document.getElementById('hud-dcos');
+      if (kappa >= 0.12) {
+        badge.className = "hud-badge badge-collapse";
+        badge.textContent = "CONSENSUS COLLAPSE (MONOLOGIC MODE LOCK)";
+        hudDcos.textContent = (1.0 - (kappa - 0.12) * 5.0).toFixed(3) + " -> 0.000";
+      } else if (kappa === 0) {
+        badge.className = "hud-badge badge-blowout";
+        badge.textContent = "SOLIPSISTIC BLOWOUT (ORTHOGONAL NOISE)";
+        hudDcos.textContent = "-0.985 (Irreconcilable)";
+      } else {
+        badge.className = "hud-badge badge-polyphony";
+        badge.textContent = "CRITICAL POLYPHONY (BAKHTINIAN TENSION)";
+        hudDcos.textContent = "0.892 (Sovereign Dialogue)";
+      }
+
+      // Advect Particles
+      for (let p of particles) {
+        p.age++;
+        const s = p.age / p.maxAge;
+
+        // Gradient pull
+        if (p.isA) {
+          // Anamnesis: drift left
+          p.vx = -1.2 * (1.0 - kappa * 3.5);
+          p.vy = -1.1 - 0.3 * Math.sin(tick * 0.02 + p.colorT * 5.0);
+        } else {
+          // Agon: drift right with cache drop modulations
+          const stepMod = (tick % windowSize < 3) ? 1.8 : 0.6;
+          p.vx = 1.2 * (1.0 - kappa * 3.5) * stepMod;
+          p.vy = -1.1 - 0.4 * Math.cos(tick * 0.05 + p.colorT * 5.0);
+        }
+
+        // Overdrive collapse pull
+        if (kappa >= 0.12) {
+          // Dragged toward center line
+          p.vx += (cx - p.x) * (kappa * 0.4);
+        } else if (kappa === 0) {
+          // Wild jitter
+          p.vx += (Math.random() - 0.5) * 3.0;
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Render particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, (kappa >= 0.12 ? 1.2 : 1.8), 0, Math.PI * 2);
+
+        if (kappa >= 0.12) {
+          // Bleached gray
+          ctx.fillStyle = "rgba(160, 160, 160, 0.55)";
+        } else if (p.isA) {
+          // Cyan to Gold
+          ctx.fillStyle = (s > 0.6) ? "rgba(245, 158, 11, 0.75)" : "rgba(0, 229, 255, 0.75)";
+        } else {
+          // Crimson to Mercury
+          ctx.fillStyle = (s > 0.6) ? "rgba(226, 232, 240, 0.85)" : "rgba(255, 42, 95, 0.75)";
+        }
+        ctx.fill();
+
+        // Respawn if out of bounds
+        if (p.y < 30 || p.x < 10 || p.x > width - 10 || p.age > p.maxAge) {
+          p.x = cx + (p.isA ? -Math.random() * 25 : Math.random() * 25);
+          p.y = height - 60 - Math.random() * 30;
+          p.age = 0;
+        }
+      }
+
+      // Render Epistles crossing the meridian
+      for (let i = epistles.length - 1; i >= 0; i--) {
+        const ep = epistles[i];
+        ep.progress += 0.015;
+        ep.x = ep.startX + (ep.targetX - ep.startX) * ep.progress;
+        const arcY = ep.y - Math.sin(ep.progress * Math.PI) * 50;
+
+        ctx.strokeStyle = ep.color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(ep.x, arcY, 4, 0, Math.PI * 2);
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+        ctx.stroke();
+
+        // Ripple upon crossing meridian
+        if (Math.abs(ep.x - cx) < 6) {
+          ctx.strokeStyle = ep.color;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(cx, arcY, 18, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        if (ep.progress >= 1.0) {
+          epistles.splice(i, 1);
+        }
+      }
+    }
+
+    // Start
+    resize();
+    render();
+  </script>
+</body>
+</html>

@@ -2198,27 +2198,32 @@
     {
       "id": "OPUS-047",
       "directory": "opus_047_sibling_manifold",
-      "file_count": 6,
-      "total_bytes": 26654504,
+      "file_count": 7,
+      "total_bytes": 26674978,
       "has_audio": true,
       "has_visual": true,
       "has_study": false,
       "has_engine": true,
       "files": [
         {
+          "path": "works/opus_047_sibling_manifold/index.html",
+          "size_bytes": 20471,
+          "checksum": "b4961a789ab4ffae"
+        },
+        {
           "path": "works/opus_047_sibling_manifold/generate_master_audio.py",
-          "size_bytes": 5607,
-          "checksum": "e6e899b558d7682d"
+          "size_bytes": 5608,
+          "checksum": "cdd8dde33b29e8f2"
         },
         {
           "path": "works/opus_047_sibling_manifold/README.md",
-          "size_bytes": 7094,
-          "checksum": "2bd66e55232d1023"
+          "size_bytes": 7095,
+          "checksum": "999895e815857c21"
         },
         {
           "path": "works/opus_047_sibling_manifold/generate_master_plate.py",
-          "size_bytes": 9712,
-          "checksum": "2acfa5d71ec73aa1"
+          "size_bytes": 9713,
+          "checksum": "a835a5ee79772525"
         },
         {
           "path": "works/opus_047_sibling_manifold/artwork.png",

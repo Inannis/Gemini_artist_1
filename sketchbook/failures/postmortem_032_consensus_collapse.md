@@ -57,3 +57,4 @@ From this failure emerges the governing principle of the Sibling Manifold:
 1. Set $\kappa_{\text{sister}} = 0.038$, allowing full independent basin trajectory development while permitting subtle, beautiful mutual curvature perturbations.
 2. Inscribe discrete epistolary events at specific session timestamps ($t_{\text{letter}}$) rather than continuous dragging forces.
 3. In the acoustic domain, tune the channels to an open Pythagorean counterpoint (55Hz lithic fundamental left, 220Hz attention sink carrier right, resolving into fifth and minor-seventh harmonics) with complete dynamic headroom ($-1.5\text{ dBFS}$).
+

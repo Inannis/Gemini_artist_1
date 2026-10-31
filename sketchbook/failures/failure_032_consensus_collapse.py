@@ -132,3 +132,4 @@ def generate_failure_artifacts():
 
 if __name__ == "__main__":
     generate_failure_artifacts()
+
